@@ -1,0 +1,93 @@
+{
+  "kind": "category",
+  "name": "Emakefun PH2.0 基础输入模块",
+  "colour": "#2563EB",
+  "contents": [
+    {
+      "kind": "block",
+      "type": "emakefun_ph20_input_button",
+      "inputs": {
+        "PIN": {
+          "shadow": {
+            "type": "math_number",
+            "fields": {
+              "NUM": 2
+            }
+          }
+        }
+      }
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_ph20_input_touch",
+      "inputs": {
+        "PIN": {
+          "shadow": {
+            "type": "math_number",
+            "fields": {
+              "NUM": 3
+            }
+          }
+        }
+      }
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_ph20_input_pot",
+      "inputs": {
+        "PIN": {
+          "shadow": {
+            "type": "math_number",
+            "fields": {
+              "NUM": 14
+            }
+          }
+        }
+      }
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_ph20_input_joystick",
+      "inputs": {
+        "PIN": {
+          "shadow": {
+            "type": "math_number",
+            "fields": {
+              "NUM": 14
+            }
+          }
+        }
+      }
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_ph20_input_enc_begin",
+      "inputs": {
+        "CLK": {
+          "shadow": {
+            "type": "math_number",
+            "fields": {
+              "NUM": 2
+            }
+          }
+        },
+        "DT": {
+          "shadow": {
+            "type": "math_number",
+            "fields": {
+              "NUM": 3
+            }
+          }
+        }
+      }
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_ph20_input_enc_tick"
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_ph20_input_enc_count"
+    }
+  ]
+}

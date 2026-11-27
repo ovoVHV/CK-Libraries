@@ -1,0 +1,21 @@
+{
+  "id": "emakefun_adc_button",
+  "name": "Emakefun ADC 五键模块",
+  "version": "1.0.0",
+  "description": "Emakefun 单模拟口五按键（A/B/C/D/E）分压按键模块，内置消抖与按键事件检测。",
+  "sentence": "Emakefun 单模拟口五按键（A/B/C/D/E）分压按键模块，内置消抖与按键事件检测。",
+  "author": "CKYAN",
+  "vendor": "Emakefun",
+  "vendor_logo": "assets/emakefun.png",
+  "icon": "assets/icon.png",
+  "category": "Sensors",
+  "website": "https://github.com/emakefun-arduino-library/em_adc_button",
+  "architectures": [
+    "avr",
+    "esp32"
+  ],
+  "license": "Apache-2.0",
+  "includes": [
+    "EmakefunAdcButtonAdapter.h"
+  ]
+}

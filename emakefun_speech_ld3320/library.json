@@ -1,0 +1,21 @@
+{
+  "id": "emakefun_speech_ld3320",
+  "name": "Emakefun LD3320 语音识别 V2",
+  "version": "1.0.0",
+  "description": "Emakefun LD3320 I2C 离线语音识别模块（地址 0x30），支持自动/关键词/按键触发及最多 50 条中文拼音关键词。",
+  "sentence": "Emakefun LD3320 I2C 离线语音识别模块（地址 0x30），支持自动/关键词/按键触发及最多 50 条中文拼音关键词。",
+  "author": "CKYAN",
+  "vendor": "Emakefun",
+  "vendor_logo": "assets/emakefun.png",
+  "icon": "assets/icon.jpg",
+  "category": "Sensors",
+  "website": "https://docs.emakefun.com/sensors/smart_modules/speech_recognizer/",
+  "architectures": [
+    "avr",
+    "esp32"
+  ],
+  "license": "Apache-2.0",
+  "includes": [
+    "EmakefunSpeechLd3320Adapter.h"
+  ]
+}

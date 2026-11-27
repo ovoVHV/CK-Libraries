@@ -1,0 +1,762 @@
+{
+  "schema_version": 2,
+  "id": "emakefun_md20",
+  "display_name": "Emakefun MD20 四路编码电机",
+  "description": "Emakefun MD20 I2C 四路编码电机驱动模块（默认地址 0x16），支持单路 PPR/减速比配置与闭环 RPM 调速。",
+  "defaultLocale": "zh-CN",
+  "keywords": [
+    "Emakefun MD20 四路编码电机",
+    "emakefun_md20",
+    "Emakefun",
+    "电机",
+    "编码电机",
+    "MD20",
+    "I2C"
+  ],
+  "license": {
+    "spdx_id": "Apache-2.0",
+    "file": "LICENSE.txt"
+  },
+  "compatibility": {
+    "architectures": [
+      "avr",
+      "esp32"
+    ]
+  },
+  "dependencies": [
+    {
+      "kind": "arduino-library",
+      "id": "EmakefunMd20Adapter",
+      "version": "1.0.0",
+      "headers": [
+        "EmakefunMd20Adapter.h"
+      ],
+      "license": "Apache-2.0",
+      "reason": "随包内置于 libraries/EmakefunMd20Adapter/，提供安全封装与跨板卡兼容接口。"
+    },
+    {
+      "kind": "arduino-library",
+      "id": "Emakefun MD20",
+      "version": "1.0.0",
+      "headers": [
+        "md20.h",
+        "md20_lib.h"
+      ],
+      "license": "MIT",
+      "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/em_md20）内置于 libraries/em_md20/。"
+    }
+  ],
+  "entrypoints": {
+    "blocks": "blocks/blocks.json",
+    "generator": "blocks/ck-generator.json",
+    "toolbox": "blocks/toolbox.json"
+  },
+  "blocks": [
+    {
+      "type": "emakefun_md20_begin",
+      "display_name": "初始化 MD20 电机驱动 I2C地址 %1",
+      "description": "初始化 Emakefun MD20 四路编码电机板（默认 0x16 = 22）。",
+      "category": "Emakefun MD20 四路编码电机",
+      "kind": "statement",
+      "keywords": [
+        "Emakefun MD20 四路编码电机",
+        "emakefun_md20",
+        "Emakefun",
+        "电机",
+        "编码电机",
+        "MD20",
+        "I2C"
+      ],
+      "semantics": {
+        "purpose": "初始化 Emakefun MD20 四路编码电机板（默认 0x16 = 22）。",
+        "behavior": "初始化 Emakefun MD20 四路编码电机板（默认 0x16 = 22）。",
+        "concepts": [
+          "Emakefun MD20 四路编码电机",
+          "Emakefun"
+        ],
+        "side_effects": [
+          "初始化 Emakefun MD20 四路编码电机板（默认 0x16 = 22）。"
+        ]
+      },
+      "fields": [],
+      "inputs": [
+        {
+          "name": "ADDR",
+          "kind": "value",
+          "description": "I2C 地址（默认 22）",
+          "check": "Number",
+          "required": true,
+          "default": 22
+        }
+      ],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunMd20Adapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunMd20Adapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunMd20Adapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "Emakefun MD20",
+          "version": "1.0.0",
+          "headers": [
+            "md20.h",
+            "md20_lib.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/em_md20）内置于 libraries/em_md20/。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "i2c",
+            "id": "wire",
+            "source": {
+              "kind": "board-default"
+            },
+            "access": "read-write",
+            "sharing": "shared",
+            "description": "默认 I2C 总线 (Wire)，模块默认地址 0x16。"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "i2c-device",
+              "role": "i2c-device",
+              "resource": {
+                "kind": "fixed",
+                "valueType": "id",
+                "value": "i2c"
+              },
+              "exclusive": false,
+              "discriminator": {
+                "kind": "fixed",
+                "valueType": "integer",
+                "value": 22
+              }
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun MD20 I2C 四路编码电机驱动模块（默认地址 0x16），支持单路 PPR/减速比配置与闭环 RPM 调速。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "includes": [
+          "EmakefunMd20Adapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunMd20Adapter.h",
+            "template": "#include <EmakefunMd20Adapter.h>"
+          },
+          {
+            "section": "statement",
+            "description": "初始化 Emakefun MD20 四路编码电机板（默认 0x16 = 22）。",
+            "template": "EmakefunMd20Adapter::begin({{value:ADDR}});\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun MD20 I2C 四路编码电机驱动模块（默认地址 0x16），支持单路 PPR/减速比配置与闭环 RPM 调速。",
+          "message": "Emakefun MD20 I2C 四路编码电机驱动模块（默认地址 0x16），支持单路 PPR/减速比配置与闭环 RPM 调速。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun MD20 四路编码电机 随包示例",
+          "description": "初始化 Emakefun MD20 四路编码电机板（默认 0x16 = 22）。",
+          "expected_behavior": "演示 Emakefun MD20 四路编码电机 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_md20_init_motor",
+      "display_name": "MD20 配置电机 %1 PPR %2 减速比 %3 相位 %4",
+      "description": "配置单路编码电机参数。",
+      "category": "Emakefun MD20 四路编码电机",
+      "kind": "statement",
+      "keywords": [
+        "Emakefun MD20 四路编码电机",
+        "emakefun_md20",
+        "Emakefun",
+        "电机",
+        "编码电机",
+        "MD20",
+        "I2C"
+      ],
+      "semantics": {
+        "purpose": "配置单路编码电机参数。",
+        "behavior": "配置单路编码电机参数。",
+        "concepts": [
+          "Emakefun MD20 四路编码电机",
+          "Emakefun"
+        ],
+        "side_effects": [
+          "配置单路编码电机参数。"
+        ]
+      },
+      "fields": [
+        {
+          "name": "IDX",
+          "kind": "dropdown",
+          "description": "电机编号",
+          "required": true,
+          "default": "0",
+          "options": [
+            {
+              "label": "电机 0",
+              "value": "0"
+            },
+            {
+              "label": "电机 1",
+              "value": "1"
+            },
+            {
+              "label": "电机 2",
+              "value": "2"
+            },
+            {
+              "label": "电机 3",
+              "value": "3"
+            }
+          ]
+        },
+        {
+          "name": "PHASE",
+          "kind": "dropdown",
+          "description": "AB相相位",
+          "required": true,
+          "default": "0",
+          "options": [
+            {
+              "label": "A相超前",
+              "value": "0"
+            },
+            {
+              "label": "B相超前",
+              "value": "1"
+            }
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "name": "PPR",
+          "kind": "value",
+          "description": "每转脉冲数 PPR",
+          "check": "Number",
+          "required": true,
+          "default": 12
+        },
+        {
+          "name": "RATIO",
+          "kind": "value",
+          "description": "减速比",
+          "check": "Number",
+          "required": true,
+          "default": 90
+        }
+      ],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunMd20Adapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunMd20Adapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunMd20Adapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "Emakefun MD20",
+          "version": "1.0.0",
+          "headers": [
+            "md20.h",
+            "md20_lib.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/em_md20）内置于 libraries/em_md20/。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "i2c",
+            "id": "wire",
+            "source": {
+              "kind": "board-default"
+            },
+            "access": "read-write",
+            "sharing": "shared",
+            "description": "默认 I2C 总线 (Wire)，模块默认地址 0x16。"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "i2c-device",
+              "role": "i2c-device",
+              "resource": {
+                "kind": "fixed",
+                "valueType": "id",
+                "value": "i2c"
+              },
+              "exclusive": false,
+              "discriminator": {
+                "kind": "fixed",
+                "valueType": "integer",
+                "value": 22
+              }
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun MD20 I2C 四路编码电机驱动模块（默认地址 0x16），支持单路 PPR/减速比配置与闭环 RPM 调速。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "includes": [
+          "EmakefunMd20Adapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunMd20Adapter.h",
+            "template": "#include <EmakefunMd20Adapter.h>"
+          },
+          {
+            "section": "statement",
+            "description": "配置单路编码电机参数。",
+            "template": "EmakefunMd20Adapter::initMotor({{field:IDX}}, {{value:PPR}}, {{value:RATIO}}, {{field:PHASE}});\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun MD20 I2C 四路编码电机驱动模块（默认地址 0x16），支持单路 PPR/减速比配置与闭环 RPM 调速。",
+          "message": "Emakefun MD20 I2C 四路编码电机驱动模块（默认地址 0x16），支持单路 PPR/减速比配置与闭环 RPM 调速。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun MD20 四路编码电机 随包示例",
+          "description": "配置单路编码电机参数。",
+          "expected_behavior": "演示 Emakefun MD20 四路编码电机 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_md20_run_speed",
+      "display_name": "MD20 电机 %1 以转速 %2 RPM 运行",
+      "description": "闭环控制单路编码电机按指定 RPM 旋转。",
+      "category": "Emakefun MD20 四路编码电机",
+      "kind": "statement",
+      "keywords": [
+        "Emakefun MD20 四路编码电机",
+        "emakefun_md20",
+        "Emakefun",
+        "电机",
+        "编码电机",
+        "MD20",
+        "I2C"
+      ],
+      "semantics": {
+        "purpose": "闭环控制单路编码电机按指定 RPM 旋转。",
+        "behavior": "闭环控制单路编码电机按指定 RPM 旋转。",
+        "concepts": [
+          "Emakefun MD20 四路编码电机",
+          "Emakefun"
+        ],
+        "side_effects": [
+          "闭环控制单路编码电机按指定 RPM 旋转。"
+        ]
+      },
+      "fields": [
+        {
+          "name": "IDX",
+          "kind": "dropdown",
+          "description": "电机编号",
+          "required": true,
+          "default": "0",
+          "options": [
+            {
+              "label": "电机 0",
+              "value": "0"
+            },
+            {
+              "label": "电机 1",
+              "value": "1"
+            },
+            {
+              "label": "电机 2",
+              "value": "2"
+            },
+            {
+              "label": "电机 3",
+              "value": "3"
+            }
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "name": "RPM",
+          "kind": "value",
+          "description": "转速 RPM",
+          "check": "Number",
+          "required": true,
+          "default": 60
+        }
+      ],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunMd20Adapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunMd20Adapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunMd20Adapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "Emakefun MD20",
+          "version": "1.0.0",
+          "headers": [
+            "md20.h",
+            "md20_lib.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/em_md20）内置于 libraries/em_md20/。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "i2c",
+            "id": "wire",
+            "source": {
+              "kind": "board-default"
+            },
+            "access": "read-write",
+            "sharing": "shared",
+            "description": "默认 I2C 总线 (Wire)，模块默认地址 0x16。"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "i2c-device",
+              "role": "i2c-device",
+              "resource": {
+                "kind": "fixed",
+                "valueType": "id",
+                "value": "i2c"
+              },
+              "exclusive": false,
+              "discriminator": {
+                "kind": "fixed",
+                "valueType": "integer",
+                "value": 22
+              }
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun MD20 I2C 四路编码电机驱动模块（默认地址 0x16），支持单路 PPR/减速比配置与闭环 RPM 调速。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "includes": [
+          "EmakefunMd20Adapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunMd20Adapter.h",
+            "template": "#include <EmakefunMd20Adapter.h>"
+          },
+          {
+            "section": "statement",
+            "description": "闭环控制单路编码电机按指定 RPM 旋转。",
+            "template": "EmakefunMd20Adapter::runSpeed({{field:IDX}}, {{value:RPM}});\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun MD20 I2C 四路编码电机驱动模块（默认地址 0x16），支持单路 PPR/减速比配置与闭环 RPM 调速。",
+          "message": "Emakefun MD20 I2C 四路编码电机驱动模块（默认地址 0x16），支持单路 PPR/减速比配置与闭环 RPM 调速。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun MD20 四路编码电机 随包示例",
+          "description": "闭环控制单路编码电机按指定 RPM 旋转。",
+          "expected_behavior": "演示 Emakefun MD20 四路编码电机 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_md20_reset",
+      "display_name": "MD20 复位电机 %1",
+      "description": "复位指定编码电机通道。",
+      "category": "Emakefun MD20 四路编码电机",
+      "kind": "statement",
+      "keywords": [
+        "Emakefun MD20 四路编码电机",
+        "emakefun_md20",
+        "Emakefun",
+        "电机",
+        "编码电机",
+        "MD20",
+        "I2C"
+      ],
+      "semantics": {
+        "purpose": "复位指定编码电机通道。",
+        "behavior": "复位指定编码电机通道。",
+        "concepts": [
+          "Emakefun MD20 四路编码电机",
+          "Emakefun"
+        ],
+        "side_effects": [
+          "复位指定编码电机通道。"
+        ]
+      },
+      "fields": [
+        {
+          "name": "IDX",
+          "kind": "dropdown",
+          "description": "电机编号",
+          "required": true,
+          "default": "0",
+          "options": [
+            {
+              "label": "电机 0",
+              "value": "0"
+            },
+            {
+              "label": "电机 1",
+              "value": "1"
+            },
+            {
+              "label": "电机 2",
+              "value": "2"
+            },
+            {
+              "label": "电机 3",
+              "value": "3"
+            }
+          ]
+        }
+      ],
+      "inputs": [],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunMd20Adapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunMd20Adapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunMd20Adapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "Emakefun MD20",
+          "version": "1.0.0",
+          "headers": [
+            "md20.h",
+            "md20_lib.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/em_md20）内置于 libraries/em_md20/。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "i2c",
+            "id": "wire",
+            "source": {
+              "kind": "board-default"
+            },
+            "access": "read-write",
+            "sharing": "shared",
+            "description": "默认 I2C 总线 (Wire)，模块默认地址 0x16。"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "i2c-device",
+              "role": "i2c-device",
+              "resource": {
+                "kind": "fixed",
+                "valueType": "id",
+                "value": "i2c"
+              },
+              "exclusive": false,
+              "discriminator": {
+                "kind": "fixed",
+                "valueType": "integer",
+                "value": 22
+              }
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun MD20 I2C 四路编码电机驱动模块（默认地址 0x16），支持单路 PPR/减速比配置与闭环 RPM 调速。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "includes": [
+          "EmakefunMd20Adapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunMd20Adapter.h",
+            "template": "#include <EmakefunMd20Adapter.h>"
+          },
+          {
+            "section": "statement",
+            "description": "复位指定编码电机通道。",
+            "template": "EmakefunMd20Adapter::resetMotor({{field:IDX}});\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun MD20 I2C 四路编码电机驱动模块（默认地址 0x16），支持单路 PPR/减速比配置与闭环 RPM 调速。",
+          "message": "Emakefun MD20 I2C 四路编码电机驱动模块（默认地址 0x16），支持单路 PPR/减速比配置与闭环 RPM 调速。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun MD20 四路编码电机 随包示例",
+          "description": "复位指定编码电机通道。",
+          "expected_behavior": "演示 Emakefun MD20 四路编码电机 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    }
+  ]
+}

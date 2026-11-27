@@ -1,0 +1,109 @@
+{
+  "kind": "category",
+  "name": "Emakefun MD40 四路电机驱动板",
+  "colour": "#991B1B",
+  "contents": [
+    {
+      "kind": "block",
+      "type": "emakefun_md40_begin",
+      "inputs": {
+        "ADDR": {
+          "shadow": {
+            "type": "math_number",
+            "fields": {
+              "NUM": 22
+            }
+          }
+        }
+      }
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_md40_dc_mode"
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_md40_enc_mode",
+      "inputs": {
+        "PPR": {
+          "shadow": {
+            "type": "math_number",
+            "fields": {
+              "NUM": 12
+            }
+          }
+        },
+        "RATIO": {
+          "shadow": {
+            "type": "math_number",
+            "fields": {
+              "NUM": 90
+            }
+          }
+        }
+      }
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_md40_run_speed",
+      "inputs": {
+        "RPM": {
+          "shadow": {
+            "type": "math_number",
+            "fields": {
+              "NUM": 60
+            }
+          }
+        }
+      }
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_md40_run_pwm",
+      "inputs": {
+        "DUTY": {
+          "shadow": {
+            "type": "math_number",
+            "fields": {
+              "NUM": 512
+            }
+          }
+        }
+      }
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_md40_move_rel",
+      "inputs": {
+        "OFF": {
+          "shadow": {
+            "type": "math_number",
+            "fields": {
+              "NUM": 360
+            }
+          }
+        },
+        "SPD": {
+          "shadow": {
+            "type": "math_number",
+            "fields": {
+              "NUM": 60
+            }
+          }
+        }
+      }
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_md40_stop"
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_md40_get_speed"
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_md40_get_pos"
+    }
+  ]
+}

@@ -1,0 +1,117 @@
+{
+  "kind": "category",
+  "name": "Emakefun PH2.0 基础执行器模块",
+  "colour": "#F97316",
+  "contents": [
+    {
+      "kind": "block",
+      "type": "emakefun_ph20_actuators_switch",
+      "inputs": {
+        "PIN": {
+          "shadow": {
+            "type": "math_number",
+            "fields": {
+              "NUM": 8
+            }
+          }
+        }
+      }
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_ph20_actuators_tone",
+      "inputs": {
+        "PIN": {
+          "shadow": {
+            "type": "math_number",
+            "fields": {
+              "NUM": 9
+            }
+          }
+        },
+        "FREQ": {
+          "shadow": {
+            "type": "math_number",
+            "fields": {
+              "NUM": 523
+            }
+          }
+        },
+        "DUR": {
+          "shadow": {
+            "type": "math_number",
+            "fields": {
+              "NUM": 300
+            }
+          }
+        }
+      }
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_ph20_actuators_notone",
+      "inputs": {
+        "PIN": {
+          "shadow": {
+            "type": "math_number",
+            "fields": {
+              "NUM": 9
+            }
+          }
+        }
+      }
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_ph20_actuators_fan",
+      "inputs": {
+        "PIN": {
+          "shadow": {
+            "type": "math_number",
+            "fields": {
+              "NUM": 5
+            }
+          }
+        },
+        "SPD": {
+          "shadow": {
+            "type": "math_number",
+            "fields": {
+              "NUM": 180
+            }
+          }
+        }
+      }
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_ph20_actuators_dual_motor",
+      "inputs": {
+        "IA": {
+          "shadow": {
+            "type": "math_number",
+            "fields": {
+              "NUM": 5
+            }
+          }
+        },
+        "IB": {
+          "shadow": {
+            "type": "math_number",
+            "fields": {
+              "NUM": 6
+            }
+          }
+        },
+        "SPD": {
+          "shadow": {
+            "type": "math_number",
+            "fields": {
+              "NUM": 180
+            }
+          }
+        }
+      }
+    }
+  ]
+}

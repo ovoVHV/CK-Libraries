@@ -1,0 +1,25 @@
+{
+  "kind": "category",
+  "name": "Emakefun 触摸矩阵键盘 V2",
+  "colour": "#1D4ED8",
+  "contents": [
+    {
+      "kind": "block",
+      "type": "emakefun_matrix_kbd_v2_begin",
+      "inputs": {
+        "ADDR": {
+          "shadow": {
+            "type": "math_number",
+            "fields": {
+              "NUM": 80
+            }
+          }
+        }
+      }
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_matrix_kbd_v2_read"
+    }
+  ]
+}

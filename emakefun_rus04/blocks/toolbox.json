@@ -1,0 +1,63 @@
+{
+  "kind": "category",
+  "name": "Emakefun RUS-04 RGB 超声波",
+  "colour": "#06B6D4",
+  "contents": [
+    {
+      "kind": "block",
+      "type": "emakefun_rus04_begin",
+      "inputs": {
+        "IO": {
+          "shadow": {
+            "type": "math_number",
+            "fields": {
+              "NUM": 7
+            }
+          }
+        },
+        "RGB": {
+          "shadow": {
+            "type": "math_number",
+            "fields": {
+              "NUM": 6
+            }
+          }
+        }
+      }
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_rus04_distance"
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_rus04_rgb",
+      "inputs": {
+        "R": {
+          "shadow": {
+            "type": "math_number",
+            "fields": {
+              "NUM": 0
+            }
+          }
+        },
+        "G": {
+          "shadow": {
+            "type": "math_number",
+            "fields": {
+              "NUM": 180
+            }
+          }
+        },
+        "B": {
+          "shadow": {
+            "type": "math_number",
+            "fields": {
+              "NUM": 255
+            }
+          }
+        }
+      }
+    }
+  ]
+}

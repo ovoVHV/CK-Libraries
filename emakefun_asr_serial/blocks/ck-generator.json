@@ -1,0 +1,46 @@
+{
+  "schema": "ck-generator",
+  "version": 1,
+  "rules": [
+    {
+      "type": "emakefun_asr_serial_begin",
+      "kind": "statement",
+      "includes": {
+        "EmakefunAsrSerialAdapter.h": "#include <EmakefunAsrSerialAdapter.h>"
+      },
+      "template": "EmakefunAsrSerialAdapter::begin({{value:RX}}, {{value:TX}});\n"
+    },
+    {
+      "type": "emakefun_asr_serial_broadcast",
+      "kind": "statement",
+      "includes": {
+        "EmakefunAsrSerialAdapter.h": "#include <EmakefunAsrSerialAdapter.h>"
+      },
+      "template": "EmakefunAsrSerialAdapter::broadcast({{value:ID}});\n"
+    },
+    {
+      "type": "emakefun_asr_serial_volume",
+      "kind": "statement",
+      "includes": {
+        "EmakefunAsrSerialAdapter.h": "#include <EmakefunAsrSerialAdapter.h>"
+      },
+      "template": "EmakefunAsrSerialAdapter::setVolume({{value:VOL}});\n"
+    },
+    {
+      "type": "emakefun_asr_serial_exit_wakeup",
+      "kind": "statement",
+      "includes": {
+        "EmakefunAsrSerialAdapter.h": "#include <EmakefunAsrSerialAdapter.h>"
+      },
+      "template": "EmakefunAsrSerialAdapter::exitWakeup();\n"
+    },
+    {
+      "type": "emakefun_asr_serial_reset",
+      "kind": "statement",
+      "includes": {
+        "EmakefunAsrSerialAdapter.h": "#include <EmakefunAsrSerialAdapter.h>"
+      },
+      "template": "EmakefunAsrSerialAdapter::reset();\n"
+    }
+  ]
+}

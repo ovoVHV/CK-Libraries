@@ -1,0 +1,54 @@
+{
+  "schema": "ck-generator",
+  "version": 1,
+  "rules": [
+    {
+      "type": "emakefun_speech_ld3320_begin",
+      "kind": "statement",
+      "includes": {
+        "EmakefunSpeechLd3320Adapter.h": "#include <EmakefunSpeechLd3320Adapter.h>"
+      },
+      "template": "EmakefunSpeechLd3320Adapter::begin({{value:ADDR}});\n"
+    },
+    {
+      "type": "emakefun_speech_ld3320_mode",
+      "kind": "statement",
+      "includes": {
+        "EmakefunSpeechLd3320Adapter.h": "#include <EmakefunSpeechLd3320Adapter.h>"
+      },
+      "template": "EmakefunSpeechLd3320Adapter::setMode({{field:MODE}});\n"
+    },
+    {
+      "type": "emakefun_speech_ld3320_timeout",
+      "kind": "statement",
+      "includes": {
+        "EmakefunSpeechLd3320Adapter.h": "#include <EmakefunSpeechLd3320Adapter.h>"
+      },
+      "template": "EmakefunSpeechLd3320Adapter::setTimeout({{value:MS}});\n"
+    },
+    {
+      "type": "emakefun_speech_ld3320_add_kw",
+      "kind": "statement",
+      "includes": {
+        "EmakefunSpeechLd3320Adapter.h": "#include <EmakefunSpeechLd3320Adapter.h>"
+      },
+      "template": "EmakefunSpeechLd3320Adapter::addKeyword({{value:IDX}}, String({{value:KW}}));\n"
+    },
+    {
+      "type": "emakefun_speech_ld3320_recognize",
+      "kind": "expression",
+      "includes": {
+        "EmakefunSpeechLd3320Adapter.h": "#include <EmakefunSpeechLd3320Adapter.h>"
+      },
+      "template": "EmakefunSpeechLd3320Adapter::recognize()"
+    },
+    {
+      "type": "emakefun_speech_ld3320_event",
+      "kind": "expression",
+      "includes": {
+        "EmakefunSpeechLd3320Adapter.h": "#include <EmakefunSpeechLd3320Adapter.h>"
+      },
+      "template": "EmakefunSpeechLd3320Adapter::event()"
+    }
+  ]
+}

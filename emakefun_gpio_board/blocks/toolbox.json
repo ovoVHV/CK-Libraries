@@ -1,0 +1,65 @@
+{
+  "kind": "category",
+  "name": "Emakefun I2C GPIO 扩展板",
+  "colour": "#0891B2",
+  "contents": [
+    {
+      "kind": "block",
+      "type": "emakefun_gpio_board_begin",
+      "inputs": {
+        "ADDR": {
+          "shadow": {
+            "type": "math_number",
+            "fields": {
+              "NUM": 36
+            }
+          }
+        }
+      }
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_gpio_board_mode"
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_gpio_board_write"
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_gpio_board_read"
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_gpio_board_adc"
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_gpio_board_pwm_duty",
+      "inputs": {
+        "DUTY": {
+          "shadow": {
+            "type": "math_number",
+            "fields": {
+              "NUM": 2048
+            }
+          }
+        }
+      }
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_gpio_board_servo",
+      "inputs": {
+        "ANG": {
+          "shadow": {
+            "type": "math_number",
+            "fields": {
+              "NUM": 90
+            }
+          }
+        }
+      }
+    }
+  ]
+}

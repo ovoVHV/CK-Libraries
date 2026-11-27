@@ -1,0 +1,2 @@
+Upstream repository: https://github.com/emakefun-arduino-library/emakefun_digit_display
+Retained unmodified from Emakefun official Arduino library repository.

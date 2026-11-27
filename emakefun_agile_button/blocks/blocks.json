@@ -1,0 +1,66 @@
+[
+  {
+    "type": "emakefun_agile_button_begin",
+    "message0": "初始化智能按键 引脚 %1 有效电平 %2",
+    "args0": [
+      {
+        "type": "input_value",
+        "name": "PIN",
+        "check": "Number"
+      },
+      {
+        "type": "field_dropdown",
+        "name": "ACTIVE",
+        "options": [
+          [
+            "低电平有效(默认)",
+            "1"
+          ],
+          [
+            "高电平有效",
+            "0"
+          ]
+        ]
+      }
+    ],
+    "inputsInline": true,
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": "#2563EB",
+    "tooltip": "初始化 Emakefun 智能按键（支持单/双/长按检测）。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_agile_button_tick",
+    "message0": "智能按键 刷新检测",
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": "#2563EB",
+    "tooltip": "在主循环中调用以更新按键状态机。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_agile_button_click",
+    "message0": "智能按键 触发单击?",
+    "output": "Boolean",
+    "colour": "#2563EB",
+    "tooltip": "检测到一次单击事件时返回真并清除标志。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_agile_button_dblclick",
+    "message0": "智能按键 触发双击?",
+    "output": "Boolean",
+    "colour": "#2563EB",
+    "tooltip": "检测到一次双击事件时返回真并清除标志。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_agile_button_longpress",
+    "message0": "智能按键 触发长按?",
+    "output": "Boolean",
+    "colour": "#2563EB",
+    "tooltip": "检测到一次长按事件时返回真并清除标志。",
+    "helpUrl": ""
+  }
+]

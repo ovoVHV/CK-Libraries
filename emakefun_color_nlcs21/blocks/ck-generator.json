@@ -1,0 +1,54 @@
+{
+  "schema": "ck-generator",
+  "version": 1,
+  "rules": [
+    {
+      "type": "emakefun_color_nlcs21_begin",
+      "kind": "statement",
+      "includes": {
+        "EmakefunNlcs21Adapter.h": "#include <EmakefunNlcs21Adapter.h>"
+      },
+      "template": "EmakefunNlcs21Adapter::begin({{field:GAIN}}, {{field:ITIME}}, {{value:ADDR}});\n"
+    },
+    {
+      "type": "emakefun_color_nlcs21_sample",
+      "kind": "statement",
+      "includes": {
+        "EmakefunNlcs21Adapter.h": "#include <EmakefunNlcs21Adapter.h>"
+      },
+      "template": "EmakefunNlcs21Adapter::sample();\n"
+    },
+    {
+      "type": "emakefun_color_nlcs21_r",
+      "kind": "expression",
+      "includes": {
+        "EmakefunNlcs21Adapter.h": "#include <EmakefunNlcs21Adapter.h>"
+      },
+      "template": "EmakefunNlcs21Adapter::r()"
+    },
+    {
+      "type": "emakefun_color_nlcs21_g",
+      "kind": "expression",
+      "includes": {
+        "EmakefunNlcs21Adapter.h": "#include <EmakefunNlcs21Adapter.h>"
+      },
+      "template": "EmakefunNlcs21Adapter::g()"
+    },
+    {
+      "type": "emakefun_color_nlcs21_b",
+      "kind": "expression",
+      "includes": {
+        "EmakefunNlcs21Adapter.h": "#include <EmakefunNlcs21Adapter.h>"
+      },
+      "template": "EmakefunNlcs21Adapter::b()"
+    },
+    {
+      "type": "emakefun_color_nlcs21_c",
+      "kind": "expression",
+      "includes": {
+        "EmakefunNlcs21Adapter.h": "#include <EmakefunNlcs21Adapter.h>"
+      },
+      "template": "EmakefunNlcs21Adapter::c()"
+    }
+  ]
+}

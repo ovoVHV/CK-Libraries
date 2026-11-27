@@ -1,0 +1,148 @@
+[
+  {
+    "type": "emakefun_ph20_actuators_switch",
+    "message0": "PH2.0 %1 引脚 %2 设为 %3",
+    "args0": [
+      {
+        "type": "field_dropdown",
+        "name": "KIND",
+        "options": [
+          [
+            "继电器",
+            "0"
+          ],
+          [
+            "有源蜂鸣器",
+            "1"
+          ],
+          [
+            "激光发射模块",
+            "2"
+          ],
+          [
+            "振动马达",
+            "3"
+          ]
+        ]
+      },
+      {
+        "type": "input_value",
+        "name": "PIN",
+        "check": "Number"
+      },
+      {
+        "type": "field_dropdown",
+        "name": "ON",
+        "options": [
+          [
+            "打开",
+            "true"
+          ],
+          [
+            "关闭",
+            "false"
+          ]
+        ]
+      }
+    ],
+    "inputsInline": true,
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": "#F97316",
+    "tooltip": "控制有源蜂鸣器、继电器、激光发射模块或振动马达开关。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_ph20_actuators_tone",
+    "message0": "PH2.0 无源蜂鸣器 引脚 %1 频率 %2 Hz 持续 %3 ms",
+    "args0": [
+      {
+        "type": "input_value",
+        "name": "PIN",
+        "check": "Number"
+      },
+      {
+        "type": "input_value",
+        "name": "FREQ",
+        "check": "Number"
+      },
+      {
+        "type": "input_value",
+        "name": "DUR",
+        "check": "Number"
+      }
+    ],
+    "inputsInline": true,
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": "#F97316",
+    "tooltip": "驱动无源蜂鸣器发声（持续时间填 0 表示持续发声）。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_ph20_actuators_notone",
+    "message0": "PH2.0 无源蜂鸣器 停止 引脚 %1",
+    "args0": [
+      {
+        "type": "input_value",
+        "name": "PIN",
+        "check": "Number"
+      }
+    ],
+    "inputsInline": true,
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": "#F97316",
+    "tooltip": "关闭无源蜂鸣器发声。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_ph20_actuators_fan",
+    "message0": "PH2.0 直流电机/大风扇 引脚 %1 PWM调速 %2 (0-255)",
+    "args0": [
+      {
+        "type": "input_value",
+        "name": "PIN",
+        "check": "Number"
+      },
+      {
+        "type": "input_value",
+        "name": "SPD",
+        "check": "Number"
+      }
+    ],
+    "inputsInline": true,
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": "#F97316",
+    "tooltip": "单路 PWM 控制直流电机或风扇转速。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_ph20_actuators_dual_motor",
+    "message0": "PH2.0 双线直流电机 IA %1 IB %2 速度 %3 (-255~255)",
+    "args0": [
+      {
+        "type": "input_value",
+        "name": "IA",
+        "check": "Number"
+      },
+      {
+        "type": "input_value",
+        "name": "IB",
+        "check": "Number"
+      },
+      {
+        "type": "input_value",
+        "name": "SPD",
+        "check": "Number"
+      }
+    ],
+    "inputsInline": true,
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": "#F97316",
+    "tooltip": "正反转控制双线直流电机或双路电机驱动模块单通道。",
+    "helpUrl": ""
+  }
+]

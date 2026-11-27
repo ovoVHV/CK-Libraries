@@ -1,0 +1,25 @@
+{
+  "kind": "category",
+  "name": "Emakefun NL50 温度传感器",
+  "colour": "#EA580C",
+  "contents": [
+    {
+      "kind": "block",
+      "type": "emakefun_nl50_temp_begin",
+      "inputs": {
+        "PIN": {
+          "shadow": {
+            "type": "math_number",
+            "fields": {
+              "NUM": 14
+            }
+          }
+        }
+      }
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_nl50_temp_read"
+    }
+  ]
+}

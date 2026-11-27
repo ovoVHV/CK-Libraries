@@ -1,0 +1,62 @@
+{
+  "schema": "ck-generator",
+  "version": 1,
+  "rules": [
+    {
+      "type": "emakefun_gpio_board_begin",
+      "kind": "statement",
+      "includes": {
+        "EmakefunGpioBoardAdapter.h": "#include <EmakefunGpioBoardAdapter.h>"
+      },
+      "template": "EmakefunGpioBoardAdapter::begin({{value:ADDR}});\n"
+    },
+    {
+      "type": "emakefun_gpio_board_mode",
+      "kind": "statement",
+      "includes": {
+        "EmakefunGpioBoardAdapter.h": "#include <EmakefunGpioBoardAdapter.h>"
+      },
+      "template": "EmakefunGpioBoardAdapter::setMode({{field:PIN}}, {{field:MODE}});\n"
+    },
+    {
+      "type": "emakefun_gpio_board_write",
+      "kind": "statement",
+      "includes": {
+        "EmakefunGpioBoardAdapter.h": "#include <EmakefunGpioBoardAdapter.h>"
+      },
+      "template": "EmakefunGpioBoardAdapter::writeDigital({{field:PIN}}, {{field:LVL}});\n"
+    },
+    {
+      "type": "emakefun_gpio_board_read",
+      "kind": "expression",
+      "includes": {
+        "EmakefunGpioBoardAdapter.h": "#include <EmakefunGpioBoardAdapter.h>"
+      },
+      "template": "EmakefunGpioBoardAdapter::readDigital({{field:PIN}})"
+    },
+    {
+      "type": "emakefun_gpio_board_adc",
+      "kind": "expression",
+      "includes": {
+        "EmakefunGpioBoardAdapter.h": "#include <EmakefunGpioBoardAdapter.h>"
+      },
+      "template": "EmakefunGpioBoardAdapter::readAdc({{field:PIN}})"
+    },
+    {
+      "type": "emakefun_gpio_board_pwm_duty",
+      "kind": "statement",
+      "includes": {
+        "EmakefunGpioBoardAdapter.h": "#include <EmakefunGpioBoardAdapter.h>"
+      },
+      "template": "EmakefunGpioBoardAdapter::setPwmDuty({{field:PIN}}, {{value:DUTY}});\n"
+    },
+    {
+      "type": "emakefun_gpio_board_servo",
+      "kind": "statement",
+      "includes": {
+        "EmakefunGpioBoardAdapter.h": "#include <EmakefunGpioBoardAdapter.h>"
+      },
+      "template": "EmakefunGpioBoardAdapter::setServo({{field:PIN}}, {{value:ANG}});\n"
+    }
+  ]
+}

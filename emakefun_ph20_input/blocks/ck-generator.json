@@ -1,0 +1,62 @@
+{
+  "schema": "ck-generator",
+  "version": 1,
+  "rules": [
+    {
+      "type": "emakefun_ph20_input_button",
+      "kind": "expression",
+      "includes": {
+        "EmakefunPh20Input.h": "#include <EmakefunPh20Input.h>"
+      },
+      "template": "EmakefunPh20Input::readDigitalActive({{value:PIN}}, true)"
+    },
+    {
+      "type": "emakefun_ph20_input_touch",
+      "kind": "expression",
+      "includes": {
+        "EmakefunPh20Input.h": "#include <EmakefunPh20Input.h>"
+      },
+      "template": "EmakefunPh20Input::readDigitalActive({{value:PIN}}, false)"
+    },
+    {
+      "type": "emakefun_ph20_input_pot",
+      "kind": "expression",
+      "includes": {
+        "EmakefunPh20Input.h": "#include <EmakefunPh20Input.h>"
+      },
+      "template": "EmakefunPh20Input::readPercent({{value:PIN}})"
+    },
+    {
+      "type": "emakefun_ph20_input_joystick",
+      "kind": "expression",
+      "includes": {
+        "EmakefunPh20Input.h": "#include <EmakefunPh20Input.h>"
+      },
+      "template": "EmakefunPh20Input::readAnalogVal({{value:PIN}})"
+    },
+    {
+      "type": "emakefun_ph20_input_enc_begin",
+      "kind": "statement",
+      "includes": {
+        "EmakefunPh20Input.h": "#include <EmakefunPh20Input.h>"
+      },
+      "template": "EmakefunPh20Input::encoderBegin({{value:CLK}}, {{value:DT}});\n"
+    },
+    {
+      "type": "emakefun_ph20_input_enc_tick",
+      "kind": "statement",
+      "includes": {
+        "EmakefunPh20Input.h": "#include <EmakefunPh20Input.h>"
+      },
+      "template": "EmakefunPh20Input::encoderTick();\n"
+    },
+    {
+      "type": "emakefun_ph20_input_enc_count",
+      "kind": "expression",
+      "includes": {
+        "EmakefunPh20Input.h": "#include <EmakefunPh20Input.h>"
+      },
+      "template": "EmakefunPh20Input::encoderCount()"
+    }
+  ]
+}

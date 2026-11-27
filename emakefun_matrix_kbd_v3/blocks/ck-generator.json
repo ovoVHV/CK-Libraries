@@ -1,0 +1,46 @@
+{
+  "schema": "ck-generator",
+  "version": 1,
+  "rules": [
+    {
+      "type": "emakefun_matrix_kbd_v3_begin",
+      "kind": "statement",
+      "includes": {
+        "EmakefunMatrixKbdV3Adapter.h": "#include <EmakefunMatrixKbdV3Adapter.h>"
+      },
+      "template": "EmakefunMatrixKbdV3Adapter::begin({{value:ADDR}});\n"
+    },
+    {
+      "type": "emakefun_matrix_kbd_v3_tick",
+      "kind": "statement",
+      "includes": {
+        "EmakefunMatrixKbdV3Adapter.h": "#include <EmakefunMatrixKbdV3Adapter.h>"
+      },
+      "template": "EmakefunMatrixKbdV3Adapter::tick();\n"
+    },
+    {
+      "type": "emakefun_matrix_kbd_v3_key_text",
+      "kind": "expression",
+      "includes": {
+        "EmakefunMatrixKbdV3Adapter.h": "#include <EmakefunMatrixKbdV3Adapter.h>"
+      },
+      "template": "EmakefunMatrixKbdV3Adapter::keyText()"
+    },
+    {
+      "type": "emakefun_matrix_kbd_v3_pressed",
+      "kind": "expression",
+      "includes": {
+        "EmakefunMatrixKbdV3Adapter.h": "#include <EmakefunMatrixKbdV3Adapter.h>"
+      },
+      "template": "EmakefunMatrixKbdV3Adapter::pressed({{field:KEY}})"
+    },
+    {
+      "type": "emakefun_matrix_kbd_v3_pressing",
+      "kind": "expression",
+      "includes": {
+        "EmakefunMatrixKbdV3Adapter.h": "#include <EmakefunMatrixKbdV3Adapter.h>"
+      },
+      "template": "EmakefunMatrixKbdV3Adapter::pressing({{field:KEY}})"
+    }
+  ]
+}

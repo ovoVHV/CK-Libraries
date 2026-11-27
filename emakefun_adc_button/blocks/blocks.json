@@ -1,0 +1,73 @@
+[
+  {
+    "type": "emakefun_adc_button_begin",
+    "message0": "初始化 ADC 五键模块 模拟引脚 %1",
+    "args0": [
+      {
+        "type": "input_value",
+        "name": "PIN",
+        "check": "Number"
+      }
+    ],
+    "inputsInline": true,
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": "#3B82F6",
+    "tooltip": "初始化 Emakefun ADC 按键模块。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_adc_button_tick",
+    "message0": "ADC 五键模块 刷新状态",
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": "#3B82F6",
+    "tooltip": "周期调用刷新消抖与按键状态。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_adc_button_type",
+    "message0": "ADC 五键模块 当前按键编号 (0-5)",
+    "output": "Number",
+    "colour": "#3B82F6",
+    "tooltip": "返回当前按键编号（0 无按键，1-5 对应 A-E）。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_adc_button_pressed",
+    "message0": "ADC 五键模块 按键 %1 被按下?",
+    "args0": [
+      {
+        "type": "field_dropdown",
+        "name": "KEY",
+        "options": [
+          [
+            "A 键",
+            "1"
+          ],
+          [
+            "B 键",
+            "2"
+          ],
+          [
+            "C 键",
+            "3"
+          ],
+          [
+            "D 键",
+            "4"
+          ],
+          [
+            "E 键",
+            "5"
+          ]
+        ]
+      }
+    ],
+    "inputsInline": true,
+    "output": "Boolean",
+    "colour": "#3B82F6",
+    "tooltip": "判断 A/B/C/D/E 指定按键是否按下。",
+    "helpUrl": ""
+  }
+]

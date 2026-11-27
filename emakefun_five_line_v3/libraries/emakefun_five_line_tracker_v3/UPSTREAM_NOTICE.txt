@@ -1,0 +1,2 @@
+Upstream repository: https://github.com/emakefun-arduino-library/emakefun_five_line_tracker_v3
+Retained unmodified from Emakefun official Arduino library repository.

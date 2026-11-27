@@ -1,0 +1,38 @@
+{
+  "schema": "ck-generator",
+  "version": 1,
+  "rules": [
+    {
+      "type": "emakefun_color_v1_begin",
+      "kind": "statement",
+      "includes": {
+        "EmakefunColorV1Adapter.h": "#include <EmakefunColorV1Adapter.h>"
+      },
+      "template": "EmakefunColorV1Adapter::begin({{value:ADDR}});\n"
+    },
+    {
+      "type": "emakefun_color_v1_r",
+      "kind": "expression",
+      "includes": {
+        "EmakefunColorV1Adapter.h": "#include <EmakefunColorV1Adapter.h>"
+      },
+      "template": "EmakefunColorV1Adapter::r()"
+    },
+    {
+      "type": "emakefun_color_v1_g",
+      "kind": "expression",
+      "includes": {
+        "EmakefunColorV1Adapter.h": "#include <EmakefunColorV1Adapter.h>"
+      },
+      "template": "EmakefunColorV1Adapter::g()"
+    },
+    {
+      "type": "emakefun_color_v1_b",
+      "kind": "expression",
+      "includes": {
+        "EmakefunColorV1Adapter.h": "#include <EmakefunColorV1Adapter.h>"
+      },
+      "template": "EmakefunColorV1Adapter::b()"
+    }
+  ]
+}

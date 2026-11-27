@@ -1,0 +1,21 @@
+{
+  "id": "emakefun_ph20_actuators",
+  "name": "Emakefun PH2.0 基础执行器模块",
+  "version": "1.0.0",
+  "description": "覆盖 Emakefun PH2.0 全系列基础执行器：有源/无源蜂鸣器、直流电机与风扇、双路电机驱动、继电器、激光发射与振动马达。",
+  "sentence": "覆盖 Emakefun PH2.0 全系列基础执行器：有源/无源蜂鸣器、直流电机与风扇、双路电机驱动、继电器、激光发射与振动马达。",
+  "author": "CKYAN",
+  "vendor": "Emakefun",
+  "vendor_logo": "assets/emakefun.png",
+  "icon": "assets/icon.png",
+  "category": "Device Control",
+  "website": "https://docs.emakefun.com/sensors/actuators/relayModel/",
+  "architectures": [
+    "avr",
+    "esp32"
+  ],
+  "license": "Apache-2.0",
+  "includes": [
+    "EmakefunPh20Actuators.h"
+  ]
+}

@@ -1,0 +1,22 @@
+# Syntax Coloring Map For ExampleLibrary
+
+# Datatypes (KEYWORD1)
+SpeechRecognizer	KEYWORD1
+Gesture	KEYWORD1
+
+# Methods and Functions (KEYWORD2)
+Initialize	KEYWORD2
+GetGesture	KEYWORD2
+
+# Instances (KEYWORD2)
+
+# Constants (LITERAL1)
+kGestureNone	LITERAL1
+kGestureRightSwipe	LITERAL1
+kGestureLeftSwipe	LITERAL1
+kGestureBackwardSwipe	LITERAL1
+kGestureForwardSwipe	LITERAL1
+kGestureUpward	LITERAL1
+kGestureDownward	LITERAL1
+kGestureExited	LITERAL1
+kGestureHover	LITERAL1

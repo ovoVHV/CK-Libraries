@@ -1,0 +1,150 @@
+[
+  {
+    "type": "emakefun_md20_begin",
+    "message0": "初始化 MD20 电机驱动 I2C地址 %1",
+    "args0": [
+      {
+        "type": "input_value",
+        "name": "ADDR",
+        "check": "Number"
+      }
+    ],
+    "inputsInline": true,
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": "#B91C1C",
+    "tooltip": "初始化 Emakefun MD20 四路编码电机板（默认 0x16 = 22）。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_md20_init_motor",
+    "message0": "MD20 配置电机 %1 PPR %2 减速比 %3 相位 %4",
+    "args0": [
+      {
+        "type": "field_dropdown",
+        "name": "IDX",
+        "options": [
+          [
+            "电机 0",
+            "0"
+          ],
+          [
+            "电机 1",
+            "1"
+          ],
+          [
+            "电机 2",
+            "2"
+          ],
+          [
+            "电机 3",
+            "3"
+          ]
+        ]
+      },
+      {
+        "type": "input_value",
+        "name": "PPR",
+        "check": "Number"
+      },
+      {
+        "type": "input_value",
+        "name": "RATIO",
+        "check": "Number"
+      },
+      {
+        "type": "field_dropdown",
+        "name": "PHASE",
+        "options": [
+          [
+            "A相超前",
+            "0"
+          ],
+          [
+            "B相超前",
+            "1"
+          ]
+        ]
+      }
+    ],
+    "inputsInline": true,
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": "#B91C1C",
+    "tooltip": "配置单路编码电机参数。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_md20_run_speed",
+    "message0": "MD20 电机 %1 以转速 %2 RPM 运行",
+    "args0": [
+      {
+        "type": "field_dropdown",
+        "name": "IDX",
+        "options": [
+          [
+            "电机 0",
+            "0"
+          ],
+          [
+            "电机 1",
+            "1"
+          ],
+          [
+            "电机 2",
+            "2"
+          ],
+          [
+            "电机 3",
+            "3"
+          ]
+        ]
+      },
+      {
+        "type": "input_value",
+        "name": "RPM",
+        "check": "Number"
+      }
+    ],
+    "inputsInline": true,
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": "#B91C1C",
+    "tooltip": "闭环控制单路编码电机按指定 RPM 旋转。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_md20_reset",
+    "message0": "MD20 复位电机 %1",
+    "args0": [
+      {
+        "type": "field_dropdown",
+        "name": "IDX",
+        "options": [
+          [
+            "电机 0",
+            "0"
+          ],
+          [
+            "电机 1",
+            "1"
+          ],
+          [
+            "电机 2",
+            "2"
+          ],
+          [
+            "电机 3",
+            "3"
+          ]
+        ]
+      }
+    ],
+    "inputsInline": true,
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": "#B91C1C",
+    "tooltip": "复位指定编码电机通道。",
+    "helpUrl": ""
+  }
+]

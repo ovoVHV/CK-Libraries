@@ -1,0 +1,54 @@
+{
+  "schema": "ck-generator",
+  "version": 1,
+  "rules": [
+    {
+      "type": "emakefun_esp32_encoder_begin",
+      "kind": "statement",
+      "includes": {
+        "EmakefunEsp32EncoderAdapter.h": "#include <EmakefunEsp32EncoderAdapter.h>"
+      },
+      "template": "EmakefunEsp32EncoderAdapter::begin({{value:POS_PIN}}, {{value:NEG_PIN}}, {{value:A_PIN}}, {{value:B_PIN}}, {{value:PPR}}, {{value:RATIO}});\n"
+    },
+    {
+      "type": "emakefun_esp32_encoder_run_speed",
+      "kind": "statement",
+      "includes": {
+        "EmakefunEsp32EncoderAdapter.h": "#include <EmakefunEsp32EncoderAdapter.h>"
+      },
+      "template": "EmakefunEsp32EncoderAdapter::runSpeed({{value:RPM}});\n"
+    },
+    {
+      "type": "emakefun_esp32_encoder_run_pwm",
+      "kind": "statement",
+      "includes": {
+        "EmakefunEsp32EncoderAdapter.h": "#include <EmakefunEsp32EncoderAdapter.h>"
+      },
+      "template": "EmakefunEsp32EncoderAdapter::runPwm({{value:DUTY}});\n"
+    },
+    {
+      "type": "emakefun_esp32_encoder_stop",
+      "kind": "statement",
+      "includes": {
+        "EmakefunEsp32EncoderAdapter.h": "#include <EmakefunEsp32EncoderAdapter.h>"
+      },
+      "template": "EmakefunEsp32EncoderAdapter::stop();\n"
+    },
+    {
+      "type": "emakefun_esp32_encoder_rpm",
+      "kind": "expression",
+      "includes": {
+        "EmakefunEsp32EncoderAdapter.h": "#include <EmakefunEsp32EncoderAdapter.h>"
+      },
+      "template": "EmakefunEsp32EncoderAdapter::speedRpm()"
+    },
+    {
+      "type": "emakefun_esp32_encoder_pulses",
+      "kind": "expression",
+      "includes": {
+        "EmakefunEsp32EncoderAdapter.h": "#include <EmakefunEsp32EncoderAdapter.h>"
+      },
+      "template": "EmakefunEsp32EncoderAdapter::pulseCount()"
+    }
+  ]
+}

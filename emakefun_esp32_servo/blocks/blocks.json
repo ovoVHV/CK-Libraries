@@ -1,0 +1,119 @@
+[
+  {
+    "type": "emakefun_esp32_servo_begin",
+    "message0": "初始化 ESP32 舵机 通道 %1 引脚 %2",
+    "args0": [
+      {
+        "type": "field_dropdown",
+        "name": "CH",
+        "options": [
+          [
+            "通道 1",
+            "0"
+          ],
+          [
+            "通道 2",
+            "1"
+          ],
+          [
+            "通道 3",
+            "2"
+          ],
+          [
+            "通道 4",
+            "3"
+          ]
+        ]
+      },
+      {
+        "type": "input_value",
+        "name": "PIN",
+        "check": "Number"
+      }
+    ],
+    "inputsInline": true,
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": "#F59E0B",
+    "tooltip": "初始化 Emakefun ESP32 舵机（最多 4 路独立通道）。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_esp32_servo_write",
+    "message0": "ESP32 舵机 通道 %1 转到角度 %2°",
+    "args0": [
+      {
+        "type": "field_dropdown",
+        "name": "CH",
+        "options": [
+          [
+            "通道 1",
+            "0"
+          ],
+          [
+            "通道 2",
+            "1"
+          ],
+          [
+            "通道 3",
+            "2"
+          ],
+          [
+            "通道 4",
+            "3"
+          ]
+        ]
+      },
+      {
+        "type": "input_value",
+        "name": "ANG",
+        "check": "Number"
+      }
+    ],
+    "inputsInline": true,
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": "#F59E0B",
+    "tooltip": "控制舵机旋转到 0-180 度。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_esp32_servo_write_us",
+    "message0": "ESP32 舵机 通道 %1 脉宽 %2 微秒",
+    "args0": [
+      {
+        "type": "field_dropdown",
+        "name": "CH",
+        "options": [
+          [
+            "通道 1",
+            "0"
+          ],
+          [
+            "通道 2",
+            "1"
+          ],
+          [
+            "通道 3",
+            "2"
+          ],
+          [
+            "通道 4",
+            "3"
+          ]
+        ]
+      },
+      {
+        "type": "input_value",
+        "name": "US",
+        "check": "Number"
+      }
+    ],
+    "inputsInline": true,
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": "#F59E0B",
+    "tooltip": "以微秒脉宽（500-2500us）精细控制舵机。",
+    "helpUrl": ""
+  }
+]

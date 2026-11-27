@@ -1,0 +1,38 @@
+{
+  "schema": "ck-generator",
+  "version": 1,
+  "rules": [
+    {
+      "type": "emakefun_dm11_begin",
+      "kind": "statement",
+      "includes": {
+        "EmakefunDm11Adapter.h": "#include <EmakefunDm11Adapter.h>"
+      },
+      "template": "EmakefunDm11Adapter::begin({{value:FREQ}}, {{value:ADDR}});\n"
+    },
+    {
+      "type": "emakefun_dm11_motor",
+      "kind": "statement",
+      "includes": {
+        "EmakefunDm11Adapter.h": "#include <EmakefunDm11Adapter.h>"
+      },
+      "template": "EmakefunDm11Adapter::setMotor({{field:M}}, {{value:SPEED}});\n"
+    },
+    {
+      "type": "emakefun_dm11_pwm",
+      "kind": "statement",
+      "includes": {
+        "EmakefunDm11Adapter.h": "#include <EmakefunDm11Adapter.h>"
+      },
+      "template": "EmakefunDm11Adapter::setPwm({{field:CH}}, {{value:DUTY}});\n"
+    },
+    {
+      "type": "emakefun_dm11_stop",
+      "kind": "statement",
+      "includes": {
+        "EmakefunDm11Adapter.h": "#include <EmakefunDm11Adapter.h>"
+      },
+      "template": "EmakefunDm11Adapter::stopAll();\n"
+    }
+  ]
+}

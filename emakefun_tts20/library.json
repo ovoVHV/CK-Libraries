@@ -1,0 +1,21 @@
+{
+  "id": "emakefun_tts20",
+  "name": "Emakefun TTS20 语音合成模块",
+  "version": "1.0.0",
+  "description": "Emakefun TTS20 I2C 中文语音合成模块（默认地址 0x40），支持中文文本播报、忙状态检测与暂停/恢复/停止。",
+  "sentence": "Emakefun TTS20 I2C 中文语音合成模块（默认地址 0x40），支持中文文本播报、忙状态检测与暂停/恢复/停止。",
+  "author": "CKYAN",
+  "vendor": "Emakefun",
+  "vendor_logo": "assets/emakefun.png",
+  "icon": "assets/icon.png",
+  "category": "Communication",
+  "website": "https://github.com/emakefun-arduino-library/em_tts20",
+  "architectures": [
+    "avr",
+    "esp32"
+  ],
+  "license": "Apache-2.0",
+  "includes": [
+    "EmakefunTts20Adapter.h"
+  ]
+}

@@ -1,0 +1,108 @@
+[
+  {
+    "type": "emakefun_speech_ld3320_begin",
+    "message0": "初始化 LD3320 语音识别 I2C地址 %1",
+    "args0": [
+      {
+        "type": "input_value",
+        "name": "ADDR",
+        "check": "Number"
+      }
+    ],
+    "inputsInline": true,
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": "#9333EA",
+    "tooltip": "初始化 Emakefun LD3320 语音识别模块（默认 0x30 = 48）。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_speech_ld3320_mode",
+    "message0": "语音识别 设为 %1 模式",
+    "args0": [
+      {
+        "type": "field_dropdown",
+        "name": "MODE",
+        "options": [
+          [
+            "自动识别",
+            "0"
+          ],
+          [
+            "按键触发",
+            "1"
+          ],
+          [
+            "关键词触发",
+            "2"
+          ],
+          [
+            "按键或关键词触发",
+            "3"
+          ]
+        ]
+      }
+    ],
+    "inputsInline": true,
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": "#9333EA",
+    "tooltip": "设置语音识别触发方式。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_speech_ld3320_timeout",
+    "message0": "语音识别 设置超时 %1 毫秒",
+    "args0": [
+      {
+        "type": "input_value",
+        "name": "MS",
+        "check": "Number"
+      }
+    ],
+    "inputsInline": true,
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": "#9333EA",
+    "tooltip": "设置触发模式下的等待超时时间（毫秒）。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_speech_ld3320_add_kw",
+    "message0": "语音识别 添加关键词 编号 %1 拼音 %2",
+    "args0": [
+      {
+        "type": "input_value",
+        "name": "IDX",
+        "check": "Number"
+      },
+      {
+        "type": "input_value",
+        "name": "KW",
+        "check": "String"
+      }
+    ],
+    "inputsInline": true,
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": "#9333EA",
+    "tooltip": "添加一条识别关键词（拼音小写，空格分隔，如 xiao yi）。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_speech_ld3320_recognize",
+    "message0": "语音识别 轮询识别到的关键词编号",
+    "output": "Number",
+    "colour": "#9333EA",
+    "tooltip": "轮询获取识别到的关键词编号（未识别时返回 -1）。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_speech_ld3320_event",
+    "message0": "语音识别 当前事件码",
+    "output": "Number",
+    "colour": "#9333EA",
+    "tooltip": "获取模块当前状态事件码（0-6）。",
+    "helpUrl": ""
+  }
+]

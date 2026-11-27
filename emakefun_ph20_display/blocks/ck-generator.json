@@ -1,0 +1,30 @@
+{
+  "schema": "ck-generator",
+  "version": 1,
+  "rules": [
+    {
+      "type": "emakefun_ph20_display_led",
+      "kind": "statement",
+      "includes": {
+        "EmakefunPh20Display.h": "#include <EmakefunPh20Display.h>"
+      },
+      "template": "EmakefunPh20Display::setLed({{value:PIN}}, {{field:ON}});\n"
+    },
+    {
+      "type": "emakefun_ph20_display_traffic",
+      "kind": "statement",
+      "includes": {
+        "EmakefunPh20Display.h": "#include <EmakefunPh20Display.h>"
+      },
+      "template": "EmakefunPh20Display::setTraffic({{value:R_PIN}}, {{value:Y_PIN}}, {{value:G_PIN}}, {{field:STATE}});\n"
+    },
+    {
+      "type": "emakefun_ph20_display_rgb",
+      "kind": "statement",
+      "includes": {
+        "EmakefunPh20Display.h": "#include <EmakefunPh20Display.h>"
+      },
+      "template": "EmakefunPh20Display::setRgb({{value:R_PIN}}, {{value:G_PIN}}, {{value:B_PIN}}, {{value:R}}, {{value:G}}, {{value:B}});\n"
+    }
+  ]
+}

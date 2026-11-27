@@ -1,0 +1,69 @@
+{
+  "kind": "category",
+  "name": "Emakefun LD3320 语音识别 V2",
+  "colour": "#9333EA",
+  "contents": [
+    {
+      "kind": "block",
+      "type": "emakefun_speech_ld3320_begin",
+      "inputs": {
+        "ADDR": {
+          "shadow": {
+            "type": "math_number",
+            "fields": {
+              "NUM": 48
+            }
+          }
+        }
+      }
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_speech_ld3320_mode"
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_speech_ld3320_timeout",
+      "inputs": {
+        "MS": {
+          "shadow": {
+            "type": "math_number",
+            "fields": {
+              "NUM": 10000
+            }
+          }
+        }
+      }
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_speech_ld3320_add_kw",
+      "inputs": {
+        "IDX": {
+          "shadow": {
+            "type": "math_number",
+            "fields": {
+              "NUM": 1
+            }
+          }
+        },
+        "KW": {
+          "shadow": {
+            "type": "text",
+            "fields": {
+              "TEXT": "xiao yi"
+            }
+          }
+        }
+      }
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_speech_ld3320_recognize"
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_speech_ld3320_event"
+    }
+  ]
+}

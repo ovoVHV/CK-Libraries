@@ -1,0 +1,33 @@
+{
+  "kind": "category",
+  "name": "Emakefun ADC 五键模块",
+  "colour": "#3B82F6",
+  "contents": [
+    {
+      "kind": "block",
+      "type": "emakefun_adc_button_begin",
+      "inputs": {
+        "PIN": {
+          "shadow": {
+            "type": "math_number",
+            "fields": {
+              "NUM": 14
+            }
+          }
+        }
+      }
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_adc_button_tick"
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_adc_button_type"
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_adc_button_pressed"
+    }
+  ]
+}

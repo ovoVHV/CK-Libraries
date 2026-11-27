@@ -1,0 +1,1007 @@
+{
+  "schema_version": 2,
+  "id": "emakefun_ph20_input",
+  "display_name": "Emakefun PH2.0 基础输入模块",
+  "description": "覆盖 Emakefun PH2.0 全系列基础输入模块：按键、触摸、碰触开关、旋转电位器、滑动变阻器、双轴摇杆与旋转编码器。",
+  "defaultLocale": "zh-CN",
+  "keywords": [
+    "Emakefun PH2.0 基础输入模块",
+    "emakefun_ph20_input",
+    "Emakefun",
+    "PH2.0",
+    "按键",
+    "触摸",
+    "碰触开关",
+    "电位器",
+    "滑动变阻器",
+    "摇杆",
+    "旋转编码器"
+  ],
+  "license": {
+    "spdx_id": "Apache-2.0",
+    "file": "LICENSE.txt"
+  },
+  "compatibility": {
+    "architectures": [
+      "avr",
+      "esp32"
+    ]
+  },
+  "dependencies": [
+    {
+      "kind": "arduino-library",
+      "id": "EmakefunPh20Input",
+      "version": "1.0.0",
+      "headers": [
+        "EmakefunPh20Input.h"
+      ],
+      "license": "Apache-2.0",
+      "reason": "随包内置于 libraries/EmakefunPh20Input/，提供安全封装与跨板卡兼容接口。"
+    }
+  ],
+  "entrypoints": {
+    "blocks": "blocks/blocks.json",
+    "generator": "blocks/ck-generator.json",
+    "toolbox": "blocks/toolbox.json"
+  },
+  "blocks": [
+    {
+      "type": "emakefun_ph20_input_button",
+      "display_name": "PH2.0 按键/碰触开关 引脚 %1 被按下?",
+      "description": "读取 Emakefun 按键或碰触开关模块按下状态（低电平触发）。",
+      "category": "Emakefun PH2.0 基础输入模块",
+      "kind": "value",
+      "keywords": [
+        "Emakefun PH2.0 基础输入模块",
+        "emakefun_ph20_input",
+        "Emakefun",
+        "PH2.0",
+        "按键",
+        "触摸",
+        "碰触开关",
+        "电位器",
+        "滑动变阻器",
+        "摇杆",
+        "旋转编码器"
+      ],
+      "semantics": {
+        "purpose": "读取 Emakefun 按键或碰触开关模块按下状态（低电平触发）。",
+        "behavior": "读取 Emakefun 按键或碰触开关模块按下状态（低电平触发）。",
+        "concepts": [
+          "Emakefun PH2.0 基础输入模块",
+          "Emakefun"
+        ],
+        "side_effects": []
+      },
+      "fields": [],
+      "inputs": [
+        {
+          "name": "PIN",
+          "kind": "value",
+          "description": "数字引脚",
+          "check": "Number",
+          "required": true,
+          "default": 2
+        }
+      ],
+      "output": {
+        "connection": "value",
+        "types": [
+          "Boolean"
+        ],
+        "description": "读取 Emakefun 按键或碰触开关模块按下状态（低电平触发）。"
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunPh20Input",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunPh20Input.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunPh20Input/，提供安全封装与跨板卡兼容接口。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "gpio",
+            "id": "pin",
+            "source": {
+              "kind": "input",
+              "name": "PIN"
+            },
+            "access": "read-write",
+            "sharing": "exclusive",
+            "capabilities": [
+              "digital-input"
+            ],
+            "description": "数字引脚"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "gpio-pin",
+              "role": "digital-input",
+              "resource": {
+                "kind": "input",
+                "name": "PIN",
+                "valueType": "id"
+              },
+              "exclusive": true
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "覆盖 Emakefun PH2.0 全系列基础输入模块：按键、触摸、碰触开关、旋转电位器、滑动变阻器、双轴摇杆与旋转编码器。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "expression",
+        "deterministic": true,
+        "includes": [
+          "EmakefunPh20Input.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunPh20Input.h",
+            "template": "#include <EmakefunPh20Input.h>"
+          },
+          {
+            "section": "expression",
+            "description": "读取 Emakefun 按键或碰触开关模块按下状态（低电平触发）。",
+            "template": "EmakefunPh20Input::readDigitalActive({{value:PIN}}, true)"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "覆盖 Emakefun PH2.0 全系列基础输入模块：按键、触摸、碰触开关、旋转电位器、滑动变阻器、双轴摇杆与旋转编码器。",
+          "message": "覆盖 Emakefun PH2.0 全系列基础输入模块：按键、触摸、碰触开关、旋转电位器、滑动变阻器、双轴摇杆与旋转编码器。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun PH2.0 基础输入模块 随包示例",
+          "description": "读取 Emakefun 按键或碰触开关模块按下状态（低电平触发）。",
+          "expected_behavior": "演示 Emakefun PH2.0 基础输入模块 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_ph20_input_touch",
+      "display_name": "PH2.0 触摸模块 引脚 %1 被触摸?",
+      "description": "读取 Emakefun 电容触摸模块触发状态（高电平有效）。",
+      "category": "Emakefun PH2.0 基础输入模块",
+      "kind": "value",
+      "keywords": [
+        "Emakefun PH2.0 基础输入模块",
+        "emakefun_ph20_input",
+        "Emakefun",
+        "PH2.0",
+        "按键",
+        "触摸",
+        "碰触开关",
+        "电位器",
+        "滑动变阻器",
+        "摇杆",
+        "旋转编码器"
+      ],
+      "semantics": {
+        "purpose": "读取 Emakefun 电容触摸模块触发状态（高电平有效）。",
+        "behavior": "读取 Emakefun 电容触摸模块触发状态（高电平有效）。",
+        "concepts": [
+          "Emakefun PH2.0 基础输入模块",
+          "Emakefun"
+        ],
+        "side_effects": []
+      },
+      "fields": [],
+      "inputs": [
+        {
+          "name": "PIN",
+          "kind": "value",
+          "description": "数字引脚",
+          "check": "Number",
+          "required": true,
+          "default": 3
+        }
+      ],
+      "output": {
+        "connection": "value",
+        "types": [
+          "Boolean"
+        ],
+        "description": "读取 Emakefun 电容触摸模块触发状态（高电平有效）。"
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunPh20Input",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunPh20Input.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunPh20Input/，提供安全封装与跨板卡兼容接口。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "gpio",
+            "id": "pin",
+            "source": {
+              "kind": "input",
+              "name": "PIN"
+            },
+            "access": "read-write",
+            "sharing": "exclusive",
+            "capabilities": [
+              "digital-input"
+            ],
+            "description": "数字引脚"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "gpio-pin",
+              "role": "digital-input",
+              "resource": {
+                "kind": "input",
+                "name": "PIN",
+                "valueType": "id"
+              },
+              "exclusive": true
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "覆盖 Emakefun PH2.0 全系列基础输入模块：按键、触摸、碰触开关、旋转电位器、滑动变阻器、双轴摇杆与旋转编码器。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "expression",
+        "deterministic": true,
+        "includes": [
+          "EmakefunPh20Input.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunPh20Input.h",
+            "template": "#include <EmakefunPh20Input.h>"
+          },
+          {
+            "section": "expression",
+            "description": "读取 Emakefun 电容触摸模块触发状态（高电平有效）。",
+            "template": "EmakefunPh20Input::readDigitalActive({{value:PIN}}, false)"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "覆盖 Emakefun PH2.0 全系列基础输入模块：按键、触摸、碰触开关、旋转电位器、滑动变阻器、双轴摇杆与旋转编码器。",
+          "message": "覆盖 Emakefun PH2.0 全系列基础输入模块：按键、触摸、碰触开关、旋转电位器、滑动变阻器、双轴摇杆与旋转编码器。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun PH2.0 基础输入模块 随包示例",
+          "description": "读取 Emakefun 电容触摸模块触发状态（高电平有效）。",
+          "expected_behavior": "演示 Emakefun PH2.0 基础输入模块 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_ph20_input_pot",
+      "display_name": "PH2.0 电位器/滑动变阻器 引脚 %1 百分比 (0-100)",
+      "description": "读取旋转电位器或滑动变阻器归一化百分比值。",
+      "category": "Emakefun PH2.0 基础输入模块",
+      "kind": "value",
+      "keywords": [
+        "Emakefun PH2.0 基础输入模块",
+        "emakefun_ph20_input",
+        "Emakefun",
+        "PH2.0",
+        "按键",
+        "触摸",
+        "碰触开关",
+        "电位器",
+        "滑动变阻器",
+        "摇杆",
+        "旋转编码器"
+      ],
+      "semantics": {
+        "purpose": "读取旋转电位器或滑动变阻器归一化百分比值。",
+        "behavior": "读取旋转电位器或滑动变阻器归一化百分比值。",
+        "concepts": [
+          "Emakefun PH2.0 基础输入模块",
+          "Emakefun"
+        ],
+        "side_effects": []
+      },
+      "fields": [],
+      "inputs": [
+        {
+          "name": "PIN",
+          "kind": "value",
+          "description": "模拟引脚",
+          "check": "Number",
+          "required": true,
+          "default": 14
+        }
+      ],
+      "output": {
+        "connection": "value",
+        "types": [
+          "Number"
+        ],
+        "description": "读取旋转电位器或滑动变阻器归一化百分比值。"
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunPh20Input",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunPh20Input.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunPh20Input/，提供安全封装与跨板卡兼容接口。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "gpio",
+            "id": "pin",
+            "source": {
+              "kind": "input",
+              "name": "PIN"
+            },
+            "access": "read-write",
+            "sharing": "exclusive",
+            "capabilities": [
+              "digital-input"
+            ],
+            "description": "模拟引脚"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "gpio-pin",
+              "role": "digital-input",
+              "resource": {
+                "kind": "input",
+                "name": "PIN",
+                "valueType": "id"
+              },
+              "exclusive": true
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "覆盖 Emakefun PH2.0 全系列基础输入模块：按键、触摸、碰触开关、旋转电位器、滑动变阻器、双轴摇杆与旋转编码器。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "expression",
+        "deterministic": true,
+        "includes": [
+          "EmakefunPh20Input.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunPh20Input.h",
+            "template": "#include <EmakefunPh20Input.h>"
+          },
+          {
+            "section": "expression",
+            "description": "读取旋转电位器或滑动变阻器归一化百分比值。",
+            "template": "EmakefunPh20Input::readPercent({{value:PIN}})"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "覆盖 Emakefun PH2.0 全系列基础输入模块：按键、触摸、碰触开关、旋转电位器、滑动变阻器、双轴摇杆与旋转编码器。",
+          "message": "覆盖 Emakefun PH2.0 全系列基础输入模块：按键、触摸、碰触开关、旋转电位器、滑动变阻器、双轴摇杆与旋转编码器。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun PH2.0 基础输入模块 随包示例",
+          "description": "读取旋转电位器或滑动变阻器归一化百分比值。",
+          "expected_behavior": "演示 Emakefun PH2.0 基础输入模块 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_ph20_input_joystick",
+      "display_name": "PH2.0 摇杆/小手柄 模拟引脚 %1 原始值",
+      "description": "读取双轴摇杆 X/Y 轴或 PH2.0 小手柄模拟数值。",
+      "category": "Emakefun PH2.0 基础输入模块",
+      "kind": "value",
+      "keywords": [
+        "Emakefun PH2.0 基础输入模块",
+        "emakefun_ph20_input",
+        "Emakefun",
+        "PH2.0",
+        "按键",
+        "触摸",
+        "碰触开关",
+        "电位器",
+        "滑动变阻器",
+        "摇杆",
+        "旋转编码器"
+      ],
+      "semantics": {
+        "purpose": "读取双轴摇杆 X/Y 轴或 PH2.0 小手柄模拟数值。",
+        "behavior": "读取双轴摇杆 X/Y 轴或 PH2.0 小手柄模拟数值。",
+        "concepts": [
+          "Emakefun PH2.0 基础输入模块",
+          "Emakefun"
+        ],
+        "side_effects": []
+      },
+      "fields": [],
+      "inputs": [
+        {
+          "name": "PIN",
+          "kind": "value",
+          "description": "X/Y 模拟引脚",
+          "check": "Number",
+          "required": true,
+          "default": 14
+        }
+      ],
+      "output": {
+        "connection": "value",
+        "types": [
+          "Number"
+        ],
+        "description": "读取双轴摇杆 X/Y 轴或 PH2.0 小手柄模拟数值。"
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunPh20Input",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunPh20Input.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunPh20Input/，提供安全封装与跨板卡兼容接口。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "gpio",
+            "id": "pin",
+            "source": {
+              "kind": "input",
+              "name": "PIN"
+            },
+            "access": "read-write",
+            "sharing": "exclusive",
+            "capabilities": [
+              "digital-input"
+            ],
+            "description": "X/Y 模拟引脚"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "gpio-pin",
+              "role": "digital-input",
+              "resource": {
+                "kind": "input",
+                "name": "PIN",
+                "valueType": "id"
+              },
+              "exclusive": true
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "覆盖 Emakefun PH2.0 全系列基础输入模块：按键、触摸、碰触开关、旋转电位器、滑动变阻器、双轴摇杆与旋转编码器。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "expression",
+        "deterministic": true,
+        "includes": [
+          "EmakefunPh20Input.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunPh20Input.h",
+            "template": "#include <EmakefunPh20Input.h>"
+          },
+          {
+            "section": "expression",
+            "description": "读取双轴摇杆 X/Y 轴或 PH2.0 小手柄模拟数值。",
+            "template": "EmakefunPh20Input::readAnalogVal({{value:PIN}})"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "覆盖 Emakefun PH2.0 全系列基础输入模块：按键、触摸、碰触开关、旋转电位器、滑动变阻器、双轴摇杆与旋转编码器。",
+          "message": "覆盖 Emakefun PH2.0 全系列基础输入模块：按键、触摸、碰触开关、旋转电位器、滑动变阻器、双轴摇杆与旋转编码器。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun PH2.0 基础输入模块 随包示例",
+          "description": "读取双轴摇杆 X/Y 轴或 PH2.0 小手柄模拟数值。",
+          "expected_behavior": "演示 Emakefun PH2.0 基础输入模块 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_ph20_input_enc_begin",
+      "display_name": "初始化 PH2.0 旋转编码器 CLK %1 DT %2",
+      "description": "初始化 Emakefun 旋转编码器模块。",
+      "category": "Emakefun PH2.0 基础输入模块",
+      "kind": "statement",
+      "keywords": [
+        "Emakefun PH2.0 基础输入模块",
+        "emakefun_ph20_input",
+        "Emakefun",
+        "PH2.0",
+        "按键",
+        "触摸",
+        "碰触开关",
+        "电位器",
+        "滑动变阻器",
+        "摇杆",
+        "旋转编码器"
+      ],
+      "semantics": {
+        "purpose": "初始化 Emakefun 旋转编码器模块。",
+        "behavior": "初始化 Emakefun 旋转编码器模块。",
+        "concepts": [
+          "Emakefun PH2.0 基础输入模块",
+          "Emakefun"
+        ],
+        "side_effects": [
+          "初始化 Emakefun 旋转编码器模块。"
+        ]
+      },
+      "fields": [],
+      "inputs": [
+        {
+          "name": "CLK",
+          "kind": "value",
+          "description": "CLK 引脚",
+          "check": "Number",
+          "required": true,
+          "default": 2
+        },
+        {
+          "name": "DT",
+          "kind": "value",
+          "description": "DT 引脚",
+          "check": "Number",
+          "required": true,
+          "default": 3
+        }
+      ],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunPh20Input",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunPh20Input.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunPh20Input/，提供安全封装与跨板卡兼容接口。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "gpio",
+            "id": "clk",
+            "source": {
+              "kind": "input",
+              "name": "CLK"
+            },
+            "access": "read-write",
+            "sharing": "exclusive",
+            "capabilities": [
+              "digital-input"
+            ],
+            "description": "CLK 引脚"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "gpio-clk",
+              "role": "digital-input",
+              "resource": {
+                "kind": "input",
+                "name": "CLK",
+                "valueType": "id"
+              },
+              "exclusive": true
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "覆盖 Emakefun PH2.0 全系列基础输入模块：按键、触摸、碰触开关、旋转电位器、滑动变阻器、双轴摇杆与旋转编码器。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "includes": [
+          "EmakefunPh20Input.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunPh20Input.h",
+            "template": "#include <EmakefunPh20Input.h>"
+          },
+          {
+            "section": "statement",
+            "description": "初始化 Emakefun 旋转编码器模块。",
+            "template": "EmakefunPh20Input::encoderBegin({{value:CLK}}, {{value:DT}});\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "覆盖 Emakefun PH2.0 全系列基础输入模块：按键、触摸、碰触开关、旋转电位器、滑动变阻器、双轴摇杆与旋转编码器。",
+          "message": "覆盖 Emakefun PH2.0 全系列基础输入模块：按键、触摸、碰触开关、旋转电位器、滑动变阻器、双轴摇杆与旋转编码器。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun PH2.0 基础输入模块 随包示例",
+          "description": "初始化 Emakefun 旋转编码器模块。",
+          "expected_behavior": "演示 Emakefun PH2.0 基础输入模块 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_ph20_input_enc_tick",
+      "display_name": "PH2.0 旋转编码器 刷新计数",
+      "description": "在循环中调用检测旋转方向并更新计数。",
+      "category": "Emakefun PH2.0 基础输入模块",
+      "kind": "statement",
+      "keywords": [
+        "Emakefun PH2.0 基础输入模块",
+        "emakefun_ph20_input",
+        "Emakefun",
+        "PH2.0",
+        "按键",
+        "触摸",
+        "碰触开关",
+        "电位器",
+        "滑动变阻器",
+        "摇杆",
+        "旋转编码器"
+      ],
+      "semantics": {
+        "purpose": "在循环中调用检测旋转方向并更新计数。",
+        "behavior": "在循环中调用检测旋转方向并更新计数。",
+        "concepts": [
+          "Emakefun PH2.0 基础输入模块",
+          "Emakefun"
+        ],
+        "side_effects": [
+          "在循环中调用检测旋转方向并更新计数。"
+        ]
+      },
+      "fields": [],
+      "inputs": [],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunPh20Input",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunPh20Input.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunPh20Input/，提供安全封装与跨板卡兼容接口。"
+        }
+      ],
+      "hardware": {
+        "resources": [],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": []
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "覆盖 Emakefun PH2.0 全系列基础输入模块：按键、触摸、碰触开关、旋转电位器、滑动变阻器、双轴摇杆与旋转编码器。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "includes": [
+          "EmakefunPh20Input.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunPh20Input.h",
+            "template": "#include <EmakefunPh20Input.h>"
+          },
+          {
+            "section": "statement",
+            "description": "在循环中调用检测旋转方向并更新计数。",
+            "template": "EmakefunPh20Input::encoderTick();\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "覆盖 Emakefun PH2.0 全系列基础输入模块：按键、触摸、碰触开关、旋转电位器、滑动变阻器、双轴摇杆与旋转编码器。",
+          "message": "覆盖 Emakefun PH2.0 全系列基础输入模块：按键、触摸、碰触开关、旋转电位器、滑动变阻器、双轴摇杆与旋转编码器。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun PH2.0 基础输入模块 随包示例",
+          "description": "在循环中调用检测旋转方向并更新计数。",
+          "expected_behavior": "演示 Emakefun PH2.0 基础输入模块 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_ph20_input_enc_count",
+      "display_name": "PH2.0 旋转编码器 当前计数值",
+      "description": "返回旋转编码器当前累计步数。",
+      "category": "Emakefun PH2.0 基础输入模块",
+      "kind": "value",
+      "keywords": [
+        "Emakefun PH2.0 基础输入模块",
+        "emakefun_ph20_input",
+        "Emakefun",
+        "PH2.0",
+        "按键",
+        "触摸",
+        "碰触开关",
+        "电位器",
+        "滑动变阻器",
+        "摇杆",
+        "旋转编码器"
+      ],
+      "semantics": {
+        "purpose": "返回旋转编码器当前累计步数。",
+        "behavior": "返回旋转编码器当前累计步数。",
+        "concepts": [
+          "Emakefun PH2.0 基础输入模块",
+          "Emakefun"
+        ],
+        "side_effects": []
+      },
+      "fields": [],
+      "inputs": [],
+      "output": {
+        "connection": "value",
+        "types": [
+          "Number"
+        ],
+        "description": "返回旋转编码器当前累计步数。"
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunPh20Input",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunPh20Input.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunPh20Input/，提供安全封装与跨板卡兼容接口。"
+        }
+      ],
+      "hardware": {
+        "resources": [],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": []
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "覆盖 Emakefun PH2.0 全系列基础输入模块：按键、触摸、碰触开关、旋转电位器、滑动变阻器、双轴摇杆与旋转编码器。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "expression",
+        "deterministic": true,
+        "includes": [
+          "EmakefunPh20Input.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunPh20Input.h",
+            "template": "#include <EmakefunPh20Input.h>"
+          },
+          {
+            "section": "expression",
+            "description": "返回旋转编码器当前累计步数。",
+            "template": "EmakefunPh20Input::encoderCount()"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "覆盖 Emakefun PH2.0 全系列基础输入模块：按键、触摸、碰触开关、旋转电位器、滑动变阻器、双轴摇杆与旋转编码器。",
+          "message": "覆盖 Emakefun PH2.0 全系列基础输入模块：按键、触摸、碰触开关、旋转电位器、滑动变阻器、双轴摇杆与旋转编码器。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun PH2.0 基础输入模块 随包示例",
+          "description": "返回旋转编码器当前累计步数。",
+          "expected_behavior": "演示 Emakefun PH2.0 基础输入模块 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    }
+  ]
+}

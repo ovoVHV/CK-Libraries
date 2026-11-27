@@ -1,0 +1,38 @@
+{
+  "schema": "ck-generator",
+  "version": 1,
+  "rules": [
+    {
+      "type": "emakefun_adc_button_begin",
+      "kind": "statement",
+      "includes": {
+        "EmakefunAdcButtonAdapter.h": "#include <EmakefunAdcButtonAdapter.h>"
+      },
+      "template": "EmakefunAdcButtonAdapter::begin({{value:PIN}});\n"
+    },
+    {
+      "type": "emakefun_adc_button_tick",
+      "kind": "statement",
+      "includes": {
+        "EmakefunAdcButtonAdapter.h": "#include <EmakefunAdcButtonAdapter.h>"
+      },
+      "template": "EmakefunAdcButtonAdapter::tick();\n"
+    },
+    {
+      "type": "emakefun_adc_button_type",
+      "kind": "expression",
+      "includes": {
+        "EmakefunAdcButtonAdapter.h": "#include <EmakefunAdcButtonAdapter.h>"
+      },
+      "template": "EmakefunAdcButtonAdapter::keyType()"
+    },
+    {
+      "type": "emakefun_adc_button_pressed",
+      "kind": "expression",
+      "includes": {
+        "EmakefunAdcButtonAdapter.h": "#include <EmakefunAdcButtonAdapter.h>"
+      },
+      "template": "EmakefunAdcButtonAdapter::isPressed({{field:KEY}})"
+    }
+  ]
+}

@@ -1,0 +1,358 @@
+{
+  "schema_version": 2,
+  "id": "emakefun_pm25",
+  "display_name": "Emakefun PM2.5 粉尘传感器",
+  "description": "Emakefun 光学 PM2.5 灰尘浓度传感器，控制红外 LED 与模拟采样，直接输出 µg/m³ 浓度。",
+  "defaultLocale": "zh-CN",
+  "keywords": [
+    "Emakefun PM2.5 粉尘传感器",
+    "emakefun_pm25",
+    "Emakefun",
+    "PM2.5",
+    "粉尘",
+    "空气质量",
+    "灰尘"
+  ],
+  "license": {
+    "spdx_id": "Apache-2.0",
+    "file": "LICENSE.txt"
+  },
+  "compatibility": {
+    "architectures": [
+      "avr",
+      "esp32"
+    ]
+  },
+  "dependencies": [
+    {
+      "kind": "arduino-library",
+      "id": "EmakefunPm25Adapter",
+      "version": "1.0.0",
+      "headers": [
+        "EmakefunPm25Adapter.h"
+      ],
+      "license": "Apache-2.0",
+      "reason": "随包内置于 libraries/EmakefunPm25Adapter/，提供安全封装与跨板卡兼容接口。"
+    },
+    {
+      "kind": "arduino-library",
+      "id": "EM PM25 Sensor",
+      "version": "1.0.0",
+      "headers": [
+        "pm25_sensor.h",
+        "pm25_sensor_lib.h"
+      ],
+      "license": "MIT",
+      "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/em_pm25_sensor）内置于 libraries/em_pm25_sensor/。"
+    }
+  ],
+  "entrypoints": {
+    "blocks": "blocks/blocks.json",
+    "generator": "blocks/ck-generator.json",
+    "toolbox": "blocks/toolbox.json"
+  },
+  "blocks": [
+    {
+      "type": "emakefun_pm25_begin",
+      "display_name": "初始化 PM2.5 传感器 ILED引脚 %1 采样引脚 %2",
+      "description": "初始化 Emakefun PM2.5 粉尘传感器。",
+      "category": "Emakefun PM2.5 粉尘传感器",
+      "kind": "statement",
+      "keywords": [
+        "Emakefun PM2.5 粉尘传感器",
+        "emakefun_pm25",
+        "Emakefun",
+        "PM2.5",
+        "粉尘",
+        "空气质量",
+        "灰尘"
+      ],
+      "semantics": {
+        "purpose": "初始化 Emakefun PM2.5 粉尘传感器。",
+        "behavior": "初始化 Emakefun PM2.5 粉尘传感器。",
+        "concepts": [
+          "Emakefun PM2.5 粉尘传感器",
+          "Emakefun"
+        ],
+        "side_effects": [
+          "初始化 Emakefun PM2.5 粉尘传感器。"
+        ]
+      },
+      "fields": [],
+      "inputs": [
+        {
+          "name": "ILED_PIN",
+          "kind": "value",
+          "description": "ILED 控制数字引脚",
+          "check": "Number",
+          "required": true,
+          "default": 7
+        },
+        {
+          "name": "DUST_PIN",
+          "kind": "value",
+          "description": "模拟电压采样引脚",
+          "check": "Number",
+          "required": true,
+          "default": 14
+        }
+      ],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunPm25Adapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunPm25Adapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunPm25Adapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "EM PM25 Sensor",
+          "version": "1.0.0",
+          "headers": [
+            "pm25_sensor.h",
+            "pm25_sensor_lib.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/em_pm25_sensor）内置于 libraries/em_pm25_sensor/。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "gpio",
+            "id": "iled_pin",
+            "source": {
+              "kind": "input",
+              "name": "ILED_PIN"
+            },
+            "access": "read-write",
+            "sharing": "exclusive",
+            "capabilities": [
+              "digital-output"
+            ],
+            "description": "ILED 控制数字引脚"
+          },
+          {
+            "kind": "gpio",
+            "id": "dust_pin",
+            "source": {
+              "kind": "input",
+              "name": "DUST_PIN"
+            },
+            "access": "read-write",
+            "sharing": "exclusive",
+            "capabilities": [
+              "digital-input"
+            ],
+            "description": "模拟电压采样引脚"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "gpio-iled_pin",
+              "role": "digital-output",
+              "resource": {
+                "kind": "input",
+                "name": "ILED_PIN",
+                "valueType": "id"
+              },
+              "exclusive": true
+            },
+            {
+              "id": "gpio-dust_pin",
+              "role": "digital-input",
+              "resource": {
+                "kind": "input",
+                "name": "DUST_PIN",
+                "valueType": "id"
+              },
+              "exclusive": true
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun 光学 PM2.5 灰尘浓度传感器，控制红外 LED 与模拟采样，直接输出 µg/m³ 浓度。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "includes": [
+          "EmakefunPm25Adapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunPm25Adapter.h",
+            "template": "#include <EmakefunPm25Adapter.h>"
+          },
+          {
+            "section": "statement",
+            "description": "初始化 Emakefun PM2.5 粉尘传感器。",
+            "template": "EmakefunPm25Adapter::begin({{value:ILED_PIN}}, {{value:DUST_PIN}});\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun 光学 PM2.5 灰尘浓度传感器，控制红外 LED 与模拟采样，直接输出 µg/m³ 浓度。",
+          "message": "Emakefun 光学 PM2.5 灰尘浓度传感器，控制红外 LED 与模拟采样，直接输出 µg/m³ 浓度。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun PM2.5 粉尘传感器 随包示例",
+          "description": "初始化 Emakefun PM2.5 粉尘传感器。",
+          "expected_behavior": "演示 Emakefun PM2.5 粉尘传感器 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_pm25_read",
+      "display_name": "PM2.5 粉尘浓度 (μg/m³)",
+      "description": "读取空气中 PM2.5 灰尘浓度（μg/m³）。",
+      "category": "Emakefun PM2.5 粉尘传感器",
+      "kind": "value",
+      "keywords": [
+        "Emakefun PM2.5 粉尘传感器",
+        "emakefun_pm25",
+        "Emakefun",
+        "PM2.5",
+        "粉尘",
+        "空气质量",
+        "灰尘"
+      ],
+      "semantics": {
+        "purpose": "读取空气中 PM2.5 灰尘浓度（μg/m³）。",
+        "behavior": "读取空气中 PM2.5 灰尘浓度（μg/m³）。",
+        "concepts": [
+          "Emakefun PM2.5 粉尘传感器",
+          "Emakefun"
+        ],
+        "side_effects": []
+      },
+      "fields": [],
+      "inputs": [],
+      "output": {
+        "connection": "value",
+        "types": [
+          "Number"
+        ],
+        "description": "读取空气中 PM2.5 灰尘浓度（μg/m³）。"
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunPm25Adapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunPm25Adapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunPm25Adapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "EM PM25 Sensor",
+          "version": "1.0.0",
+          "headers": [
+            "pm25_sensor.h",
+            "pm25_sensor_lib.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/em_pm25_sensor）内置于 libraries/em_pm25_sensor/。"
+        }
+      ],
+      "hardware": {
+        "resources": [],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": []
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun 光学 PM2.5 灰尘浓度传感器，控制红外 LED 与模拟采样，直接输出 µg/m³ 浓度。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "expression",
+        "deterministic": true,
+        "includes": [
+          "EmakefunPm25Adapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunPm25Adapter.h",
+            "template": "#include <EmakefunPm25Adapter.h>"
+          },
+          {
+            "section": "expression",
+            "description": "读取空气中 PM2.5 灰尘浓度（μg/m³）。",
+            "template": "EmakefunPm25Adapter::readUgM3()"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun 光学 PM2.5 灰尘浓度传感器，控制红外 LED 与模拟采样，直接输出 µg/m³ 浓度。",
+          "message": "Emakefun 光学 PM2.5 灰尘浓度传感器，控制红外 LED 与模拟采样，直接输出 µg/m³ 浓度。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun PM2.5 粉尘传感器 随包示例",
+          "description": "读取空气中 PM2.5 灰尘浓度（μg/m³）。",
+          "expected_behavior": "演示 Emakefun PM2.5 粉尘传感器 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    }
+  ]
+}

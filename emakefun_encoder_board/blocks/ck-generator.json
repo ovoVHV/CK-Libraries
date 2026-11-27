@@ -1,0 +1,62 @@
+{
+  "schema": "ck-generator",
+  "version": 1,
+  "rules": [
+    {
+      "type": "emakefun_encoder_board_begin",
+      "kind": "statement",
+      "includes": {
+        "EmakefunEncoderBoardAdapter.h": "#include <EmakefunEncoderBoardAdapter.h>"
+      },
+      "template": "EmakefunEncoderBoardAdapter::begin({{value:ADDR}});\n"
+    },
+    {
+      "type": "emakefun_encoder_board_run_speed",
+      "kind": "statement",
+      "includes": {
+        "EmakefunEncoderBoardAdapter.h": "#include <EmakefunEncoderBoardAdapter.h>"
+      },
+      "template": "EmakefunEncoderBoardAdapter::runSpeed({{field:IDX}}, {{value:RPM}});\n"
+    },
+    {
+      "type": "emakefun_encoder_board_run_pwm",
+      "kind": "statement",
+      "includes": {
+        "EmakefunEncoderBoardAdapter.h": "#include <EmakefunEncoderBoardAdapter.h>"
+      },
+      "template": "EmakefunEncoderBoardAdapter::runPwm({{field:IDX}}, {{value:PWM}});\n"
+    },
+    {
+      "type": "emakefun_encoder_board_move",
+      "kind": "statement",
+      "includes": {
+        "EmakefunEncoderBoardAdapter.h": "#include <EmakefunEncoderBoardAdapter.h>"
+      },
+      "template": "EmakefunEncoderBoardAdapter::movePos({{field:IDX}}, {{value:DEG}}, {{value:SPD}});\n"
+    },
+    {
+      "type": "emakefun_encoder_board_stop",
+      "kind": "statement",
+      "includes": {
+        "EmakefunEncoderBoardAdapter.h": "#include <EmakefunEncoderBoardAdapter.h>"
+      },
+      "template": "EmakefunEncoderBoardAdapter::stop({{field:IDX}});\n"
+    },
+    {
+      "type": "emakefun_encoder_board_speed",
+      "kind": "expression",
+      "includes": {
+        "EmakefunEncoderBoardAdapter.h": "#include <EmakefunEncoderBoardAdapter.h>"
+      },
+      "template": "EmakefunEncoderBoardAdapter::speed({{field:IDX}})"
+    },
+    {
+      "type": "emakefun_encoder_board_pos",
+      "kind": "expression",
+      "includes": {
+        "EmakefunEncoderBoardAdapter.h": "#include <EmakefunEncoderBoardAdapter.h>"
+      },
+      "template": "EmakefunEncoderBoardAdapter::position({{field:IDX}})"
+    }
+  ]
+}

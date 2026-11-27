@@ -1,0 +1,976 @@
+{
+  "schema_version": 2,
+  "id": "emakefun_speech_ld3320",
+  "display_name": "Emakefun LD3320 语音识别 V2",
+  "description": "Emakefun LD3320 I2C 离线语音识别模块（地址 0x30），支持自动/关键词/按键触发及最多 50 条中文拼音关键词。",
+  "defaultLocale": "zh-CN",
+  "keywords": [
+    "Emakefun LD3320 语音识别 V2",
+    "emakefun_speech_ld3320",
+    "Emakefun",
+    "语音识别",
+    "LD3320",
+    "离线语音",
+    "I2C"
+  ],
+  "license": {
+    "spdx_id": "Apache-2.0",
+    "file": "LICENSE.txt"
+  },
+  "compatibility": {
+    "architectures": [
+      "avr",
+      "esp32"
+    ]
+  },
+  "dependencies": [
+    {
+      "kind": "arduino-library",
+      "id": "EmakefunSpeechLd3320Adapter",
+      "version": "1.0.0",
+      "headers": [
+        "EmakefunSpeechLd3320Adapter.h"
+      ],
+      "license": "Apache-2.0",
+      "reason": "随包内置于 libraries/EmakefunSpeechLd3320Adapter/，提供安全封装与跨板卡兼容接口。"
+    },
+    {
+      "kind": "arduino-library",
+      "id": "Emakefun Speech Recognizer",
+      "version": "2.1.1",
+      "headers": [
+        "speech_recognizer.h"
+      ],
+      "license": "MIT",
+      "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/emakefun_speech_recognizer）内置于 libraries/emakefun_speech_recognizer/。"
+    }
+  ],
+  "entrypoints": {
+    "blocks": "blocks/blocks.json",
+    "generator": "blocks/ck-generator.json",
+    "toolbox": "blocks/toolbox.json"
+  },
+  "blocks": [
+    {
+      "type": "emakefun_speech_ld3320_begin",
+      "display_name": "初始化 LD3320 语音识别 I2C地址 %1",
+      "description": "初始化 Emakefun LD3320 语音识别模块（默认 0x30 = 48）。",
+      "category": "Emakefun LD3320 语音识别 V2",
+      "kind": "statement",
+      "keywords": [
+        "Emakefun LD3320 语音识别 V2",
+        "emakefun_speech_ld3320",
+        "Emakefun",
+        "语音识别",
+        "LD3320",
+        "离线语音",
+        "I2C"
+      ],
+      "semantics": {
+        "purpose": "初始化 Emakefun LD3320 语音识别模块（默认 0x30 = 48）。",
+        "behavior": "初始化 Emakefun LD3320 语音识别模块（默认 0x30 = 48）。",
+        "concepts": [
+          "Emakefun LD3320 语音识别 V2",
+          "Emakefun"
+        ],
+        "side_effects": [
+          "初始化 Emakefun LD3320 语音识别模块（默认 0x30 = 48）。"
+        ]
+      },
+      "fields": [],
+      "inputs": [
+        {
+          "name": "ADDR",
+          "kind": "value",
+          "description": "I2C 地址（默认 48）",
+          "check": "Number",
+          "required": true,
+          "default": 48
+        }
+      ],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunSpeechLd3320Adapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunSpeechLd3320Adapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunSpeechLd3320Adapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "Emakefun Speech Recognizer",
+          "version": "2.1.1",
+          "headers": [
+            "speech_recognizer.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/emakefun_speech_recognizer）内置于 libraries/emakefun_speech_recognizer/。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "i2c",
+            "id": "wire",
+            "source": {
+              "kind": "board-default"
+            },
+            "access": "read-write",
+            "sharing": "shared",
+            "description": "默认 I2C 总线 (Wire)，模块默认地址 0x30。"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "i2c-device",
+              "role": "i2c-device",
+              "resource": {
+                "kind": "fixed",
+                "valueType": "id",
+                "value": "i2c"
+              },
+              "exclusive": false,
+              "discriminator": {
+                "kind": "fixed",
+                "valueType": "integer",
+                "value": 48
+              }
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun LD3320 I2C 离线语音识别模块（地址 0x30），支持自动/关键词/按键触发及最多 50 条中文拼音关键词。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "includes": [
+          "EmakefunSpeechLd3320Adapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunSpeechLd3320Adapter.h",
+            "template": "#include <EmakefunSpeechLd3320Adapter.h>"
+          },
+          {
+            "section": "statement",
+            "description": "初始化 Emakefun LD3320 语音识别模块（默认 0x30 = 48）。",
+            "template": "EmakefunSpeechLd3320Adapter::begin({{value:ADDR}});\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun LD3320 I2C 离线语音识别模块（地址 0x30），支持自动/关键词/按键触发及最多 50 条中文拼音关键词。",
+          "message": "Emakefun LD3320 I2C 离线语音识别模块（地址 0x30），支持自动/关键词/按键触发及最多 50 条中文拼音关键词。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun LD3320 语音识别 V2 随包示例",
+          "description": "初始化 Emakefun LD3320 语音识别模块（默认 0x30 = 48）。",
+          "expected_behavior": "演示 Emakefun LD3320 语音识别 V2 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_speech_ld3320_mode",
+      "display_name": "语音识别 设为 %1 模式",
+      "description": "设置语音识别触发方式。",
+      "category": "Emakefun LD3320 语音识别 V2",
+      "kind": "statement",
+      "keywords": [
+        "Emakefun LD3320 语音识别 V2",
+        "emakefun_speech_ld3320",
+        "Emakefun",
+        "语音识别",
+        "LD3320",
+        "离线语音",
+        "I2C"
+      ],
+      "semantics": {
+        "purpose": "设置语音识别触发方式。",
+        "behavior": "设置语音识别触发方式。",
+        "concepts": [
+          "Emakefun LD3320 语音识别 V2",
+          "Emakefun"
+        ],
+        "side_effects": [
+          "设置语音识别触发方式。"
+        ]
+      },
+      "fields": [
+        {
+          "name": "MODE",
+          "kind": "dropdown",
+          "description": "识别模式",
+          "required": true,
+          "default": "0",
+          "options": [
+            {
+              "label": "自动识别",
+              "value": "0"
+            },
+            {
+              "label": "按键触发",
+              "value": "1"
+            },
+            {
+              "label": "关键词触发",
+              "value": "2"
+            },
+            {
+              "label": "按键或关键词触发",
+              "value": "3"
+            }
+          ]
+        }
+      ],
+      "inputs": [],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunSpeechLd3320Adapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunSpeechLd3320Adapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunSpeechLd3320Adapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "Emakefun Speech Recognizer",
+          "version": "2.1.1",
+          "headers": [
+            "speech_recognizer.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/emakefun_speech_recognizer）内置于 libraries/emakefun_speech_recognizer/。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "i2c",
+            "id": "wire",
+            "source": {
+              "kind": "board-default"
+            },
+            "access": "read-write",
+            "sharing": "shared",
+            "description": "默认 I2C 总线 (Wire)，模块默认地址 0x30。"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "i2c-device",
+              "role": "i2c-device",
+              "resource": {
+                "kind": "fixed",
+                "valueType": "id",
+                "value": "i2c"
+              },
+              "exclusive": false,
+              "discriminator": {
+                "kind": "fixed",
+                "valueType": "integer",
+                "value": 48
+              }
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun LD3320 I2C 离线语音识别模块（地址 0x30），支持自动/关键词/按键触发及最多 50 条中文拼音关键词。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "includes": [
+          "EmakefunSpeechLd3320Adapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunSpeechLd3320Adapter.h",
+            "template": "#include <EmakefunSpeechLd3320Adapter.h>"
+          },
+          {
+            "section": "statement",
+            "description": "设置语音识别触发方式。",
+            "template": "EmakefunSpeechLd3320Adapter::setMode({{field:MODE}});\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun LD3320 I2C 离线语音识别模块（地址 0x30），支持自动/关键词/按键触发及最多 50 条中文拼音关键词。",
+          "message": "Emakefun LD3320 I2C 离线语音识别模块（地址 0x30），支持自动/关键词/按键触发及最多 50 条中文拼音关键词。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun LD3320 语音识别 V2 随包示例",
+          "description": "设置语音识别触发方式。",
+          "expected_behavior": "演示 Emakefun LD3320 语音识别 V2 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_speech_ld3320_timeout",
+      "display_name": "语音识别 设置超时 %1 毫秒",
+      "description": "设置触发模式下的等待超时时间（毫秒）。",
+      "category": "Emakefun LD3320 语音识别 V2",
+      "kind": "statement",
+      "keywords": [
+        "Emakefun LD3320 语音识别 V2",
+        "emakefun_speech_ld3320",
+        "Emakefun",
+        "语音识别",
+        "LD3320",
+        "离线语音",
+        "I2C"
+      ],
+      "semantics": {
+        "purpose": "设置触发模式下的等待超时时间（毫秒）。",
+        "behavior": "设置触发模式下的等待超时时间（毫秒）。",
+        "concepts": [
+          "Emakefun LD3320 语音识别 V2",
+          "Emakefun"
+        ],
+        "side_effects": [
+          "设置触发模式下的等待超时时间（毫秒）。"
+        ]
+      },
+      "fields": [],
+      "inputs": [
+        {
+          "name": "MS",
+          "kind": "value",
+          "description": "超时毫秒数",
+          "check": "Number",
+          "required": true,
+          "default": 10000
+        }
+      ],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunSpeechLd3320Adapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunSpeechLd3320Adapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunSpeechLd3320Adapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "Emakefun Speech Recognizer",
+          "version": "2.1.1",
+          "headers": [
+            "speech_recognizer.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/emakefun_speech_recognizer）内置于 libraries/emakefun_speech_recognizer/。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "i2c",
+            "id": "wire",
+            "source": {
+              "kind": "board-default"
+            },
+            "access": "read-write",
+            "sharing": "shared",
+            "description": "默认 I2C 总线 (Wire)，模块默认地址 0x30。"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "i2c-device",
+              "role": "i2c-device",
+              "resource": {
+                "kind": "fixed",
+                "valueType": "id",
+                "value": "i2c"
+              },
+              "exclusive": false,
+              "discriminator": {
+                "kind": "fixed",
+                "valueType": "integer",
+                "value": 48
+              }
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun LD3320 I2C 离线语音识别模块（地址 0x30），支持自动/关键词/按键触发及最多 50 条中文拼音关键词。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "includes": [
+          "EmakefunSpeechLd3320Adapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunSpeechLd3320Adapter.h",
+            "template": "#include <EmakefunSpeechLd3320Adapter.h>"
+          },
+          {
+            "section": "statement",
+            "description": "设置触发模式下的等待超时时间（毫秒）。",
+            "template": "EmakefunSpeechLd3320Adapter::setTimeout({{value:MS}});\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun LD3320 I2C 离线语音识别模块（地址 0x30），支持自动/关键词/按键触发及最多 50 条中文拼音关键词。",
+          "message": "Emakefun LD3320 I2C 离线语音识别模块（地址 0x30），支持自动/关键词/按键触发及最多 50 条中文拼音关键词。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun LD3320 语音识别 V2 随包示例",
+          "description": "设置触发模式下的等待超时时间（毫秒）。",
+          "expected_behavior": "演示 Emakefun LD3320 语音识别 V2 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_speech_ld3320_add_kw",
+      "display_name": "语音识别 添加关键词 编号 %1 拼音 %2",
+      "description": "添加一条识别关键词（拼音小写，空格分隔，如 xiao yi）。",
+      "category": "Emakefun LD3320 语音识别 V2",
+      "kind": "statement",
+      "keywords": [
+        "Emakefun LD3320 语音识别 V2",
+        "emakefun_speech_ld3320",
+        "Emakefun",
+        "语音识别",
+        "LD3320",
+        "离线语音",
+        "I2C"
+      ],
+      "semantics": {
+        "purpose": "添加一条识别关键词（拼音小写，空格分隔，如 xiao yi）。",
+        "behavior": "添加一条识别关键词（拼音小写，空格分隔，如 xiao yi）。",
+        "concepts": [
+          "Emakefun LD3320 语音识别 V2",
+          "Emakefun"
+        ],
+        "side_effects": [
+          "添加一条识别关键词（拼音小写，空格分隔，如 xiao yi）。"
+        ]
+      },
+      "fields": [],
+      "inputs": [
+        {
+          "name": "IDX",
+          "kind": "value",
+          "description": "关键词编号 0-255",
+          "check": "Number",
+          "required": true,
+          "default": 1
+        },
+        {
+          "name": "KW",
+          "kind": "value",
+          "description": "关键词拼音字符串",
+          "check": "String",
+          "required": true,
+          "default": "xiao yi"
+        }
+      ],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunSpeechLd3320Adapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunSpeechLd3320Adapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunSpeechLd3320Adapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "Emakefun Speech Recognizer",
+          "version": "2.1.1",
+          "headers": [
+            "speech_recognizer.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/emakefun_speech_recognizer）内置于 libraries/emakefun_speech_recognizer/。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "i2c",
+            "id": "wire",
+            "source": {
+              "kind": "board-default"
+            },
+            "access": "read-write",
+            "sharing": "shared",
+            "description": "默认 I2C 总线 (Wire)，模块默认地址 0x30。"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "i2c-device",
+              "role": "i2c-device",
+              "resource": {
+                "kind": "fixed",
+                "valueType": "id",
+                "value": "i2c"
+              },
+              "exclusive": false,
+              "discriminator": {
+                "kind": "fixed",
+                "valueType": "integer",
+                "value": 48
+              }
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun LD3320 I2C 离线语音识别模块（地址 0x30），支持自动/关键词/按键触发及最多 50 条中文拼音关键词。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "includes": [
+          "EmakefunSpeechLd3320Adapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunSpeechLd3320Adapter.h",
+            "template": "#include <EmakefunSpeechLd3320Adapter.h>"
+          },
+          {
+            "section": "statement",
+            "description": "添加一条识别关键词（拼音小写，空格分隔，如 xiao yi）。",
+            "template": "EmakefunSpeechLd3320Adapter::addKeyword({{value:IDX}}, String({{value:KW}}));\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun LD3320 I2C 离线语音识别模块（地址 0x30），支持自动/关键词/按键触发及最多 50 条中文拼音关键词。",
+          "message": "Emakefun LD3320 I2C 离线语音识别模块（地址 0x30），支持自动/关键词/按键触发及最多 50 条中文拼音关键词。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun LD3320 语音识别 V2 随包示例",
+          "description": "添加一条识别关键词（拼音小写，空格分隔，如 xiao yi）。",
+          "expected_behavior": "演示 Emakefun LD3320 语音识别 V2 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_speech_ld3320_recognize",
+      "display_name": "语音识别 轮询识别到的关键词编号",
+      "description": "轮询获取识别到的关键词编号（未识别时返回 -1）。",
+      "category": "Emakefun LD3320 语音识别 V2",
+      "kind": "value",
+      "keywords": [
+        "Emakefun LD3320 语音识别 V2",
+        "emakefun_speech_ld3320",
+        "Emakefun",
+        "语音识别",
+        "LD3320",
+        "离线语音",
+        "I2C"
+      ],
+      "semantics": {
+        "purpose": "轮询获取识别到的关键词编号（未识别时返回 -1）。",
+        "behavior": "轮询获取识别到的关键词编号（未识别时返回 -1）。",
+        "concepts": [
+          "Emakefun LD3320 语音识别 V2",
+          "Emakefun"
+        ],
+        "side_effects": []
+      },
+      "fields": [],
+      "inputs": [],
+      "output": {
+        "connection": "value",
+        "types": [
+          "Number"
+        ],
+        "description": "轮询获取识别到的关键词编号（未识别时返回 -1）。"
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunSpeechLd3320Adapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunSpeechLd3320Adapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunSpeechLd3320Adapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "Emakefun Speech Recognizer",
+          "version": "2.1.1",
+          "headers": [
+            "speech_recognizer.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/emakefun_speech_recognizer）内置于 libraries/emakefun_speech_recognizer/。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "i2c",
+            "id": "wire",
+            "source": {
+              "kind": "board-default"
+            },
+            "access": "read-write",
+            "sharing": "shared",
+            "description": "默认 I2C 总线 (Wire)，模块默认地址 0x30。"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "i2c-device",
+              "role": "i2c-device",
+              "resource": {
+                "kind": "fixed",
+                "valueType": "id",
+                "value": "i2c"
+              },
+              "exclusive": false,
+              "discriminator": {
+                "kind": "fixed",
+                "valueType": "integer",
+                "value": 48
+              }
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun LD3320 I2C 离线语音识别模块（地址 0x30），支持自动/关键词/按键触发及最多 50 条中文拼音关键词。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "expression",
+        "deterministic": true,
+        "includes": [
+          "EmakefunSpeechLd3320Adapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunSpeechLd3320Adapter.h",
+            "template": "#include <EmakefunSpeechLd3320Adapter.h>"
+          },
+          {
+            "section": "expression",
+            "description": "轮询获取识别到的关键词编号（未识别时返回 -1）。",
+            "template": "EmakefunSpeechLd3320Adapter::recognize()"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun LD3320 I2C 离线语音识别模块（地址 0x30），支持自动/关键词/按键触发及最多 50 条中文拼音关键词。",
+          "message": "Emakefun LD3320 I2C 离线语音识别模块（地址 0x30），支持自动/关键词/按键触发及最多 50 条中文拼音关键词。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun LD3320 语音识别 V2 随包示例",
+          "description": "轮询获取识别到的关键词编号（未识别时返回 -1）。",
+          "expected_behavior": "演示 Emakefun LD3320 语音识别 V2 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_speech_ld3320_event",
+      "display_name": "语音识别 当前事件码",
+      "description": "获取模块当前状态事件码（0-6）。",
+      "category": "Emakefun LD3320 语音识别 V2",
+      "kind": "value",
+      "keywords": [
+        "Emakefun LD3320 语音识别 V2",
+        "emakefun_speech_ld3320",
+        "Emakefun",
+        "语音识别",
+        "LD3320",
+        "离线语音",
+        "I2C"
+      ],
+      "semantics": {
+        "purpose": "获取模块当前状态事件码（0-6）。",
+        "behavior": "获取模块当前状态事件码（0-6）。",
+        "concepts": [
+          "Emakefun LD3320 语音识别 V2",
+          "Emakefun"
+        ],
+        "side_effects": []
+      },
+      "fields": [],
+      "inputs": [],
+      "output": {
+        "connection": "value",
+        "types": [
+          "Number"
+        ],
+        "description": "获取模块当前状态事件码（0-6）。"
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunSpeechLd3320Adapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunSpeechLd3320Adapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunSpeechLd3320Adapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "Emakefun Speech Recognizer",
+          "version": "2.1.1",
+          "headers": [
+            "speech_recognizer.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/emakefun_speech_recognizer）内置于 libraries/emakefun_speech_recognizer/。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "i2c",
+            "id": "wire",
+            "source": {
+              "kind": "board-default"
+            },
+            "access": "read-write",
+            "sharing": "shared",
+            "description": "默认 I2C 总线 (Wire)，模块默认地址 0x30。"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "i2c-device",
+              "role": "i2c-device",
+              "resource": {
+                "kind": "fixed",
+                "valueType": "id",
+                "value": "i2c"
+              },
+              "exclusive": false,
+              "discriminator": {
+                "kind": "fixed",
+                "valueType": "integer",
+                "value": 48
+              }
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun LD3320 I2C 离线语音识别模块（地址 0x30），支持自动/关键词/按键触发及最多 50 条中文拼音关键词。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "expression",
+        "deterministic": true,
+        "includes": [
+          "EmakefunSpeechLd3320Adapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunSpeechLd3320Adapter.h",
+            "template": "#include <EmakefunSpeechLd3320Adapter.h>"
+          },
+          {
+            "section": "expression",
+            "description": "获取模块当前状态事件码（0-6）。",
+            "template": "EmakefunSpeechLd3320Adapter::event()"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun LD3320 I2C 离线语音识别模块（地址 0x30），支持自动/关键词/按键触发及最多 50 条中文拼音关键词。",
+          "message": "Emakefun LD3320 I2C 离线语音识别模块（地址 0x30），支持自动/关键词/按键触发及最多 50 条中文拼音关键词。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun LD3320 语音识别 V2 随包示例",
+          "description": "获取模块当前状态事件码（0-6）。",
+          "expected_behavior": "演示 Emakefun LD3320 语音识别 V2 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    }
+  ]
+}

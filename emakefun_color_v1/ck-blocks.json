@@ -1,0 +1,639 @@
+{
+  "schema_version": 2,
+  "id": "emakefun_color_v1",
+  "display_name": "Emakefun 颜色识别传感器 V1",
+  "description": "Emakefun I2C 颜色识别传感器 V1，直接读取 0-255 范围的 R/G/B 颜色分量。",
+  "defaultLocale": "zh-CN",
+  "keywords": [
+    "Emakefun 颜色识别传感器 V1",
+    "emakefun_color_v1",
+    "Emakefun",
+    "颜色",
+    "RGB",
+    "ColorSensor",
+    "I2C"
+  ],
+  "license": {
+    "spdx_id": "Apache-2.0",
+    "file": "LICENSE.txt"
+  },
+  "compatibility": {
+    "architectures": [
+      "avr",
+      "esp32"
+    ]
+  },
+  "dependencies": [
+    {
+      "kind": "arduino-library",
+      "id": "EmakefunColorV1Adapter",
+      "version": "1.0.0",
+      "headers": [
+        "EmakefunColorV1Adapter.h"
+      ],
+      "license": "Apache-2.0",
+      "reason": "随包内置于 libraries/EmakefunColorV1Adapter/，提供安全封装与跨板卡兼容接口。"
+    },
+    {
+      "kind": "arduino-library",
+      "id": "Emakefun Color Sensor",
+      "version": "1.0.0",
+      "headers": [
+        "color_sensor.h"
+      ],
+      "license": "MIT",
+      "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/emakefun_color_sensor）内置于 libraries/emakefun_color_sensor/。"
+    }
+  ],
+  "entrypoints": {
+    "blocks": "blocks/blocks.json",
+    "generator": "blocks/ck-generator.json",
+    "toolbox": "blocks/toolbox.json"
+  },
+  "blocks": [
+    {
+      "type": "emakefun_color_v1_begin",
+      "display_name": "初始化颜色识别传感器 V1 I2C地址 %1",
+      "description": "初始化 Emakefun 颜色识别传感器 V1（默认地址 0x43 = 67）。",
+      "category": "Emakefun 颜色识别传感器 V1",
+      "kind": "statement",
+      "keywords": [
+        "Emakefun 颜色识别传感器 V1",
+        "emakefun_color_v1",
+        "Emakefun",
+        "颜色",
+        "RGB",
+        "ColorSensor",
+        "I2C"
+      ],
+      "semantics": {
+        "purpose": "初始化 Emakefun 颜色识别传感器 V1（默认地址 0x43 = 67）。",
+        "behavior": "初始化 Emakefun 颜色识别传感器 V1（默认地址 0x43 = 67）。",
+        "concepts": [
+          "Emakefun 颜色识别传感器 V1",
+          "Emakefun"
+        ],
+        "side_effects": [
+          "初始化 Emakefun 颜色识别传感器 V1（默认地址 0x43 = 67）。"
+        ]
+      },
+      "fields": [],
+      "inputs": [
+        {
+          "name": "ADDR",
+          "kind": "value",
+          "description": "I2C 地址（默认 67）",
+          "check": "Number",
+          "required": true,
+          "default": 67
+        }
+      ],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunColorV1Adapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunColorV1Adapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunColorV1Adapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "Emakefun Color Sensor",
+          "version": "1.0.0",
+          "headers": [
+            "color_sensor.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/emakefun_color_sensor）内置于 libraries/emakefun_color_sensor/。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "i2c",
+            "id": "wire",
+            "source": {
+              "kind": "board-default"
+            },
+            "access": "read-write",
+            "sharing": "shared",
+            "description": "默认 I2C 总线 (Wire)，模块默认地址 0x43。"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "i2c-device",
+              "role": "i2c-device",
+              "resource": {
+                "kind": "fixed",
+                "valueType": "id",
+                "value": "i2c"
+              },
+              "exclusive": false,
+              "discriminator": {
+                "kind": "fixed",
+                "valueType": "integer",
+                "value": 67
+              }
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun I2C 颜色识别传感器 V1，直接读取 0-255 范围的 R/G/B 颜色分量。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "includes": [
+          "EmakefunColorV1Adapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunColorV1Adapter.h",
+            "template": "#include <EmakefunColorV1Adapter.h>"
+          },
+          {
+            "section": "statement",
+            "description": "初始化 Emakefun 颜色识别传感器 V1（默认地址 0x43 = 67）。",
+            "template": "EmakefunColorV1Adapter::begin({{value:ADDR}});\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun I2C 颜色识别传感器 V1，直接读取 0-255 范围的 R/G/B 颜色分量。",
+          "message": "Emakefun I2C 颜色识别传感器 V1，直接读取 0-255 范围的 R/G/B 颜色分量。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun 颜色识别传感器 V1 随包示例",
+          "description": "初始化 Emakefun 颜色识别传感器 V1（默认地址 0x43 = 67）。",
+          "expected_behavior": "演示 Emakefun 颜色识别传感器 V1 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_color_v1_r",
+      "display_name": "颜色传感器 V1 红色 R (0-255)",
+      "description": "读取红色分量 0-255。",
+      "category": "Emakefun 颜色识别传感器 V1",
+      "kind": "value",
+      "keywords": [
+        "Emakefun 颜色识别传感器 V1",
+        "emakefun_color_v1",
+        "Emakefun",
+        "颜色",
+        "RGB",
+        "ColorSensor",
+        "I2C"
+      ],
+      "semantics": {
+        "purpose": "读取红色分量 0-255。",
+        "behavior": "读取红色分量 0-255。",
+        "concepts": [
+          "Emakefun 颜色识别传感器 V1",
+          "Emakefun"
+        ],
+        "side_effects": []
+      },
+      "fields": [],
+      "inputs": [],
+      "output": {
+        "connection": "value",
+        "types": [
+          "Number"
+        ],
+        "description": "读取红色分量 0-255。"
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunColorV1Adapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunColorV1Adapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunColorV1Adapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "Emakefun Color Sensor",
+          "version": "1.0.0",
+          "headers": [
+            "color_sensor.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/emakefun_color_sensor）内置于 libraries/emakefun_color_sensor/。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "i2c",
+            "id": "wire",
+            "source": {
+              "kind": "board-default"
+            },
+            "access": "read-write",
+            "sharing": "shared",
+            "description": "默认 I2C 总线 (Wire)，模块默认地址 0x43。"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "i2c-device",
+              "role": "i2c-device",
+              "resource": {
+                "kind": "fixed",
+                "valueType": "id",
+                "value": "i2c"
+              },
+              "exclusive": false,
+              "discriminator": {
+                "kind": "fixed",
+                "valueType": "integer",
+                "value": 67
+              }
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun I2C 颜色识别传感器 V1，直接读取 0-255 范围的 R/G/B 颜色分量。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "expression",
+        "deterministic": true,
+        "includes": [
+          "EmakefunColorV1Adapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunColorV1Adapter.h",
+            "template": "#include <EmakefunColorV1Adapter.h>"
+          },
+          {
+            "section": "expression",
+            "description": "读取红色分量 0-255。",
+            "template": "EmakefunColorV1Adapter::r()"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun I2C 颜色识别传感器 V1，直接读取 0-255 范围的 R/G/B 颜色分量。",
+          "message": "Emakefun I2C 颜色识别传感器 V1，直接读取 0-255 范围的 R/G/B 颜色分量。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun 颜色识别传感器 V1 随包示例",
+          "description": "读取红色分量 0-255。",
+          "expected_behavior": "演示 Emakefun 颜色识别传感器 V1 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_color_v1_g",
+      "display_name": "颜色传感器 V1 绿色 G (0-255)",
+      "description": "读取绿色分量 0-255。",
+      "category": "Emakefun 颜色识别传感器 V1",
+      "kind": "value",
+      "keywords": [
+        "Emakefun 颜色识别传感器 V1",
+        "emakefun_color_v1",
+        "Emakefun",
+        "颜色",
+        "RGB",
+        "ColorSensor",
+        "I2C"
+      ],
+      "semantics": {
+        "purpose": "读取绿色分量 0-255。",
+        "behavior": "读取绿色分量 0-255。",
+        "concepts": [
+          "Emakefun 颜色识别传感器 V1",
+          "Emakefun"
+        ],
+        "side_effects": []
+      },
+      "fields": [],
+      "inputs": [],
+      "output": {
+        "connection": "value",
+        "types": [
+          "Number"
+        ],
+        "description": "读取绿色分量 0-255。"
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunColorV1Adapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunColorV1Adapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunColorV1Adapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "Emakefun Color Sensor",
+          "version": "1.0.0",
+          "headers": [
+            "color_sensor.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/emakefun_color_sensor）内置于 libraries/emakefun_color_sensor/。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "i2c",
+            "id": "wire",
+            "source": {
+              "kind": "board-default"
+            },
+            "access": "read-write",
+            "sharing": "shared",
+            "description": "默认 I2C 总线 (Wire)，模块默认地址 0x43。"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "i2c-device",
+              "role": "i2c-device",
+              "resource": {
+                "kind": "fixed",
+                "valueType": "id",
+                "value": "i2c"
+              },
+              "exclusive": false,
+              "discriminator": {
+                "kind": "fixed",
+                "valueType": "integer",
+                "value": 67
+              }
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun I2C 颜色识别传感器 V1，直接读取 0-255 范围的 R/G/B 颜色分量。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "expression",
+        "deterministic": true,
+        "includes": [
+          "EmakefunColorV1Adapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunColorV1Adapter.h",
+            "template": "#include <EmakefunColorV1Adapter.h>"
+          },
+          {
+            "section": "expression",
+            "description": "读取绿色分量 0-255。",
+            "template": "EmakefunColorV1Adapter::g()"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun I2C 颜色识别传感器 V1，直接读取 0-255 范围的 R/G/B 颜色分量。",
+          "message": "Emakefun I2C 颜色识别传感器 V1，直接读取 0-255 范围的 R/G/B 颜色分量。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun 颜色识别传感器 V1 随包示例",
+          "description": "读取绿色分量 0-255。",
+          "expected_behavior": "演示 Emakefun 颜色识别传感器 V1 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_color_v1_b",
+      "display_name": "颜色传感器 V1 蓝色 B (0-255)",
+      "description": "读取蓝色分量 0-255。",
+      "category": "Emakefun 颜色识别传感器 V1",
+      "kind": "value",
+      "keywords": [
+        "Emakefun 颜色识别传感器 V1",
+        "emakefun_color_v1",
+        "Emakefun",
+        "颜色",
+        "RGB",
+        "ColorSensor",
+        "I2C"
+      ],
+      "semantics": {
+        "purpose": "读取蓝色分量 0-255。",
+        "behavior": "读取蓝色分量 0-255。",
+        "concepts": [
+          "Emakefun 颜色识别传感器 V1",
+          "Emakefun"
+        ],
+        "side_effects": []
+      },
+      "fields": [],
+      "inputs": [],
+      "output": {
+        "connection": "value",
+        "types": [
+          "Number"
+        ],
+        "description": "读取蓝色分量 0-255。"
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunColorV1Adapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunColorV1Adapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunColorV1Adapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "Emakefun Color Sensor",
+          "version": "1.0.0",
+          "headers": [
+            "color_sensor.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/emakefun_color_sensor）内置于 libraries/emakefun_color_sensor/。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "i2c",
+            "id": "wire",
+            "source": {
+              "kind": "board-default"
+            },
+            "access": "read-write",
+            "sharing": "shared",
+            "description": "默认 I2C 总线 (Wire)，模块默认地址 0x43。"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "i2c-device",
+              "role": "i2c-device",
+              "resource": {
+                "kind": "fixed",
+                "valueType": "id",
+                "value": "i2c"
+              },
+              "exclusive": false,
+              "discriminator": {
+                "kind": "fixed",
+                "valueType": "integer",
+                "value": 67
+              }
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun I2C 颜色识别传感器 V1，直接读取 0-255 范围的 R/G/B 颜色分量。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "expression",
+        "deterministic": true,
+        "includes": [
+          "EmakefunColorV1Adapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunColorV1Adapter.h",
+            "template": "#include <EmakefunColorV1Adapter.h>"
+          },
+          {
+            "section": "expression",
+            "description": "读取蓝色分量 0-255。",
+            "template": "EmakefunColorV1Adapter::b()"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun I2C 颜色识别传感器 V1，直接读取 0-255 范围的 R/G/B 颜色分量。",
+          "message": "Emakefun I2C 颜色识别传感器 V1，直接读取 0-255 范围的 R/G/B 颜色分量。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun 颜色识别传感器 V1 随包示例",
+          "description": "读取蓝色分量 0-255。",
+          "expected_behavior": "演示 Emakefun 颜色识别传感器 V1 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    }
+  ]
+}

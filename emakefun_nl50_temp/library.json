@@ -1,0 +1,21 @@
+{
+  "id": "emakefun_nl50_temp",
+  "name": "Emakefun NL50 温度传感器",
+  "version": "1.0.0",
+  "description": "Emakefun NL50 模拟温度传感器模块，单引脚读取高精度摄氏温度。",
+  "sentence": "Emakefun NL50 模拟温度传感器模块，单引脚读取高精度摄氏温度。",
+  "author": "CKYAN",
+  "vendor": "Emakefun",
+  "vendor_logo": "assets/emakefun.png",
+  "icon": "assets/icon.png",
+  "category": "Sensors",
+  "website": "https://docs.emakefun.com/sensors/sensors/temperature_sensor_nl50/",
+  "architectures": [
+    "avr",
+    "esp32"
+  ],
+  "license": "Apache-2.0",
+  "includes": [
+    "EmakefunNl50Adapter.h"
+  ]
+}

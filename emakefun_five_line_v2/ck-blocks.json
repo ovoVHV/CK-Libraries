@@ -1,0 +1,851 @@
+{
+  "schema_version": 2,
+  "id": "emakefun_five_line_v2",
+  "display_name": "Emakefun 五路循迹传感器 V2",
+  "description": "Emakefun 五路循迹传感器 V2.0（I2C 0x50），支持灵敏度设置、单路模拟值与黑线状态读取。",
+  "defaultLocale": "zh-CN",
+  "keywords": [
+    "Emakefun 五路循迹传感器 V2",
+    "emakefun_five_line_v2",
+    "Emakefun",
+    "循迹",
+    "五路循迹",
+    "V2",
+    "LineTracker"
+  ],
+  "license": {
+    "spdx_id": "Apache-2.0",
+    "file": "LICENSE.txt"
+  },
+  "compatibility": {
+    "architectures": [
+      "avr",
+      "esp32"
+    ]
+  },
+  "dependencies": [
+    {
+      "kind": "arduino-library",
+      "id": "EmakefunLineTrackerV2Adapter",
+      "version": "1.0.0",
+      "headers": [
+        "EmakefunLineTrackerV2Adapter.h"
+      ],
+      "license": "Apache-2.0",
+      "reason": "随包内置于 libraries/EmakefunLineTrackerV2Adapter/，提供安全封装与跨板卡兼容接口。"
+    },
+    {
+      "kind": "arduino-library",
+      "id": "emakefun line tracker",
+      "version": "2.0.0",
+      "headers": [
+        "line_tracker.h"
+      ],
+      "license": "MIT",
+      "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/emakefun_five_line_tracker）内置于 libraries/emakefun_five_line_tracker/。"
+    }
+  ],
+  "entrypoints": {
+    "blocks": "blocks/blocks.json",
+    "generator": "blocks/ck-generator.json",
+    "toolbox": "blocks/toolbox.json"
+  },
+  "blocks": [
+    {
+      "type": "emakefun_five_line_v2_begin",
+      "display_name": "初始化五路循迹 V2 I2C地址 %1",
+      "description": "初始化 Emakefun 五路循迹 V2（默认 0x50 = 80）。",
+      "category": "Emakefun 五路循迹传感器 V2",
+      "kind": "statement",
+      "keywords": [
+        "Emakefun 五路循迹传感器 V2",
+        "emakefun_five_line_v2",
+        "Emakefun",
+        "循迹",
+        "五路循迹",
+        "V2",
+        "LineTracker"
+      ],
+      "semantics": {
+        "purpose": "初始化 Emakefun 五路循迹 V2（默认 0x50 = 80）。",
+        "behavior": "初始化 Emakefun 五路循迹 V2（默认 0x50 = 80）。",
+        "concepts": [
+          "Emakefun 五路循迹传感器 V2",
+          "Emakefun"
+        ],
+        "side_effects": [
+          "初始化 Emakefun 五路循迹 V2（默认 0x50 = 80）。"
+        ]
+      },
+      "fields": [],
+      "inputs": [
+        {
+          "name": "ADDR",
+          "kind": "value",
+          "description": "I2C 地址（默认 80）",
+          "check": "Number",
+          "required": true,
+          "default": 80
+        }
+      ],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunLineTrackerV2Adapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunLineTrackerV2Adapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunLineTrackerV2Adapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "emakefun line tracker",
+          "version": "2.0.0",
+          "headers": [
+            "line_tracker.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/emakefun_five_line_tracker）内置于 libraries/emakefun_five_line_tracker/。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "i2c",
+            "id": "wire",
+            "source": {
+              "kind": "board-default"
+            },
+            "access": "read-write",
+            "sharing": "shared",
+            "description": "默认 I2C 总线 (Wire)，模块默认地址 0x50。"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "i2c-device",
+              "role": "i2c-device",
+              "resource": {
+                "kind": "fixed",
+                "valueType": "id",
+                "value": "i2c"
+              },
+              "exclusive": false,
+              "discriminator": {
+                "kind": "fixed",
+                "valueType": "integer",
+                "value": 80
+              }
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun 五路循迹传感器 V2.0（I2C 0x50），支持灵敏度设置、单路模拟值与黑线状态读取。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "includes": [
+          "EmakefunLineTrackerV2Adapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunLineTrackerV2Adapter.h",
+            "template": "#include <EmakefunLineTrackerV2Adapter.h>"
+          },
+          {
+            "section": "statement",
+            "description": "初始化 Emakefun 五路循迹 V2（默认 0x50 = 80）。",
+            "template": "EmakefunLineTrackerV2Adapter::begin({{value:ADDR}});\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun 五路循迹传感器 V2.0（I2C 0x50），支持灵敏度设置、单路模拟值与黑线状态读取。",
+          "message": "Emakefun 五路循迹传感器 V2.0（I2C 0x50），支持灵敏度设置、单路模拟值与黑线状态读取。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun 五路循迹传感器 V2 随包示例",
+          "description": "初始化 Emakefun 五路循迹 V2（默认 0x50 = 80）。",
+          "expected_behavior": "演示 Emakefun 五路循迹传感器 V2 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_five_line_v2_sensitivity",
+      "display_name": "五路循迹 V2 设置灵敏度 %1",
+      "description": "设置黑线检测灵敏度（0-1023）。",
+      "category": "Emakefun 五路循迹传感器 V2",
+      "kind": "statement",
+      "keywords": [
+        "Emakefun 五路循迹传感器 V2",
+        "emakefun_five_line_v2",
+        "Emakefun",
+        "循迹",
+        "五路循迹",
+        "V2",
+        "LineTracker"
+      ],
+      "semantics": {
+        "purpose": "设置黑线检测灵敏度（0-1023）。",
+        "behavior": "设置黑线检测灵敏度（0-1023）。",
+        "concepts": [
+          "Emakefun 五路循迹传感器 V2",
+          "Emakefun"
+        ],
+        "side_effects": [
+          "设置黑线检测灵敏度（0-1023）。"
+        ]
+      },
+      "fields": [],
+      "inputs": [
+        {
+          "name": "SENS",
+          "kind": "value",
+          "description": "灵敏度 0-1023",
+          "check": "Number",
+          "required": true,
+          "default": 500
+        }
+      ],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunLineTrackerV2Adapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunLineTrackerV2Adapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunLineTrackerV2Adapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "emakefun line tracker",
+          "version": "2.0.0",
+          "headers": [
+            "line_tracker.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/emakefun_five_line_tracker）内置于 libraries/emakefun_five_line_tracker/。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "i2c",
+            "id": "wire",
+            "source": {
+              "kind": "board-default"
+            },
+            "access": "read-write",
+            "sharing": "shared",
+            "description": "默认 I2C 总线 (Wire)，模块默认地址 0x50。"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "i2c-device",
+              "role": "i2c-device",
+              "resource": {
+                "kind": "fixed",
+                "valueType": "id",
+                "value": "i2c"
+              },
+              "exclusive": false,
+              "discriminator": {
+                "kind": "fixed",
+                "valueType": "integer",
+                "value": 80
+              }
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun 五路循迹传感器 V2.0（I2C 0x50），支持灵敏度设置、单路模拟值与黑线状态读取。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "includes": [
+          "EmakefunLineTrackerV2Adapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunLineTrackerV2Adapter.h",
+            "template": "#include <EmakefunLineTrackerV2Adapter.h>"
+          },
+          {
+            "section": "statement",
+            "description": "设置黑线检测灵敏度（0-1023）。",
+            "template": "EmakefunLineTrackerV2Adapter::setSensitivity({{value:SENS}});\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun 五路循迹传感器 V2.0（I2C 0x50），支持灵敏度设置、单路模拟值与黑线状态读取。",
+          "message": "Emakefun 五路循迹传感器 V2.0（I2C 0x50），支持灵敏度设置、单路模拟值与黑线状态读取。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun 五路循迹传感器 V2 随包示例",
+          "description": "设置黑线检测灵敏度（0-1023）。",
+          "expected_behavior": "演示 Emakefun 五路循迹传感器 V2 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_five_line_v2_value",
+      "display_name": "五路循迹 V2 通道 %1 模拟值",
+      "description": "读取单个通道的模拟值（0-4）。",
+      "category": "Emakefun 五路循迹传感器 V2",
+      "kind": "value",
+      "keywords": [
+        "Emakefun 五路循迹传感器 V2",
+        "emakefun_five_line_v2",
+        "Emakefun",
+        "循迹",
+        "五路循迹",
+        "V2",
+        "LineTracker"
+      ],
+      "semantics": {
+        "purpose": "读取单个通道的模拟值（0-4）。",
+        "behavior": "读取单个通道的模拟值（0-4）。",
+        "concepts": [
+          "Emakefun 五路循迹传感器 V2",
+          "Emakefun"
+        ],
+        "side_effects": []
+      },
+      "fields": [
+        {
+          "name": "CH",
+          "kind": "dropdown",
+          "description": "通道",
+          "required": true,
+          "default": "0",
+          "options": [
+            {
+              "label": "通道 0",
+              "value": "0"
+            },
+            {
+              "label": "通道 1",
+              "value": "1"
+            },
+            {
+              "label": "通道 2",
+              "value": "2"
+            },
+            {
+              "label": "通道 3",
+              "value": "3"
+            },
+            {
+              "label": "通道 4",
+              "value": "4"
+            }
+          ]
+        }
+      ],
+      "inputs": [],
+      "output": {
+        "connection": "value",
+        "types": [
+          "Number"
+        ],
+        "description": "读取单个通道的模拟值（0-4）。"
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunLineTrackerV2Adapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunLineTrackerV2Adapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunLineTrackerV2Adapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "emakefun line tracker",
+          "version": "2.0.0",
+          "headers": [
+            "line_tracker.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/emakefun_five_line_tracker）内置于 libraries/emakefun_five_line_tracker/。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "i2c",
+            "id": "wire",
+            "source": {
+              "kind": "board-default"
+            },
+            "access": "read-write",
+            "sharing": "shared",
+            "description": "默认 I2C 总线 (Wire)，模块默认地址 0x50。"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "i2c-device",
+              "role": "i2c-device",
+              "resource": {
+                "kind": "fixed",
+                "valueType": "id",
+                "value": "i2c"
+              },
+              "exclusive": false,
+              "discriminator": {
+                "kind": "fixed",
+                "valueType": "integer",
+                "value": 80
+              }
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun 五路循迹传感器 V2.0（I2C 0x50），支持灵敏度设置、单路模拟值与黑线状态读取。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "expression",
+        "deterministic": true,
+        "includes": [
+          "EmakefunLineTrackerV2Adapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunLineTrackerV2Adapter.h",
+            "template": "#include <EmakefunLineTrackerV2Adapter.h>"
+          },
+          {
+            "section": "expression",
+            "description": "读取单个通道的模拟值（0-4）。",
+            "template": "EmakefunLineTrackerV2Adapter::value({{field:CH}})"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun 五路循迹传感器 V2.0（I2C 0x50），支持灵敏度设置、单路模拟值与黑线状态读取。",
+          "message": "Emakefun 五路循迹传感器 V2.0（I2C 0x50），支持灵敏度设置、单路模拟值与黑线状态读取。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun 五路循迹传感器 V2 随包示例",
+          "description": "读取单个通道的模拟值（0-4）。",
+          "expected_behavior": "演示 Emakefun 五路循迹传感器 V2 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_five_line_v2_on_black",
+      "display_name": "五路循迹 V2 通道 %1 检测到黑线?",
+      "description": "判断指定通道是否位于黑线上。",
+      "category": "Emakefun 五路循迹传感器 V2",
+      "kind": "value",
+      "keywords": [
+        "Emakefun 五路循迹传感器 V2",
+        "emakefun_five_line_v2",
+        "Emakefun",
+        "循迹",
+        "五路循迹",
+        "V2",
+        "LineTracker"
+      ],
+      "semantics": {
+        "purpose": "判断指定通道是否位于黑线上。",
+        "behavior": "判断指定通道是否位于黑线上。",
+        "concepts": [
+          "Emakefun 五路循迹传感器 V2",
+          "Emakefun"
+        ],
+        "side_effects": []
+      },
+      "fields": [
+        {
+          "name": "CH",
+          "kind": "dropdown",
+          "description": "通道",
+          "required": true,
+          "default": "0",
+          "options": [
+            {
+              "label": "通道 0",
+              "value": "0"
+            },
+            {
+              "label": "通道 1",
+              "value": "1"
+            },
+            {
+              "label": "通道 2",
+              "value": "2"
+            },
+            {
+              "label": "通道 3",
+              "value": "3"
+            },
+            {
+              "label": "通道 4",
+              "value": "4"
+            }
+          ]
+        }
+      ],
+      "inputs": [],
+      "output": {
+        "connection": "value",
+        "types": [
+          "Boolean"
+        ],
+        "description": "判断指定通道是否位于黑线上。"
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunLineTrackerV2Adapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunLineTrackerV2Adapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunLineTrackerV2Adapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "emakefun line tracker",
+          "version": "2.0.0",
+          "headers": [
+            "line_tracker.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/emakefun_five_line_tracker）内置于 libraries/emakefun_five_line_tracker/。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "i2c",
+            "id": "wire",
+            "source": {
+              "kind": "board-default"
+            },
+            "access": "read-write",
+            "sharing": "shared",
+            "description": "默认 I2C 总线 (Wire)，模块默认地址 0x50。"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "i2c-device",
+              "role": "i2c-device",
+              "resource": {
+                "kind": "fixed",
+                "valueType": "id",
+                "value": "i2c"
+              },
+              "exclusive": false,
+              "discriminator": {
+                "kind": "fixed",
+                "valueType": "integer",
+                "value": 80
+              }
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun 五路循迹传感器 V2.0（I2C 0x50），支持灵敏度设置、单路模拟值与黑线状态读取。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "expression",
+        "deterministic": true,
+        "includes": [
+          "EmakefunLineTrackerV2Adapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunLineTrackerV2Adapter.h",
+            "template": "#include <EmakefunLineTrackerV2Adapter.h>"
+          },
+          {
+            "section": "expression",
+            "description": "判断指定通道是否位于黑线上。",
+            "template": "EmakefunLineTrackerV2Adapter::onBlack({{field:CH}})"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun 五路循迹传感器 V2.0（I2C 0x50），支持灵敏度设置、单路模拟值与黑线状态读取。",
+          "message": "Emakefun 五路循迹传感器 V2.0（I2C 0x50），支持灵敏度设置、单路模拟值与黑线状态读取。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun 五路循迹传感器 V2 随包示例",
+          "description": "判断指定通道是否位于黑线上。",
+          "expected_behavior": "演示 Emakefun 五路循迹传感器 V2 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_five_line_v2_states",
+      "display_name": "五路循迹 V2 五路状态字节",
+      "description": "返回五路传感器组合状态字节。",
+      "category": "Emakefun 五路循迹传感器 V2",
+      "kind": "value",
+      "keywords": [
+        "Emakefun 五路循迹传感器 V2",
+        "emakefun_five_line_v2",
+        "Emakefun",
+        "循迹",
+        "五路循迹",
+        "V2",
+        "LineTracker"
+      ],
+      "semantics": {
+        "purpose": "返回五路传感器组合状态字节。",
+        "behavior": "返回五路传感器组合状态字节。",
+        "concepts": [
+          "Emakefun 五路循迹传感器 V2",
+          "Emakefun"
+        ],
+        "side_effects": []
+      },
+      "fields": [],
+      "inputs": [],
+      "output": {
+        "connection": "value",
+        "types": [
+          "Number"
+        ],
+        "description": "返回五路传感器组合状态字节。"
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunLineTrackerV2Adapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunLineTrackerV2Adapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunLineTrackerV2Adapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "emakefun line tracker",
+          "version": "2.0.0",
+          "headers": [
+            "line_tracker.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/emakefun_five_line_tracker）内置于 libraries/emakefun_five_line_tracker/。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "i2c",
+            "id": "wire",
+            "source": {
+              "kind": "board-default"
+            },
+            "access": "read-write",
+            "sharing": "shared",
+            "description": "默认 I2C 总线 (Wire)，模块默认地址 0x50。"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "i2c-device",
+              "role": "i2c-device",
+              "resource": {
+                "kind": "fixed",
+                "valueType": "id",
+                "value": "i2c"
+              },
+              "exclusive": false,
+              "discriminator": {
+                "kind": "fixed",
+                "valueType": "integer",
+                "value": 80
+              }
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun 五路循迹传感器 V2.0（I2C 0x50），支持灵敏度设置、单路模拟值与黑线状态读取。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "expression",
+        "deterministic": true,
+        "includes": [
+          "EmakefunLineTrackerV2Adapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunLineTrackerV2Adapter.h",
+            "template": "#include <EmakefunLineTrackerV2Adapter.h>"
+          },
+          {
+            "section": "expression",
+            "description": "返回五路传感器组合状态字节。",
+            "template": "EmakefunLineTrackerV2Adapter::states()"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun 五路循迹传感器 V2.0（I2C 0x50），支持灵敏度设置、单路模拟值与黑线状态读取。",
+          "message": "Emakefun 五路循迹传感器 V2.0（I2C 0x50），支持灵敏度设置、单路模拟值与黑线状态读取。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun 五路循迹传感器 V2 随包示例",
+          "description": "返回五路传感器组合状态字节。",
+          "expected_behavior": "演示 Emakefun 五路循迹传感器 V2 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    }
+  ]
+}

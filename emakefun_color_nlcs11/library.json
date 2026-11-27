@@ -1,0 +1,21 @@
+{
+  "id": "emakefun_color_nlcs11",
+  "name": "Emakefun NLCS11 颜色传感器",
+  "version": "1.0.0",
+  "description": "Emakefun NLCS11 I2C 颜色识别传感器，支持增益与积分时间设置及 R/G/B/C 分量读取。",
+  "sentence": "Emakefun NLCS11 I2C 颜色识别传感器，支持增益与积分时间设置及 R/G/B/C 分量读取。",
+  "author": "CKYAN",
+  "vendor": "Emakefun",
+  "vendor_logo": "assets/emakefun.png",
+  "icon": "assets/icon.png",
+  "category": "Sensors",
+  "website": "https://docs.emakefun.com/sensors/smart_modules/NLCS11/",
+  "architectures": [
+    "avr",
+    "esp32"
+  ],
+  "license": "Apache-2.0",
+  "includes": [
+    "EmakefunNlcs11Adapter.h"
+  ]
+}

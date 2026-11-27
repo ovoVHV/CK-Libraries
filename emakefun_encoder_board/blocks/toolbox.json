@@ -1,0 +1,83 @@
+{
+  "kind": "category",
+  "name": "Emakefun 编码电机驱动板",
+  "colour": "#E11D48",
+  "contents": [
+    {
+      "kind": "block",
+      "type": "emakefun_encoder_board_begin",
+      "inputs": {
+        "ADDR": {
+          "shadow": {
+            "type": "math_number",
+            "fields": {
+              "NUM": 9
+            }
+          }
+        }
+      }
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_encoder_board_run_speed",
+      "inputs": {
+        "RPM": {
+          "shadow": {
+            "type": "math_number",
+            "fields": {
+              "NUM": 60
+            }
+          }
+        }
+      }
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_encoder_board_run_pwm",
+      "inputs": {
+        "PWM": {
+          "shadow": {
+            "type": "math_number",
+            "fields": {
+              "NUM": 150
+            }
+          }
+        }
+      }
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_encoder_board_move",
+      "inputs": {
+        "DEG": {
+          "shadow": {
+            "type": "math_number",
+            "fields": {
+              "NUM": 360
+            }
+          }
+        },
+        "SPD": {
+          "shadow": {
+            "type": "math_number",
+            "fields": {
+              "NUM": 60
+            }
+          }
+        }
+      }
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_encoder_board_stop"
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_encoder_board_speed"
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_encoder_board_pos"
+    }
+  ]
+}

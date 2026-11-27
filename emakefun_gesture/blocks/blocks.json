@@ -1,0 +1,85 @@
+[
+  {
+    "type": "emakefun_gesture_begin",
+    "message0": "初始化手势识别传感器 I2C地址 %1",
+    "args0": [
+      {
+        "type": "input_value",
+        "name": "ADDR",
+        "check": "Number"
+      }
+    ],
+    "inputsInline": true,
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": "#7C3AED",
+    "tooltip": "初始化 Emakefun 手势识别传感器（默认 0x39 = 57）。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_gesture_poll",
+    "message0": "手势传感器 刷新识别",
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": "#7C3AED",
+    "tooltip": "读取一次最新手势并缓存，供判断积木使用。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_gesture_code",
+    "message0": "手势传感器 当前手势编号",
+    "output": "Number",
+    "colour": "#7C3AED",
+    "tooltip": "返回当前手势编号（0 无手势，1-8 对应八种手势）。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_gesture_is",
+    "message0": "检测到手势为 %1 ?",
+    "args0": [
+      {
+        "type": "field_dropdown",
+        "name": "GESTURE",
+        "options": [
+          [
+            "右滑",
+            "1"
+          ],
+          [
+            "左滑",
+            "2"
+          ],
+          [
+            "后滑",
+            "3"
+          ],
+          [
+            "前滑",
+            "4"
+          ],
+          [
+            "上拉",
+            "5"
+          ],
+          [
+            "下压",
+            "6"
+          ],
+          [
+            "离开感应区",
+            "7"
+          ],
+          [
+            "悬停",
+            "8"
+          ]
+        ]
+      }
+    ],
+    "inputsInline": true,
+    "output": "Boolean",
+    "colour": "#7C3AED",
+    "tooltip": "判断最近一次刷新到的手势是否为指定动作。",
+    "helpUrl": ""
+  }
+]

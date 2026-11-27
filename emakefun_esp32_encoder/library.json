@@ -1,0 +1,20 @@
+{
+  "id": "emakefun_esp32_encoder",
+  "name": "Emakefun ESP32 编码电机",
+  "version": "1.0.0",
+  "description": "Emakefun 官方 ESP32 闭环编码电机驱动库（支持 Arduino-ESP32 3.x），提供 PID 调速、PWM 驱动与转速/脉冲读取。",
+  "sentence": "Emakefun 官方 ESP32 闭环编码电机驱动库（支持 Arduino-ESP32 3.x），提供 PID 调速、PWM 驱动与转速/脉冲读取。",
+  "author": "CKYAN",
+  "vendor": "Emakefun",
+  "vendor_logo": "assets/emakefun.png",
+  "icon": "assets/icon.png",
+  "category": "Device Control",
+  "website": "https://github.com/emakefun-arduino-library/em_esp32_encoder_motor",
+  "architectures": [
+    "esp32"
+  ],
+  "license": "Apache-2.0",
+  "includes": [
+    "EmakefunEsp32EncoderAdapter.h"
+  ]
+}

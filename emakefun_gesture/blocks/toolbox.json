@@ -1,0 +1,33 @@
+{
+  "kind": "category",
+  "name": "Emakefun 手势识别传感器",
+  "colour": "#7C3AED",
+  "contents": [
+    {
+      "kind": "block",
+      "type": "emakefun_gesture_begin",
+      "inputs": {
+        "ADDR": {
+          "shadow": {
+            "type": "math_number",
+            "fields": {
+              "NUM": 57
+            }
+          }
+        }
+      }
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_gesture_poll"
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_gesture_code"
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_gesture_is"
+    }
+  ]
+}

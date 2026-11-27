@@ -1,0 +1,22 @@
+{
+  "schema": "ck-generator",
+  "version": 1,
+  "rules": [
+    {
+      "type": "emakefun_matrix_kbd_v2_begin",
+      "kind": "statement",
+      "includes": {
+        "EmakefunMatrixKbdV2Adapter.h": "#include <EmakefunMatrixKbdV2Adapter.h>"
+      },
+      "template": "EmakefunMatrixKbdV2Adapter::begin({{value:ADDR}});\n"
+    },
+    {
+      "type": "emakefun_matrix_kbd_v2_read",
+      "kind": "expression",
+      "includes": {
+        "EmakefunMatrixKbdV2Adapter.h": "#include <EmakefunMatrixKbdV2Adapter.h>"
+      },
+      "template": "EmakefunMatrixKbdV2Adapter::touchedKey()"
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "schema": "ck-generator",
+  "version": 1,
+  "rules": [
+    {
+      "type": "emakefun_agile_button_begin",
+      "kind": "statement",
+      "includes": {
+        "EmakefunAgileButtonAdapter.h": "#include <EmakefunAgileButtonAdapter.h>"
+      },
+      "template": "EmakefunAgileButtonAdapter::begin({{value:PIN}}, {{field:ACTIVE}});\n"
+    },
+    {
+      "type": "emakefun_agile_button_tick",
+      "kind": "statement",
+      "includes": {
+        "EmakefunAgileButtonAdapter.h": "#include <EmakefunAgileButtonAdapter.h>"
+      },
+      "template": "EmakefunAgileButtonAdapter::tick();\n"
+    },
+    {
+      "type": "emakefun_agile_button_click",
+      "kind": "expression",
+      "includes": {
+        "EmakefunAgileButtonAdapter.h": "#include <EmakefunAgileButtonAdapter.h>"
+      },
+      "template": "EmakefunAgileButtonAdapter::takeClick(1)"
+    },
+    {
+      "type": "emakefun_agile_button_dblclick",
+      "kind": "expression",
+      "includes": {
+        "EmakefunAgileButtonAdapter.h": "#include <EmakefunAgileButtonAdapter.h>"
+      },
+      "template": "EmakefunAgileButtonAdapter::takeClick(2)"
+    },
+    {
+      "type": "emakefun_agile_button_longpress",
+      "kind": "expression",
+      "includes": {
+        "EmakefunAgileButtonAdapter.h": "#include <EmakefunAgileButtonAdapter.h>"
+      },
+      "template": "EmakefunAgileButtonAdapter::takeLongPress()"
+    }
+  ]
+}

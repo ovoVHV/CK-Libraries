@@ -1,0 +1,22 @@
+{
+  "schema": "ck-generator",
+  "version": 1,
+  "rules": [
+    {
+      "type": "emakefun_nl50_temp_begin",
+      "kind": "statement",
+      "includes": {
+        "EmakefunNl50Adapter.h": "#include <EmakefunNl50Adapter.h>"
+      },
+      "template": "EmakefunNl50Adapter::begin({{value:PIN}});\n"
+    },
+    {
+      "type": "emakefun_nl50_temp_read",
+      "kind": "expression",
+      "includes": {
+        "EmakefunNl50Adapter.h": "#include <EmakefunNl50Adapter.h>"
+      },
+      "template": "EmakefunNl50Adapter::readC()"
+    }
+  ]
+}

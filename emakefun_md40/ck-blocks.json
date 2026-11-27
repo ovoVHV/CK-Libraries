@@ -1,0 +1,1660 @@
+{
+  "schema_version": 2,
+  "id": "emakefun_md40",
+  "display_name": "Emakefun MD40 四路电机驱动板",
+  "description": "Emakefun MD40 I2C 四路编码/直流电机驱动板（默认地址 0x16），支持直流模式、闭环速度、相对/绝对角度位置与转速脉冲读取。",
+  "defaultLocale": "zh-CN",
+  "keywords": [
+    "Emakefun MD40 四路电机驱动板",
+    "emakefun_md40",
+    "Emakefun",
+    "电机",
+    "MD40",
+    "编码电机",
+    "四路电机",
+    "I2C"
+  ],
+  "license": {
+    "spdx_id": "Apache-2.0",
+    "file": "LICENSE.txt"
+  },
+  "compatibility": {
+    "architectures": [
+      "avr",
+      "esp32"
+    ]
+  },
+  "dependencies": [
+    {
+      "kind": "arduino-library",
+      "id": "EmakefunMd40Adapter",
+      "version": "1.0.0",
+      "headers": [
+        "EmakefunMd40Adapter.h"
+      ],
+      "license": "Apache-2.0",
+      "reason": "随包内置于 libraries/EmakefunMd40Adapter/，提供安全封装与跨板卡兼容接口。"
+    },
+    {
+      "kind": "arduino-library",
+      "id": "EM MD40",
+      "version": "1.0.1",
+      "headers": [
+        "em_check.h",
+        "md40.h",
+        "md40_lib.h"
+      ],
+      "license": "MIT",
+      "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/em_md40）内置于 libraries/em_md40/。"
+    }
+  ],
+  "entrypoints": {
+    "blocks": "blocks/blocks.json",
+    "generator": "blocks/ck-generator.json",
+    "toolbox": "blocks/toolbox.json"
+  },
+  "blocks": [
+    {
+      "type": "emakefun_md40_begin",
+      "display_name": "初始化 MD40 四路电机板 I2C地址 %1",
+      "description": "初始化 Emakefun MD40 驱动板（默认 0x16 = 22）。",
+      "category": "Emakefun MD40 四路电机驱动板",
+      "kind": "statement",
+      "keywords": [
+        "Emakefun MD40 四路电机驱动板",
+        "emakefun_md40",
+        "Emakefun",
+        "电机",
+        "MD40",
+        "编码电机",
+        "四路电机",
+        "I2C"
+      ],
+      "semantics": {
+        "purpose": "初始化 Emakefun MD40 驱动板（默认 0x16 = 22）。",
+        "behavior": "初始化 Emakefun MD40 驱动板（默认 0x16 = 22）。",
+        "concepts": [
+          "Emakefun MD40 四路电机驱动板",
+          "Emakefun"
+        ],
+        "side_effects": [
+          "初始化 Emakefun MD40 驱动板（默认 0x16 = 22）。"
+        ]
+      },
+      "fields": [],
+      "inputs": [
+        {
+          "name": "ADDR",
+          "kind": "value",
+          "description": "I2C 地址（默认 22）",
+          "check": "Number",
+          "required": true,
+          "default": 22
+        }
+      ],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunMd40Adapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunMd40Adapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunMd40Adapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "EM MD40",
+          "version": "1.0.1",
+          "headers": [
+            "em_check.h",
+            "md40.h",
+            "md40_lib.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/em_md40）内置于 libraries/em_md40/。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "i2c",
+            "id": "wire",
+            "source": {
+              "kind": "board-default"
+            },
+            "access": "read-write",
+            "sharing": "shared",
+            "description": "默认 I2C 总线 (Wire)，模块默认地址 0x16。"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "i2c-device",
+              "role": "i2c-device",
+              "resource": {
+                "kind": "fixed",
+                "valueType": "id",
+                "value": "i2c"
+              },
+              "exclusive": false,
+              "discriminator": {
+                "kind": "fixed",
+                "valueType": "integer",
+                "value": 22
+              }
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun MD40 I2C 四路编码/直流电机驱动板（默认地址 0x16），支持直流模式、闭环速度、相对/绝对角度位置与转速脉冲读取。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "includes": [
+          "EmakefunMd40Adapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunMd40Adapter.h",
+            "template": "#include <EmakefunMd40Adapter.h>"
+          },
+          {
+            "section": "statement",
+            "description": "初始化 Emakefun MD40 驱动板（默认 0x16 = 22）。",
+            "template": "EmakefunMd40Adapter::begin({{value:ADDR}});\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun MD40 I2C 四路编码/直流电机驱动板（默认地址 0x16），支持直流模式、闭环速度、相对/绝对角度位置与转速脉冲读取。",
+          "message": "Emakefun MD40 I2C 四路编码/直流电机驱动板（默认地址 0x16），支持直流模式、闭环速度、相对/绝对角度位置与转速脉冲读取。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun MD40 四路电机驱动板 随包示例",
+          "description": "初始化 Emakefun MD40 驱动板（默认 0x16 = 22）。",
+          "expected_behavior": "演示 Emakefun MD40 四路电机驱动板 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_md40_dc_mode",
+      "display_name": "MD40 电机 %1 设为直流模式",
+      "description": "将指定通道设为普通直流 PWM 模式。",
+      "category": "Emakefun MD40 四路电机驱动板",
+      "kind": "statement",
+      "keywords": [
+        "Emakefun MD40 四路电机驱动板",
+        "emakefun_md40",
+        "Emakefun",
+        "电机",
+        "MD40",
+        "编码电机",
+        "四路电机",
+        "I2C"
+      ],
+      "semantics": {
+        "purpose": "将指定通道设为普通直流 PWM 模式。",
+        "behavior": "将指定通道设为普通直流 PWM 模式。",
+        "concepts": [
+          "Emakefun MD40 四路电机驱动板",
+          "Emakefun"
+        ],
+        "side_effects": [
+          "将指定通道设为普通直流 PWM 模式。"
+        ]
+      },
+      "fields": [
+        {
+          "name": "IDX",
+          "kind": "dropdown",
+          "description": "电机",
+          "required": true,
+          "default": "0",
+          "options": [
+            {
+              "label": "电机 0",
+              "value": "0"
+            },
+            {
+              "label": "电机 1",
+              "value": "1"
+            },
+            {
+              "label": "电机 2",
+              "value": "2"
+            },
+            {
+              "label": "电机 3",
+              "value": "3"
+            }
+          ]
+        }
+      ],
+      "inputs": [],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunMd40Adapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunMd40Adapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunMd40Adapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "EM MD40",
+          "version": "1.0.1",
+          "headers": [
+            "em_check.h",
+            "md40.h",
+            "md40_lib.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/em_md40）内置于 libraries/em_md40/。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "i2c",
+            "id": "wire",
+            "source": {
+              "kind": "board-default"
+            },
+            "access": "read-write",
+            "sharing": "shared",
+            "description": "默认 I2C 总线 (Wire)，模块默认地址 0x16。"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "i2c-device",
+              "role": "i2c-device",
+              "resource": {
+                "kind": "fixed",
+                "valueType": "id",
+                "value": "i2c"
+              },
+              "exclusive": false,
+              "discriminator": {
+                "kind": "fixed",
+                "valueType": "integer",
+                "value": 22
+              }
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun MD40 I2C 四路编码/直流电机驱动板（默认地址 0x16），支持直流模式、闭环速度、相对/绝对角度位置与转速脉冲读取。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "includes": [
+          "EmakefunMd40Adapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunMd40Adapter.h",
+            "template": "#include <EmakefunMd40Adapter.h>"
+          },
+          {
+            "section": "statement",
+            "description": "将指定通道设为普通直流 PWM 模式。",
+            "template": "EmakefunMd40Adapter::setDc({{field:IDX}});\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun MD40 I2C 四路编码/直流电机驱动板（默认地址 0x16），支持直流模式、闭环速度、相对/绝对角度位置与转速脉冲读取。",
+          "message": "Emakefun MD40 I2C 四路编码/直流电机驱动板（默认地址 0x16），支持直流模式、闭环速度、相对/绝对角度位置与转速脉冲读取。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun MD40 四路电机驱动板 随包示例",
+          "description": "将指定通道设为普通直流 PWM 模式。",
+          "expected_behavior": "演示 Emakefun MD40 四路电机驱动板 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_md40_enc_mode",
+      "display_name": "MD40 电机 %1 设为编码模式 PPR %2 减速比 %3 相位 %4",
+      "description": "将指定通道设为闭环编码电机模式。",
+      "category": "Emakefun MD40 四路电机驱动板",
+      "kind": "statement",
+      "keywords": [
+        "Emakefun MD40 四路电机驱动板",
+        "emakefun_md40",
+        "Emakefun",
+        "电机",
+        "MD40",
+        "编码电机",
+        "四路电机",
+        "I2C"
+      ],
+      "semantics": {
+        "purpose": "将指定通道设为闭环编码电机模式。",
+        "behavior": "将指定通道设为闭环编码电机模式。",
+        "concepts": [
+          "Emakefun MD40 四路电机驱动板",
+          "Emakefun"
+        ],
+        "side_effects": [
+          "将指定通道设为闭环编码电机模式。"
+        ]
+      },
+      "fields": [
+        {
+          "name": "IDX",
+          "kind": "dropdown",
+          "description": "电机",
+          "required": true,
+          "default": "0",
+          "options": [
+            {
+              "label": "电机 0",
+              "value": "0"
+            },
+            {
+              "label": "电机 1",
+              "value": "1"
+            },
+            {
+              "label": "电机 2",
+              "value": "2"
+            },
+            {
+              "label": "电机 3",
+              "value": "3"
+            }
+          ]
+        },
+        {
+          "name": "PHASE",
+          "kind": "dropdown",
+          "description": "相位",
+          "required": true,
+          "default": "0",
+          "options": [
+            {
+              "label": "A相超前",
+              "value": "0"
+            },
+            {
+              "label": "B相超前",
+              "value": "1"
+            }
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "name": "PPR",
+          "kind": "value",
+          "description": "每转脉冲数",
+          "check": "Number",
+          "required": true,
+          "default": 12
+        },
+        {
+          "name": "RATIO",
+          "kind": "value",
+          "description": "减速比",
+          "check": "Number",
+          "required": true,
+          "default": 90
+        }
+      ],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunMd40Adapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunMd40Adapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunMd40Adapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "EM MD40",
+          "version": "1.0.1",
+          "headers": [
+            "em_check.h",
+            "md40.h",
+            "md40_lib.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/em_md40）内置于 libraries/em_md40/。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "i2c",
+            "id": "wire",
+            "source": {
+              "kind": "board-default"
+            },
+            "access": "read-write",
+            "sharing": "shared",
+            "description": "默认 I2C 总线 (Wire)，模块默认地址 0x16。"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "i2c-device",
+              "role": "i2c-device",
+              "resource": {
+                "kind": "fixed",
+                "valueType": "id",
+                "value": "i2c"
+              },
+              "exclusive": false,
+              "discriminator": {
+                "kind": "fixed",
+                "valueType": "integer",
+                "value": 22
+              }
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun MD40 I2C 四路编码/直流电机驱动板（默认地址 0x16），支持直流模式、闭环速度、相对/绝对角度位置与转速脉冲读取。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "includes": [
+          "EmakefunMd40Adapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunMd40Adapter.h",
+            "template": "#include <EmakefunMd40Adapter.h>"
+          },
+          {
+            "section": "statement",
+            "description": "将指定通道设为闭环编码电机模式。",
+            "template": "EmakefunMd40Adapter::setEncoder({{field:IDX}}, {{value:PPR}}, {{value:RATIO}}, {{field:PHASE}});\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun MD40 I2C 四路编码/直流电机驱动板（默认地址 0x16），支持直流模式、闭环速度、相对/绝对角度位置与转速脉冲读取。",
+          "message": "Emakefun MD40 I2C 四路编码/直流电机驱动板（默认地址 0x16），支持直流模式、闭环速度、相对/绝对角度位置与转速脉冲读取。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun MD40 四路电机驱动板 随包示例",
+          "description": "将指定通道设为闭环编码电机模式。",
+          "expected_behavior": "演示 Emakefun MD40 四路电机驱动板 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_md40_run_speed",
+      "display_name": "MD40 电机 %1 恒速运行 %2 RPM",
+      "description": "以闭环速度 RPM 驱动电机。",
+      "category": "Emakefun MD40 四路电机驱动板",
+      "kind": "statement",
+      "keywords": [
+        "Emakefun MD40 四路电机驱动板",
+        "emakefun_md40",
+        "Emakefun",
+        "电机",
+        "MD40",
+        "编码电机",
+        "四路电机",
+        "I2C"
+      ],
+      "semantics": {
+        "purpose": "以闭环速度 RPM 驱动电机。",
+        "behavior": "以闭环速度 RPM 驱动电机。",
+        "concepts": [
+          "Emakefun MD40 四路电机驱动板",
+          "Emakefun"
+        ],
+        "side_effects": [
+          "以闭环速度 RPM 驱动电机。"
+        ]
+      },
+      "fields": [
+        {
+          "name": "IDX",
+          "kind": "dropdown",
+          "description": "电机",
+          "required": true,
+          "default": "0",
+          "options": [
+            {
+              "label": "电机 0",
+              "value": "0"
+            },
+            {
+              "label": "电机 1",
+              "value": "1"
+            },
+            {
+              "label": "电机 2",
+              "value": "2"
+            },
+            {
+              "label": "电机 3",
+              "value": "3"
+            }
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "name": "RPM",
+          "kind": "value",
+          "description": "目标 RPM",
+          "check": "Number",
+          "required": true,
+          "default": 60
+        }
+      ],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunMd40Adapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunMd40Adapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunMd40Adapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "EM MD40",
+          "version": "1.0.1",
+          "headers": [
+            "em_check.h",
+            "md40.h",
+            "md40_lib.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/em_md40）内置于 libraries/em_md40/。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "i2c",
+            "id": "wire",
+            "source": {
+              "kind": "board-default"
+            },
+            "access": "read-write",
+            "sharing": "shared",
+            "description": "默认 I2C 总线 (Wire)，模块默认地址 0x16。"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "i2c-device",
+              "role": "i2c-device",
+              "resource": {
+                "kind": "fixed",
+                "valueType": "id",
+                "value": "i2c"
+              },
+              "exclusive": false,
+              "discriminator": {
+                "kind": "fixed",
+                "valueType": "integer",
+                "value": 22
+              }
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun MD40 I2C 四路编码/直流电机驱动板（默认地址 0x16），支持直流模式、闭环速度、相对/绝对角度位置与转速脉冲读取。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "includes": [
+          "EmakefunMd40Adapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunMd40Adapter.h",
+            "template": "#include <EmakefunMd40Adapter.h>"
+          },
+          {
+            "section": "statement",
+            "description": "以闭环速度 RPM 驱动电机。",
+            "template": "EmakefunMd40Adapter::runSpeed({{field:IDX}}, {{value:RPM}});\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun MD40 I2C 四路编码/直流电机驱动板（默认地址 0x16），支持直流模式、闭环速度、相对/绝对角度位置与转速脉冲读取。",
+          "message": "Emakefun MD40 I2C 四路编码/直流电机驱动板（默认地址 0x16），支持直流模式、闭环速度、相对/绝对角度位置与转速脉冲读取。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun MD40 四路电机驱动板 随包示例",
+          "description": "以闭环速度 RPM 驱动电机。",
+          "expected_behavior": "演示 Emakefun MD40 四路电机驱动板 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_md40_run_pwm",
+      "display_name": "MD40 电机 %1 设 PWM 占空比 %2",
+      "description": "按占空比直接驱动电机。",
+      "category": "Emakefun MD40 四路电机驱动板",
+      "kind": "statement",
+      "keywords": [
+        "Emakefun MD40 四路电机驱动板",
+        "emakefun_md40",
+        "Emakefun",
+        "电机",
+        "MD40",
+        "编码电机",
+        "四路电机",
+        "I2C"
+      ],
+      "semantics": {
+        "purpose": "按占空比直接驱动电机。",
+        "behavior": "按占空比直接驱动电机。",
+        "concepts": [
+          "Emakefun MD40 四路电机驱动板",
+          "Emakefun"
+        ],
+        "side_effects": [
+          "按占空比直接驱动电机。"
+        ]
+      },
+      "fields": [
+        {
+          "name": "IDX",
+          "kind": "dropdown",
+          "description": "电机",
+          "required": true,
+          "default": "0",
+          "options": [
+            {
+              "label": "电机 0",
+              "value": "0"
+            },
+            {
+              "label": "电机 1",
+              "value": "1"
+            },
+            {
+              "label": "电机 2",
+              "value": "2"
+            },
+            {
+              "label": "电机 3",
+              "value": "3"
+            }
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "name": "DUTY",
+          "kind": "value",
+          "description": "PWM 占空比 (-1023~1023)",
+          "check": "Number",
+          "required": true,
+          "default": 512
+        }
+      ],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunMd40Adapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunMd40Adapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunMd40Adapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "EM MD40",
+          "version": "1.0.1",
+          "headers": [
+            "em_check.h",
+            "md40.h",
+            "md40_lib.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/em_md40）内置于 libraries/em_md40/。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "i2c",
+            "id": "wire",
+            "source": {
+              "kind": "board-default"
+            },
+            "access": "read-write",
+            "sharing": "shared",
+            "description": "默认 I2C 总线 (Wire)，模块默认地址 0x16。"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "i2c-device",
+              "role": "i2c-device",
+              "resource": {
+                "kind": "fixed",
+                "valueType": "id",
+                "value": "i2c"
+              },
+              "exclusive": false,
+              "discriminator": {
+                "kind": "fixed",
+                "valueType": "integer",
+                "value": 22
+              }
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun MD40 I2C 四路编码/直流电机驱动板（默认地址 0x16），支持直流模式、闭环速度、相对/绝对角度位置与转速脉冲读取。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "includes": [
+          "EmakefunMd40Adapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunMd40Adapter.h",
+            "template": "#include <EmakefunMd40Adapter.h>"
+          },
+          {
+            "section": "statement",
+            "description": "按占空比直接驱动电机。",
+            "template": "EmakefunMd40Adapter::runPwm({{field:IDX}}, {{value:DUTY}});\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun MD40 I2C 四路编码/直流电机驱动板（默认地址 0x16），支持直流模式、闭环速度、相对/绝对角度位置与转速脉冲读取。",
+          "message": "Emakefun MD40 I2C 四路编码/直流电机驱动板（默认地址 0x16），支持直流模式、闭环速度、相对/绝对角度位置与转速脉冲读取。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun MD40 四路电机驱动板 随包示例",
+          "description": "按占空比直接驱动电机。",
+          "expected_behavior": "演示 Emakefun MD40 四路电机驱动板 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_md40_move_rel",
+      "display_name": "MD40 电机 %1 相对转动 %2 度 速度 %3 RPM",
+      "description": "相对当前角度转动指定度数。",
+      "category": "Emakefun MD40 四路电机驱动板",
+      "kind": "statement",
+      "keywords": [
+        "Emakefun MD40 四路电机驱动板",
+        "emakefun_md40",
+        "Emakefun",
+        "电机",
+        "MD40",
+        "编码电机",
+        "四路电机",
+        "I2C"
+      ],
+      "semantics": {
+        "purpose": "相对当前角度转动指定度数。",
+        "behavior": "相对当前角度转动指定度数。",
+        "concepts": [
+          "Emakefun MD40 四路电机驱动板",
+          "Emakefun"
+        ],
+        "side_effects": [
+          "相对当前角度转动指定度数。"
+        ]
+      },
+      "fields": [
+        {
+          "name": "IDX",
+          "kind": "dropdown",
+          "description": "电机",
+          "required": true,
+          "default": "0",
+          "options": [
+            {
+              "label": "电机 0",
+              "value": "0"
+            },
+            {
+              "label": "电机 1",
+              "value": "1"
+            },
+            {
+              "label": "电机 2",
+              "value": "2"
+            },
+            {
+              "label": "电机 3",
+              "value": "3"
+            }
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "name": "OFF",
+          "kind": "value",
+          "description": "相对角度（度）",
+          "check": "Number",
+          "required": true,
+          "default": 360
+        },
+        {
+          "name": "SPD",
+          "kind": "value",
+          "description": "转速 RPM",
+          "check": "Number",
+          "required": true,
+          "default": 60
+        }
+      ],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunMd40Adapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunMd40Adapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunMd40Adapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "EM MD40",
+          "version": "1.0.1",
+          "headers": [
+            "em_check.h",
+            "md40.h",
+            "md40_lib.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/em_md40）内置于 libraries/em_md40/。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "i2c",
+            "id": "wire",
+            "source": {
+              "kind": "board-default"
+            },
+            "access": "read-write",
+            "sharing": "shared",
+            "description": "默认 I2C 总线 (Wire)，模块默认地址 0x16。"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "i2c-device",
+              "role": "i2c-device",
+              "resource": {
+                "kind": "fixed",
+                "valueType": "id",
+                "value": "i2c"
+              },
+              "exclusive": false,
+              "discriminator": {
+                "kind": "fixed",
+                "valueType": "integer",
+                "value": 22
+              }
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun MD40 I2C 四路编码/直流电机驱动板（默认地址 0x16），支持直流模式、闭环速度、相对/绝对角度位置与转速脉冲读取。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "includes": [
+          "EmakefunMd40Adapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunMd40Adapter.h",
+            "template": "#include <EmakefunMd40Adapter.h>"
+          },
+          {
+            "section": "statement",
+            "description": "相对当前角度转动指定度数。",
+            "template": "EmakefunMd40Adapter::moveRel({{field:IDX}}, {{value:OFF}}, {{value:SPD}});\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun MD40 I2C 四路编码/直流电机驱动板（默认地址 0x16），支持直流模式、闭环速度、相对/绝对角度位置与转速脉冲读取。",
+          "message": "Emakefun MD40 I2C 四路编码/直流电机驱动板（默认地址 0x16），支持直流模式、闭环速度、相对/绝对角度位置与转速脉冲读取。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun MD40 四路电机驱动板 随包示例",
+          "description": "相对当前角度转动指定度数。",
+          "expected_behavior": "演示 Emakefun MD40 四路电机驱动板 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_md40_stop",
+      "display_name": "MD40 停止电机 %1",
+      "description": "停止指定电机。",
+      "category": "Emakefun MD40 四路电机驱动板",
+      "kind": "statement",
+      "keywords": [
+        "Emakefun MD40 四路电机驱动板",
+        "emakefun_md40",
+        "Emakefun",
+        "电机",
+        "MD40",
+        "编码电机",
+        "四路电机",
+        "I2C"
+      ],
+      "semantics": {
+        "purpose": "停止指定电机。",
+        "behavior": "停止指定电机。",
+        "concepts": [
+          "Emakefun MD40 四路电机驱动板",
+          "Emakefun"
+        ],
+        "side_effects": [
+          "停止指定电机。"
+        ]
+      },
+      "fields": [
+        {
+          "name": "IDX",
+          "kind": "dropdown",
+          "description": "电机",
+          "required": true,
+          "default": "0",
+          "options": [
+            {
+              "label": "电机 0",
+              "value": "0"
+            },
+            {
+              "label": "电机 1",
+              "value": "1"
+            },
+            {
+              "label": "电机 2",
+              "value": "2"
+            },
+            {
+              "label": "电机 3",
+              "value": "3"
+            }
+          ]
+        }
+      ],
+      "inputs": [],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunMd40Adapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunMd40Adapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunMd40Adapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "EM MD40",
+          "version": "1.0.1",
+          "headers": [
+            "em_check.h",
+            "md40.h",
+            "md40_lib.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/em_md40）内置于 libraries/em_md40/。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "i2c",
+            "id": "wire",
+            "source": {
+              "kind": "board-default"
+            },
+            "access": "read-write",
+            "sharing": "shared",
+            "description": "默认 I2C 总线 (Wire)，模块默认地址 0x16。"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "i2c-device",
+              "role": "i2c-device",
+              "resource": {
+                "kind": "fixed",
+                "valueType": "id",
+                "value": "i2c"
+              },
+              "exclusive": false,
+              "discriminator": {
+                "kind": "fixed",
+                "valueType": "integer",
+                "value": 22
+              }
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun MD40 I2C 四路编码/直流电机驱动板（默认地址 0x16），支持直流模式、闭环速度、相对/绝对角度位置与转速脉冲读取。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "includes": [
+          "EmakefunMd40Adapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunMd40Adapter.h",
+            "template": "#include <EmakefunMd40Adapter.h>"
+          },
+          {
+            "section": "statement",
+            "description": "停止指定电机。",
+            "template": "EmakefunMd40Adapter::stop({{field:IDX}});\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun MD40 I2C 四路编码/直流电机驱动板（默认地址 0x16），支持直流模式、闭环速度、相对/绝对角度位置与转速脉冲读取。",
+          "message": "Emakefun MD40 I2C 四路编码/直流电机驱动板（默认地址 0x16），支持直流模式、闭环速度、相对/绝对角度位置与转速脉冲读取。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun MD40 四路电机驱动板 随包示例",
+          "description": "停止指定电机。",
+          "expected_behavior": "演示 Emakefun MD40 四路电机驱动板 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_md40_get_speed",
+      "display_name": "MD40 电机 %1 当前转速 (RPM)",
+      "description": "读取电机实时转速。",
+      "category": "Emakefun MD40 四路电机驱动板",
+      "kind": "value",
+      "keywords": [
+        "Emakefun MD40 四路电机驱动板",
+        "emakefun_md40",
+        "Emakefun",
+        "电机",
+        "MD40",
+        "编码电机",
+        "四路电机",
+        "I2C"
+      ],
+      "semantics": {
+        "purpose": "读取电机实时转速。",
+        "behavior": "读取电机实时转速。",
+        "concepts": [
+          "Emakefun MD40 四路电机驱动板",
+          "Emakefun"
+        ],
+        "side_effects": []
+      },
+      "fields": [
+        {
+          "name": "IDX",
+          "kind": "dropdown",
+          "description": "电机",
+          "required": true,
+          "default": "0",
+          "options": [
+            {
+              "label": "电机 0",
+              "value": "0"
+            },
+            {
+              "label": "电机 1",
+              "value": "1"
+            },
+            {
+              "label": "电机 2",
+              "value": "2"
+            },
+            {
+              "label": "电机 3",
+              "value": "3"
+            }
+          ]
+        }
+      ],
+      "inputs": [],
+      "output": {
+        "connection": "value",
+        "types": [
+          "Number"
+        ],
+        "description": "读取电机实时转速。"
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunMd40Adapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunMd40Adapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunMd40Adapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "EM MD40",
+          "version": "1.0.1",
+          "headers": [
+            "em_check.h",
+            "md40.h",
+            "md40_lib.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/em_md40）内置于 libraries/em_md40/。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "i2c",
+            "id": "wire",
+            "source": {
+              "kind": "board-default"
+            },
+            "access": "read-write",
+            "sharing": "shared",
+            "description": "默认 I2C 总线 (Wire)，模块默认地址 0x16。"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "i2c-device",
+              "role": "i2c-device",
+              "resource": {
+                "kind": "fixed",
+                "valueType": "id",
+                "value": "i2c"
+              },
+              "exclusive": false,
+              "discriminator": {
+                "kind": "fixed",
+                "valueType": "integer",
+                "value": 22
+              }
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun MD40 I2C 四路编码/直流电机驱动板（默认地址 0x16），支持直流模式、闭环速度、相对/绝对角度位置与转速脉冲读取。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "expression",
+        "deterministic": true,
+        "includes": [
+          "EmakefunMd40Adapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunMd40Adapter.h",
+            "template": "#include <EmakefunMd40Adapter.h>"
+          },
+          {
+            "section": "expression",
+            "description": "读取电机实时转速。",
+            "template": "EmakefunMd40Adapter::speed({{field:IDX}})"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun MD40 I2C 四路编码/直流电机驱动板（默认地址 0x16），支持直流模式、闭环速度、相对/绝对角度位置与转速脉冲读取。",
+          "message": "Emakefun MD40 I2C 四路编码/直流电机驱动板（默认地址 0x16），支持直流模式、闭环速度、相对/绝对角度位置与转速脉冲读取。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun MD40 四路电机驱动板 随包示例",
+          "description": "读取电机实时转速。",
+          "expected_behavior": "演示 Emakefun MD40 四路电机驱动板 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_md40_get_pos",
+      "display_name": "MD40 电机 %1 当前角度位置",
+      "description": "读取电机当前累计角度位置。",
+      "category": "Emakefun MD40 四路电机驱动板",
+      "kind": "value",
+      "keywords": [
+        "Emakefun MD40 四路电机驱动板",
+        "emakefun_md40",
+        "Emakefun",
+        "电机",
+        "MD40",
+        "编码电机",
+        "四路电机",
+        "I2C"
+      ],
+      "semantics": {
+        "purpose": "读取电机当前累计角度位置。",
+        "behavior": "读取电机当前累计角度位置。",
+        "concepts": [
+          "Emakefun MD40 四路电机驱动板",
+          "Emakefun"
+        ],
+        "side_effects": []
+      },
+      "fields": [
+        {
+          "name": "IDX",
+          "kind": "dropdown",
+          "description": "电机",
+          "required": true,
+          "default": "0",
+          "options": [
+            {
+              "label": "电机 0",
+              "value": "0"
+            },
+            {
+              "label": "电机 1",
+              "value": "1"
+            },
+            {
+              "label": "电机 2",
+              "value": "2"
+            },
+            {
+              "label": "电机 3",
+              "value": "3"
+            }
+          ]
+        }
+      ],
+      "inputs": [],
+      "output": {
+        "connection": "value",
+        "types": [
+          "Number"
+        ],
+        "description": "读取电机当前累计角度位置。"
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunMd40Adapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunMd40Adapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunMd40Adapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "EM MD40",
+          "version": "1.0.1",
+          "headers": [
+            "em_check.h",
+            "md40.h",
+            "md40_lib.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/em_md40）内置于 libraries/em_md40/。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "i2c",
+            "id": "wire",
+            "source": {
+              "kind": "board-default"
+            },
+            "access": "read-write",
+            "sharing": "shared",
+            "description": "默认 I2C 总线 (Wire)，模块默认地址 0x16。"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "i2c-device",
+              "role": "i2c-device",
+              "resource": {
+                "kind": "fixed",
+                "valueType": "id",
+                "value": "i2c"
+              },
+              "exclusive": false,
+              "discriminator": {
+                "kind": "fixed",
+                "valueType": "integer",
+                "value": 22
+              }
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun MD40 I2C 四路编码/直流电机驱动板（默认地址 0x16），支持直流模式、闭环速度、相对/绝对角度位置与转速脉冲读取。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "expression",
+        "deterministic": true,
+        "includes": [
+          "EmakefunMd40Adapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunMd40Adapter.h",
+            "template": "#include <EmakefunMd40Adapter.h>"
+          },
+          {
+            "section": "expression",
+            "description": "读取电机当前累计角度位置。",
+            "template": "EmakefunMd40Adapter::position({{field:IDX}})"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun MD40 I2C 四路编码/直流电机驱动板（默认地址 0x16），支持直流模式、闭环速度、相对/绝对角度位置与转速脉冲读取。",
+          "message": "Emakefun MD40 I2C 四路编码/直流电机驱动板（默认地址 0x16），支持直流模式、闭环速度、相对/绝对角度位置与转速脉冲读取。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun MD40 四路电机驱动板 随包示例",
+          "description": "读取电机当前累计角度位置。",
+          "expected_behavior": "演示 Emakefun MD40 四路电机驱动板 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    }
+  ]
+}

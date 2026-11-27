@@ -1,0 +1,21 @@
+{
+  "id": "emakefun_asr_serial",
+  "name": "Emakefun ASR 串口语音识别",
+  "version": "1.0.0",
+  "description": "Emakefun 串口离线语音识别模块（9600bps），支持指令播报、音量调节、唤醒控制与复位。",
+  "sentence": "Emakefun 串口离线语音识别模块（9600bps），支持指令播报、音量调节、唤醒控制与复位。",
+  "author": "CKYAN",
+  "vendor": "Emakefun",
+  "vendor_logo": "assets/emakefun.png",
+  "icon": "assets/icon.jpg",
+  "category": "Sensors",
+  "website": "https://github.com/emakefun-arduino-library/em_asr_speech_recognition",
+  "architectures": [
+    "avr",
+    "esp32"
+  ],
+  "license": "Apache-2.0",
+  "includes": [
+    "EmakefunAsrSerialAdapter.h"
+  ]
+}

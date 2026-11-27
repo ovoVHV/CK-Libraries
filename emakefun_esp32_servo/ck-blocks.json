@@ -1,0 +1,524 @@
+{
+  "schema_version": 2,
+  "id": "emakefun_esp32_servo",
+  "display_name": "Emakefun ESP32 舵机驱动",
+  "description": "Emakefun 官方 ESP32 舵机驱动库（基于 ESP32 LEDC），支持 0-180° 角度与微秒脉宽精确控制。",
+  "defaultLocale": "zh-CN",
+  "keywords": [
+    "Emakefun ESP32 舵机驱动",
+    "emakefun_esp32_servo",
+    "Emakefun",
+    "舵机",
+    "Servo",
+    "ESP32"
+  ],
+  "license": {
+    "spdx_id": "Apache-2.0",
+    "file": "LICENSE.txt"
+  },
+  "compatibility": {
+    "architectures": [
+      "esp32"
+    ]
+  },
+  "dependencies": [
+    {
+      "kind": "arduino-library",
+      "id": "EmakefunEsp32ServoAdapter",
+      "version": "1.0.0",
+      "headers": [
+        "EmakefunEsp32ServoAdapter.h"
+      ],
+      "license": "Apache-2.0",
+      "reason": "随包内置于 libraries/EmakefunEsp32ServoAdapter/，提供安全封装与跨板卡兼容接口。"
+    },
+    {
+      "kind": "arduino-library",
+      "id": "Emakefun ESP32 Servo",
+      "version": "1.0.1",
+      "headers": [
+        "servo.h",
+        "servo_lib.h"
+      ],
+      "license": "MIT",
+      "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/em_esp32_servo）内置于 libraries/em_esp32_servo/。"
+    }
+  ],
+  "entrypoints": {
+    "blocks": "blocks/blocks.json",
+    "generator": "blocks/ck-generator.json",
+    "toolbox": "blocks/toolbox.json"
+  },
+  "blocks": [
+    {
+      "type": "emakefun_esp32_servo_begin",
+      "display_name": "初始化 ESP32 舵机 通道 %1 引脚 %2",
+      "description": "初始化 Emakefun ESP32 舵机（最多 4 路独立通道）。",
+      "category": "Emakefun ESP32 舵机驱动",
+      "kind": "statement",
+      "keywords": [
+        "Emakefun ESP32 舵机驱动",
+        "emakefun_esp32_servo",
+        "Emakefun",
+        "舵机",
+        "Servo",
+        "ESP32"
+      ],
+      "semantics": {
+        "purpose": "初始化 Emakefun ESP32 舵机（最多 4 路独立通道）。",
+        "behavior": "初始化 Emakefun ESP32 舵机（最多 4 路独立通道）。",
+        "concepts": [
+          "Emakefun ESP32 舵机驱动",
+          "Emakefun"
+        ],
+        "side_effects": [
+          "初始化 Emakefun ESP32 舵机（最多 4 路独立通道）。"
+        ]
+      },
+      "fields": [
+        {
+          "name": "CH",
+          "kind": "dropdown",
+          "description": "通道",
+          "required": true,
+          "default": "0",
+          "options": [
+            {
+              "label": "通道 1",
+              "value": "0"
+            },
+            {
+              "label": "通道 2",
+              "value": "1"
+            },
+            {
+              "label": "通道 3",
+              "value": "2"
+            },
+            {
+              "label": "通道 4",
+              "value": "3"
+            }
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "name": "PIN",
+          "kind": "value",
+          "description": "GPIO 引脚",
+          "check": "Number",
+          "required": true,
+          "default": 4
+        }
+      ],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunEsp32ServoAdapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunEsp32ServoAdapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunEsp32ServoAdapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "Emakefun ESP32 Servo",
+          "version": "1.0.1",
+          "headers": [
+            "servo.h",
+            "servo_lib.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/em_esp32_servo）内置于 libraries/em_esp32_servo/。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "gpio",
+            "id": "pin",
+            "source": {
+              "kind": "input",
+              "name": "PIN"
+            },
+            "access": "read-write",
+            "sharing": "exclusive",
+            "capabilities": [
+              "digital-output"
+            ],
+            "description": "GPIO 引脚"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "gpio-pin",
+              "role": "digital-output",
+              "resource": {
+                "kind": "input",
+                "name": "PIN",
+                "valueType": "id"
+              },
+              "exclusive": true
+            }
+          ]
+        },
+        "boards": [
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun 官方 ESP32 舵机驱动库（基于 ESP32 LEDC），支持 0-180° 角度与微秒脉宽精确控制。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "includes": [
+          "EmakefunEsp32ServoAdapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunEsp32ServoAdapter.h",
+            "template": "#include <EmakefunEsp32ServoAdapter.h>"
+          },
+          {
+            "section": "statement",
+            "description": "初始化 Emakefun ESP32 舵机（最多 4 路独立通道）。",
+            "template": "EmakefunEsp32ServoAdapter::begin({{field:CH}}, {{value:PIN}});\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun 官方 ESP32 舵机驱动库（基于 ESP32 LEDC），支持 0-180° 角度与微秒脉宽精确控制。",
+          "message": "Emakefun 官方 ESP32 舵机驱动库（基于 ESP32 LEDC），支持 0-180° 角度与微秒脉宽精确控制。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun ESP32 舵机驱动 随包示例",
+          "description": "初始化 Emakefun ESP32 舵机（最多 4 路独立通道）。",
+          "expected_behavior": "演示 Emakefun ESP32 舵机驱动 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_esp32_servo_write",
+      "display_name": "ESP32 舵机 通道 %1 转到角度 %2°",
+      "description": "控制舵机旋转到 0-180 度。",
+      "category": "Emakefun ESP32 舵机驱动",
+      "kind": "statement",
+      "keywords": [
+        "Emakefun ESP32 舵机驱动",
+        "emakefun_esp32_servo",
+        "Emakefun",
+        "舵机",
+        "Servo",
+        "ESP32"
+      ],
+      "semantics": {
+        "purpose": "控制舵机旋转到 0-180 度。",
+        "behavior": "控制舵机旋转到 0-180 度。",
+        "concepts": [
+          "Emakefun ESP32 舵机驱动",
+          "Emakefun"
+        ],
+        "side_effects": [
+          "控制舵机旋转到 0-180 度。"
+        ]
+      },
+      "fields": [
+        {
+          "name": "CH",
+          "kind": "dropdown",
+          "description": "通道",
+          "required": true,
+          "default": "0",
+          "options": [
+            {
+              "label": "通道 1",
+              "value": "0"
+            },
+            {
+              "label": "通道 2",
+              "value": "1"
+            },
+            {
+              "label": "通道 3",
+              "value": "2"
+            },
+            {
+              "label": "通道 4",
+              "value": "3"
+            }
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "name": "ANG",
+          "kind": "value",
+          "description": "角度 0-180",
+          "check": "Number",
+          "required": true,
+          "default": 90
+        }
+      ],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunEsp32ServoAdapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunEsp32ServoAdapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunEsp32ServoAdapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "Emakefun ESP32 Servo",
+          "version": "1.0.1",
+          "headers": [
+            "servo.h",
+            "servo_lib.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/em_esp32_servo）内置于 libraries/em_esp32_servo/。"
+        }
+      ],
+      "hardware": {
+        "resources": [],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": []
+        },
+        "boards": [
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun 官方 ESP32 舵机驱动库（基于 ESP32 LEDC），支持 0-180° 角度与微秒脉宽精确控制。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "includes": [
+          "EmakefunEsp32ServoAdapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunEsp32ServoAdapter.h",
+            "template": "#include <EmakefunEsp32ServoAdapter.h>"
+          },
+          {
+            "section": "statement",
+            "description": "控制舵机旋转到 0-180 度。",
+            "template": "EmakefunEsp32ServoAdapter::writeAngle({{field:CH}}, {{value:ANG}});\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun 官方 ESP32 舵机驱动库（基于 ESP32 LEDC），支持 0-180° 角度与微秒脉宽精确控制。",
+          "message": "Emakefun 官方 ESP32 舵机驱动库（基于 ESP32 LEDC），支持 0-180° 角度与微秒脉宽精确控制。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun ESP32 舵机驱动 随包示例",
+          "description": "控制舵机旋转到 0-180 度。",
+          "expected_behavior": "演示 Emakefun ESP32 舵机驱动 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_esp32_servo_write_us",
+      "display_name": "ESP32 舵机 通道 %1 脉宽 %2 微秒",
+      "description": "以微秒脉宽（500-2500us）精细控制舵机。",
+      "category": "Emakefun ESP32 舵机驱动",
+      "kind": "statement",
+      "keywords": [
+        "Emakefun ESP32 舵机驱动",
+        "emakefun_esp32_servo",
+        "Emakefun",
+        "舵机",
+        "Servo",
+        "ESP32"
+      ],
+      "semantics": {
+        "purpose": "以微秒脉宽（500-2500us）精细控制舵机。",
+        "behavior": "以微秒脉宽（500-2500us）精细控制舵机。",
+        "concepts": [
+          "Emakefun ESP32 舵机驱动",
+          "Emakefun"
+        ],
+        "side_effects": [
+          "以微秒脉宽（500-2500us）精细控制舵机。"
+        ]
+      },
+      "fields": [
+        {
+          "name": "CH",
+          "kind": "dropdown",
+          "description": "通道",
+          "required": true,
+          "default": "0",
+          "options": [
+            {
+              "label": "通道 1",
+              "value": "0"
+            },
+            {
+              "label": "通道 2",
+              "value": "1"
+            },
+            {
+              "label": "通道 3",
+              "value": "2"
+            },
+            {
+              "label": "通道 4",
+              "value": "3"
+            }
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "name": "US",
+          "kind": "value",
+          "description": "脉宽微秒",
+          "check": "Number",
+          "required": true,
+          "default": 1500
+        }
+      ],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunEsp32ServoAdapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunEsp32ServoAdapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunEsp32ServoAdapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "Emakefun ESP32 Servo",
+          "version": "1.0.1",
+          "headers": [
+            "servo.h",
+            "servo_lib.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/em_esp32_servo）内置于 libraries/em_esp32_servo/。"
+        }
+      ],
+      "hardware": {
+        "resources": [],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": []
+        },
+        "boards": [
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun 官方 ESP32 舵机驱动库（基于 ESP32 LEDC），支持 0-180° 角度与微秒脉宽精确控制。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "includes": [
+          "EmakefunEsp32ServoAdapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunEsp32ServoAdapter.h",
+            "template": "#include <EmakefunEsp32ServoAdapter.h>"
+          },
+          {
+            "section": "statement",
+            "description": "以微秒脉宽（500-2500us）精细控制舵机。",
+            "template": "EmakefunEsp32ServoAdapter::writeUs({{field:CH}}, {{value:US}});\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun 官方 ESP32 舵机驱动库（基于 ESP32 LEDC），支持 0-180° 角度与微秒脉宽精确控制。",
+          "message": "Emakefun 官方 ESP32 舵机驱动库（基于 ESP32 LEDC），支持 0-180° 角度与微秒脉宽精确控制。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun ESP32 舵机驱动 随包示例",
+          "description": "以微秒脉宽（500-2500us）精细控制舵机。",
+          "expected_behavior": "演示 Emakefun ESP32 舵机驱动 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    }
+  ]
+}

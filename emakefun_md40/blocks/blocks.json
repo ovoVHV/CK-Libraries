@@ -1,0 +1,333 @@
+[
+  {
+    "type": "emakefun_md40_begin",
+    "message0": "初始化 MD40 四路电机板 I2C地址 %1",
+    "args0": [
+      {
+        "type": "input_value",
+        "name": "ADDR",
+        "check": "Number"
+      }
+    ],
+    "inputsInline": true,
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": "#991B1B",
+    "tooltip": "初始化 Emakefun MD40 驱动板（默认 0x16 = 22）。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_md40_dc_mode",
+    "message0": "MD40 电机 %1 设为直流模式",
+    "args0": [
+      {
+        "type": "field_dropdown",
+        "name": "IDX",
+        "options": [
+          [
+            "电机 0",
+            "0"
+          ],
+          [
+            "电机 1",
+            "1"
+          ],
+          [
+            "电机 2",
+            "2"
+          ],
+          [
+            "电机 3",
+            "3"
+          ]
+        ]
+      }
+    ],
+    "inputsInline": true,
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": "#991B1B",
+    "tooltip": "将指定通道设为普通直流 PWM 模式。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_md40_enc_mode",
+    "message0": "MD40 电机 %1 设为编码模式 PPR %2 减速比 %3 相位 %4",
+    "args0": [
+      {
+        "type": "field_dropdown",
+        "name": "IDX",
+        "options": [
+          [
+            "电机 0",
+            "0"
+          ],
+          [
+            "电机 1",
+            "1"
+          ],
+          [
+            "电机 2",
+            "2"
+          ],
+          [
+            "电机 3",
+            "3"
+          ]
+        ]
+      },
+      {
+        "type": "input_value",
+        "name": "PPR",
+        "check": "Number"
+      },
+      {
+        "type": "input_value",
+        "name": "RATIO",
+        "check": "Number"
+      },
+      {
+        "type": "field_dropdown",
+        "name": "PHASE",
+        "options": [
+          [
+            "A相超前",
+            "0"
+          ],
+          [
+            "B相超前",
+            "1"
+          ]
+        ]
+      }
+    ],
+    "inputsInline": true,
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": "#991B1B",
+    "tooltip": "将指定通道设为闭环编码电机模式。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_md40_run_speed",
+    "message0": "MD40 电机 %1 恒速运行 %2 RPM",
+    "args0": [
+      {
+        "type": "field_dropdown",
+        "name": "IDX",
+        "options": [
+          [
+            "电机 0",
+            "0"
+          ],
+          [
+            "电机 1",
+            "1"
+          ],
+          [
+            "电机 2",
+            "2"
+          ],
+          [
+            "电机 3",
+            "3"
+          ]
+        ]
+      },
+      {
+        "type": "input_value",
+        "name": "RPM",
+        "check": "Number"
+      }
+    ],
+    "inputsInline": true,
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": "#991B1B",
+    "tooltip": "以闭环速度 RPM 驱动电机。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_md40_run_pwm",
+    "message0": "MD40 电机 %1 设 PWM 占空比 %2",
+    "args0": [
+      {
+        "type": "field_dropdown",
+        "name": "IDX",
+        "options": [
+          [
+            "电机 0",
+            "0"
+          ],
+          [
+            "电机 1",
+            "1"
+          ],
+          [
+            "电机 2",
+            "2"
+          ],
+          [
+            "电机 3",
+            "3"
+          ]
+        ]
+      },
+      {
+        "type": "input_value",
+        "name": "DUTY",
+        "check": "Number"
+      }
+    ],
+    "inputsInline": true,
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": "#991B1B",
+    "tooltip": "按占空比直接驱动电机。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_md40_move_rel",
+    "message0": "MD40 电机 %1 相对转动 %2 度 速度 %3 RPM",
+    "args0": [
+      {
+        "type": "field_dropdown",
+        "name": "IDX",
+        "options": [
+          [
+            "电机 0",
+            "0"
+          ],
+          [
+            "电机 1",
+            "1"
+          ],
+          [
+            "电机 2",
+            "2"
+          ],
+          [
+            "电机 3",
+            "3"
+          ]
+        ]
+      },
+      {
+        "type": "input_value",
+        "name": "OFF",
+        "check": "Number"
+      },
+      {
+        "type": "input_value",
+        "name": "SPD",
+        "check": "Number"
+      }
+    ],
+    "inputsInline": true,
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": "#991B1B",
+    "tooltip": "相对当前角度转动指定度数。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_md40_stop",
+    "message0": "MD40 停止电机 %1",
+    "args0": [
+      {
+        "type": "field_dropdown",
+        "name": "IDX",
+        "options": [
+          [
+            "电机 0",
+            "0"
+          ],
+          [
+            "电机 1",
+            "1"
+          ],
+          [
+            "电机 2",
+            "2"
+          ],
+          [
+            "电机 3",
+            "3"
+          ]
+        ]
+      }
+    ],
+    "inputsInline": true,
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": "#991B1B",
+    "tooltip": "停止指定电机。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_md40_get_speed",
+    "message0": "MD40 电机 %1 当前转速 (RPM)",
+    "args0": [
+      {
+        "type": "field_dropdown",
+        "name": "IDX",
+        "options": [
+          [
+            "电机 0",
+            "0"
+          ],
+          [
+            "电机 1",
+            "1"
+          ],
+          [
+            "电机 2",
+            "2"
+          ],
+          [
+            "电机 3",
+            "3"
+          ]
+        ]
+      }
+    ],
+    "inputsInline": true,
+    "output": "Number",
+    "colour": "#991B1B",
+    "tooltip": "读取电机实时转速。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_md40_get_pos",
+    "message0": "MD40 电机 %1 当前角度位置",
+    "args0": [
+      {
+        "type": "field_dropdown",
+        "name": "IDX",
+        "options": [
+          [
+            "电机 0",
+            "0"
+          ],
+          [
+            "电机 1",
+            "1"
+          ],
+          [
+            "电机 2",
+            "2"
+          ],
+          [
+            "电机 3",
+            "3"
+          ]
+        ]
+      }
+    ],
+    "inputsInline": true,
+    "output": "Number",
+    "colour": "#991B1B",
+    "tooltip": "读取电机当前累计角度位置。",
+    "helpUrl": ""
+  }
+]

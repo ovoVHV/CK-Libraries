@@ -1,0 +1,21 @@
+{
+  "id": "emakefun_digit_vk16k33",
+  "name": "Emakefun VK16K33 四位数码管",
+  "version": "1.0.0",
+  "description": "Emakefun VK16K33/XK16K33 I2C 四位数码管 V2（默认地址 0x70），支持数字、小数、冒号、亮度与闪烁控制。",
+  "sentence": "Emakefun VK16K33/XK16K33 I2C 四位数码管 V2（默认地址 0x70），支持数字、小数、冒号、亮度与闪烁控制。",
+  "author": "CKYAN",
+  "vendor": "Emakefun",
+  "vendor_logo": "assets/emakefun.png",
+  "icon": "assets/icon.png",
+  "category": "Display",
+  "website": "https://docs.emakefun.com/sensors/displayers/4_digit_7_segment_v2.0/",
+  "architectures": [
+    "avr",
+    "esp32"
+  ],
+  "license": "Apache-2.0",
+  "includes": [
+    "EmakefunDigitXk16k33Adapter.h"
+  ]
+}

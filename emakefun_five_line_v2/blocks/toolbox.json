@@ -1,0 +1,47 @@
+{
+  "kind": "category",
+  "name": "Emakefun 五路循迹传感器 V2",
+  "colour": "#115E59",
+  "contents": [
+    {
+      "kind": "block",
+      "type": "emakefun_five_line_v2_begin",
+      "inputs": {
+        "ADDR": {
+          "shadow": {
+            "type": "math_number",
+            "fields": {
+              "NUM": 80
+            }
+          }
+        }
+      }
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_five_line_v2_sensitivity",
+      "inputs": {
+        "SENS": {
+          "shadow": {
+            "type": "math_number",
+            "fields": {
+              "NUM": 500
+            }
+          }
+        }
+      }
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_five_line_v2_value"
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_five_line_v2_on_black"
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_five_line_v2_states"
+    }
+  ]
+}

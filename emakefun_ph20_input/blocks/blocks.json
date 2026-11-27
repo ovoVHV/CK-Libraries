@@ -1,0 +1,105 @@
+[
+  {
+    "type": "emakefun_ph20_input_button",
+    "message0": "PH2.0 按键/碰触开关 引脚 %1 被按下?",
+    "args0": [
+      {
+        "type": "input_value",
+        "name": "PIN",
+        "check": "Number"
+      }
+    ],
+    "inputsInline": true,
+    "output": "Boolean",
+    "colour": "#2563EB",
+    "tooltip": "读取 Emakefun 按键或碰触开关模块按下状态（低电平触发）。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_ph20_input_touch",
+    "message0": "PH2.0 触摸模块 引脚 %1 被触摸?",
+    "args0": [
+      {
+        "type": "input_value",
+        "name": "PIN",
+        "check": "Number"
+      }
+    ],
+    "inputsInline": true,
+    "output": "Boolean",
+    "colour": "#2563EB",
+    "tooltip": "读取 Emakefun 电容触摸模块触发状态（高电平有效）。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_ph20_input_pot",
+    "message0": "PH2.0 电位器/滑动变阻器 引脚 %1 百分比 (0-100)",
+    "args0": [
+      {
+        "type": "input_value",
+        "name": "PIN",
+        "check": "Number"
+      }
+    ],
+    "inputsInline": true,
+    "output": "Number",
+    "colour": "#2563EB",
+    "tooltip": "读取旋转电位器或滑动变阻器归一化百分比值。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_ph20_input_joystick",
+    "message0": "PH2.0 摇杆/小手柄 模拟引脚 %1 原始值",
+    "args0": [
+      {
+        "type": "input_value",
+        "name": "PIN",
+        "check": "Number"
+      }
+    ],
+    "inputsInline": true,
+    "output": "Number",
+    "colour": "#2563EB",
+    "tooltip": "读取双轴摇杆 X/Y 轴或 PH2.0 小手柄模拟数值。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_ph20_input_enc_begin",
+    "message0": "初始化 PH2.0 旋转编码器 CLK %1 DT %2",
+    "args0": [
+      {
+        "type": "input_value",
+        "name": "CLK",
+        "check": "Number"
+      },
+      {
+        "type": "input_value",
+        "name": "DT",
+        "check": "Number"
+      }
+    ],
+    "inputsInline": true,
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": "#2563EB",
+    "tooltip": "初始化 Emakefun 旋转编码器模块。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_ph20_input_enc_tick",
+    "message0": "PH2.0 旋转编码器 刷新计数",
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": "#2563EB",
+    "tooltip": "在循环中调用检测旋转方向并更新计数。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_ph20_input_enc_count",
+    "message0": "PH2.0 旋转编码器 当前计数值",
+    "output": "Number",
+    "colour": "#2563EB",
+    "tooltip": "返回旋转编码器当前累计步数。",
+    "helpUrl": ""
+  }
+]

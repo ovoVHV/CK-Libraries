@@ -1,0 +1,21 @@
+{
+  "id": "emakefun_ph20_input",
+  "name": "Emakefun PH2.0 基础输入模块",
+  "version": "1.0.0",
+  "description": "覆盖 Emakefun PH2.0 全系列基础输入模块：按键、触摸、碰触开关、旋转电位器、滑动变阻器、双轴摇杆与旋转编码器。",
+  "sentence": "覆盖 Emakefun PH2.0 全系列基础输入模块：按键、触摸、碰触开关、旋转电位器、滑动变阻器、双轴摇杆与旋转编码器。",
+  "author": "CKYAN",
+  "vendor": "Emakefun",
+  "vendor_logo": "assets/emakefun.png",
+  "icon": "assets/icon.png",
+  "category": "Sensors",
+  "website": "https://docs.emakefun.com/sensors/base_modules/button_module/",
+  "architectures": [
+    "avr",
+    "esp32"
+  ],
+  "license": "Apache-2.0",
+  "includes": [
+    "EmakefunPh20Input.h"
+  ]
+}

@@ -1,0 +1,105 @@
+{
+  "kind": "category",
+  "name": "Emakefun PH2.0 灯光与交通灯模块",
+  "colour": "#EAB308",
+  "contents": [
+    {
+      "kind": "block",
+      "type": "emakefun_ph20_display_led",
+      "inputs": {
+        "PIN": {
+          "shadow": {
+            "type": "math_number",
+            "fields": {
+              "NUM": 13
+            }
+          }
+        }
+      }
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_ph20_display_traffic",
+      "inputs": {
+        "R_PIN": {
+          "shadow": {
+            "type": "math_number",
+            "fields": {
+              "NUM": 4
+            }
+          }
+        },
+        "Y_PIN": {
+          "shadow": {
+            "type": "math_number",
+            "fields": {
+              "NUM": 5
+            }
+          }
+        },
+        "G_PIN": {
+          "shadow": {
+            "type": "math_number",
+            "fields": {
+              "NUM": 6
+            }
+          }
+        }
+      }
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_ph20_display_rgb",
+      "inputs": {
+        "R_PIN": {
+          "shadow": {
+            "type": "math_number",
+            "fields": {
+              "NUM": 9
+            }
+          }
+        },
+        "G_PIN": {
+          "shadow": {
+            "type": "math_number",
+            "fields": {
+              "NUM": 10
+            }
+          }
+        },
+        "B_PIN": {
+          "shadow": {
+            "type": "math_number",
+            "fields": {
+              "NUM": 11
+            }
+          }
+        },
+        "R": {
+          "shadow": {
+            "type": "math_number",
+            "fields": {
+              "NUM": 255
+            }
+          }
+        },
+        "G": {
+          "shadow": {
+            "type": "math_number",
+            "fields": {
+              "NUM": 100
+            }
+          }
+        },
+        "B": {
+          "shadow": {
+            "type": "math_number",
+            "fields": {
+              "NUM": 0
+            }
+          }
+        }
+      }
+    }
+  ]
+}

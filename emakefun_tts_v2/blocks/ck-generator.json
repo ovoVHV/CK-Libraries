@@ -1,0 +1,46 @@
+{
+  "schema": "ck-generator",
+  "version": 1,
+  "rules": [
+    {
+      "type": "emakefun_tts_v2_begin",
+      "kind": "statement",
+      "includes": {
+        "EmakefunTtsV2Adapter.h": "#include <EmakefunTtsV2Adapter.h>"
+      },
+      "template": "EmakefunTtsV2Adapter::begin({{value:ADDR}});\n"
+    },
+    {
+      "type": "emakefun_tts_v2_play",
+      "kind": "statement",
+      "includes": {
+        "EmakefunTtsV2Adapter.h": "#include <EmakefunTtsV2Adapter.h>"
+      },
+      "template": "EmakefunTtsV2Adapter::play(String({{value:TEXT}}), {{field:ENC}});\n"
+    },
+    {
+      "type": "emakefun_tts_v2_push_cache",
+      "kind": "statement",
+      "includes": {
+        "EmakefunTtsV2Adapter.h": "#include <EmakefunTtsV2Adapter.h>"
+      },
+      "template": "EmakefunTtsV2Adapter::pushCache(String({{value:TEXT}}), {{value:IDX}});\n"
+    },
+    {
+      "type": "emakefun_tts_v2_play_cache",
+      "kind": "statement",
+      "includes": {
+        "EmakefunTtsV2Adapter.h": "#include <EmakefunTtsV2Adapter.h>"
+      },
+      "template": "EmakefunTtsV2Adapter::playCache({{value:CNT}});\n"
+    },
+    {
+      "type": "emakefun_tts_v2_stop",
+      "kind": "statement",
+      "includes": {
+        "EmakefunTtsV2Adapter.h": "#include <EmakefunTtsV2Adapter.h>"
+      },
+      "template": "EmakefunTtsV2Adapter::stop();\n"
+    }
+  ]
+}

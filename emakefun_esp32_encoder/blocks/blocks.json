@@ -1,0 +1,103 @@
+[
+  {
+    "type": "emakefun_esp32_encoder_begin",
+    "message0": "初始化 ESP32 编码电机 M+ %1 M- %2 A相 %3 B相 %4 PPR %5 减速比 %6",
+    "args0": [
+      {
+        "type": "input_value",
+        "name": "POS_PIN",
+        "check": "Number"
+      },
+      {
+        "type": "input_value",
+        "name": "NEG_PIN",
+        "check": "Number"
+      },
+      {
+        "type": "input_value",
+        "name": "A_PIN",
+        "check": "Number"
+      },
+      {
+        "type": "input_value",
+        "name": "B_PIN",
+        "check": "Number"
+      },
+      {
+        "type": "input_value",
+        "name": "PPR",
+        "check": "Number"
+      },
+      {
+        "type": "input_value",
+        "name": "RATIO",
+        "check": "Number"
+      }
+    ],
+    "inputsInline": true,
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": "#E11D48",
+    "tooltip": "初始化 Emakefun ESP32 闭环编码电机。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_esp32_encoder_run_speed",
+    "message0": "ESP32 编码电机 闭环转速 %1 RPM",
+    "args0": [
+      {
+        "type": "input_value",
+        "name": "RPM",
+        "check": "Number"
+      }
+    ],
+    "inputsInline": true,
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": "#E11D48",
+    "tooltip": "以指定 RPM 恒速转动。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_esp32_encoder_run_pwm",
+    "message0": "ESP32 编码电机 PWM 占空比 %1",
+    "args0": [
+      {
+        "type": "input_value",
+        "name": "DUTY",
+        "check": "Number"
+      }
+    ],
+    "inputsInline": true,
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": "#E11D48",
+    "tooltip": "以 PWM 占空比直接驱动。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_esp32_encoder_stop",
+    "message0": "ESP32 编码电机 停止",
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": "#E11D48",
+    "tooltip": "停止编码电机。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_esp32_encoder_rpm",
+    "message0": "ESP32 编码电机 实时转速 (RPM)",
+    "output": "Number",
+    "colour": "#E11D48",
+    "tooltip": "获取当前转速 RPM。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_esp32_encoder_pulses",
+    "message0": "ESP32 编码电机 脉冲计数",
+    "output": "Number",
+    "colour": "#E11D48",
+    "tooltip": "获取编码器累计脉冲数。",
+    "helpUrl": ""
+  }
+]

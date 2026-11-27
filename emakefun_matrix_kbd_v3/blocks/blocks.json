@@ -1,0 +1,198 @@
+[
+  {
+    "type": "emakefun_matrix_kbd_v3_begin",
+    "message0": "初始化矩阵键盘 V3 I2C地址 %1",
+    "args0": [
+      {
+        "type": "input_value",
+        "name": "ADDR",
+        "check": "Number"
+      }
+    ],
+    "inputsInline": true,
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": "#2563EB",
+    "tooltip": "初始化 Emakefun 矩阵键盘 V3（默认 0x65 = 101）。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_matrix_kbd_v3_tick",
+    "message0": "矩阵键盘 V3 刷新扫描",
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": "#2563EB",
+    "tooltip": "在循环中周期调用以刷新消抖与按键状态。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_matrix_kbd_v3_key_text",
+    "message0": "矩阵键盘 V3 当前按下键值文本",
+    "output": "String",
+    "colour": "#2563EB",
+    "tooltip": "返回当前按下按键的字符（无按键时为空字符串）。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_matrix_kbd_v3_pressed",
+    "message0": "矩阵键盘 V3 按键 %1 刚按下?",
+    "args0": [
+      {
+        "type": "field_dropdown",
+        "name": "KEY",
+        "options": [
+          [
+            "1",
+            "1"
+          ],
+          [
+            "2",
+            "16"
+          ],
+          [
+            "3",
+            "256"
+          ],
+          [
+            "4",
+            "2"
+          ],
+          [
+            "5",
+            "32"
+          ],
+          [
+            "6",
+            "512"
+          ],
+          [
+            "7",
+            "4"
+          ],
+          [
+            "8",
+            "64"
+          ],
+          [
+            "9",
+            "1024"
+          ],
+          [
+            "0",
+            "128"
+          ],
+          [
+            "*",
+            "8"
+          ],
+          [
+            "#",
+            "2048"
+          ],
+          [
+            "A",
+            "4096"
+          ],
+          [
+            "B",
+            "8192"
+          ],
+          [
+            "C",
+            "16384"
+          ],
+          [
+            "D",
+            "32768"
+          ]
+        ]
+      }
+    ],
+    "inputsInline": true,
+    "output": "Boolean",
+    "colour": "#2563EB",
+    "tooltip": "检测指定按键是否触发按下边沿事件。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_matrix_kbd_v3_pressing",
+    "message0": "矩阵键盘 V3 按键 %1 正在按住?",
+    "args0": [
+      {
+        "type": "field_dropdown",
+        "name": "KEY",
+        "options": [
+          [
+            "1",
+            "1"
+          ],
+          [
+            "2",
+            "16"
+          ],
+          [
+            "3",
+            "256"
+          ],
+          [
+            "4",
+            "2"
+          ],
+          [
+            "5",
+            "32"
+          ],
+          [
+            "6",
+            "512"
+          ],
+          [
+            "7",
+            "4"
+          ],
+          [
+            "8",
+            "64"
+          ],
+          [
+            "9",
+            "1024"
+          ],
+          [
+            "0",
+            "128"
+          ],
+          [
+            "*",
+            "8"
+          ],
+          [
+            "#",
+            "2048"
+          ],
+          [
+            "A",
+            "4096"
+          ],
+          [
+            "B",
+            "8192"
+          ],
+          [
+            "C",
+            "16384"
+          ],
+          [
+            "D",
+            "32768"
+          ]
+        ]
+      }
+    ],
+    "inputsInline": true,
+    "output": "Boolean",
+    "colour": "#2563EB",
+    "tooltip": "判断指定按键当前是否处于按住状态。",
+    "helpUrl": ""
+  }
+]

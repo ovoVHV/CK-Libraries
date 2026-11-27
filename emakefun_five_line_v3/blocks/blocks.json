@@ -1,0 +1,187 @@
+[
+  {
+    "type": "emakefun_five_line_v3_begin",
+    "message0": "初始化五路循迹 V3 I2C地址 %1",
+    "args0": [
+      {
+        "type": "input_value",
+        "name": "ADDR",
+        "check": "Number"
+      }
+    ],
+    "inputsInline": true,
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": "#0F766E",
+    "tooltip": "初始化 Emakefun 五路循迹 V3（默认地址 0x50 = 80）。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_five_line_v3_set_high",
+    "message0": "五路循迹 V3 设通道 %1 高阈值 %2",
+    "args0": [
+      {
+        "type": "field_dropdown",
+        "name": "CH",
+        "options": [
+          [
+            "通道 0",
+            "0"
+          ],
+          [
+            "通道 1",
+            "1"
+          ],
+          [
+            "通道 2",
+            "2"
+          ],
+          [
+            "通道 3",
+            "3"
+          ],
+          [
+            "通道 4",
+            "4"
+          ]
+        ]
+      },
+      {
+        "type": "input_value",
+        "name": "VAL",
+        "check": "Number"
+      }
+    ],
+    "inputsInline": true,
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": "#0F766E",
+    "tooltip": "设置单个循迹通道的高阈值（通道 0-4）。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_five_line_v3_set_low",
+    "message0": "五路循迹 V3 设通道 %1 低阈值 %2",
+    "args0": [
+      {
+        "type": "field_dropdown",
+        "name": "CH",
+        "options": [
+          [
+            "通道 0",
+            "0"
+          ],
+          [
+            "通道 1",
+            "1"
+          ],
+          [
+            "通道 2",
+            "2"
+          ],
+          [
+            "通道 3",
+            "3"
+          ],
+          [
+            "通道 4",
+            "4"
+          ]
+        ]
+      },
+      {
+        "type": "input_value",
+        "name": "VAL",
+        "check": "Number"
+      }
+    ],
+    "inputsInline": true,
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": "#0F766E",
+    "tooltip": "设置单个循迹通道的低阈值（通道 0-4）。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_five_line_v3_analog",
+    "message0": "五路循迹 V3 读通道 %1 模拟值",
+    "args0": [
+      {
+        "type": "field_dropdown",
+        "name": "CH",
+        "options": [
+          [
+            "通道 0",
+            "0"
+          ],
+          [
+            "通道 1",
+            "1"
+          ],
+          [
+            "通道 2",
+            "2"
+          ],
+          [
+            "通道 3",
+            "3"
+          ],
+          [
+            "通道 4",
+            "4"
+          ]
+        ]
+      }
+    ],
+    "inputsInline": true,
+    "output": "Number",
+    "colour": "#0F766E",
+    "tooltip": "读取指定通道模拟反射值。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_five_line_v3_digital",
+    "message0": "五路循迹 V3 通道 %1 检测到目标?",
+    "args0": [
+      {
+        "type": "field_dropdown",
+        "name": "CH",
+        "options": [
+          [
+            "通道 0",
+            "0"
+          ],
+          [
+            "通道 1",
+            "1"
+          ],
+          [
+            "通道 2",
+            "2"
+          ],
+          [
+            "通道 3",
+            "3"
+          ],
+          [
+            "通道 4",
+            "4"
+          ]
+        ]
+      }
+    ],
+    "inputsInline": true,
+    "output": "Boolean",
+    "colour": "#0F766E",
+    "tooltip": "读取指定通道数字状态。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_five_line_v3_mask",
+    "message0": "五路循迹 V3 五路状态掩码",
+    "output": "Number",
+    "colour": "#0F766E",
+    "tooltip": "读取 5 路数字状态位掩码（低 5 位对应通道 0-4）。",
+    "helpUrl": ""
+  }
+]

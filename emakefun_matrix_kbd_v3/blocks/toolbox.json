@@ -1,0 +1,37 @@
+{
+  "kind": "category",
+  "name": "Emakefun 触摸矩阵键盘 V3",
+  "colour": "#2563EB",
+  "contents": [
+    {
+      "kind": "block",
+      "type": "emakefun_matrix_kbd_v3_begin",
+      "inputs": {
+        "ADDR": {
+          "shadow": {
+            "type": "math_number",
+            "fields": {
+              "NUM": 101
+            }
+          }
+        }
+      }
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_matrix_kbd_v3_tick"
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_matrix_kbd_v3_key_text"
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_matrix_kbd_v3_pressed"
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_matrix_kbd_v3_pressing"
+    }
+  ]
+}

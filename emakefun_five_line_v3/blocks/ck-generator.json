@@ -1,0 +1,54 @@
+{
+  "schema": "ck-generator",
+  "version": 1,
+  "rules": [
+    {
+      "type": "emakefun_five_line_v3_begin",
+      "kind": "statement",
+      "includes": {
+        "EmakefunLineTrackerV3Adapter.h": "#include <EmakefunLineTrackerV3Adapter.h>"
+      },
+      "template": "EmakefunLineTrackerV3Adapter::begin({{value:ADDR}});\n"
+    },
+    {
+      "type": "emakefun_five_line_v3_set_high",
+      "kind": "statement",
+      "includes": {
+        "EmakefunLineTrackerV3Adapter.h": "#include <EmakefunLineTrackerV3Adapter.h>"
+      },
+      "template": "EmakefunLineTrackerV3Adapter::setHigh({{field:CH}}, {{value:VAL}});\n"
+    },
+    {
+      "type": "emakefun_five_line_v3_set_low",
+      "kind": "statement",
+      "includes": {
+        "EmakefunLineTrackerV3Adapter.h": "#include <EmakefunLineTrackerV3Adapter.h>"
+      },
+      "template": "EmakefunLineTrackerV3Adapter::setLow({{field:CH}}, {{value:VAL}});\n"
+    },
+    {
+      "type": "emakefun_five_line_v3_analog",
+      "kind": "expression",
+      "includes": {
+        "EmakefunLineTrackerV3Adapter.h": "#include <EmakefunLineTrackerV3Adapter.h>"
+      },
+      "template": "EmakefunLineTrackerV3Adapter::analogVal({{field:CH}})"
+    },
+    {
+      "type": "emakefun_five_line_v3_digital",
+      "kind": "expression",
+      "includes": {
+        "EmakefunLineTrackerV3Adapter.h": "#include <EmakefunLineTrackerV3Adapter.h>"
+      },
+      "template": "EmakefunLineTrackerV3Adapter::digitalVal({{field:CH}})"
+    },
+    {
+      "type": "emakefun_five_line_v3_mask",
+      "kind": "expression",
+      "includes": {
+        "EmakefunLineTrackerV3Adapter.h": "#include <EmakefunLineTrackerV3Adapter.h>"
+      },
+      "template": "EmakefunLineTrackerV3Adapter::mask()"
+    }
+  ]
+}

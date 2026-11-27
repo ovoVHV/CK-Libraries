@@ -1,0 +1,21 @@
+{
+  "id": "emakefun_gesture",
+  "name": "Emakefun 手势识别传感器",
+  "version": "1.0.0",
+  "description": "Emakefun I2C 手势识别传感器（默认地址 0x39），支持左/右/前/后滑、上拉、下压、离开、悬停 8 种手势。",
+  "sentence": "Emakefun I2C 手势识别传感器（默认地址 0x39），支持左/右/前/后滑、上拉、下压、离开、悬停 8 种手势。",
+  "author": "CKYAN",
+  "vendor": "Emakefun",
+  "vendor_logo": "assets/emakefun.png",
+  "icon": "assets/icon.png",
+  "category": "Sensors",
+  "website": "https://docs.emakefun.com/sensors/smart_modules/gesture_recognizer/",
+  "architectures": [
+    "avr",
+    "esp32"
+  ],
+  "license": "Apache-2.0",
+  "includes": [
+    "EmakefunGestureAdapter.h"
+  ]
+}

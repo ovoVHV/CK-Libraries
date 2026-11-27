@@ -1,0 +1,144 @@
+[
+  {
+    "type": "emakefun_ph20_sensors_analog_sensor",
+    "message0": "PH2.0 %1 模拟引脚 %2 数值",
+    "args0": [
+      {
+        "type": "field_dropdown",
+        "name": "KIND",
+        "options": [
+          [
+            "光敏传感器",
+            "0"
+          ],
+          [
+            "声音传感器",
+            "1"
+          ],
+          [
+            "热敏传感器",
+            "2"
+          ],
+          [
+            "火焰传感器",
+            "3"
+          ],
+          [
+            "土壤湿度传感器",
+            "4"
+          ],
+          [
+            "雨滴传感器",
+            "5"
+          ],
+          [
+            "水深传感器",
+            "6"
+          ],
+          [
+            "MQ 气体传感器",
+            "7"
+          ],
+          [
+            "灰度传感器",
+            "8"
+          ],
+          [
+            "压力传感器",
+            "9"
+          ]
+        ]
+      },
+      {
+        "type": "input_value",
+        "name": "PIN",
+        "check": "Number"
+      }
+    ],
+    "inputsInline": true,
+    "output": "Number",
+    "colour": "#10B981",
+    "tooltip": "读取 Emakefun PH2.0 模拟量传感器数值（光敏/声音/热敏/火焰/土壤湿度/雨滴/水深/MQ气体/灰度/压力）。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_ph20_sensors_digital_high",
+    "message0": "PH2.0 %1 数字引脚 %2 触发?(高电平)",
+    "args0": [
+      {
+        "type": "field_dropdown",
+        "name": "KIND",
+        "options": [
+          [
+            "人体热释电 PIR",
+            "0"
+          ],
+          [
+            "红外避障/循迹",
+            "1"
+          ],
+          [
+            "声音开关量",
+            "2"
+          ],
+          [
+            "火焰开关量",
+            "3"
+          ],
+          [
+            "MQ 气体报警",
+            "4"
+          ]
+        ]
+      },
+      {
+        "type": "input_value",
+        "name": "PIN",
+        "check": "Number"
+      }
+    ],
+    "inputsInline": true,
+    "output": "Boolean",
+    "colour": "#10B981",
+    "tooltip": "读取高电平触发的数字传感器（人体热释电 PIR / 声音 / 火焰 / 气体开关量）。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_ph20_sensors_digital_low",
+    "message0": "PH2.0 %1 数字引脚 %2 触发?(低电平)",
+    "args0": [
+      {
+        "type": "field_dropdown",
+        "name": "KIND",
+        "options": [
+          [
+            "红外循迹黑线",
+            "0"
+          ],
+          [
+            "磁簧开关",
+            "1"
+          ],
+          [
+            "震动传感器",
+            "2"
+          ],
+          [
+            "倾斜传感器",
+            "3"
+          ]
+        ]
+      },
+      {
+        "type": "input_value",
+        "name": "PIN",
+        "check": "Number"
+      }
+    ],
+    "inputsInline": true,
+    "output": "Boolean",
+    "colour": "#10B981",
+    "tooltip": "读取低电平触发的数字开关传感器（磁簧开关 / 震动 / 倾斜 / 红外循迹黑线）。",
+    "helpUrl": ""
+  }
+]

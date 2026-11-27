@@ -1,0 +1,826 @@
+{
+  "schema_version": 2,
+  "id": "emakefun_digit_vk16k33",
+  "display_name": "Emakefun VK16K33 四位数码管",
+  "description": "Emakefun VK16K33/XK16K33 I2C 四位数码管 V2（默认地址 0x70），支持数字、小数、冒号、亮度与闪烁控制。",
+  "defaultLocale": "zh-CN",
+  "keywords": [
+    "Emakefun VK16K33 四位数码管",
+    "emakefun_digit_vk16k33",
+    "Emakefun",
+    "数码管",
+    "VK16K33",
+    "XK16K33",
+    "四位数码管",
+    "I2C"
+  ],
+  "license": {
+    "spdx_id": "Apache-2.0",
+    "file": "LICENSE.txt"
+  },
+  "compatibility": {
+    "architectures": [
+      "avr",
+      "esp32"
+    ]
+  },
+  "dependencies": [
+    {
+      "kind": "arduino-library",
+      "id": "EmakefunDigitXk16k33Adapter",
+      "version": "1.0.0",
+      "headers": [
+        "EmakefunDigitXk16k33Adapter.h"
+      ],
+      "license": "Apache-2.0",
+      "reason": "随包内置于 libraries/EmakefunDigitXk16k33Adapter/，提供安全封装与跨板卡兼容接口。"
+    },
+    {
+      "kind": "arduino-library",
+      "id": "emakefun digit display",
+      "version": "1.0.0",
+      "headers": [
+        "digit_display_xk16k33.h",
+        "xk16k33.h"
+      ],
+      "license": "MIT",
+      "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/emakefun_digit_display_xk16k33）内置于 libraries/emakefun_digit_display_xk16k33/。"
+    }
+  ],
+  "entrypoints": {
+    "blocks": "blocks/blocks.json",
+    "generator": "blocks/ck-generator.json",
+    "toolbox": "blocks/toolbox.json"
+  },
+  "blocks": [
+    {
+      "type": "emakefun_digit_vk16k33_begin",
+      "display_name": "初始化 VK16K33 四位数码管",
+      "description": "初始化 Emakefun VK16K33 I2C 四位数码管（0x70）。",
+      "category": "Emakefun VK16K33 四位数码管",
+      "kind": "statement",
+      "keywords": [
+        "Emakefun VK16K33 四位数码管",
+        "emakefun_digit_vk16k33",
+        "Emakefun",
+        "数码管",
+        "VK16K33",
+        "XK16K33",
+        "四位数码管",
+        "I2C"
+      ],
+      "semantics": {
+        "purpose": "初始化 Emakefun VK16K33 I2C 四位数码管（0x70）。",
+        "behavior": "初始化 Emakefun VK16K33 I2C 四位数码管（0x70）。",
+        "concepts": [
+          "Emakefun VK16K33 四位数码管",
+          "Emakefun"
+        ],
+        "side_effects": [
+          "初始化 Emakefun VK16K33 I2C 四位数码管（0x70）。"
+        ]
+      },
+      "fields": [],
+      "inputs": [],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunDigitXk16k33Adapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunDigitXk16k33Adapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunDigitXk16k33Adapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "emakefun digit display",
+          "version": "1.0.0",
+          "headers": [
+            "digit_display_xk16k33.h",
+            "xk16k33.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/emakefun_digit_display_xk16k33）内置于 libraries/emakefun_digit_display_xk16k33/。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "i2c",
+            "id": "wire",
+            "source": {
+              "kind": "board-default"
+            },
+            "access": "read-write",
+            "sharing": "shared",
+            "description": "默认 I2C 总线 (Wire)，模块默认地址 0x70。"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "i2c-device",
+              "role": "i2c-device",
+              "resource": {
+                "kind": "fixed",
+                "valueType": "id",
+                "value": "i2c"
+              },
+              "exclusive": false,
+              "discriminator": {
+                "kind": "fixed",
+                "valueType": "integer",
+                "value": 112
+              }
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun VK16K33/XK16K33 I2C 四位数码管 V2（默认地址 0x70），支持数字、小数、冒号、亮度与闪烁控制。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "includes": [
+          "EmakefunDigitXk16k33Adapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunDigitXk16k33Adapter.h",
+            "template": "#include <EmakefunDigitXk16k33Adapter.h>"
+          },
+          {
+            "section": "statement",
+            "description": "初始化 Emakefun VK16K33 I2C 四位数码管（0x70）。",
+            "template": "EmakefunDigitXk16k33Adapter::begin();\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun VK16K33/XK16K33 I2C 四位数码管 V2（默认地址 0x70），支持数字、小数、冒号、亮度与闪烁控制。",
+          "message": "Emakefun VK16K33/XK16K33 I2C 四位数码管 V2（默认地址 0x70），支持数字、小数、冒号、亮度与闪烁控制。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun VK16K33 四位数码管 随包示例",
+          "description": "初始化 Emakefun VK16K33 I2C 四位数码管（0x70）。",
+          "expected_behavior": "演示 Emakefun VK16K33 四位数码管 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_digit_vk16k33_show_num",
+      "display_name": "VK16K33 数码管显示数值 %1 小数位数 %2",
+      "description": "显示整数或浮点数。",
+      "category": "Emakefun VK16K33 四位数码管",
+      "kind": "statement",
+      "keywords": [
+        "Emakefun VK16K33 四位数码管",
+        "emakefun_digit_vk16k33",
+        "Emakefun",
+        "数码管",
+        "VK16K33",
+        "XK16K33",
+        "四位数码管",
+        "I2C"
+      ],
+      "semantics": {
+        "purpose": "显示整数或浮点数。",
+        "behavior": "显示整数或浮点数。",
+        "concepts": [
+          "Emakefun VK16K33 四位数码管",
+          "Emakefun"
+        ],
+        "side_effects": [
+          "显示整数或浮点数。"
+        ]
+      },
+      "fields": [],
+      "inputs": [
+        {
+          "name": "VAL",
+          "kind": "value",
+          "description": "显示数值",
+          "check": "Number",
+          "required": true,
+          "default": 1234
+        },
+        {
+          "name": "DEC",
+          "kind": "value",
+          "description": "小数位数 0-3",
+          "check": "Number",
+          "required": true,
+          "default": 0
+        }
+      ],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunDigitXk16k33Adapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunDigitXk16k33Adapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunDigitXk16k33Adapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "emakefun digit display",
+          "version": "1.0.0",
+          "headers": [
+            "digit_display_xk16k33.h",
+            "xk16k33.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/emakefun_digit_display_xk16k33）内置于 libraries/emakefun_digit_display_xk16k33/。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "i2c",
+            "id": "wire",
+            "source": {
+              "kind": "board-default"
+            },
+            "access": "read-write",
+            "sharing": "shared",
+            "description": "默认 I2C 总线 (Wire)，模块默认地址 0x70。"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "i2c-device",
+              "role": "i2c-device",
+              "resource": {
+                "kind": "fixed",
+                "valueType": "id",
+                "value": "i2c"
+              },
+              "exclusive": false,
+              "discriminator": {
+                "kind": "fixed",
+                "valueType": "integer",
+                "value": 112
+              }
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun VK16K33/XK16K33 I2C 四位数码管 V2（默认地址 0x70），支持数字、小数、冒号、亮度与闪烁控制。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "includes": [
+          "EmakefunDigitXk16k33Adapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunDigitXk16k33Adapter.h",
+            "template": "#include <EmakefunDigitXk16k33Adapter.h>"
+          },
+          {
+            "section": "statement",
+            "description": "显示整数或浮点数。",
+            "template": "EmakefunDigitXk16k33Adapter::showNumber({{value:VAL}}, {{value:DEC}});\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun VK16K33/XK16K33 I2C 四位数码管 V2（默认地址 0x70），支持数字、小数、冒号、亮度与闪烁控制。",
+          "message": "Emakefun VK16K33/XK16K33 I2C 四位数码管 V2（默认地址 0x70），支持数字、小数、冒号、亮度与闪烁控制。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun VK16K33 四位数码管 随包示例",
+          "description": "显示整数或浮点数。",
+          "expected_behavior": "演示 Emakefun VK16K33 四位数码管 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_digit_vk16k33_colon",
+      "display_name": "VK16K33 数码管冒号 %1",
+      "description": "打开或关闭中间时钟冒号。",
+      "category": "Emakefun VK16K33 四位数码管",
+      "kind": "statement",
+      "keywords": [
+        "Emakefun VK16K33 四位数码管",
+        "emakefun_digit_vk16k33",
+        "Emakefun",
+        "数码管",
+        "VK16K33",
+        "XK16K33",
+        "四位数码管",
+        "I2C"
+      ],
+      "semantics": {
+        "purpose": "打开或关闭中间时钟冒号。",
+        "behavior": "打开或关闭中间时钟冒号。",
+        "concepts": [
+          "Emakefun VK16K33 四位数码管",
+          "Emakefun"
+        ],
+        "side_effects": [
+          "打开或关闭中间时钟冒号。"
+        ]
+      },
+      "fields": [
+        {
+          "name": "ON",
+          "kind": "dropdown",
+          "description": "冒号状态",
+          "required": true,
+          "default": "true",
+          "options": [
+            {
+              "label": "点亮",
+              "value": "true"
+            },
+            {
+              "label": "熄灭",
+              "value": "false"
+            }
+          ]
+        }
+      ],
+      "inputs": [],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunDigitXk16k33Adapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunDigitXk16k33Adapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunDigitXk16k33Adapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "emakefun digit display",
+          "version": "1.0.0",
+          "headers": [
+            "digit_display_xk16k33.h",
+            "xk16k33.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/emakefun_digit_display_xk16k33）内置于 libraries/emakefun_digit_display_xk16k33/。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "i2c",
+            "id": "wire",
+            "source": {
+              "kind": "board-default"
+            },
+            "access": "read-write",
+            "sharing": "shared",
+            "description": "默认 I2C 总线 (Wire)，模块默认地址 0x70。"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "i2c-device",
+              "role": "i2c-device",
+              "resource": {
+                "kind": "fixed",
+                "valueType": "id",
+                "value": "i2c"
+              },
+              "exclusive": false,
+              "discriminator": {
+                "kind": "fixed",
+                "valueType": "integer",
+                "value": 112
+              }
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun VK16K33/XK16K33 I2C 四位数码管 V2（默认地址 0x70），支持数字、小数、冒号、亮度与闪烁控制。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "includes": [
+          "EmakefunDigitXk16k33Adapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunDigitXk16k33Adapter.h",
+            "template": "#include <EmakefunDigitXk16k33Adapter.h>"
+          },
+          {
+            "section": "statement",
+            "description": "打开或关闭中间时钟冒号。",
+            "template": "EmakefunDigitXk16k33Adapter::showColon({{field:ON}});\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun VK16K33/XK16K33 I2C 四位数码管 V2（默认地址 0x70），支持数字、小数、冒号、亮度与闪烁控制。",
+          "message": "Emakefun VK16K33/XK16K33 I2C 四位数码管 V2（默认地址 0x70），支持数字、小数、冒号、亮度与闪烁控制。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun VK16K33 四位数码管 随包示例",
+          "description": "打开或关闭中间时钟冒号。",
+          "expected_behavior": "演示 Emakefun VK16K33 四位数码管 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_digit_vk16k33_brightness",
+      "display_name": "VK16K33 数码管亮度 %1 (0-15)",
+      "description": "调节数码管亮度（0-15）。",
+      "category": "Emakefun VK16K33 四位数码管",
+      "kind": "statement",
+      "keywords": [
+        "Emakefun VK16K33 四位数码管",
+        "emakefun_digit_vk16k33",
+        "Emakefun",
+        "数码管",
+        "VK16K33",
+        "XK16K33",
+        "四位数码管",
+        "I2C"
+      ],
+      "semantics": {
+        "purpose": "调节数码管亮度（0-15）。",
+        "behavior": "调节数码管亮度（0-15）。",
+        "concepts": [
+          "Emakefun VK16K33 四位数码管",
+          "Emakefun"
+        ],
+        "side_effects": [
+          "调节数码管亮度（0-15）。"
+        ]
+      },
+      "fields": [],
+      "inputs": [
+        {
+          "name": "BRI",
+          "kind": "value",
+          "description": "亮度 0-15",
+          "check": "Number",
+          "required": true,
+          "default": 10
+        }
+      ],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunDigitXk16k33Adapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunDigitXk16k33Adapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunDigitXk16k33Adapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "emakefun digit display",
+          "version": "1.0.0",
+          "headers": [
+            "digit_display_xk16k33.h",
+            "xk16k33.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/emakefun_digit_display_xk16k33）内置于 libraries/emakefun_digit_display_xk16k33/。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "i2c",
+            "id": "wire",
+            "source": {
+              "kind": "board-default"
+            },
+            "access": "read-write",
+            "sharing": "shared",
+            "description": "默认 I2C 总线 (Wire)，模块默认地址 0x70。"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "i2c-device",
+              "role": "i2c-device",
+              "resource": {
+                "kind": "fixed",
+                "valueType": "id",
+                "value": "i2c"
+              },
+              "exclusive": false,
+              "discriminator": {
+                "kind": "fixed",
+                "valueType": "integer",
+                "value": 112
+              }
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun VK16K33/XK16K33 I2C 四位数码管 V2（默认地址 0x70），支持数字、小数、冒号、亮度与闪烁控制。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "includes": [
+          "EmakefunDigitXk16k33Adapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunDigitXk16k33Adapter.h",
+            "template": "#include <EmakefunDigitXk16k33Adapter.h>"
+          },
+          {
+            "section": "statement",
+            "description": "调节数码管亮度（0-15）。",
+            "template": "EmakefunDigitXk16k33Adapter::setBrightness({{value:BRI}});\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun VK16K33/XK16K33 I2C 四位数码管 V2（默认地址 0x70），支持数字、小数、冒号、亮度与闪烁控制。",
+          "message": "Emakefun VK16K33/XK16K33 I2C 四位数码管 V2（默认地址 0x70），支持数字、小数、冒号、亮度与闪烁控制。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun VK16K33 四位数码管 随包示例",
+          "description": "调节数码管亮度（0-15）。",
+          "expected_behavior": "演示 Emakefun VK16K33 四位数码管 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_digit_vk16k33_clear",
+      "display_name": "VK16K33 数码管清屏",
+      "description": "清空数码管所有显示。",
+      "category": "Emakefun VK16K33 四位数码管",
+      "kind": "statement",
+      "keywords": [
+        "Emakefun VK16K33 四位数码管",
+        "emakefun_digit_vk16k33",
+        "Emakefun",
+        "数码管",
+        "VK16K33",
+        "XK16K33",
+        "四位数码管",
+        "I2C"
+      ],
+      "semantics": {
+        "purpose": "清空数码管所有显示。",
+        "behavior": "清空数码管所有显示。",
+        "concepts": [
+          "Emakefun VK16K33 四位数码管",
+          "Emakefun"
+        ],
+        "side_effects": [
+          "清空数码管所有显示。"
+        ]
+      },
+      "fields": [],
+      "inputs": [],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunDigitXk16k33Adapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunDigitXk16k33Adapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunDigitXk16k33Adapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "emakefun digit display",
+          "version": "1.0.0",
+          "headers": [
+            "digit_display_xk16k33.h",
+            "xk16k33.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/emakefun_digit_display_xk16k33）内置于 libraries/emakefun_digit_display_xk16k33/。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "i2c",
+            "id": "wire",
+            "source": {
+              "kind": "board-default"
+            },
+            "access": "read-write",
+            "sharing": "shared",
+            "description": "默认 I2C 总线 (Wire)，模块默认地址 0x70。"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "i2c-device",
+              "role": "i2c-device",
+              "resource": {
+                "kind": "fixed",
+                "valueType": "id",
+                "value": "i2c"
+              },
+              "exclusive": false,
+              "discriminator": {
+                "kind": "fixed",
+                "valueType": "integer",
+                "value": 112
+              }
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun VK16K33/XK16K33 I2C 四位数码管 V2（默认地址 0x70），支持数字、小数、冒号、亮度与闪烁控制。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "includes": [
+          "EmakefunDigitXk16k33Adapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunDigitXk16k33Adapter.h",
+            "template": "#include <EmakefunDigitXk16k33Adapter.h>"
+          },
+          {
+            "section": "statement",
+            "description": "清空数码管所有显示。",
+            "template": "EmakefunDigitXk16k33Adapter::clear();\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun VK16K33/XK16K33 I2C 四位数码管 V2（默认地址 0x70），支持数字、小数、冒号、亮度与闪烁控制。",
+          "message": "Emakefun VK16K33/XK16K33 I2C 四位数码管 V2（默认地址 0x70），支持数字、小数、冒号、亮度与闪烁控制。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun VK16K33 四位数码管 随包示例",
+          "description": "清空数码管所有显示。",
+          "expected_behavior": "演示 Emakefun VK16K33 四位数码管 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    }
+  ]
+}

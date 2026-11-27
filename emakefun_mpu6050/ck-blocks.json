@@ -1,0 +1,687 @@
+{
+  "schema_version": 2,
+  "id": "emakefun_mpu6050",
+  "display_name": "Emakefun MPU6050 六轴陀螺仪",
+  "description": "Emakefun MPU6050 六轴姿态传感器（I2C 0x68），读取偏航/俯仰/横滚欧拉角与三轴加速度。",
+  "defaultLocale": "zh-CN",
+  "keywords": [
+    "Emakefun MPU6050 六轴陀螺仪",
+    "emakefun_mpu6050",
+    "Emakefun",
+    "陀螺仪",
+    "MPU6050",
+    "姿态",
+    "欧拉角",
+    "加速度"
+  ],
+  "license": {
+    "spdx_id": "Apache-2.0",
+    "file": "LICENSE.txt"
+  },
+  "compatibility": {
+    "architectures": [
+      "avr",
+      "esp32"
+    ]
+  },
+  "dependencies": [
+    {
+      "kind": "arduino-library",
+      "id": "EmakefunMpu6050Adapter",
+      "version": "1.0.0",
+      "headers": [
+        "EmakefunMpu6050Adapter.h"
+      ],
+      "license": "Apache-2.0",
+      "reason": "随包内置于 libraries/EmakefunMpu6050Adapter/，提供安全封装与跨板卡兼容接口。"
+    },
+    {
+      "kind": "arduino-library",
+      "id": "Emakefun Mpu6050",
+      "version": "1.0.0",
+      "headers": [
+        "mpu6050.h"
+      ],
+      "license": "MIT",
+      "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/emakefun_mpu6050）内置于 libraries/emakefun_mpu6050/。"
+    }
+  ],
+  "entrypoints": {
+    "blocks": "blocks/blocks.json",
+    "generator": "blocks/ck-generator.json",
+    "toolbox": "blocks/toolbox.json"
+  },
+  "blocks": [
+    {
+      "type": "emakefun_mpu6050_begin",
+      "display_name": "初始化 Emakefun MPU6050 I2C地址 %1",
+      "description": "初始化 MPU6050 六轴陀螺仪（默认地址 0x68 = 104）。",
+      "category": "Emakefun MPU6050 六轴陀螺仪",
+      "kind": "statement",
+      "keywords": [
+        "Emakefun MPU6050 六轴陀螺仪",
+        "emakefun_mpu6050",
+        "Emakefun",
+        "陀螺仪",
+        "MPU6050",
+        "姿态",
+        "欧拉角",
+        "加速度"
+      ],
+      "semantics": {
+        "purpose": "初始化 MPU6050 六轴陀螺仪（默认地址 0x68 = 104）。",
+        "behavior": "初始化 MPU6050 六轴陀螺仪（默认地址 0x68 = 104）。",
+        "concepts": [
+          "Emakefun MPU6050 六轴陀螺仪",
+          "Emakefun"
+        ],
+        "side_effects": [
+          "初始化 MPU6050 六轴陀螺仪（默认地址 0x68 = 104）。"
+        ]
+      },
+      "fields": [],
+      "inputs": [
+        {
+          "name": "ADDR",
+          "kind": "value",
+          "description": "I2C 地址（默认 104）",
+          "check": "Number",
+          "required": true,
+          "default": 104
+        }
+      ],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunMpu6050Adapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunMpu6050Adapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunMpu6050Adapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "Emakefun Mpu6050",
+          "version": "1.0.0",
+          "headers": [
+            "mpu6050.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/emakefun_mpu6050）内置于 libraries/emakefun_mpu6050/。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "i2c",
+            "id": "wire",
+            "source": {
+              "kind": "board-default"
+            },
+            "access": "read-write",
+            "sharing": "shared",
+            "description": "默认 I2C 总线 (Wire)，模块默认地址 0x68。"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "i2c-device",
+              "role": "i2c-device",
+              "resource": {
+                "kind": "fixed",
+                "valueType": "id",
+                "value": "i2c"
+              },
+              "exclusive": false,
+              "discriminator": {
+                "kind": "fixed",
+                "valueType": "integer",
+                "value": 104
+              }
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun MPU6050 六轴姿态传感器（I2C 0x68），读取偏航/俯仰/横滚欧拉角与三轴加速度。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "includes": [
+          "EmakefunMpu6050Adapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunMpu6050Adapter.h",
+            "template": "#include <EmakefunMpu6050Adapter.h>"
+          },
+          {
+            "section": "statement",
+            "description": "初始化 MPU6050 六轴陀螺仪（默认地址 0x68 = 104）。",
+            "template": "EmakefunMpu6050Adapter::begin({{value:ADDR}});\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun MPU6050 六轴姿态传感器（I2C 0x68），读取偏航/俯仰/横滚欧拉角与三轴加速度。",
+          "message": "Emakefun MPU6050 六轴姿态传感器（I2C 0x68），读取偏航/俯仰/横滚欧拉角与三轴加速度。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun MPU6050 六轴陀螺仪 随包示例",
+          "description": "初始化 MPU6050 六轴陀螺仪（默认地址 0x68 = 104）。",
+          "expected_behavior": "演示 Emakefun MPU6050 六轴陀螺仪 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_mpu6050_update",
+      "display_name": "MPU6050 刷新姿态数据",
+      "description": "刷新一次 MPU6050 欧拉角与加速度数据。",
+      "category": "Emakefun MPU6050 六轴陀螺仪",
+      "kind": "statement",
+      "keywords": [
+        "Emakefun MPU6050 六轴陀螺仪",
+        "emakefun_mpu6050",
+        "Emakefun",
+        "陀螺仪",
+        "MPU6050",
+        "姿态",
+        "欧拉角",
+        "加速度"
+      ],
+      "semantics": {
+        "purpose": "刷新一次 MPU6050 欧拉角与加速度数据。",
+        "behavior": "刷新一次 MPU6050 欧拉角与加速度数据。",
+        "concepts": [
+          "Emakefun MPU6050 六轴陀螺仪",
+          "Emakefun"
+        ],
+        "side_effects": [
+          "刷新一次 MPU6050 欧拉角与加速度数据。"
+        ]
+      },
+      "fields": [],
+      "inputs": [],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunMpu6050Adapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunMpu6050Adapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunMpu6050Adapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "Emakefun Mpu6050",
+          "version": "1.0.0",
+          "headers": [
+            "mpu6050.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/emakefun_mpu6050）内置于 libraries/emakefun_mpu6050/。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "i2c",
+            "id": "wire",
+            "source": {
+              "kind": "board-default"
+            },
+            "access": "read-write",
+            "sharing": "shared",
+            "description": "默认 I2C 总线 (Wire)，模块默认地址 0x68。"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "i2c-device",
+              "role": "i2c-device",
+              "resource": {
+                "kind": "fixed",
+                "valueType": "id",
+                "value": "i2c"
+              },
+              "exclusive": false,
+              "discriminator": {
+                "kind": "fixed",
+                "valueType": "integer",
+                "value": 104
+              }
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun MPU6050 六轴姿态传感器（I2C 0x68），读取偏航/俯仰/横滚欧拉角与三轴加速度。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "includes": [
+          "EmakefunMpu6050Adapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunMpu6050Adapter.h",
+            "template": "#include <EmakefunMpu6050Adapter.h>"
+          },
+          {
+            "section": "statement",
+            "description": "刷新一次 MPU6050 欧拉角与加速度数据。",
+            "template": "EmakefunMpu6050Adapter::update();\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun MPU6050 六轴姿态传感器（I2C 0x68），读取偏航/俯仰/横滚欧拉角与三轴加速度。",
+          "message": "Emakefun MPU6050 六轴姿态传感器（I2C 0x68），读取偏航/俯仰/横滚欧拉角与三轴加速度。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun MPU6050 六轴陀螺仪 随包示例",
+          "description": "刷新一次 MPU6050 欧拉角与加速度数据。",
+          "expected_behavior": "演示 Emakefun MPU6050 六轴陀螺仪 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_mpu6050_euler",
+      "display_name": "MPU6050 欧拉角 %1",
+      "description": "读取偏航(Yaw)、俯仰(Pitch)或横滚(Roll)角度。",
+      "category": "Emakefun MPU6050 六轴陀螺仪",
+      "kind": "value",
+      "keywords": [
+        "Emakefun MPU6050 六轴陀螺仪",
+        "emakefun_mpu6050",
+        "Emakefun",
+        "陀螺仪",
+        "MPU6050",
+        "姿态",
+        "欧拉角",
+        "加速度"
+      ],
+      "semantics": {
+        "purpose": "读取偏航(Yaw)、俯仰(Pitch)或横滚(Roll)角度。",
+        "behavior": "读取偏航(Yaw)、俯仰(Pitch)或横滚(Roll)角度。",
+        "concepts": [
+          "Emakefun MPU6050 六轴陀螺仪",
+          "Emakefun"
+        ],
+        "side_effects": []
+      },
+      "fields": [
+        {
+          "name": "AXIS",
+          "kind": "dropdown",
+          "description": "欧拉角轴",
+          "required": true,
+          "default": "0",
+          "options": [
+            {
+              "label": "偏航 Yaw",
+              "value": "0"
+            },
+            {
+              "label": "俯仰 Pitch",
+              "value": "1"
+            },
+            {
+              "label": "横滚 Roll",
+              "value": "2"
+            }
+          ]
+        }
+      ],
+      "inputs": [],
+      "output": {
+        "connection": "value",
+        "types": [
+          "Number"
+        ],
+        "description": "读取偏航(Yaw)、俯仰(Pitch)或横滚(Roll)角度。"
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunMpu6050Adapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunMpu6050Adapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunMpu6050Adapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "Emakefun Mpu6050",
+          "version": "1.0.0",
+          "headers": [
+            "mpu6050.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/emakefun_mpu6050）内置于 libraries/emakefun_mpu6050/。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "i2c",
+            "id": "wire",
+            "source": {
+              "kind": "board-default"
+            },
+            "access": "read-write",
+            "sharing": "shared",
+            "description": "默认 I2C 总线 (Wire)，模块默认地址 0x68。"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "i2c-device",
+              "role": "i2c-device",
+              "resource": {
+                "kind": "fixed",
+                "valueType": "id",
+                "value": "i2c"
+              },
+              "exclusive": false,
+              "discriminator": {
+                "kind": "fixed",
+                "valueType": "integer",
+                "value": 104
+              }
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun MPU6050 六轴姿态传感器（I2C 0x68），读取偏航/俯仰/横滚欧拉角与三轴加速度。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "expression",
+        "deterministic": true,
+        "includes": [
+          "EmakefunMpu6050Adapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunMpu6050Adapter.h",
+            "template": "#include <EmakefunMpu6050Adapter.h>"
+          },
+          {
+            "section": "expression",
+            "description": "读取偏航(Yaw)、俯仰(Pitch)或横滚(Roll)角度。",
+            "template": "EmakefunMpu6050Adapter::euler({{field:AXIS}})"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun MPU6050 六轴姿态传感器（I2C 0x68），读取偏航/俯仰/横滚欧拉角与三轴加速度。",
+          "message": "Emakefun MPU6050 六轴姿态传感器（I2C 0x68），读取偏航/俯仰/横滚欧拉角与三轴加速度。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun MPU6050 六轴陀螺仪 随包示例",
+          "description": "读取偏航(Yaw)、俯仰(Pitch)或横滚(Roll)角度。",
+          "expected_behavior": "演示 Emakefun MPU6050 六轴陀螺仪 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_mpu6050_accel",
+      "display_name": "MPU6050 加速度 %1",
+      "description": "读取 X/Y/Z 三轴原始加速度值。",
+      "category": "Emakefun MPU6050 六轴陀螺仪",
+      "kind": "value",
+      "keywords": [
+        "Emakefun MPU6050 六轴陀螺仪",
+        "emakefun_mpu6050",
+        "Emakefun",
+        "陀螺仪",
+        "MPU6050",
+        "姿态",
+        "欧拉角",
+        "加速度"
+      ],
+      "semantics": {
+        "purpose": "读取 X/Y/Z 三轴原始加速度值。",
+        "behavior": "读取 X/Y/Z 三轴原始加速度值。",
+        "concepts": [
+          "Emakefun MPU6050 六轴陀螺仪",
+          "Emakefun"
+        ],
+        "side_effects": []
+      },
+      "fields": [
+        {
+          "name": "AXIS",
+          "kind": "dropdown",
+          "description": "加速度轴",
+          "required": true,
+          "default": "0",
+          "options": [
+            {
+              "label": "X 轴",
+              "value": "0"
+            },
+            {
+              "label": "Y 轴",
+              "value": "1"
+            },
+            {
+              "label": "Z 轴",
+              "value": "2"
+            }
+          ]
+        }
+      ],
+      "inputs": [],
+      "output": {
+        "connection": "value",
+        "types": [
+          "Number"
+        ],
+        "description": "读取 X/Y/Z 三轴原始加速度值。"
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunMpu6050Adapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunMpu6050Adapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunMpu6050Adapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "Emakefun Mpu6050",
+          "version": "1.0.0",
+          "headers": [
+            "mpu6050.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/emakefun_mpu6050）内置于 libraries/emakefun_mpu6050/。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "i2c",
+            "id": "wire",
+            "source": {
+              "kind": "board-default"
+            },
+            "access": "read-write",
+            "sharing": "shared",
+            "description": "默认 I2C 总线 (Wire)，模块默认地址 0x68。"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "i2c-device",
+              "role": "i2c-device",
+              "resource": {
+                "kind": "fixed",
+                "valueType": "id",
+                "value": "i2c"
+              },
+              "exclusive": false,
+              "discriminator": {
+                "kind": "fixed",
+                "valueType": "integer",
+                "value": 104
+              }
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun MPU6050 六轴姿态传感器（I2C 0x68），读取偏航/俯仰/横滚欧拉角与三轴加速度。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "expression",
+        "deterministic": true,
+        "includes": [
+          "EmakefunMpu6050Adapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunMpu6050Adapter.h",
+            "template": "#include <EmakefunMpu6050Adapter.h>"
+          },
+          {
+            "section": "expression",
+            "description": "读取 X/Y/Z 三轴原始加速度值。",
+            "template": "EmakefunMpu6050Adapter::accel({{field:AXIS}})"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun MPU6050 六轴姿态传感器（I2C 0x68），读取偏航/俯仰/横滚欧拉角与三轴加速度。",
+          "message": "Emakefun MPU6050 六轴姿态传感器（I2C 0x68），读取偏航/俯仰/横滚欧拉角与三轴加速度。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun MPU6050 六轴陀螺仪 随包示例",
+          "description": "读取 X/Y/Z 三轴原始加速度值。",
+          "expected_behavior": "演示 Emakefun MPU6050 六轴陀螺仪 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    }
+  ]
+}

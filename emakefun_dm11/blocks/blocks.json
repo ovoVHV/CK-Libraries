@@ -1,0 +1,103 @@
+[
+  {
+    "type": "emakefun_dm11_begin",
+    "message0": "初始化 DM11 电机驱动 频率 %1 Hz I2C地址 %2",
+    "args0": [
+      {
+        "type": "input_value",
+        "name": "FREQ",
+        "check": "Number"
+      },
+      {
+        "type": "input_value",
+        "name": "ADDR",
+        "check": "Number"
+      }
+    ],
+    "inputsInline": true,
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": "#DC2626",
+    "tooltip": "初始化 Emakefun DM11 双路电机驱动（默认 0x15 = 21）。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_dm11_motor",
+    "message0": "DM11 驱动电机 %1 速度 %2 (-4095~4095)",
+    "args0": [
+      {
+        "type": "field_dropdown",
+        "name": "M",
+        "options": [
+          [
+            "电机 M1",
+            "0"
+          ],
+          [
+            "电机 M2",
+            "1"
+          ]
+        ]
+      },
+      {
+        "type": "input_value",
+        "name": "SPEED",
+        "check": "Number"
+      }
+    ],
+    "inputsInline": true,
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": "#DC2626",
+    "tooltip": "驱动 M1 或 M2 直流电机正反转与调速。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_dm11_pwm",
+    "message0": "DM11 设 PWM 通道 %1 占空比 %2 (0-4095)",
+    "args0": [
+      {
+        "type": "field_dropdown",
+        "name": "CH",
+        "options": [
+          [
+            "PWM0",
+            "0"
+          ],
+          [
+            "PWM1",
+            "1"
+          ],
+          [
+            "PWM2",
+            "2"
+          ],
+          [
+            "PWM3",
+            "3"
+          ]
+        ]
+      },
+      {
+        "type": "input_value",
+        "name": "DUTY",
+        "check": "Number"
+      }
+    ],
+    "inputsInline": true,
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": "#DC2626",
+    "tooltip": "直接设置单个 PWM 输出通道占空比。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_dm11_stop",
+    "message0": "DM11 全部停止",
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": "#DC2626",
+    "tooltip": "关闭所有 PWM 输出停止电机。",
+    "helpUrl": ""
+  }
+]

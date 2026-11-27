@@ -1,0 +1,76 @@
+[
+  {
+    "type": "emakefun_asr_serial_begin",
+    "message0": "初始化 ASR 串口语音 RX引脚 %1 TX引脚 %2",
+    "args0": [
+      {
+        "type": "input_value",
+        "name": "RX",
+        "check": "Number"
+      },
+      {
+        "type": "input_value",
+        "name": "TX",
+        "check": "Number"
+      }
+    ],
+    "inputsInline": true,
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": "#A855F7",
+    "tooltip": "初始化 Emakefun ASR 串口语音识别模块（9600 波特率）。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_asr_serial_broadcast",
+    "message0": "ASR 语音 播报词条编号 %1",
+    "args0": [
+      {
+        "type": "input_value",
+        "name": "ID",
+        "check": "Number"
+      }
+    ],
+    "inputsInline": true,
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": "#A855F7",
+    "tooltip": "播报模块内置语音词条。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_asr_serial_volume",
+    "message0": "ASR 语音 设置音量 %1",
+    "args0": [
+      {
+        "type": "input_value",
+        "name": "VOL",
+        "check": "Number"
+      }
+    ],
+    "inputsInline": true,
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": "#A855F7",
+    "tooltip": "设置播报音量等级。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_asr_serial_exit_wakeup",
+    "message0": "ASR 语音 退出唤醒状态",
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": "#A855F7",
+    "tooltip": "让语音模块退出当前唤醒状态。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_asr_serial_reset",
+    "message0": "ASR 语音 复位模块",
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": "#A855F7",
+    "tooltip": "发送复位指令重启语音模块。",
+    "helpUrl": ""
+  }
+]

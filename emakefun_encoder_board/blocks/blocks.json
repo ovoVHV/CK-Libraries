@@ -1,0 +1,241 @@
+[
+  {
+    "type": "emakefun_encoder_board_begin",
+    "message0": "初始化编码电机扩展板 I2C地址 %1",
+    "args0": [
+      {
+        "type": "input_value",
+        "name": "ADDR",
+        "check": "Number"
+      }
+    ],
+    "inputsInline": true,
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": "#E11D48",
+    "tooltip": "初始化 Emakefun 编码电机驱动板（默认 0x09 = 9）。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_encoder_board_run_speed",
+    "message0": "编码电机板 电机 %1 转速 %2 RPM",
+    "args0": [
+      {
+        "type": "field_dropdown",
+        "name": "IDX",
+        "options": [
+          [
+            "电机 0",
+            "0"
+          ],
+          [
+            "电机 1",
+            "1"
+          ],
+          [
+            "电机 2",
+            "2"
+          ],
+          [
+            "电机 3",
+            "3"
+          ]
+        ]
+      },
+      {
+        "type": "input_value",
+        "name": "RPM",
+        "check": "Number"
+      }
+    ],
+    "inputsInline": true,
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": "#E11D48",
+    "tooltip": "以指定 RPM 旋转。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_encoder_board_run_pwm",
+    "message0": "编码电机板 电机 %1 PWM %2 (-255~255)",
+    "args0": [
+      {
+        "type": "field_dropdown",
+        "name": "IDX",
+        "options": [
+          [
+            "电机 0",
+            "0"
+          ],
+          [
+            "电机 1",
+            "1"
+          ],
+          [
+            "电机 2",
+            "2"
+          ],
+          [
+            "电机 3",
+            "3"
+          ]
+        ]
+      },
+      {
+        "type": "input_value",
+        "name": "PWM",
+        "check": "Number"
+      }
+    ],
+    "inputsInline": true,
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": "#E11D48",
+    "tooltip": "以 PWM 值驱动电机。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_encoder_board_move",
+    "message0": "编码电机板 电机 %1 转动 %2 度 速度 %3",
+    "args0": [
+      {
+        "type": "field_dropdown",
+        "name": "IDX",
+        "options": [
+          [
+            "电机 0",
+            "0"
+          ],
+          [
+            "电机 1",
+            "1"
+          ],
+          [
+            "电机 2",
+            "2"
+          ],
+          [
+            "电机 3",
+            "3"
+          ]
+        ]
+      },
+      {
+        "type": "input_value",
+        "name": "DEG",
+        "check": "Number"
+      },
+      {
+        "type": "input_value",
+        "name": "SPD",
+        "check": "Number"
+      }
+    ],
+    "inputsInline": true,
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": "#E11D48",
+    "tooltip": "相对当前位置转动指定角度。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_encoder_board_stop",
+    "message0": "编码电机板 停止电机 %1",
+    "args0": [
+      {
+        "type": "field_dropdown",
+        "name": "IDX",
+        "options": [
+          [
+            "电机 0",
+            "0"
+          ],
+          [
+            "电机 1",
+            "1"
+          ],
+          [
+            "电机 2",
+            "2"
+          ],
+          [
+            "电机 3",
+            "3"
+          ]
+        ]
+      }
+    ],
+    "inputsInline": true,
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": "#E11D48",
+    "tooltip": "停止指定编码电机。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_encoder_board_speed",
+    "message0": "编码电机板 电机 %1 当前转速",
+    "args0": [
+      {
+        "type": "field_dropdown",
+        "name": "IDX",
+        "options": [
+          [
+            "电机 0",
+            "0"
+          ],
+          [
+            "电机 1",
+            "1"
+          ],
+          [
+            "电机 2",
+            "2"
+          ],
+          [
+            "电机 3",
+            "3"
+          ]
+        ]
+      }
+    ],
+    "inputsInline": true,
+    "output": "Number",
+    "colour": "#E11D48",
+    "tooltip": "读取实时转速 RPM。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_encoder_board_pos",
+    "message0": "编码电机板 电机 %1 当前角度",
+    "args0": [
+      {
+        "type": "field_dropdown",
+        "name": "IDX",
+        "options": [
+          [
+            "电机 0",
+            "0"
+          ],
+          [
+            "电机 1",
+            "1"
+          ],
+          [
+            "电机 2",
+            "2"
+          ],
+          [
+            "电机 3",
+            "3"
+          ]
+        ]
+      }
+    ],
+    "inputsInline": true,
+    "output": "Number",
+    "colour": "#E11D48",
+    "tooltip": "读取当前累计角度位置。",
+    "helpUrl": ""
+  }
+]

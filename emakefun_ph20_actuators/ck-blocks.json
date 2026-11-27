@@ -1,0 +1,875 @@
+{
+  "schema_version": 2,
+  "id": "emakefun_ph20_actuators",
+  "display_name": "Emakefun PH2.0 基础执行器模块",
+  "description": "覆盖 Emakefun PH2.0 全系列基础执行器：有源/无源蜂鸣器、直流电机与风扇、双路电机驱动、继电器、激光发射与振动马达。",
+  "defaultLocale": "zh-CN",
+  "keywords": [
+    "Emakefun PH2.0 基础执行器模块",
+    "emakefun_ph20_actuators",
+    "Emakefun",
+    "PH2.0",
+    "蜂鸣器",
+    "继电器",
+    "直流电机",
+    "风扇",
+    "激光",
+    "振动马达"
+  ],
+  "license": {
+    "spdx_id": "Apache-2.0",
+    "file": "LICENSE.txt"
+  },
+  "compatibility": {
+    "architectures": [
+      "avr",
+      "esp32"
+    ]
+  },
+  "dependencies": [
+    {
+      "kind": "arduino-library",
+      "id": "EmakefunPh20Actuators",
+      "version": "1.0.0",
+      "headers": [
+        "EmakefunPh20Actuators.h"
+      ],
+      "license": "Apache-2.0",
+      "reason": "随包内置于 libraries/EmakefunPh20Actuators/，提供安全封装与跨板卡兼容接口。"
+    }
+  ],
+  "entrypoints": {
+    "blocks": "blocks/blocks.json",
+    "generator": "blocks/ck-generator.json",
+    "toolbox": "blocks/toolbox.json"
+  },
+  "blocks": [
+    {
+      "type": "emakefun_ph20_actuators_switch",
+      "display_name": "PH2.0 %1 引脚 %2 设为 %3",
+      "description": "控制有源蜂鸣器、继电器、激光发射模块或振动马达开关。",
+      "category": "Emakefun PH2.0 基础执行器模块",
+      "kind": "statement",
+      "keywords": [
+        "Emakefun PH2.0 基础执行器模块",
+        "emakefun_ph20_actuators",
+        "Emakefun",
+        "PH2.0",
+        "蜂鸣器",
+        "继电器",
+        "直流电机",
+        "风扇",
+        "激光",
+        "振动马达"
+      ],
+      "semantics": {
+        "purpose": "控制有源蜂鸣器、继电器、激光发射模块或振动马达开关。",
+        "behavior": "控制有源蜂鸣器、继电器、激光发射模块或振动马达开关。",
+        "concepts": [
+          "Emakefun PH2.0 基础执行器模块",
+          "Emakefun"
+        ],
+        "side_effects": [
+          "控制有源蜂鸣器、继电器、激光发射模块或振动马达开关。"
+        ]
+      },
+      "fields": [
+        {
+          "name": "KIND",
+          "kind": "dropdown",
+          "description": "执行器类型",
+          "required": true,
+          "default": "0",
+          "options": [
+            {
+              "label": "继电器",
+              "value": "0"
+            },
+            {
+              "label": "有源蜂鸣器",
+              "value": "1"
+            },
+            {
+              "label": "激光发射模块",
+              "value": "2"
+            },
+            {
+              "label": "振动马达",
+              "value": "3"
+            }
+          ]
+        },
+        {
+          "name": "ON",
+          "kind": "dropdown",
+          "description": "开关状态",
+          "required": true,
+          "default": "true",
+          "options": [
+            {
+              "label": "打开",
+              "value": "true"
+            },
+            {
+              "label": "关闭",
+              "value": "false"
+            }
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "name": "PIN",
+          "kind": "value",
+          "description": "数字输出引脚",
+          "check": "Number",
+          "required": true,
+          "default": 8
+        }
+      ],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunPh20Actuators",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunPh20Actuators.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunPh20Actuators/，提供安全封装与跨板卡兼容接口。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "gpio",
+            "id": "pin",
+            "source": {
+              "kind": "input",
+              "name": "PIN"
+            },
+            "access": "read-write",
+            "sharing": "exclusive",
+            "capabilities": [
+              "digital-output"
+            ],
+            "description": "数字输出引脚"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "gpio-pin",
+              "role": "digital-output",
+              "resource": {
+                "kind": "input",
+                "name": "PIN",
+                "valueType": "id"
+              },
+              "exclusive": true
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "覆盖 Emakefun PH2.0 全系列基础执行器：有源/无源蜂鸣器、直流电机与风扇、双路电机驱动、继电器、激光发射与振动马达。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "includes": [
+          "EmakefunPh20Actuators.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunPh20Actuators.h",
+            "template": "#include <EmakefunPh20Actuators.h>"
+          },
+          {
+            "section": "statement",
+            "description": "控制有源蜂鸣器、继电器、激光发射模块或振动马达开关。",
+            "template": "EmakefunPh20Actuators::setSwitch({{value:PIN}}, {{field:ON}});\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "覆盖 Emakefun PH2.0 全系列基础执行器：有源/无源蜂鸣器、直流电机与风扇、双路电机驱动、继电器、激光发射与振动马达。",
+          "message": "覆盖 Emakefun PH2.0 全系列基础执行器：有源/无源蜂鸣器、直流电机与风扇、双路电机驱动、继电器、激光发射与振动马达。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun PH2.0 基础执行器模块 随包示例",
+          "description": "控制有源蜂鸣器、继电器、激光发射模块或振动马达开关。",
+          "expected_behavior": "演示 Emakefun PH2.0 基础执行器模块 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_ph20_actuators_tone",
+      "display_name": "PH2.0 无源蜂鸣器 引脚 %1 频率 %2 Hz 持续 %3 ms",
+      "description": "驱动无源蜂鸣器发声（持续时间填 0 表示持续发声）。",
+      "category": "Emakefun PH2.0 基础执行器模块",
+      "kind": "statement",
+      "keywords": [
+        "Emakefun PH2.0 基础执行器模块",
+        "emakefun_ph20_actuators",
+        "Emakefun",
+        "PH2.0",
+        "蜂鸣器",
+        "继电器",
+        "直流电机",
+        "风扇",
+        "激光",
+        "振动马达"
+      ],
+      "semantics": {
+        "purpose": "驱动无源蜂鸣器发声（持续时间填 0 表示持续发声）。",
+        "behavior": "驱动无源蜂鸣器发声（持续时间填 0 表示持续发声）。",
+        "concepts": [
+          "Emakefun PH2.0 基础执行器模块",
+          "Emakefun"
+        ],
+        "side_effects": [
+          "驱动无源蜂鸣器发声（持续时间填 0 表示持续发声）。"
+        ]
+      },
+      "fields": [],
+      "inputs": [
+        {
+          "name": "PIN",
+          "kind": "value",
+          "description": "蜂鸣器引脚",
+          "check": "Number",
+          "required": true,
+          "default": 9
+        },
+        {
+          "name": "FREQ",
+          "kind": "value",
+          "description": "频率 Hz",
+          "check": "Number",
+          "required": true,
+          "default": 523
+        },
+        {
+          "name": "DUR",
+          "kind": "value",
+          "description": "持续毫秒（0常响）",
+          "check": "Number",
+          "required": true,
+          "default": 300
+        }
+      ],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunPh20Actuators",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunPh20Actuators.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunPh20Actuators/，提供安全封装与跨板卡兼容接口。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "gpio",
+            "id": "pin",
+            "source": {
+              "kind": "input",
+              "name": "PIN"
+            },
+            "access": "read-write",
+            "sharing": "exclusive",
+            "capabilities": [
+              "digital-output"
+            ],
+            "description": "蜂鸣器引脚"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "gpio-pin",
+              "role": "digital-output",
+              "resource": {
+                "kind": "input",
+                "name": "PIN",
+                "valueType": "id"
+              },
+              "exclusive": true
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "覆盖 Emakefun PH2.0 全系列基础执行器：有源/无源蜂鸣器、直流电机与风扇、双路电机驱动、继电器、激光发射与振动马达。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "includes": [
+          "EmakefunPh20Actuators.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunPh20Actuators.h",
+            "template": "#include <EmakefunPh20Actuators.h>"
+          },
+          {
+            "section": "statement",
+            "description": "驱动无源蜂鸣器发声（持续时间填 0 表示持续发声）。",
+            "template": "EmakefunPh20Actuators::buzzerTone({{value:PIN}}, {{value:FREQ}}, {{value:DUR}});\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "覆盖 Emakefun PH2.0 全系列基础执行器：有源/无源蜂鸣器、直流电机与风扇、双路电机驱动、继电器、激光发射与振动马达。",
+          "message": "覆盖 Emakefun PH2.0 全系列基础执行器：有源/无源蜂鸣器、直流电机与风扇、双路电机驱动、继电器、激光发射与振动马达。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun PH2.0 基础执行器模块 随包示例",
+          "description": "驱动无源蜂鸣器发声（持续时间填 0 表示持续发声）。",
+          "expected_behavior": "演示 Emakefun PH2.0 基础执行器模块 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_ph20_actuators_notone",
+      "display_name": "PH2.0 无源蜂鸣器 停止 引脚 %1",
+      "description": "关闭无源蜂鸣器发声。",
+      "category": "Emakefun PH2.0 基础执行器模块",
+      "kind": "statement",
+      "keywords": [
+        "Emakefun PH2.0 基础执行器模块",
+        "emakefun_ph20_actuators",
+        "Emakefun",
+        "PH2.0",
+        "蜂鸣器",
+        "继电器",
+        "直流电机",
+        "风扇",
+        "激光",
+        "振动马达"
+      ],
+      "semantics": {
+        "purpose": "关闭无源蜂鸣器发声。",
+        "behavior": "关闭无源蜂鸣器发声。",
+        "concepts": [
+          "Emakefun PH2.0 基础执行器模块",
+          "Emakefun"
+        ],
+        "side_effects": [
+          "关闭无源蜂鸣器发声。"
+        ]
+      },
+      "fields": [],
+      "inputs": [
+        {
+          "name": "PIN",
+          "kind": "value",
+          "description": "蜂鸣器引脚",
+          "check": "Number",
+          "required": true,
+          "default": 9
+        }
+      ],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunPh20Actuators",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunPh20Actuators.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunPh20Actuators/，提供安全封装与跨板卡兼容接口。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "gpio",
+            "id": "pin",
+            "source": {
+              "kind": "input",
+              "name": "PIN"
+            },
+            "access": "read-write",
+            "sharing": "exclusive",
+            "capabilities": [
+              "digital-output"
+            ],
+            "description": "蜂鸣器引脚"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "gpio-pin",
+              "role": "digital-output",
+              "resource": {
+                "kind": "input",
+                "name": "PIN",
+                "valueType": "id"
+              },
+              "exclusive": true
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "覆盖 Emakefun PH2.0 全系列基础执行器：有源/无源蜂鸣器、直流电机与风扇、双路电机驱动、继电器、激光发射与振动马达。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "includes": [
+          "EmakefunPh20Actuators.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunPh20Actuators.h",
+            "template": "#include <EmakefunPh20Actuators.h>"
+          },
+          {
+            "section": "statement",
+            "description": "关闭无源蜂鸣器发声。",
+            "template": "EmakefunPh20Actuators::buzzerStop({{value:PIN}});\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "覆盖 Emakefun PH2.0 全系列基础执行器：有源/无源蜂鸣器、直流电机与风扇、双路电机驱动、继电器、激光发射与振动马达。",
+          "message": "覆盖 Emakefun PH2.0 全系列基础执行器：有源/无源蜂鸣器、直流电机与风扇、双路电机驱动、继电器、激光发射与振动马达。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun PH2.0 基础执行器模块 随包示例",
+          "description": "关闭无源蜂鸣器发声。",
+          "expected_behavior": "演示 Emakefun PH2.0 基础执行器模块 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_ph20_actuators_fan",
+      "display_name": "PH2.0 直流电机/大风扇 引脚 %1 PWM调速 %2 (0-255)",
+      "description": "单路 PWM 控制直流电机或风扇转速。",
+      "category": "Emakefun PH2.0 基础执行器模块",
+      "kind": "statement",
+      "keywords": [
+        "Emakefun PH2.0 基础执行器模块",
+        "emakefun_ph20_actuators",
+        "Emakefun",
+        "PH2.0",
+        "蜂鸣器",
+        "继电器",
+        "直流电机",
+        "风扇",
+        "激光",
+        "振动马达"
+      ],
+      "semantics": {
+        "purpose": "单路 PWM 控制直流电机或风扇转速。",
+        "behavior": "单路 PWM 控制直流电机或风扇转速。",
+        "concepts": [
+          "Emakefun PH2.0 基础执行器模块",
+          "Emakefun"
+        ],
+        "side_effects": [
+          "单路 PWM 控制直流电机或风扇转速。"
+        ]
+      },
+      "fields": [],
+      "inputs": [
+        {
+          "name": "PIN",
+          "kind": "value",
+          "description": "PWM 引脚",
+          "check": "Number",
+          "required": true,
+          "default": 5
+        },
+        {
+          "name": "SPD",
+          "kind": "value",
+          "description": "速度 0-255",
+          "check": "Number",
+          "required": true,
+          "default": 180
+        }
+      ],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunPh20Actuators",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunPh20Actuators.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunPh20Actuators/，提供安全封装与跨板卡兼容接口。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "gpio",
+            "id": "pin",
+            "source": {
+              "kind": "input",
+              "name": "PIN"
+            },
+            "access": "read-write",
+            "sharing": "exclusive",
+            "capabilities": [
+              "digital-output"
+            ],
+            "description": "PWM 引脚"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "gpio-pin",
+              "role": "digital-output",
+              "resource": {
+                "kind": "input",
+                "name": "PIN",
+                "valueType": "id"
+              },
+              "exclusive": true
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "覆盖 Emakefun PH2.0 全系列基础执行器：有源/无源蜂鸣器、直流电机与风扇、双路电机驱动、继电器、激光发射与振动马达。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "includes": [
+          "EmakefunPh20Actuators.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunPh20Actuators.h",
+            "template": "#include <EmakefunPh20Actuators.h>"
+          },
+          {
+            "section": "statement",
+            "description": "单路 PWM 控制直流电机或风扇转速。",
+            "template": "EmakefunPh20Actuators::setPwm({{value:PIN}}, {{value:SPD}});\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "覆盖 Emakefun PH2.0 全系列基础执行器：有源/无源蜂鸣器、直流电机与风扇、双路电机驱动、继电器、激光发射与振动马达。",
+          "message": "覆盖 Emakefun PH2.0 全系列基础执行器：有源/无源蜂鸣器、直流电机与风扇、双路电机驱动、继电器、激光发射与振动马达。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun PH2.0 基础执行器模块 随包示例",
+          "description": "单路 PWM 控制直流电机或风扇转速。",
+          "expected_behavior": "演示 Emakefun PH2.0 基础执行器模块 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_ph20_actuators_dual_motor",
+      "display_name": "PH2.0 双线直流电机 IA %1 IB %2 速度 %3 (-255~255)",
+      "description": "正反转控制双线直流电机或双路电机驱动模块单通道。",
+      "category": "Emakefun PH2.0 基础执行器模块",
+      "kind": "statement",
+      "keywords": [
+        "Emakefun PH2.0 基础执行器模块",
+        "emakefun_ph20_actuators",
+        "Emakefun",
+        "PH2.0",
+        "蜂鸣器",
+        "继电器",
+        "直流电机",
+        "风扇",
+        "激光",
+        "振动马达"
+      ],
+      "semantics": {
+        "purpose": "正反转控制双线直流电机或双路电机驱动模块单通道。",
+        "behavior": "正反转控制双线直流电机或双路电机驱动模块单通道。",
+        "concepts": [
+          "Emakefun PH2.0 基础执行器模块",
+          "Emakefun"
+        ],
+        "side_effects": [
+          "正反转控制双线直流电机或双路电机驱动模块单通道。"
+        ]
+      },
+      "fields": [],
+      "inputs": [
+        {
+          "name": "IA",
+          "kind": "value",
+          "description": "IA PWM 引脚",
+          "check": "Number",
+          "required": true,
+          "default": 5
+        },
+        {
+          "name": "IB",
+          "kind": "value",
+          "description": "IB PWM 引脚",
+          "check": "Number",
+          "required": true,
+          "default": 6
+        },
+        {
+          "name": "SPD",
+          "kind": "value",
+          "description": "速度 -255~255",
+          "check": "Number",
+          "required": true,
+          "default": 180
+        }
+      ],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunPh20Actuators",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunPh20Actuators.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunPh20Actuators/，提供安全封装与跨板卡兼容接口。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "gpio",
+            "id": "ia",
+            "source": {
+              "kind": "input",
+              "name": "IA"
+            },
+            "access": "read-write",
+            "sharing": "exclusive",
+            "capabilities": [
+              "digital-output"
+            ],
+            "description": "IA PWM 引脚"
+          },
+          {
+            "kind": "gpio",
+            "id": "ib",
+            "source": {
+              "kind": "input",
+              "name": "IB"
+            },
+            "access": "read-write",
+            "sharing": "exclusive",
+            "capabilities": [
+              "digital-output"
+            ],
+            "description": "IB PWM 引脚"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "gpio-ia",
+              "role": "digital-output",
+              "resource": {
+                "kind": "input",
+                "name": "IA",
+                "valueType": "id"
+              },
+              "exclusive": true
+            },
+            {
+              "id": "gpio-ib",
+              "role": "digital-output",
+              "resource": {
+                "kind": "input",
+                "name": "IB",
+                "valueType": "id"
+              },
+              "exclusive": true
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "覆盖 Emakefun PH2.0 全系列基础执行器：有源/无源蜂鸣器、直流电机与风扇、双路电机驱动、继电器、激光发射与振动马达。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "includes": [
+          "EmakefunPh20Actuators.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunPh20Actuators.h",
+            "template": "#include <EmakefunPh20Actuators.h>"
+          },
+          {
+            "section": "statement",
+            "description": "正反转控制双线直流电机或双路电机驱动模块单通道。",
+            "template": "EmakefunPh20Actuators::driveDualPinMotor({{value:IA}}, {{value:IB}}, {{value:SPD}});\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "覆盖 Emakefun PH2.0 全系列基础执行器：有源/无源蜂鸣器、直流电机与风扇、双路电机驱动、继电器、激光发射与振动马达。",
+          "message": "覆盖 Emakefun PH2.0 全系列基础执行器：有源/无源蜂鸣器、直流电机与风扇、双路电机驱动、继电器、激光发射与振动马达。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun PH2.0 基础执行器模块 随包示例",
+          "description": "正反转控制双线直流电机或双路电机驱动模块单通道。",
+          "expected_behavior": "演示 Emakefun PH2.0 基础执行器模块 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    }
+  ]
+}

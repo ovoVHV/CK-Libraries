@@ -1,0 +1,948 @@
+{
+  "schema_version": 2,
+  "id": "emakefun_matrix_kbd_v3",
+  "display_name": "Emakefun 触摸矩阵键盘 V3",
+  "description": "Emakefun 4×4 I2C 触摸矩阵键盘 V3.0（默认地址 0x65），内置软件消抖，支持按下/按住/松开事件与字符读取。",
+  "defaultLocale": "zh-CN",
+  "keywords": [
+    "Emakefun 触摸矩阵键盘 V3",
+    "emakefun_matrix_kbd_v3",
+    "Emakefun",
+    "矩阵键盘",
+    "触摸键盘",
+    "4x4",
+    "I2C",
+    "V3"
+  ],
+  "license": {
+    "spdx_id": "Apache-2.0",
+    "file": "LICENSE.txt"
+  },
+  "compatibility": {
+    "architectures": [
+      "avr",
+      "esp32"
+    ]
+  },
+  "dependencies": [
+    {
+      "kind": "arduino-library",
+      "id": "EmakefunMatrixKbdV3Adapter",
+      "version": "1.0.0",
+      "headers": [
+        "EmakefunMatrixKbdV3Adapter.h"
+      ],
+      "license": "Apache-2.0",
+      "reason": "随包内置于 libraries/EmakefunMatrixKbdV3Adapter/，提供安全封装与跨板卡兼容接口。"
+    },
+    {
+      "kind": "arduino-library",
+      "id": "Emakefun Matrix Keyboard",
+      "version": "1.0.1",
+      "headers": [
+        "debouncer.h",
+        "matrix_keyboard.h",
+        "matrix_keyboard_lib.h"
+      ],
+      "license": "MIT",
+      "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/emakefun_matrix_keyboard_v3）内置于 libraries/emakefun_matrix_keyboard_v3/。"
+    }
+  ],
+  "entrypoints": {
+    "blocks": "blocks/blocks.json",
+    "generator": "blocks/ck-generator.json",
+    "toolbox": "blocks/toolbox.json"
+  },
+  "blocks": [
+    {
+      "type": "emakefun_matrix_kbd_v3_begin",
+      "display_name": "初始化矩阵键盘 V3 I2C地址 %1",
+      "description": "初始化 Emakefun 矩阵键盘 V3（默认 0x65 = 101）。",
+      "category": "Emakefun 触摸矩阵键盘 V3",
+      "kind": "statement",
+      "keywords": [
+        "Emakefun 触摸矩阵键盘 V3",
+        "emakefun_matrix_kbd_v3",
+        "Emakefun",
+        "矩阵键盘",
+        "触摸键盘",
+        "4x4",
+        "I2C",
+        "V3"
+      ],
+      "semantics": {
+        "purpose": "初始化 Emakefun 矩阵键盘 V3（默认 0x65 = 101）。",
+        "behavior": "初始化 Emakefun 矩阵键盘 V3（默认 0x65 = 101）。",
+        "concepts": [
+          "Emakefun 触摸矩阵键盘 V3",
+          "Emakefun"
+        ],
+        "side_effects": [
+          "初始化 Emakefun 矩阵键盘 V3（默认 0x65 = 101）。"
+        ]
+      },
+      "fields": [],
+      "inputs": [
+        {
+          "name": "ADDR",
+          "kind": "value",
+          "description": "I2C 地址（默认 101）",
+          "check": "Number",
+          "required": true,
+          "default": 101
+        }
+      ],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunMatrixKbdV3Adapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunMatrixKbdV3Adapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunMatrixKbdV3Adapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "Emakefun Matrix Keyboard",
+          "version": "1.0.1",
+          "headers": [
+            "debouncer.h",
+            "matrix_keyboard.h",
+            "matrix_keyboard_lib.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/emakefun_matrix_keyboard_v3）内置于 libraries/emakefun_matrix_keyboard_v3/。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "i2c",
+            "id": "wire",
+            "source": {
+              "kind": "board-default"
+            },
+            "access": "read-write",
+            "sharing": "shared",
+            "description": "默认 I2C 总线 (Wire)，模块默认地址 0x65。"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "i2c-device",
+              "role": "i2c-device",
+              "resource": {
+                "kind": "fixed",
+                "valueType": "id",
+                "value": "i2c"
+              },
+              "exclusive": false,
+              "discriminator": {
+                "kind": "fixed",
+                "valueType": "integer",
+                "value": 101
+              }
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun 4×4 I2C 触摸矩阵键盘 V3.0（默认地址 0x65），内置软件消抖，支持按下/按住/松开事件与字符读取。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "includes": [
+          "EmakefunMatrixKbdV3Adapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunMatrixKbdV3Adapter.h",
+            "template": "#include <EmakefunMatrixKbdV3Adapter.h>"
+          },
+          {
+            "section": "statement",
+            "description": "初始化 Emakefun 矩阵键盘 V3（默认 0x65 = 101）。",
+            "template": "EmakefunMatrixKbdV3Adapter::begin({{value:ADDR}});\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun 4×4 I2C 触摸矩阵键盘 V3.0（默认地址 0x65），内置软件消抖，支持按下/按住/松开事件与字符读取。",
+          "message": "Emakefun 4×4 I2C 触摸矩阵键盘 V3.0（默认地址 0x65），内置软件消抖，支持按下/按住/松开事件与字符读取。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun 触摸矩阵键盘 V3 随包示例",
+          "description": "初始化 Emakefun 矩阵键盘 V3（默认 0x65 = 101）。",
+          "expected_behavior": "演示 Emakefun 触摸矩阵键盘 V3 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_matrix_kbd_v3_tick",
+      "display_name": "矩阵键盘 V3 刷新扫描",
+      "description": "在循环中周期调用以刷新消抖与按键状态。",
+      "category": "Emakefun 触摸矩阵键盘 V3",
+      "kind": "statement",
+      "keywords": [
+        "Emakefun 触摸矩阵键盘 V3",
+        "emakefun_matrix_kbd_v3",
+        "Emakefun",
+        "矩阵键盘",
+        "触摸键盘",
+        "4x4",
+        "I2C",
+        "V3"
+      ],
+      "semantics": {
+        "purpose": "在循环中周期调用以刷新消抖与按键状态。",
+        "behavior": "在循环中周期调用以刷新消抖与按键状态。",
+        "concepts": [
+          "Emakefun 触摸矩阵键盘 V3",
+          "Emakefun"
+        ],
+        "side_effects": [
+          "在循环中周期调用以刷新消抖与按键状态。"
+        ]
+      },
+      "fields": [],
+      "inputs": [],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunMatrixKbdV3Adapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunMatrixKbdV3Adapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunMatrixKbdV3Adapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "Emakefun Matrix Keyboard",
+          "version": "1.0.1",
+          "headers": [
+            "debouncer.h",
+            "matrix_keyboard.h",
+            "matrix_keyboard_lib.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/emakefun_matrix_keyboard_v3）内置于 libraries/emakefun_matrix_keyboard_v3/。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "i2c",
+            "id": "wire",
+            "source": {
+              "kind": "board-default"
+            },
+            "access": "read-write",
+            "sharing": "shared",
+            "description": "默认 I2C 总线 (Wire)，模块默认地址 0x65。"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "i2c-device",
+              "role": "i2c-device",
+              "resource": {
+                "kind": "fixed",
+                "valueType": "id",
+                "value": "i2c"
+              },
+              "exclusive": false,
+              "discriminator": {
+                "kind": "fixed",
+                "valueType": "integer",
+                "value": 101
+              }
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun 4×4 I2C 触摸矩阵键盘 V3.0（默认地址 0x65），内置软件消抖，支持按下/按住/松开事件与字符读取。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "includes": [
+          "EmakefunMatrixKbdV3Adapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunMatrixKbdV3Adapter.h",
+            "template": "#include <EmakefunMatrixKbdV3Adapter.h>"
+          },
+          {
+            "section": "statement",
+            "description": "在循环中周期调用以刷新消抖与按键状态。",
+            "template": "EmakefunMatrixKbdV3Adapter::tick();\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun 4×4 I2C 触摸矩阵键盘 V3.0（默认地址 0x65），内置软件消抖，支持按下/按住/松开事件与字符读取。",
+          "message": "Emakefun 4×4 I2C 触摸矩阵键盘 V3.0（默认地址 0x65），内置软件消抖，支持按下/按住/松开事件与字符读取。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun 触摸矩阵键盘 V3 随包示例",
+          "description": "在循环中周期调用以刷新消抖与按键状态。",
+          "expected_behavior": "演示 Emakefun 触摸矩阵键盘 V3 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_matrix_kbd_v3_key_text",
+      "display_name": "矩阵键盘 V3 当前按下键值文本",
+      "description": "返回当前按下按键的字符（无按键时为空字符串）。",
+      "category": "Emakefun 触摸矩阵键盘 V3",
+      "kind": "value",
+      "keywords": [
+        "Emakefun 触摸矩阵键盘 V3",
+        "emakefun_matrix_kbd_v3",
+        "Emakefun",
+        "矩阵键盘",
+        "触摸键盘",
+        "4x4",
+        "I2C",
+        "V3"
+      ],
+      "semantics": {
+        "purpose": "返回当前按下按键的字符（无按键时为空字符串）。",
+        "behavior": "返回当前按下按键的字符（无按键时为空字符串）。",
+        "concepts": [
+          "Emakefun 触摸矩阵键盘 V3",
+          "Emakefun"
+        ],
+        "side_effects": []
+      },
+      "fields": [],
+      "inputs": [],
+      "output": {
+        "connection": "value",
+        "types": [
+          "String"
+        ],
+        "description": "返回当前按下按键的字符（无按键时为空字符串）。"
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunMatrixKbdV3Adapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunMatrixKbdV3Adapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunMatrixKbdV3Adapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "Emakefun Matrix Keyboard",
+          "version": "1.0.1",
+          "headers": [
+            "debouncer.h",
+            "matrix_keyboard.h",
+            "matrix_keyboard_lib.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/emakefun_matrix_keyboard_v3）内置于 libraries/emakefun_matrix_keyboard_v3/。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "i2c",
+            "id": "wire",
+            "source": {
+              "kind": "board-default"
+            },
+            "access": "read-write",
+            "sharing": "shared",
+            "description": "默认 I2C 总线 (Wire)，模块默认地址 0x65。"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "i2c-device",
+              "role": "i2c-device",
+              "resource": {
+                "kind": "fixed",
+                "valueType": "id",
+                "value": "i2c"
+              },
+              "exclusive": false,
+              "discriminator": {
+                "kind": "fixed",
+                "valueType": "integer",
+                "value": 101
+              }
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun 4×4 I2C 触摸矩阵键盘 V3.0（默认地址 0x65），内置软件消抖，支持按下/按住/松开事件与字符读取。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "expression",
+        "deterministic": true,
+        "includes": [
+          "EmakefunMatrixKbdV3Adapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunMatrixKbdV3Adapter.h",
+            "template": "#include <EmakefunMatrixKbdV3Adapter.h>"
+          },
+          {
+            "section": "expression",
+            "description": "返回当前按下按键的字符（无按键时为空字符串）。",
+            "template": "EmakefunMatrixKbdV3Adapter::keyText()"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun 4×4 I2C 触摸矩阵键盘 V3.0（默认地址 0x65），内置软件消抖，支持按下/按住/松开事件与字符读取。",
+          "message": "Emakefun 4×4 I2C 触摸矩阵键盘 V3.0（默认地址 0x65），内置软件消抖，支持按下/按住/松开事件与字符读取。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun 触摸矩阵键盘 V3 随包示例",
+          "description": "返回当前按下按键的字符（无按键时为空字符串）。",
+          "expected_behavior": "演示 Emakefun 触摸矩阵键盘 V3 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_matrix_kbd_v3_pressed",
+      "display_name": "矩阵键盘 V3 按键 %1 刚按下?",
+      "description": "检测指定按键是否触发按下边沿事件。",
+      "category": "Emakefun 触摸矩阵键盘 V3",
+      "kind": "value",
+      "keywords": [
+        "Emakefun 触摸矩阵键盘 V3",
+        "emakefun_matrix_kbd_v3",
+        "Emakefun",
+        "矩阵键盘",
+        "触摸键盘",
+        "4x4",
+        "I2C",
+        "V3"
+      ],
+      "semantics": {
+        "purpose": "检测指定按键是否触发按下边沿事件。",
+        "behavior": "检测指定按键是否触发按下边沿事件。",
+        "concepts": [
+          "Emakefun 触摸矩阵键盘 V3",
+          "Emakefun"
+        ],
+        "side_effects": []
+      },
+      "fields": [
+        {
+          "name": "KEY",
+          "kind": "dropdown",
+          "description": "按键",
+          "required": true,
+          "default": "1",
+          "options": [
+            {
+              "label": "1",
+              "value": "1"
+            },
+            {
+              "label": "2",
+              "value": "16"
+            },
+            {
+              "label": "3",
+              "value": "256"
+            },
+            {
+              "label": "4",
+              "value": "2"
+            },
+            {
+              "label": "5",
+              "value": "32"
+            },
+            {
+              "label": "6",
+              "value": "512"
+            },
+            {
+              "label": "7",
+              "value": "4"
+            },
+            {
+              "label": "8",
+              "value": "64"
+            },
+            {
+              "label": "9",
+              "value": "1024"
+            },
+            {
+              "label": "0",
+              "value": "128"
+            },
+            {
+              "label": "*",
+              "value": "8"
+            },
+            {
+              "label": "#",
+              "value": "2048"
+            },
+            {
+              "label": "A",
+              "value": "4096"
+            },
+            {
+              "label": "B",
+              "value": "8192"
+            },
+            {
+              "label": "C",
+              "value": "16384"
+            },
+            {
+              "label": "D",
+              "value": "32768"
+            }
+          ]
+        }
+      ],
+      "inputs": [],
+      "output": {
+        "connection": "value",
+        "types": [
+          "Boolean"
+        ],
+        "description": "检测指定按键是否触发按下边沿事件。"
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunMatrixKbdV3Adapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunMatrixKbdV3Adapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunMatrixKbdV3Adapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "Emakefun Matrix Keyboard",
+          "version": "1.0.1",
+          "headers": [
+            "debouncer.h",
+            "matrix_keyboard.h",
+            "matrix_keyboard_lib.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/emakefun_matrix_keyboard_v3）内置于 libraries/emakefun_matrix_keyboard_v3/。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "i2c",
+            "id": "wire",
+            "source": {
+              "kind": "board-default"
+            },
+            "access": "read-write",
+            "sharing": "shared",
+            "description": "默认 I2C 总线 (Wire)，模块默认地址 0x65。"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "i2c-device",
+              "role": "i2c-device",
+              "resource": {
+                "kind": "fixed",
+                "valueType": "id",
+                "value": "i2c"
+              },
+              "exclusive": false,
+              "discriminator": {
+                "kind": "fixed",
+                "valueType": "integer",
+                "value": 101
+              }
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun 4×4 I2C 触摸矩阵键盘 V3.0（默认地址 0x65），内置软件消抖，支持按下/按住/松开事件与字符读取。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "expression",
+        "deterministic": true,
+        "includes": [
+          "EmakefunMatrixKbdV3Adapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunMatrixKbdV3Adapter.h",
+            "template": "#include <EmakefunMatrixKbdV3Adapter.h>"
+          },
+          {
+            "section": "expression",
+            "description": "检测指定按键是否触发按下边沿事件。",
+            "template": "EmakefunMatrixKbdV3Adapter::pressed({{field:KEY}})"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun 4×4 I2C 触摸矩阵键盘 V3.0（默认地址 0x65），内置软件消抖，支持按下/按住/松开事件与字符读取。",
+          "message": "Emakefun 4×4 I2C 触摸矩阵键盘 V3.0（默认地址 0x65），内置软件消抖，支持按下/按住/松开事件与字符读取。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun 触摸矩阵键盘 V3 随包示例",
+          "description": "检测指定按键是否触发按下边沿事件。",
+          "expected_behavior": "演示 Emakefun 触摸矩阵键盘 V3 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_matrix_kbd_v3_pressing",
+      "display_name": "矩阵键盘 V3 按键 %1 正在按住?",
+      "description": "判断指定按键当前是否处于按住状态。",
+      "category": "Emakefun 触摸矩阵键盘 V3",
+      "kind": "value",
+      "keywords": [
+        "Emakefun 触摸矩阵键盘 V3",
+        "emakefun_matrix_kbd_v3",
+        "Emakefun",
+        "矩阵键盘",
+        "触摸键盘",
+        "4x4",
+        "I2C",
+        "V3"
+      ],
+      "semantics": {
+        "purpose": "判断指定按键当前是否处于按住状态。",
+        "behavior": "判断指定按键当前是否处于按住状态。",
+        "concepts": [
+          "Emakefun 触摸矩阵键盘 V3",
+          "Emakefun"
+        ],
+        "side_effects": []
+      },
+      "fields": [
+        {
+          "name": "KEY",
+          "kind": "dropdown",
+          "description": "按键",
+          "required": true,
+          "default": "1",
+          "options": [
+            {
+              "label": "1",
+              "value": "1"
+            },
+            {
+              "label": "2",
+              "value": "16"
+            },
+            {
+              "label": "3",
+              "value": "256"
+            },
+            {
+              "label": "4",
+              "value": "2"
+            },
+            {
+              "label": "5",
+              "value": "32"
+            },
+            {
+              "label": "6",
+              "value": "512"
+            },
+            {
+              "label": "7",
+              "value": "4"
+            },
+            {
+              "label": "8",
+              "value": "64"
+            },
+            {
+              "label": "9",
+              "value": "1024"
+            },
+            {
+              "label": "0",
+              "value": "128"
+            },
+            {
+              "label": "*",
+              "value": "8"
+            },
+            {
+              "label": "#",
+              "value": "2048"
+            },
+            {
+              "label": "A",
+              "value": "4096"
+            },
+            {
+              "label": "B",
+              "value": "8192"
+            },
+            {
+              "label": "C",
+              "value": "16384"
+            },
+            {
+              "label": "D",
+              "value": "32768"
+            }
+          ]
+        }
+      ],
+      "inputs": [],
+      "output": {
+        "connection": "value",
+        "types": [
+          "Boolean"
+        ],
+        "description": "判断指定按键当前是否处于按住状态。"
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunMatrixKbdV3Adapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunMatrixKbdV3Adapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunMatrixKbdV3Adapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "Emakefun Matrix Keyboard",
+          "version": "1.0.1",
+          "headers": [
+            "debouncer.h",
+            "matrix_keyboard.h",
+            "matrix_keyboard_lib.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/emakefun_matrix_keyboard_v3）内置于 libraries/emakefun_matrix_keyboard_v3/。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "i2c",
+            "id": "wire",
+            "source": {
+              "kind": "board-default"
+            },
+            "access": "read-write",
+            "sharing": "shared",
+            "description": "默认 I2C 总线 (Wire)，模块默认地址 0x65。"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "i2c-device",
+              "role": "i2c-device",
+              "resource": {
+                "kind": "fixed",
+                "valueType": "id",
+                "value": "i2c"
+              },
+              "exclusive": false,
+              "discriminator": {
+                "kind": "fixed",
+                "valueType": "integer",
+                "value": 101
+              }
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun 4×4 I2C 触摸矩阵键盘 V3.0（默认地址 0x65），内置软件消抖，支持按下/按住/松开事件与字符读取。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "expression",
+        "deterministic": true,
+        "includes": [
+          "EmakefunMatrixKbdV3Adapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunMatrixKbdV3Adapter.h",
+            "template": "#include <EmakefunMatrixKbdV3Adapter.h>"
+          },
+          {
+            "section": "expression",
+            "description": "判断指定按键当前是否处于按住状态。",
+            "template": "EmakefunMatrixKbdV3Adapter::pressing({{field:KEY}})"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun 4×4 I2C 触摸矩阵键盘 V3.0（默认地址 0x65），内置软件消抖，支持按下/按住/松开事件与字符读取。",
+          "message": "Emakefun 4×4 I2C 触摸矩阵键盘 V3.0（默认地址 0x65），内置软件消抖，支持按下/按住/松开事件与字符读取。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun 触摸矩阵键盘 V3 随包示例",
+          "description": "判断指定按键当前是否处于按住状态。",
+          "expected_behavior": "演示 Emakefun 触摸矩阵键盘 V3 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "schema": "ck-generator",
+  "version": 1,
+  "rules": [
+    {
+      "type": "emakefun_five_line_v2_begin",
+      "kind": "statement",
+      "includes": {
+        "EmakefunLineTrackerV2Adapter.h": "#include <EmakefunLineTrackerV2Adapter.h>"
+      },
+      "template": "EmakefunLineTrackerV2Adapter::begin({{value:ADDR}});\n"
+    },
+    {
+      "type": "emakefun_five_line_v2_sensitivity",
+      "kind": "statement",
+      "includes": {
+        "EmakefunLineTrackerV2Adapter.h": "#include <EmakefunLineTrackerV2Adapter.h>"
+      },
+      "template": "EmakefunLineTrackerV2Adapter::setSensitivity({{value:SENS}});\n"
+    },
+    {
+      "type": "emakefun_five_line_v2_value",
+      "kind": "expression",
+      "includes": {
+        "EmakefunLineTrackerV2Adapter.h": "#include <EmakefunLineTrackerV2Adapter.h>"
+      },
+      "template": "EmakefunLineTrackerV2Adapter::value({{field:CH}})"
+    },
+    {
+      "type": "emakefun_five_line_v2_on_black",
+      "kind": "expression",
+      "includes": {
+        "EmakefunLineTrackerV2Adapter.h": "#include <EmakefunLineTrackerV2Adapter.h>"
+      },
+      "template": "EmakefunLineTrackerV2Adapter::onBlack({{field:CH}})"
+    },
+    {
+      "type": "emakefun_five_line_v2_states",
+      "kind": "expression",
+      "includes": {
+        "EmakefunLineTrackerV2Adapter.h": "#include <EmakefunLineTrackerV2Adapter.h>"
+      },
+      "template": "EmakefunLineTrackerV2Adapter::states()"
+    }
+  ]
+}

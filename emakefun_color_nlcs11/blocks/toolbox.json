@@ -1,0 +1,41 @@
+{
+  "kind": "category",
+  "name": "Emakefun NLCS11 颜色传感器",
+  "colour": "#0EA5E9",
+  "contents": [
+    {
+      "kind": "block",
+      "type": "emakefun_color_nlcs11_begin",
+      "inputs": {
+        "ADDR": {
+          "shadow": {
+            "type": "math_number",
+            "fields": {
+              "NUM": 67
+            }
+          }
+        }
+      }
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_color_nlcs11_sample"
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_color_nlcs11_r"
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_color_nlcs11_g"
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_color_nlcs11_b"
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_color_nlcs11_c"
+    }
+  ]
+}

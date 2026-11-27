@@ -1,0 +1,725 @@
+{
+  "schema_version": 2,
+  "id": "emakefun_asr_serial",
+  "display_name": "Emakefun ASR 串口语音识别",
+  "description": "Emakefun 串口离线语音识别模块（9600bps），支持指令播报、音量调节、唤醒控制与复位。",
+  "defaultLocale": "zh-CN",
+  "keywords": [
+    "Emakefun ASR 串口语音识别",
+    "emakefun_asr_serial",
+    "Emakefun",
+    "ASR",
+    "语音识别",
+    "串口语音"
+  ],
+  "license": {
+    "spdx_id": "Apache-2.0",
+    "file": "LICENSE.txt"
+  },
+  "compatibility": {
+    "architectures": [
+      "avr",
+      "esp32"
+    ]
+  },
+  "dependencies": [
+    {
+      "kind": "arduino-library",
+      "id": "EmakefunAsrSerialAdapter",
+      "version": "1.0.0",
+      "headers": [
+        "EmakefunAsrSerialAdapter.h"
+      ],
+      "license": "Apache-2.0",
+      "reason": "随包内置于 libraries/EmakefunAsrSerialAdapter/，提供安全封装与跨板卡兼容接口。"
+    },
+    {
+      "kind": "arduino-library",
+      "id": "Asr Speech Recognition",
+      "version": "1.0.0",
+      "headers": [
+        "asr_speech_recognition.h",
+        "asr_speech_recognition_lib.h"
+      ],
+      "license": "MIT",
+      "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/em_asr_speech_recognition）内置于 libraries/em_asr_speech_recognition/。"
+    }
+  ],
+  "entrypoints": {
+    "blocks": "blocks/blocks.json",
+    "generator": "blocks/ck-generator.json",
+    "toolbox": "blocks/toolbox.json"
+  },
+  "blocks": [
+    {
+      "type": "emakefun_asr_serial_begin",
+      "display_name": "初始化 ASR 串口语音 RX引脚 %1 TX引脚 %2",
+      "description": "初始化 Emakefun ASR 串口语音识别模块（9600 波特率）。",
+      "category": "Emakefun ASR 串口语音识别",
+      "kind": "statement",
+      "keywords": [
+        "Emakefun ASR 串口语音识别",
+        "emakefun_asr_serial",
+        "Emakefun",
+        "ASR",
+        "语音识别",
+        "串口语音"
+      ],
+      "semantics": {
+        "purpose": "初始化 Emakefun ASR 串口语音识别模块（9600 波特率）。",
+        "behavior": "初始化 Emakefun ASR 串口语音识别模块（9600 波特率）。",
+        "concepts": [
+          "Emakefun ASR 串口语音识别",
+          "Emakefun"
+        ],
+        "side_effects": [
+          "初始化 Emakefun ASR 串口语音识别模块（9600 波特率）。"
+        ]
+      },
+      "fields": [],
+      "inputs": [
+        {
+          "name": "RX",
+          "kind": "value",
+          "description": "RX 引脚",
+          "check": "Number",
+          "required": true,
+          "default": 2
+        },
+        {
+          "name": "TX",
+          "kind": "value",
+          "description": "TX 引脚",
+          "check": "Number",
+          "required": true,
+          "default": 3
+        }
+      ],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunAsrSerialAdapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunAsrSerialAdapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunAsrSerialAdapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "Asr Speech Recognition",
+          "version": "1.0.0",
+          "headers": [
+            "asr_speech_recognition.h",
+            "asr_speech_recognition_lib.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/em_asr_speech_recognition）内置于 libraries/em_asr_speech_recognition/。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "uart",
+            "id": "serial",
+            "source": {
+              "kind": "board-default"
+            },
+            "access": "read-write",
+            "sharing": "exclusive",
+            "description": "串口通信通道（SoftwareSerial 或 HardwareSerial）。"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": []
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun 串口离线语音识别模块（9600bps），支持指令播报、音量调节、唤醒控制与复位。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "includes": [
+          "EmakefunAsrSerialAdapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunAsrSerialAdapter.h",
+            "template": "#include <EmakefunAsrSerialAdapter.h>"
+          },
+          {
+            "section": "statement",
+            "description": "初始化 Emakefun ASR 串口语音识别模块（9600 波特率）。",
+            "template": "EmakefunAsrSerialAdapter::begin({{value:RX}}, {{value:TX}});\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun 串口离线语音识别模块（9600bps），支持指令播报、音量调节、唤醒控制与复位。",
+          "message": "Emakefun 串口离线语音识别模块（9600bps），支持指令播报、音量调节、唤醒控制与复位。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun ASR 串口语音识别 随包示例",
+          "description": "初始化 Emakefun ASR 串口语音识别模块（9600 波特率）。",
+          "expected_behavior": "演示 Emakefun ASR 串口语音识别 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_asr_serial_broadcast",
+      "display_name": "ASR 语音 播报词条编号 %1",
+      "description": "播报模块内置语音词条。",
+      "category": "Emakefun ASR 串口语音识别",
+      "kind": "statement",
+      "keywords": [
+        "Emakefun ASR 串口语音识别",
+        "emakefun_asr_serial",
+        "Emakefun",
+        "ASR",
+        "语音识别",
+        "串口语音"
+      ],
+      "semantics": {
+        "purpose": "播报模块内置语音词条。",
+        "behavior": "播报模块内置语音词条。",
+        "concepts": [
+          "Emakefun ASR 串口语音识别",
+          "Emakefun"
+        ],
+        "side_effects": [
+          "播报模块内置语音词条。"
+        ]
+      },
+      "fields": [],
+      "inputs": [
+        {
+          "name": "ID",
+          "kind": "value",
+          "description": "词条编号",
+          "check": "Number",
+          "required": true,
+          "default": 1
+        }
+      ],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunAsrSerialAdapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunAsrSerialAdapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunAsrSerialAdapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "Asr Speech Recognition",
+          "version": "1.0.0",
+          "headers": [
+            "asr_speech_recognition.h",
+            "asr_speech_recognition_lib.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/em_asr_speech_recognition）内置于 libraries/em_asr_speech_recognition/。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "uart",
+            "id": "serial",
+            "source": {
+              "kind": "board-default"
+            },
+            "access": "read-write",
+            "sharing": "exclusive",
+            "description": "串口通信通道（SoftwareSerial 或 HardwareSerial）。"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": []
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun 串口离线语音识别模块（9600bps），支持指令播报、音量调节、唤醒控制与复位。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "includes": [
+          "EmakefunAsrSerialAdapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunAsrSerialAdapter.h",
+            "template": "#include <EmakefunAsrSerialAdapter.h>"
+          },
+          {
+            "section": "statement",
+            "description": "播报模块内置语音词条。",
+            "template": "EmakefunAsrSerialAdapter::broadcast({{value:ID}});\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun 串口离线语音识别模块（9600bps），支持指令播报、音量调节、唤醒控制与复位。",
+          "message": "Emakefun 串口离线语音识别模块（9600bps），支持指令播报、音量调节、唤醒控制与复位。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun ASR 串口语音识别 随包示例",
+          "description": "播报模块内置语音词条。",
+          "expected_behavior": "演示 Emakefun ASR 串口语音识别 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_asr_serial_volume",
+      "display_name": "ASR 语音 设置音量 %1",
+      "description": "设置播报音量等级。",
+      "category": "Emakefun ASR 串口语音识别",
+      "kind": "statement",
+      "keywords": [
+        "Emakefun ASR 串口语音识别",
+        "emakefun_asr_serial",
+        "Emakefun",
+        "ASR",
+        "语音识别",
+        "串口语音"
+      ],
+      "semantics": {
+        "purpose": "设置播报音量等级。",
+        "behavior": "设置播报音量等级。",
+        "concepts": [
+          "Emakefun ASR 串口语音识别",
+          "Emakefun"
+        ],
+        "side_effects": [
+          "设置播报音量等级。"
+        ]
+      },
+      "fields": [],
+      "inputs": [
+        {
+          "name": "VOL",
+          "kind": "value",
+          "description": "音量",
+          "check": "Number",
+          "required": true,
+          "default": 5
+        }
+      ],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunAsrSerialAdapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunAsrSerialAdapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunAsrSerialAdapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "Asr Speech Recognition",
+          "version": "1.0.0",
+          "headers": [
+            "asr_speech_recognition.h",
+            "asr_speech_recognition_lib.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/em_asr_speech_recognition）内置于 libraries/em_asr_speech_recognition/。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "uart",
+            "id": "serial",
+            "source": {
+              "kind": "board-default"
+            },
+            "access": "read-write",
+            "sharing": "exclusive",
+            "description": "串口通信通道（SoftwareSerial 或 HardwareSerial）。"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": []
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun 串口离线语音识别模块（9600bps），支持指令播报、音量调节、唤醒控制与复位。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "includes": [
+          "EmakefunAsrSerialAdapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunAsrSerialAdapter.h",
+            "template": "#include <EmakefunAsrSerialAdapter.h>"
+          },
+          {
+            "section": "statement",
+            "description": "设置播报音量等级。",
+            "template": "EmakefunAsrSerialAdapter::setVolume({{value:VOL}});\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun 串口离线语音识别模块（9600bps），支持指令播报、音量调节、唤醒控制与复位。",
+          "message": "Emakefun 串口离线语音识别模块（9600bps），支持指令播报、音量调节、唤醒控制与复位。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun ASR 串口语音识别 随包示例",
+          "description": "设置播报音量等级。",
+          "expected_behavior": "演示 Emakefun ASR 串口语音识别 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_asr_serial_exit_wakeup",
+      "display_name": "ASR 语音 退出唤醒状态",
+      "description": "让语音模块退出当前唤醒状态。",
+      "category": "Emakefun ASR 串口语音识别",
+      "kind": "statement",
+      "keywords": [
+        "Emakefun ASR 串口语音识别",
+        "emakefun_asr_serial",
+        "Emakefun",
+        "ASR",
+        "语音识别",
+        "串口语音"
+      ],
+      "semantics": {
+        "purpose": "让语音模块退出当前唤醒状态。",
+        "behavior": "让语音模块退出当前唤醒状态。",
+        "concepts": [
+          "Emakefun ASR 串口语音识别",
+          "Emakefun"
+        ],
+        "side_effects": [
+          "让语音模块退出当前唤醒状态。"
+        ]
+      },
+      "fields": [],
+      "inputs": [],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunAsrSerialAdapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunAsrSerialAdapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunAsrSerialAdapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "Asr Speech Recognition",
+          "version": "1.0.0",
+          "headers": [
+            "asr_speech_recognition.h",
+            "asr_speech_recognition_lib.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/em_asr_speech_recognition）内置于 libraries/em_asr_speech_recognition/。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "uart",
+            "id": "serial",
+            "source": {
+              "kind": "board-default"
+            },
+            "access": "read-write",
+            "sharing": "exclusive",
+            "description": "串口通信通道（SoftwareSerial 或 HardwareSerial）。"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": []
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun 串口离线语音识别模块（9600bps），支持指令播报、音量调节、唤醒控制与复位。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "includes": [
+          "EmakefunAsrSerialAdapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunAsrSerialAdapter.h",
+            "template": "#include <EmakefunAsrSerialAdapter.h>"
+          },
+          {
+            "section": "statement",
+            "description": "让语音模块退出当前唤醒状态。",
+            "template": "EmakefunAsrSerialAdapter::exitWakeup();\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun 串口离线语音识别模块（9600bps），支持指令播报、音量调节、唤醒控制与复位。",
+          "message": "Emakefun 串口离线语音识别模块（9600bps），支持指令播报、音量调节、唤醒控制与复位。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun ASR 串口语音识别 随包示例",
+          "description": "让语音模块退出当前唤醒状态。",
+          "expected_behavior": "演示 Emakefun ASR 串口语音识别 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_asr_serial_reset",
+      "display_name": "ASR 语音 复位模块",
+      "description": "发送复位指令重启语音模块。",
+      "category": "Emakefun ASR 串口语音识别",
+      "kind": "statement",
+      "keywords": [
+        "Emakefun ASR 串口语音识别",
+        "emakefun_asr_serial",
+        "Emakefun",
+        "ASR",
+        "语音识别",
+        "串口语音"
+      ],
+      "semantics": {
+        "purpose": "发送复位指令重启语音模块。",
+        "behavior": "发送复位指令重启语音模块。",
+        "concepts": [
+          "Emakefun ASR 串口语音识别",
+          "Emakefun"
+        ],
+        "side_effects": [
+          "发送复位指令重启语音模块。"
+        ]
+      },
+      "fields": [],
+      "inputs": [],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunAsrSerialAdapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunAsrSerialAdapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunAsrSerialAdapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "Asr Speech Recognition",
+          "version": "1.0.0",
+          "headers": [
+            "asr_speech_recognition.h",
+            "asr_speech_recognition_lib.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/em_asr_speech_recognition）内置于 libraries/em_asr_speech_recognition/。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "uart",
+            "id": "serial",
+            "source": {
+              "kind": "board-default"
+            },
+            "access": "read-write",
+            "sharing": "exclusive",
+            "description": "串口通信通道（SoftwareSerial 或 HardwareSerial）。"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": []
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun 串口离线语音识别模块（9600bps），支持指令播报、音量调节、唤醒控制与复位。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "includes": [
+          "EmakefunAsrSerialAdapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunAsrSerialAdapter.h",
+            "template": "#include <EmakefunAsrSerialAdapter.h>"
+          },
+          {
+            "section": "statement",
+            "description": "发送复位指令重启语音模块。",
+            "template": "EmakefunAsrSerialAdapter::reset();\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun 串口离线语音识别模块（9600bps），支持指令播报、音量调节、唤醒控制与复位。",
+          "message": "Emakefun 串口离线语音识别模块（9600bps），支持指令播报、音量调节、唤醒控制与复位。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun ASR 串口语音识别 随包示例",
+          "description": "发送复位指令重启语音模块。",
+          "expected_behavior": "演示 Emakefun ASR 串口语音识别 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    }
+  ]
+}

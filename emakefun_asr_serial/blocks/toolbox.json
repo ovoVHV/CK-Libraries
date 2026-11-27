@@ -1,0 +1,65 @@
+{
+  "kind": "category",
+  "name": "Emakefun ASR 串口语音识别",
+  "colour": "#A855F7",
+  "contents": [
+    {
+      "kind": "block",
+      "type": "emakefun_asr_serial_begin",
+      "inputs": {
+        "RX": {
+          "shadow": {
+            "type": "math_number",
+            "fields": {
+              "NUM": 2
+            }
+          }
+        },
+        "TX": {
+          "shadow": {
+            "type": "math_number",
+            "fields": {
+              "NUM": 3
+            }
+          }
+        }
+      }
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_asr_serial_broadcast",
+      "inputs": {
+        "ID": {
+          "shadow": {
+            "type": "math_number",
+            "fields": {
+              "NUM": 1
+            }
+          }
+        }
+      }
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_asr_serial_volume",
+      "inputs": {
+        "VOL": {
+          "shadow": {
+            "type": "math_number",
+            "fields": {
+              "NUM": 5
+            }
+          }
+        }
+      }
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_asr_serial_exit_wakeup"
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_asr_serial_reset"
+    }
+  ]
+}

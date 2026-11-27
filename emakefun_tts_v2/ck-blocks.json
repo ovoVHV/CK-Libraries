@@ -1,0 +1,836 @@
+{
+  "schema_version": 2,
+  "id": "emakefun_tts_v2",
+  "display_name": "Emakefun 语音合成模块 V2",
+  "description": "Emakefun I2C 语音合成模块 V2（默认地址 0x40），支持 UTF-8/GBK 文本合成播放、缓存播放与启停控制。",
+  "defaultLocale": "zh-CN",
+  "keywords": [
+    "Emakefun 语音合成模块 V2",
+    "emakefun_tts_v2",
+    "Emakefun",
+    "TTS",
+    "语音合成",
+    "播报",
+    "I2C"
+  ],
+  "license": {
+    "spdx_id": "Apache-2.0",
+    "file": "LICENSE.txt"
+  },
+  "compatibility": {
+    "architectures": [
+      "avr",
+      "esp32"
+    ]
+  },
+  "dependencies": [
+    {
+      "kind": "arduino-library",
+      "id": "EmakefunTtsV2Adapter",
+      "version": "1.0.0",
+      "headers": [
+        "EmakefunTtsV2Adapter.h"
+      ],
+      "license": "Apache-2.0",
+      "reason": "随包内置于 libraries/EmakefunTtsV2Adapter/，提供安全封装与跨板卡兼容接口。"
+    },
+    {
+      "kind": "arduino-library",
+      "id": "Emakefun Tts Module",
+      "version": "2.0.0",
+      "headers": [
+        "tts.h"
+      ],
+      "license": "MIT",
+      "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/emakefun_tts）内置于 libraries/emakefun_tts/。"
+    }
+  ],
+  "entrypoints": {
+    "blocks": "blocks/blocks.json",
+    "generator": "blocks/ck-generator.json",
+    "toolbox": "blocks/toolbox.json"
+  },
+  "blocks": [
+    {
+      "type": "emakefun_tts_v2_begin",
+      "display_name": "初始化语音合成 V2 I2C地址 %1",
+      "description": "初始化 Emakefun 语音合成模块 V2（默认 0x40 = 64）。",
+      "category": "Emakefun 语音合成模块 V2",
+      "kind": "statement",
+      "keywords": [
+        "Emakefun 语音合成模块 V2",
+        "emakefun_tts_v2",
+        "Emakefun",
+        "TTS",
+        "语音合成",
+        "播报",
+        "I2C"
+      ],
+      "semantics": {
+        "purpose": "初始化 Emakefun 语音合成模块 V2（默认 0x40 = 64）。",
+        "behavior": "初始化 Emakefun 语音合成模块 V2（默认 0x40 = 64）。",
+        "concepts": [
+          "Emakefun 语音合成模块 V2",
+          "Emakefun"
+        ],
+        "side_effects": [
+          "初始化 Emakefun 语音合成模块 V2（默认 0x40 = 64）。"
+        ]
+      },
+      "fields": [],
+      "inputs": [
+        {
+          "name": "ADDR",
+          "kind": "value",
+          "description": "I2C 地址（默认 64）",
+          "check": "Number",
+          "required": true,
+          "default": 64
+        }
+      ],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunTtsV2Adapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunTtsV2Adapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunTtsV2Adapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "Emakefun Tts Module",
+          "version": "2.0.0",
+          "headers": [
+            "tts.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/emakefun_tts）内置于 libraries/emakefun_tts/。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "i2c",
+            "id": "wire",
+            "source": {
+              "kind": "board-default"
+            },
+            "access": "read-write",
+            "sharing": "shared",
+            "description": "默认 I2C 总线 (Wire)，模块默认地址 0x40。"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "i2c-device",
+              "role": "i2c-device",
+              "resource": {
+                "kind": "fixed",
+                "valueType": "id",
+                "value": "i2c"
+              },
+              "exclusive": false,
+              "discriminator": {
+                "kind": "fixed",
+                "valueType": "integer",
+                "value": 64
+              }
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun I2C 语音合成模块 V2（默认地址 0x40），支持 UTF-8/GBK 文本合成播放、缓存播放与启停控制。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "includes": [
+          "EmakefunTtsV2Adapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunTtsV2Adapter.h",
+            "template": "#include <EmakefunTtsV2Adapter.h>"
+          },
+          {
+            "section": "statement",
+            "description": "初始化 Emakefun 语音合成模块 V2（默认 0x40 = 64）。",
+            "template": "EmakefunTtsV2Adapter::begin({{value:ADDR}});\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun I2C 语音合成模块 V2（默认地址 0x40），支持 UTF-8/GBK 文本合成播放、缓存播放与启停控制。",
+          "message": "Emakefun I2C 语音合成模块 V2（默认地址 0x40），支持 UTF-8/GBK 文本合成播放、缓存播放与启停控制。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun 语音合成模块 V2 随包示例",
+          "description": "初始化 Emakefun 语音合成模块 V2（默认 0x40 = 64）。",
+          "expected_behavior": "演示 Emakefun 语音合成模块 V2 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_tts_v2_play",
+      "display_name": "语音合成 V2 播报 %1 编码 %2",
+      "description": "合成并播放文本。",
+      "category": "Emakefun 语音合成模块 V2",
+      "kind": "statement",
+      "keywords": [
+        "Emakefun 语音合成模块 V2",
+        "emakefun_tts_v2",
+        "Emakefun",
+        "TTS",
+        "语音合成",
+        "播报",
+        "I2C"
+      ],
+      "semantics": {
+        "purpose": "合成并播放文本。",
+        "behavior": "合成并播放文本。",
+        "concepts": [
+          "Emakefun 语音合成模块 V2",
+          "Emakefun"
+        ],
+        "side_effects": [
+          "合成并播放文本。"
+        ]
+      },
+      "fields": [
+        {
+          "name": "ENC",
+          "kind": "dropdown",
+          "description": "文本编码",
+          "required": true,
+          "default": "4",
+          "options": [
+            {
+              "label": "UTF-8",
+              "value": "4"
+            },
+            {
+              "label": "GBK",
+              "value": "1"
+            },
+            {
+              "label": "GB2312",
+              "value": "0"
+            }
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "name": "TEXT",
+          "kind": "value",
+          "description": "播报文本",
+          "check": "String",
+          "required": true,
+          "default": "你好"
+        }
+      ],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunTtsV2Adapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunTtsV2Adapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunTtsV2Adapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "Emakefun Tts Module",
+          "version": "2.0.0",
+          "headers": [
+            "tts.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/emakefun_tts）内置于 libraries/emakefun_tts/。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "i2c",
+            "id": "wire",
+            "source": {
+              "kind": "board-default"
+            },
+            "access": "read-write",
+            "sharing": "shared",
+            "description": "默认 I2C 总线 (Wire)，模块默认地址 0x40。"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "i2c-device",
+              "role": "i2c-device",
+              "resource": {
+                "kind": "fixed",
+                "valueType": "id",
+                "value": "i2c"
+              },
+              "exclusive": false,
+              "discriminator": {
+                "kind": "fixed",
+                "valueType": "integer",
+                "value": 64
+              }
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun I2C 语音合成模块 V2（默认地址 0x40），支持 UTF-8/GBK 文本合成播放、缓存播放与启停控制。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "includes": [
+          "EmakefunTtsV2Adapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunTtsV2Adapter.h",
+            "template": "#include <EmakefunTtsV2Adapter.h>"
+          },
+          {
+            "section": "statement",
+            "description": "合成并播放文本。",
+            "template": "EmakefunTtsV2Adapter::play(String({{value:TEXT}}), {{field:ENC}});\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun I2C 语音合成模块 V2（默认地址 0x40），支持 UTF-8/GBK 文本合成播放、缓存播放与启停控制。",
+          "message": "Emakefun I2C 语音合成模块 V2（默认地址 0x40），支持 UTF-8/GBK 文本合成播放、缓存播放与启停控制。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun 语音合成模块 V2 随包示例",
+          "description": "合成并播放文本。",
+          "expected_behavior": "演示 Emakefun 语音合成模块 V2 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_tts_v2_push_cache",
+      "display_name": "语音合成 V2 写入缓存块 %1 文本 %2",
+      "description": "将文本上传至缓存块 0-15。",
+      "category": "Emakefun 语音合成模块 V2",
+      "kind": "statement",
+      "keywords": [
+        "Emakefun 语音合成模块 V2",
+        "emakefun_tts_v2",
+        "Emakefun",
+        "TTS",
+        "语音合成",
+        "播报",
+        "I2C"
+      ],
+      "semantics": {
+        "purpose": "将文本上传至缓存块 0-15。",
+        "behavior": "将文本上传至缓存块 0-15。",
+        "concepts": [
+          "Emakefun 语音合成模块 V2",
+          "Emakefun"
+        ],
+        "side_effects": [
+          "将文本上传至缓存块 0-15。"
+        ]
+      },
+      "fields": [],
+      "inputs": [
+        {
+          "name": "IDX",
+          "kind": "value",
+          "description": "缓存块 0-15",
+          "check": "Number",
+          "required": true,
+          "default": 0
+        },
+        {
+          "name": "TEXT",
+          "kind": "value",
+          "description": "文本",
+          "check": "String",
+          "required": true,
+          "default": "欢迎使用"
+        }
+      ],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunTtsV2Adapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunTtsV2Adapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunTtsV2Adapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "Emakefun Tts Module",
+          "version": "2.0.0",
+          "headers": [
+            "tts.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/emakefun_tts）内置于 libraries/emakefun_tts/。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "i2c",
+            "id": "wire",
+            "source": {
+              "kind": "board-default"
+            },
+            "access": "read-write",
+            "sharing": "shared",
+            "description": "默认 I2C 总线 (Wire)，模块默认地址 0x40。"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "i2c-device",
+              "role": "i2c-device",
+              "resource": {
+                "kind": "fixed",
+                "valueType": "id",
+                "value": "i2c"
+              },
+              "exclusive": false,
+              "discriminator": {
+                "kind": "fixed",
+                "valueType": "integer",
+                "value": 64
+              }
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun I2C 语音合成模块 V2（默认地址 0x40），支持 UTF-8/GBK 文本合成播放、缓存播放与启停控制。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "includes": [
+          "EmakefunTtsV2Adapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunTtsV2Adapter.h",
+            "template": "#include <EmakefunTtsV2Adapter.h>"
+          },
+          {
+            "section": "statement",
+            "description": "将文本上传至缓存块 0-15。",
+            "template": "EmakefunTtsV2Adapter::pushCache(String({{value:TEXT}}), {{value:IDX}});\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun I2C 语音合成模块 V2（默认地址 0x40），支持 UTF-8/GBK 文本合成播放、缓存播放与启停控制。",
+          "message": "Emakefun I2C 语音合成模块 V2（默认地址 0x40），支持 UTF-8/GBK 文本合成播放、缓存播放与启停控制。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun 语音合成模块 V2 随包示例",
+          "description": "将文本上传至缓存块 0-15。",
+          "expected_behavior": "演示 Emakefun 语音合成模块 V2 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_tts_v2_play_cache",
+      "display_name": "语音合成 V2 播放缓存 次数 %1",
+      "description": "从缓存块 0 开始播放指定次数（1-15）。",
+      "category": "Emakefun 语音合成模块 V2",
+      "kind": "statement",
+      "keywords": [
+        "Emakefun 语音合成模块 V2",
+        "emakefun_tts_v2",
+        "Emakefun",
+        "TTS",
+        "语音合成",
+        "播报",
+        "I2C"
+      ],
+      "semantics": {
+        "purpose": "从缓存块 0 开始播放指定次数（1-15）。",
+        "behavior": "从缓存块 0 开始播放指定次数（1-15）。",
+        "concepts": [
+          "Emakefun 语音合成模块 V2",
+          "Emakefun"
+        ],
+        "side_effects": [
+          "从缓存块 0 开始播放指定次数（1-15）。"
+        ]
+      },
+      "fields": [],
+      "inputs": [
+        {
+          "name": "CNT",
+          "kind": "value",
+          "description": "播放次数 1-15",
+          "check": "Number",
+          "required": true,
+          "default": 1
+        }
+      ],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunTtsV2Adapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunTtsV2Adapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunTtsV2Adapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "Emakefun Tts Module",
+          "version": "2.0.0",
+          "headers": [
+            "tts.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/emakefun_tts）内置于 libraries/emakefun_tts/。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "i2c",
+            "id": "wire",
+            "source": {
+              "kind": "board-default"
+            },
+            "access": "read-write",
+            "sharing": "shared",
+            "description": "默认 I2C 总线 (Wire)，模块默认地址 0x40。"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "i2c-device",
+              "role": "i2c-device",
+              "resource": {
+                "kind": "fixed",
+                "valueType": "id",
+                "value": "i2c"
+              },
+              "exclusive": false,
+              "discriminator": {
+                "kind": "fixed",
+                "valueType": "integer",
+                "value": 64
+              }
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun I2C 语音合成模块 V2（默认地址 0x40），支持 UTF-8/GBK 文本合成播放、缓存播放与启停控制。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "includes": [
+          "EmakefunTtsV2Adapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunTtsV2Adapter.h",
+            "template": "#include <EmakefunTtsV2Adapter.h>"
+          },
+          {
+            "section": "statement",
+            "description": "从缓存块 0 开始播放指定次数（1-15）。",
+            "template": "EmakefunTtsV2Adapter::playCache({{value:CNT}});\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun I2C 语音合成模块 V2（默认地址 0x40），支持 UTF-8/GBK 文本合成播放、缓存播放与启停控制。",
+          "message": "Emakefun I2C 语音合成模块 V2（默认地址 0x40），支持 UTF-8/GBK 文本合成播放、缓存播放与启停控制。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun 语音合成模块 V2 随包示例",
+          "description": "从缓存块 0 开始播放指定次数（1-15）。",
+          "expected_behavior": "演示 Emakefun 语音合成模块 V2 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_tts_v2_stop",
+      "display_name": "语音合成 V2 停止播放",
+      "description": "停止当前语音合成播放。",
+      "category": "Emakefun 语音合成模块 V2",
+      "kind": "statement",
+      "keywords": [
+        "Emakefun 语音合成模块 V2",
+        "emakefun_tts_v2",
+        "Emakefun",
+        "TTS",
+        "语音合成",
+        "播报",
+        "I2C"
+      ],
+      "semantics": {
+        "purpose": "停止当前语音合成播放。",
+        "behavior": "停止当前语音合成播放。",
+        "concepts": [
+          "Emakefun 语音合成模块 V2",
+          "Emakefun"
+        ],
+        "side_effects": [
+          "停止当前语音合成播放。"
+        ]
+      },
+      "fields": [],
+      "inputs": [],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunTtsV2Adapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunTtsV2Adapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunTtsV2Adapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "Emakefun Tts Module",
+          "version": "2.0.0",
+          "headers": [
+            "tts.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/emakefun_tts）内置于 libraries/emakefun_tts/。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "i2c",
+            "id": "wire",
+            "source": {
+              "kind": "board-default"
+            },
+            "access": "read-write",
+            "sharing": "shared",
+            "description": "默认 I2C 总线 (Wire)，模块默认地址 0x40。"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "i2c-device",
+              "role": "i2c-device",
+              "resource": {
+                "kind": "fixed",
+                "valueType": "id",
+                "value": "i2c"
+              },
+              "exclusive": false,
+              "discriminator": {
+                "kind": "fixed",
+                "valueType": "integer",
+                "value": 64
+              }
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun I2C 语音合成模块 V2（默认地址 0x40），支持 UTF-8/GBK 文本合成播放、缓存播放与启停控制。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "includes": [
+          "EmakefunTtsV2Adapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunTtsV2Adapter.h",
+            "template": "#include <EmakefunTtsV2Adapter.h>"
+          },
+          {
+            "section": "statement",
+            "description": "停止当前语音合成播放。",
+            "template": "EmakefunTtsV2Adapter::stop();\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun I2C 语音合成模块 V2（默认地址 0x40），支持 UTF-8/GBK 文本合成播放、缓存播放与启停控制。",
+          "message": "Emakefun I2C 语音合成模块 V2（默认地址 0x40），支持 UTF-8/GBK 文本合成播放、缓存播放与启停控制。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun 语音合成模块 V2 随包示例",
+          "description": "停止当前语音合成播放。",
+          "expected_behavior": "演示 Emakefun 语音合成模块 V2 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    }
+  ]
+}

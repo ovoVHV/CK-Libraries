@@ -1,0 +1,101 @@
+{
+  "kind": "category",
+  "name": "Emakefun ESP32 编码电机",
+  "colour": "#E11D48",
+  "contents": [
+    {
+      "kind": "block",
+      "type": "emakefun_esp32_encoder_begin",
+      "inputs": {
+        "POS_PIN": {
+          "shadow": {
+            "type": "math_number",
+            "fields": {
+              "NUM": 4
+            }
+          }
+        },
+        "NEG_PIN": {
+          "shadow": {
+            "type": "math_number",
+            "fields": {
+              "NUM": 5
+            }
+          }
+        },
+        "A_PIN": {
+          "shadow": {
+            "type": "math_number",
+            "fields": {
+              "NUM": 6
+            }
+          }
+        },
+        "B_PIN": {
+          "shadow": {
+            "type": "math_number",
+            "fields": {
+              "NUM": 7
+            }
+          }
+        },
+        "PPR": {
+          "shadow": {
+            "type": "math_number",
+            "fields": {
+              "NUM": 12
+            }
+          }
+        },
+        "RATIO": {
+          "shadow": {
+            "type": "math_number",
+            "fields": {
+              "NUM": 90
+            }
+          }
+        }
+      }
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_esp32_encoder_run_speed",
+      "inputs": {
+        "RPM": {
+          "shadow": {
+            "type": "math_number",
+            "fields": {
+              "NUM": 60
+            }
+          }
+        }
+      }
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_esp32_encoder_run_pwm",
+      "inputs": {
+        "DUTY": {
+          "shadow": {
+            "type": "math_number",
+            "fields": {
+              "NUM": 512
+            }
+          }
+        }
+      }
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_esp32_encoder_stop"
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_esp32_encoder_rpm"
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_esp32_encoder_pulses"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "id": "emakefun_five_line_v2",
+  "name": "Emakefun 五路循迹传感器 V2",
+  "version": "1.0.0",
+  "description": "Emakefun 五路循迹传感器 V2.0（I2C 0x50），支持灵敏度设置、单路模拟值与黑线状态读取。",
+  "sentence": "Emakefun 五路循迹传感器 V2.0（I2C 0x50），支持灵敏度设置、单路模拟值与黑线状态读取。",
+  "author": "CKYAN",
+  "vendor": "Emakefun",
+  "vendor_logo": "assets/emakefun.png",
+  "icon": "assets/icon.png",
+  "category": "Sensors",
+  "website": "https://docs.emakefun.com/sensors/sensors/five_way_tracking_sensor_v2.0/",
+  "architectures": [
+    "avr",
+    "esp32"
+  ],
+  "license": "Apache-2.0",
+  "includes": [
+    "EmakefunLineTrackerV2Adapter.h"
+  ]
+}

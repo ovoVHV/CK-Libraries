@@ -1,0 +1,71 @@
+[
+  {
+    "type": "emakefun_tts20_begin",
+    "message0": "初始化 TTS20 语音合成 I2C地址 %1",
+    "args0": [
+      {
+        "type": "input_value",
+        "name": "ADDR",
+        "check": "Number"
+      }
+    ],
+    "inputsInline": true,
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": "#EC4899",
+    "tooltip": "初始化 Emakefun TTS20 语音合成模块（默认 0x40 = 64）。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_tts20_play",
+    "message0": "TTS20 语音播报 %1",
+    "args0": [
+      {
+        "type": "input_value",
+        "name": "TEXT",
+        "check": "String"
+      }
+    ],
+    "inputsInline": true,
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": "#EC4899",
+    "tooltip": "将文本转为语音并播放。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_tts20_busy",
+    "message0": "TTS20 正在播放中?",
+    "output": "Boolean",
+    "colour": "#EC4899",
+    "tooltip": "返回模块当前是否处于语音播报忙状态。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_tts20_pause",
+    "message0": "TTS20 暂停播放",
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": "#EC4899",
+    "tooltip": "暂停当前语音播报。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_tts20_resume",
+    "message0": "TTS20 恢复播放",
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": "#EC4899",
+    "tooltip": "恢复已暂停的语音播报。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_tts20_stop",
+    "message0": "TTS20 停止播放",
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": "#EC4899",
+    "tooltip": "立即停止当前语音播报。",
+    "helpUrl": ""
+  }
+]

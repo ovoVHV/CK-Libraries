@@ -1,0 +1,21 @@
+{
+  "id": "emakefun_md40",
+  "name": "Emakefun MD40 四路电机驱动板",
+  "version": "1.0.0",
+  "description": "Emakefun MD40 I2C 四路编码/直流电机驱动板（默认地址 0x16），支持直流模式、闭环速度、相对/绝对角度位置与转速脉冲读取。",
+  "sentence": "Emakefun MD40 I2C 四路编码/直流电机驱动板（默认地址 0x16），支持直流模式、闭环速度、相对/绝对角度位置与转速脉冲读取。",
+  "author": "CKYAN",
+  "vendor": "Emakefun",
+  "vendor_logo": "assets/emakefun.png",
+  "icon": "assets/icon.png",
+  "category": "Device Control",
+  "website": "https://github.com/emakefun-arduino-library/em_md40",
+  "architectures": [
+    "avr",
+    "esp32"
+  ],
+  "license": "Apache-2.0",
+  "includes": [
+    "EmakefunMd40Adapter.h"
+  ]
+}

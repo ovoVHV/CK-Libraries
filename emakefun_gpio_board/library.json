@@ -1,0 +1,21 @@
+{
+  "id": "emakefun_gpio_board",
+  "name": "Emakefun I2C GPIO 扩展板",
+  "version": "1.0.0",
+  "description": "Emakefun 8 路 I2C GPIO 扩展板（E0-E7，地址 0x24），支持数字输入输出、ADC 采集、12位 PWM 与 E1/E2 舵机控制。",
+  "sentence": "Emakefun 8 路 I2C GPIO 扩展板（E0-E7，地址 0x24），支持数字输入输出、ADC 采集、12位 PWM 与 E1/E2 舵机控制。",
+  "author": "CKYAN",
+  "vendor": "Emakefun",
+  "vendor_logo": "assets/emakefun.png",
+  "icon": "assets/icon.png",
+  "category": "Device Control",
+  "website": "https://docs.emakefun.com/sensors/smart_modules/gpio_expansion_board/",
+  "architectures": [
+    "avr",
+    "esp32"
+  ],
+  "license": "Apache-2.0",
+  "includes": [
+    "EmakefunGpioBoardAdapter.h"
+  ]
+}

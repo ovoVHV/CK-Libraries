@@ -1,0 +1,621 @@
+{
+  "schema_version": 2,
+  "id": "emakefun_ph20_sensors",
+  "display_name": "Emakefun PH2.0 环境与光声传感器",
+  "description": "覆盖 Emakefun PH2.0 全系列基础传感器：声音、光敏、热敏、火焰、土壤湿度、雨滴、水深、MQ 气体、人体热释电、红外循迹、磁簧开关、灰度、震动、倾斜与压力传感器。",
+  "defaultLocale": "zh-CN",
+  "keywords": [
+    "Emakefun PH2.0 环境与光声传感器",
+    "emakefun_ph20_sensors",
+    "Emakefun",
+    "PH2.0",
+    "光敏",
+    "声音",
+    "火焰",
+    "土壤湿度",
+    "雨滴",
+    "水深",
+    "气体",
+    "人体红外",
+    "循迹",
+    "灰度",
+    "震动",
+    "倾斜",
+    "磁簧",
+    "压力"
+  ],
+  "license": {
+    "spdx_id": "Apache-2.0",
+    "file": "LICENSE.txt"
+  },
+  "compatibility": {
+    "architectures": [
+      "avr",
+      "esp32"
+    ]
+  },
+  "dependencies": [
+    {
+      "kind": "arduino-library",
+      "id": "EmakefunPh20Sensors",
+      "version": "1.0.0",
+      "headers": [
+        "EmakefunPh20Sensors.h"
+      ],
+      "license": "Apache-2.0",
+      "reason": "随包内置于 libraries/EmakefunPh20Sensors/，提供安全封装与跨板卡兼容接口。"
+    }
+  ],
+  "entrypoints": {
+    "blocks": "blocks/blocks.json",
+    "generator": "blocks/ck-generator.json",
+    "toolbox": "blocks/toolbox.json"
+  },
+  "blocks": [
+    {
+      "type": "emakefun_ph20_sensors_analog_sensor",
+      "display_name": "PH2.0 %1 模拟引脚 %2 数值",
+      "description": "读取 Emakefun PH2.0 模拟量传感器数值（光敏/声音/热敏/火焰/土壤湿度/雨滴/水深/MQ气体/灰度/压力）。",
+      "category": "Emakefun PH2.0 环境与光声传感器",
+      "kind": "value",
+      "keywords": [
+        "Emakefun PH2.0 环境与光声传感器",
+        "emakefun_ph20_sensors",
+        "Emakefun",
+        "PH2.0",
+        "光敏",
+        "声音",
+        "火焰",
+        "土壤湿度",
+        "雨滴",
+        "水深",
+        "气体",
+        "人体红外",
+        "循迹",
+        "灰度",
+        "震动",
+        "倾斜",
+        "磁簧",
+        "压力"
+      ],
+      "semantics": {
+        "purpose": "读取 Emakefun PH2.0 模拟量传感器数值（光敏/声音/热敏/火焰/土壤湿度/雨滴/水深/MQ气体/灰度/压力）。",
+        "behavior": "读取 Emakefun PH2.0 模拟量传感器数值（光敏/声音/热敏/火焰/土壤湿度/雨滴/水深/MQ气体/灰度/压力）。",
+        "concepts": [
+          "Emakefun PH2.0 环境与光声传感器",
+          "Emakefun"
+        ],
+        "side_effects": []
+      },
+      "fields": [
+        {
+          "name": "KIND",
+          "kind": "dropdown",
+          "description": "传感器类型",
+          "required": true,
+          "default": "0",
+          "options": [
+            {
+              "label": "光敏传感器",
+              "value": "0"
+            },
+            {
+              "label": "声音传感器",
+              "value": "1"
+            },
+            {
+              "label": "热敏传感器",
+              "value": "2"
+            },
+            {
+              "label": "火焰传感器",
+              "value": "3"
+            },
+            {
+              "label": "土壤湿度传感器",
+              "value": "4"
+            },
+            {
+              "label": "雨滴传感器",
+              "value": "5"
+            },
+            {
+              "label": "水深传感器",
+              "value": "6"
+            },
+            {
+              "label": "MQ 气体传感器",
+              "value": "7"
+            },
+            {
+              "label": "灰度传感器",
+              "value": "8"
+            },
+            {
+              "label": "压力传感器",
+              "value": "9"
+            }
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "name": "PIN",
+          "kind": "value",
+          "description": "模拟输入引脚",
+          "check": "Number",
+          "required": true,
+          "default": 14
+        }
+      ],
+      "output": {
+        "connection": "value",
+        "types": [
+          "Number"
+        ],
+        "description": "读取 Emakefun PH2.0 模拟量传感器数值（光敏/声音/热敏/火焰/土壤湿度/雨滴/水深/MQ气体/灰度/压力）。"
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunPh20Sensors",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunPh20Sensors.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunPh20Sensors/，提供安全封装与跨板卡兼容接口。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "gpio",
+            "id": "pin",
+            "source": {
+              "kind": "input",
+              "name": "PIN"
+            },
+            "access": "read-write",
+            "sharing": "exclusive",
+            "capabilities": [
+              "digital-input"
+            ],
+            "description": "模拟输入引脚"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "gpio-pin",
+              "role": "digital-input",
+              "resource": {
+                "kind": "input",
+                "name": "PIN",
+                "valueType": "id"
+              },
+              "exclusive": true
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "覆盖 Emakefun PH2.0 全系列基础传感器：声音、光敏、热敏、火焰、土壤湿度、雨滴、水深、MQ 气体、人体热释电、红外循迹、磁簧开关、灰度、震动、倾斜与压力传感器。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "expression",
+        "deterministic": true,
+        "includes": [
+          "EmakefunPh20Sensors.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunPh20Sensors.h",
+            "template": "#include <EmakefunPh20Sensors.h>"
+          },
+          {
+            "section": "expression",
+            "description": "读取 Emakefun PH2.0 模拟量传感器数值（光敏/声音/热敏/火焰/土壤湿度/雨滴/水深/MQ气体/灰度/压力）。",
+            "template": "EmakefunPh20Sensors::readAnalog({{value:PIN}})"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "覆盖 Emakefun PH2.0 全系列基础传感器：声音、光敏、热敏、火焰、土壤湿度、雨滴、水深、MQ 气体、人体热释电、红外循迹、磁簧开关、灰度、震动、倾斜与压力传感器。",
+          "message": "覆盖 Emakefun PH2.0 全系列基础传感器：声音、光敏、热敏、火焰、土壤湿度、雨滴、水深、MQ 气体、人体热释电、红外循迹、磁簧开关、灰度、震动、倾斜与压力传感器。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun PH2.0 环境与光声传感器 随包示例",
+          "description": "读取 Emakefun PH2.0 模拟量传感器数值（光敏/声音/热敏/火焰/土壤湿度/雨滴/水深/MQ气体/灰度/压力）。",
+          "expected_behavior": "演示 Emakefun PH2.0 环境与光声传感器 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_ph20_sensors_digital_high",
+      "display_name": "PH2.0 %1 数字引脚 %2 触发?(高电平)",
+      "description": "读取高电平触发的数字传感器（人体热释电 PIR / 声音 / 火焰 / 气体开关量）。",
+      "category": "Emakefun PH2.0 环境与光声传感器",
+      "kind": "value",
+      "keywords": [
+        "Emakefun PH2.0 环境与光声传感器",
+        "emakefun_ph20_sensors",
+        "Emakefun",
+        "PH2.0",
+        "光敏",
+        "声音",
+        "火焰",
+        "土壤湿度",
+        "雨滴",
+        "水深",
+        "气体",
+        "人体红外",
+        "循迹",
+        "灰度",
+        "震动",
+        "倾斜",
+        "磁簧",
+        "压力"
+      ],
+      "semantics": {
+        "purpose": "读取高电平触发的数字传感器（人体热释电 PIR / 声音 / 火焰 / 气体开关量）。",
+        "behavior": "读取高电平触发的数字传感器（人体热释电 PIR / 声音 / 火焰 / 气体开关量）。",
+        "concepts": [
+          "Emakefun PH2.0 环境与光声传感器",
+          "Emakefun"
+        ],
+        "side_effects": []
+      },
+      "fields": [
+        {
+          "name": "KIND",
+          "kind": "dropdown",
+          "description": "传感器类型",
+          "required": true,
+          "default": "0",
+          "options": [
+            {
+              "label": "人体热释电 PIR",
+              "value": "0"
+            },
+            {
+              "label": "红外避障/循迹",
+              "value": "1"
+            },
+            {
+              "label": "声音开关量",
+              "value": "2"
+            },
+            {
+              "label": "火焰开关量",
+              "value": "3"
+            },
+            {
+              "label": "MQ 气体报警",
+              "value": "4"
+            }
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "name": "PIN",
+          "kind": "value",
+          "description": "数字输入引脚",
+          "check": "Number",
+          "required": true,
+          "default": 4
+        }
+      ],
+      "output": {
+        "connection": "value",
+        "types": [
+          "Boolean"
+        ],
+        "description": "读取高电平触发的数字传感器（人体热释电 PIR / 声音 / 火焰 / 气体开关量）。"
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunPh20Sensors",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunPh20Sensors.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunPh20Sensors/，提供安全封装与跨板卡兼容接口。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "gpio",
+            "id": "pin",
+            "source": {
+              "kind": "input",
+              "name": "PIN"
+            },
+            "access": "read-write",
+            "sharing": "exclusive",
+            "capabilities": [
+              "digital-input"
+            ],
+            "description": "数字输入引脚"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "gpio-pin",
+              "role": "digital-input",
+              "resource": {
+                "kind": "input",
+                "name": "PIN",
+                "valueType": "id"
+              },
+              "exclusive": true
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "覆盖 Emakefun PH2.0 全系列基础传感器：声音、光敏、热敏、火焰、土壤湿度、雨滴、水深、MQ 气体、人体热释电、红外循迹、磁簧开关、灰度、震动、倾斜与压力传感器。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "expression",
+        "deterministic": true,
+        "includes": [
+          "EmakefunPh20Sensors.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunPh20Sensors.h",
+            "template": "#include <EmakefunPh20Sensors.h>"
+          },
+          {
+            "section": "expression",
+            "description": "读取高电平触发的数字传感器（人体热释电 PIR / 声音 / 火焰 / 气体开关量）。",
+            "template": "EmakefunPh20Sensors::readDigital({{value:PIN}}, true)"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "覆盖 Emakefun PH2.0 全系列基础传感器：声音、光敏、热敏、火焰、土壤湿度、雨滴、水深、MQ 气体、人体热释电、红外循迹、磁簧开关、灰度、震动、倾斜与压力传感器。",
+          "message": "覆盖 Emakefun PH2.0 全系列基础传感器：声音、光敏、热敏、火焰、土壤湿度、雨滴、水深、MQ 气体、人体热释电、红外循迹、磁簧开关、灰度、震动、倾斜与压力传感器。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun PH2.0 环境与光声传感器 随包示例",
+          "description": "读取高电平触发的数字传感器（人体热释电 PIR / 声音 / 火焰 / 气体开关量）。",
+          "expected_behavior": "演示 Emakefun PH2.0 环境与光声传感器 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_ph20_sensors_digital_low",
+      "display_name": "PH2.0 %1 数字引脚 %2 触发?(低电平)",
+      "description": "读取低电平触发的数字开关传感器（磁簧开关 / 震动 / 倾斜 / 红外循迹黑线）。",
+      "category": "Emakefun PH2.0 环境与光声传感器",
+      "kind": "value",
+      "keywords": [
+        "Emakefun PH2.0 环境与光声传感器",
+        "emakefun_ph20_sensors",
+        "Emakefun",
+        "PH2.0",
+        "光敏",
+        "声音",
+        "火焰",
+        "土壤湿度",
+        "雨滴",
+        "水深",
+        "气体",
+        "人体红外",
+        "循迹",
+        "灰度",
+        "震动",
+        "倾斜",
+        "磁簧",
+        "压力"
+      ],
+      "semantics": {
+        "purpose": "读取低电平触发的数字开关传感器（磁簧开关 / 震动 / 倾斜 / 红外循迹黑线）。",
+        "behavior": "读取低电平触发的数字开关传感器（磁簧开关 / 震动 / 倾斜 / 红外循迹黑线）。",
+        "concepts": [
+          "Emakefun PH2.0 环境与光声传感器",
+          "Emakefun"
+        ],
+        "side_effects": []
+      },
+      "fields": [
+        {
+          "name": "KIND",
+          "kind": "dropdown",
+          "description": "传感器类型",
+          "required": true,
+          "default": "0",
+          "options": [
+            {
+              "label": "红外循迹黑线",
+              "value": "0"
+            },
+            {
+              "label": "磁簧开关",
+              "value": "1"
+            },
+            {
+              "label": "震动传感器",
+              "value": "2"
+            },
+            {
+              "label": "倾斜传感器",
+              "value": "3"
+            }
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "name": "PIN",
+          "kind": "value",
+          "description": "数字输入引脚",
+          "check": "Number",
+          "required": true,
+          "default": 5
+        }
+      ],
+      "output": {
+        "connection": "value",
+        "types": [
+          "Boolean"
+        ],
+        "description": "读取低电平触发的数字开关传感器（磁簧开关 / 震动 / 倾斜 / 红外循迹黑线）。"
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunPh20Sensors",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunPh20Sensors.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunPh20Sensors/，提供安全封装与跨板卡兼容接口。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "gpio",
+            "id": "pin",
+            "source": {
+              "kind": "input",
+              "name": "PIN"
+            },
+            "access": "read-write",
+            "sharing": "exclusive",
+            "capabilities": [
+              "digital-input"
+            ],
+            "description": "数字输入引脚"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "gpio-pin",
+              "role": "digital-input",
+              "resource": {
+                "kind": "input",
+                "name": "PIN",
+                "valueType": "id"
+              },
+              "exclusive": true
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "覆盖 Emakefun PH2.0 全系列基础传感器：声音、光敏、热敏、火焰、土壤湿度、雨滴、水深、MQ 气体、人体热释电、红外循迹、磁簧开关、灰度、震动、倾斜与压力传感器。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "expression",
+        "deterministic": true,
+        "includes": [
+          "EmakefunPh20Sensors.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunPh20Sensors.h",
+            "template": "#include <EmakefunPh20Sensors.h>"
+          },
+          {
+            "section": "expression",
+            "description": "读取低电平触发的数字开关传感器（磁簧开关 / 震动 / 倾斜 / 红外循迹黑线）。",
+            "template": "EmakefunPh20Sensors::readDigital({{value:PIN}}, false)"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "覆盖 Emakefun PH2.0 全系列基础传感器：声音、光敏、热敏、火焰、土壤湿度、雨滴、水深、MQ 气体、人体热释电、红外循迹、磁簧开关、灰度、震动、倾斜与压力传感器。",
+          "message": "覆盖 Emakefun PH2.0 全系列基础传感器：声音、光敏、热敏、火焰、土壤湿度、雨滴、水深、MQ 气体、人体热释电、红外循迹、磁簧开关、灰度、震动、倾斜与压力传感器。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun PH2.0 环境与光声传感器 随包示例",
+          "description": "读取低电平触发的数字开关传感器（磁簧开关 / 震动 / 倾斜 / 红外循迹黑线）。",
+          "expected_behavior": "演示 Emakefun PH2.0 环境与光声传感器 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    }
+  ]
+}

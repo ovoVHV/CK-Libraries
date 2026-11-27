@@ -1,0 +1,21 @@
+{
+  "id": "emakefun_five_line_v3",
+  "name": "Emakefun 五路循迹传感器 V3",
+  "version": "1.0.0",
+  "description": "Emakefun 五路循迹传感器 V3.0（I2C 0x50），支持各通道高低阈值设定、模拟量与数字黑线检测。",
+  "sentence": "Emakefun 五路循迹传感器 V3.0（I2C 0x50），支持各通道高低阈值设定、模拟量与数字黑线检测。",
+  "author": "CKYAN",
+  "vendor": "Emakefun",
+  "vendor_logo": "assets/emakefun.png",
+  "icon": "assets/icon.png",
+  "category": "Sensors",
+  "website": "https://docs.emakefun.com/sensors/sensors/five_line_tracker_v3/five_line_tracker_v3/",
+  "architectures": [
+    "avr",
+    "esp32"
+  ],
+  "license": "Apache-2.0",
+  "includes": [
+    "EmakefunLineTrackerV3Adapter.h"
+  ]
+}

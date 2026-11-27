@@ -1,0 +1,20 @@
+{
+  "id": "emakefun_esp32_servo",
+  "name": "Emakefun ESP32 舵机驱动",
+  "version": "1.0.0",
+  "description": "Emakefun 官方 ESP32 舵机驱动库（基于 ESP32 LEDC），支持 0-180° 角度与微秒脉宽精确控制。",
+  "sentence": "Emakefun 官方 ESP32 舵机驱动库（基于 ESP32 LEDC），支持 0-180° 角度与微秒脉宽精确控制。",
+  "author": "CKYAN",
+  "vendor": "Emakefun",
+  "vendor_logo": "assets/emakefun.png",
+  "icon": "assets/icon.png",
+  "category": "Device Control",
+  "website": "https://github.com/emakefun-arduino-library/em_esp32_servo",
+  "architectures": [
+    "esp32"
+  ],
+  "license": "Apache-2.0",
+  "includes": [
+    "EmakefunEsp32ServoAdapter.h"
+  ]
+}

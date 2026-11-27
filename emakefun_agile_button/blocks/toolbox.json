@@ -1,0 +1,37 @@
+{
+  "kind": "category",
+  "name": "Emakefun 智能按键模块",
+  "colour": "#2563EB",
+  "contents": [
+    {
+      "kind": "block",
+      "type": "emakefun_agile_button_begin",
+      "inputs": {
+        "PIN": {
+          "shadow": {
+            "type": "math_number",
+            "fields": {
+              "NUM": 2
+            }
+          }
+        }
+      }
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_agile_button_tick"
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_agile_button_click"
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_agile_button_dblclick"
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_agile_button_longpress"
+    }
+  ]
+}

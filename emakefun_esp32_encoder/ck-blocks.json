@@ -1,0 +1,913 @@
+{
+  "schema_version": 2,
+  "id": "emakefun_esp32_encoder",
+  "display_name": "Emakefun ESP32 编码电机",
+  "description": "Emakefun 官方 ESP32 闭环编码电机驱动库（支持 Arduino-ESP32 3.x），提供 PID 调速、PWM 驱动与转速/脉冲读取。",
+  "defaultLocale": "zh-CN",
+  "keywords": [
+    "Emakefun ESP32 编码电机",
+    "emakefun_esp32_encoder",
+    "Emakefun",
+    "编码电机",
+    "ESP32",
+    "PID",
+    "电机"
+  ],
+  "license": {
+    "spdx_id": "Apache-2.0",
+    "file": "LICENSE.txt"
+  },
+  "compatibility": {
+    "architectures": [
+      "esp32"
+    ]
+  },
+  "dependencies": [
+    {
+      "kind": "arduino-library",
+      "id": "EmakefunEsp32EncoderAdapter",
+      "version": "1.0.0",
+      "headers": [
+        "EmakefunEsp32EncoderAdapter.h"
+      ],
+      "license": "Apache-2.0",
+      "reason": "随包内置于 libraries/EmakefunEsp32EncoderAdapter/，提供安全封装与跨板卡兼容接口。"
+    },
+    {
+      "kind": "arduino-library",
+      "id": "Emakefun Encoder Motor",
+      "version": "1.2.0",
+      "headers": [
+        "encoder_motor.h",
+        "encoder_motor_lib.h",
+        "motor.h"
+      ],
+      "license": "MIT",
+      "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/em_esp32_encoder_motor）内置于 libraries/em_esp32_encoder_motor/。"
+    }
+  ],
+  "entrypoints": {
+    "blocks": "blocks/blocks.json",
+    "generator": "blocks/ck-generator.json",
+    "toolbox": "blocks/toolbox.json"
+  },
+  "blocks": [
+    {
+      "type": "emakefun_esp32_encoder_begin",
+      "display_name": "初始化 ESP32 编码电机 M+ %1 M- %2 A相 %3 B相 %4 PPR %5 减速比 %6",
+      "description": "初始化 Emakefun ESP32 闭环编码电机。",
+      "category": "Emakefun ESP32 编码电机",
+      "kind": "statement",
+      "keywords": [
+        "Emakefun ESP32 编码电机",
+        "emakefun_esp32_encoder",
+        "Emakefun",
+        "编码电机",
+        "ESP32",
+        "PID",
+        "电机"
+      ],
+      "semantics": {
+        "purpose": "初始化 Emakefun ESP32 闭环编码电机。",
+        "behavior": "初始化 Emakefun ESP32 闭环编码电机。",
+        "concepts": [
+          "Emakefun ESP32 编码电机",
+          "Emakefun"
+        ],
+        "side_effects": [
+          "初始化 Emakefun ESP32 闭环编码电机。"
+        ]
+      },
+      "fields": [],
+      "inputs": [
+        {
+          "name": "POS_PIN",
+          "kind": "value",
+          "description": "电机正极 PWM 引脚",
+          "check": "Number",
+          "required": true,
+          "default": 4
+        },
+        {
+          "name": "NEG_PIN",
+          "kind": "value",
+          "description": "电机负极 PWM 引脚",
+          "check": "Number",
+          "required": true,
+          "default": 5
+        },
+        {
+          "name": "A_PIN",
+          "kind": "value",
+          "description": "编码器 A 相引脚",
+          "check": "Number",
+          "required": true,
+          "default": 6
+        },
+        {
+          "name": "B_PIN",
+          "kind": "value",
+          "description": "编码器 B 相引脚",
+          "check": "Number",
+          "required": true,
+          "default": 7
+        },
+        {
+          "name": "PPR",
+          "kind": "value",
+          "description": "每转脉冲数",
+          "check": "Number",
+          "required": true,
+          "default": 12
+        },
+        {
+          "name": "RATIO",
+          "kind": "value",
+          "description": "减速比",
+          "check": "Number",
+          "required": true,
+          "default": 90
+        }
+      ],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunEsp32EncoderAdapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunEsp32EncoderAdapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunEsp32EncoderAdapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "Emakefun Encoder Motor",
+          "version": "1.2.0",
+          "headers": [
+            "encoder_motor.h",
+            "encoder_motor_lib.h",
+            "motor.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/em_esp32_encoder_motor）内置于 libraries/em_esp32_encoder_motor/。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "gpio",
+            "id": "pos_pin",
+            "source": {
+              "kind": "input",
+              "name": "POS_PIN"
+            },
+            "access": "read-write",
+            "sharing": "exclusive",
+            "capabilities": [
+              "digital-output"
+            ],
+            "description": "电机正极 PWM 引脚"
+          },
+          {
+            "kind": "gpio",
+            "id": "neg_pin",
+            "source": {
+              "kind": "input",
+              "name": "NEG_PIN"
+            },
+            "access": "read-write",
+            "sharing": "exclusive",
+            "capabilities": [
+              "digital-output"
+            ],
+            "description": "电机负极 PWM 引脚"
+          },
+          {
+            "kind": "gpio",
+            "id": "a_pin",
+            "source": {
+              "kind": "input",
+              "name": "A_PIN"
+            },
+            "access": "read-write",
+            "sharing": "exclusive",
+            "capabilities": [
+              "digital-input"
+            ],
+            "description": "编码器 A 相引脚"
+          },
+          {
+            "kind": "gpio",
+            "id": "b_pin",
+            "source": {
+              "kind": "input",
+              "name": "B_PIN"
+            },
+            "access": "read-write",
+            "sharing": "exclusive",
+            "capabilities": [
+              "digital-input"
+            ],
+            "description": "编码器 B 相引脚"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "gpio-pos_pin",
+              "role": "digital-output",
+              "resource": {
+                "kind": "input",
+                "name": "POS_PIN",
+                "valueType": "id"
+              },
+              "exclusive": true
+            },
+            {
+              "id": "gpio-neg_pin",
+              "role": "digital-output",
+              "resource": {
+                "kind": "input",
+                "name": "NEG_PIN",
+                "valueType": "id"
+              },
+              "exclusive": true
+            },
+            {
+              "id": "gpio-a_pin",
+              "role": "digital-input",
+              "resource": {
+                "kind": "input",
+                "name": "A_PIN",
+                "valueType": "id"
+              },
+              "exclusive": true
+            },
+            {
+              "id": "gpio-b_pin",
+              "role": "digital-input",
+              "resource": {
+                "kind": "input",
+                "name": "B_PIN",
+                "valueType": "id"
+              },
+              "exclusive": true
+            }
+          ]
+        },
+        "boards": [
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun 官方 ESP32 闭环编码电机驱动库（支持 Arduino-ESP32 3.x），提供 PID 调速、PWM 驱动与转速/脉冲读取。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "includes": [
+          "EmakefunEsp32EncoderAdapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunEsp32EncoderAdapter.h",
+            "template": "#include <EmakefunEsp32EncoderAdapter.h>"
+          },
+          {
+            "section": "statement",
+            "description": "初始化 Emakefun ESP32 闭环编码电机。",
+            "template": "EmakefunEsp32EncoderAdapter::begin({{value:POS_PIN}}, {{value:NEG_PIN}}, {{value:A_PIN}}, {{value:B_PIN}}, {{value:PPR}}, {{value:RATIO}});\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun 官方 ESP32 闭环编码电机驱动库（支持 Arduino-ESP32 3.x），提供 PID 调速、PWM 驱动与转速/脉冲读取。",
+          "message": "Emakefun 官方 ESP32 闭环编码电机驱动库（支持 Arduino-ESP32 3.x），提供 PID 调速、PWM 驱动与转速/脉冲读取。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun ESP32 编码电机 随包示例",
+          "description": "初始化 Emakefun ESP32 闭环编码电机。",
+          "expected_behavior": "演示 Emakefun ESP32 编码电机 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_esp32_encoder_run_speed",
+      "display_name": "ESP32 编码电机 闭环转速 %1 RPM",
+      "description": "以指定 RPM 恒速转动。",
+      "category": "Emakefun ESP32 编码电机",
+      "kind": "statement",
+      "keywords": [
+        "Emakefun ESP32 编码电机",
+        "emakefun_esp32_encoder",
+        "Emakefun",
+        "编码电机",
+        "ESP32",
+        "PID",
+        "电机"
+      ],
+      "semantics": {
+        "purpose": "以指定 RPM 恒速转动。",
+        "behavior": "以指定 RPM 恒速转动。",
+        "concepts": [
+          "Emakefun ESP32 编码电机",
+          "Emakefun"
+        ],
+        "side_effects": [
+          "以指定 RPM 恒速转动。"
+        ]
+      },
+      "fields": [],
+      "inputs": [
+        {
+          "name": "RPM",
+          "kind": "value",
+          "description": "转速 RPM",
+          "check": "Number",
+          "required": true,
+          "default": 60
+        }
+      ],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunEsp32EncoderAdapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunEsp32EncoderAdapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunEsp32EncoderAdapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "Emakefun Encoder Motor",
+          "version": "1.2.0",
+          "headers": [
+            "encoder_motor.h",
+            "encoder_motor_lib.h",
+            "motor.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/em_esp32_encoder_motor）内置于 libraries/em_esp32_encoder_motor/。"
+        }
+      ],
+      "hardware": {
+        "resources": [],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": []
+        },
+        "boards": [
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun 官方 ESP32 闭环编码电机驱动库（支持 Arduino-ESP32 3.x），提供 PID 调速、PWM 驱动与转速/脉冲读取。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "includes": [
+          "EmakefunEsp32EncoderAdapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunEsp32EncoderAdapter.h",
+            "template": "#include <EmakefunEsp32EncoderAdapter.h>"
+          },
+          {
+            "section": "statement",
+            "description": "以指定 RPM 恒速转动。",
+            "template": "EmakefunEsp32EncoderAdapter::runSpeed({{value:RPM}});\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun 官方 ESP32 闭环编码电机驱动库（支持 Arduino-ESP32 3.x），提供 PID 调速、PWM 驱动与转速/脉冲读取。",
+          "message": "Emakefun 官方 ESP32 闭环编码电机驱动库（支持 Arduino-ESP32 3.x），提供 PID 调速、PWM 驱动与转速/脉冲读取。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun ESP32 编码电机 随包示例",
+          "description": "以指定 RPM 恒速转动。",
+          "expected_behavior": "演示 Emakefun ESP32 编码电机 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_esp32_encoder_run_pwm",
+      "display_name": "ESP32 编码电机 PWM 占空比 %1",
+      "description": "以 PWM 占空比直接驱动。",
+      "category": "Emakefun ESP32 编码电机",
+      "kind": "statement",
+      "keywords": [
+        "Emakefun ESP32 编码电机",
+        "emakefun_esp32_encoder",
+        "Emakefun",
+        "编码电机",
+        "ESP32",
+        "PID",
+        "电机"
+      ],
+      "semantics": {
+        "purpose": "以 PWM 占空比直接驱动。",
+        "behavior": "以 PWM 占空比直接驱动。",
+        "concepts": [
+          "Emakefun ESP32 编码电机",
+          "Emakefun"
+        ],
+        "side_effects": [
+          "以 PWM 占空比直接驱动。"
+        ]
+      },
+      "fields": [],
+      "inputs": [
+        {
+          "name": "DUTY",
+          "kind": "value",
+          "description": "PWM (-1023~1023)",
+          "check": "Number",
+          "required": true,
+          "default": 512
+        }
+      ],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunEsp32EncoderAdapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunEsp32EncoderAdapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunEsp32EncoderAdapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "Emakefun Encoder Motor",
+          "version": "1.2.0",
+          "headers": [
+            "encoder_motor.h",
+            "encoder_motor_lib.h",
+            "motor.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/em_esp32_encoder_motor）内置于 libraries/em_esp32_encoder_motor/。"
+        }
+      ],
+      "hardware": {
+        "resources": [],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": []
+        },
+        "boards": [
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun 官方 ESP32 闭环编码电机驱动库（支持 Arduino-ESP32 3.x），提供 PID 调速、PWM 驱动与转速/脉冲读取。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "includes": [
+          "EmakefunEsp32EncoderAdapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunEsp32EncoderAdapter.h",
+            "template": "#include <EmakefunEsp32EncoderAdapter.h>"
+          },
+          {
+            "section": "statement",
+            "description": "以 PWM 占空比直接驱动。",
+            "template": "EmakefunEsp32EncoderAdapter::runPwm({{value:DUTY}});\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun 官方 ESP32 闭环编码电机驱动库（支持 Arduino-ESP32 3.x），提供 PID 调速、PWM 驱动与转速/脉冲读取。",
+          "message": "Emakefun 官方 ESP32 闭环编码电机驱动库（支持 Arduino-ESP32 3.x），提供 PID 调速、PWM 驱动与转速/脉冲读取。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun ESP32 编码电机 随包示例",
+          "description": "以 PWM 占空比直接驱动。",
+          "expected_behavior": "演示 Emakefun ESP32 编码电机 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_esp32_encoder_stop",
+      "display_name": "ESP32 编码电机 停止",
+      "description": "停止编码电机。",
+      "category": "Emakefun ESP32 编码电机",
+      "kind": "statement",
+      "keywords": [
+        "Emakefun ESP32 编码电机",
+        "emakefun_esp32_encoder",
+        "Emakefun",
+        "编码电机",
+        "ESP32",
+        "PID",
+        "电机"
+      ],
+      "semantics": {
+        "purpose": "停止编码电机。",
+        "behavior": "停止编码电机。",
+        "concepts": [
+          "Emakefun ESP32 编码电机",
+          "Emakefun"
+        ],
+        "side_effects": [
+          "停止编码电机。"
+        ]
+      },
+      "fields": [],
+      "inputs": [],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunEsp32EncoderAdapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunEsp32EncoderAdapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunEsp32EncoderAdapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "Emakefun Encoder Motor",
+          "version": "1.2.0",
+          "headers": [
+            "encoder_motor.h",
+            "encoder_motor_lib.h",
+            "motor.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/em_esp32_encoder_motor）内置于 libraries/em_esp32_encoder_motor/。"
+        }
+      ],
+      "hardware": {
+        "resources": [],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": []
+        },
+        "boards": [
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun 官方 ESP32 闭环编码电机驱动库（支持 Arduino-ESP32 3.x），提供 PID 调速、PWM 驱动与转速/脉冲读取。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "includes": [
+          "EmakefunEsp32EncoderAdapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunEsp32EncoderAdapter.h",
+            "template": "#include <EmakefunEsp32EncoderAdapter.h>"
+          },
+          {
+            "section": "statement",
+            "description": "停止编码电机。",
+            "template": "EmakefunEsp32EncoderAdapter::stop();\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun 官方 ESP32 闭环编码电机驱动库（支持 Arduino-ESP32 3.x），提供 PID 调速、PWM 驱动与转速/脉冲读取。",
+          "message": "Emakefun 官方 ESP32 闭环编码电机驱动库（支持 Arduino-ESP32 3.x），提供 PID 调速、PWM 驱动与转速/脉冲读取。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun ESP32 编码电机 随包示例",
+          "description": "停止编码电机。",
+          "expected_behavior": "演示 Emakefun ESP32 编码电机 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_esp32_encoder_rpm",
+      "display_name": "ESP32 编码电机 实时转速 (RPM)",
+      "description": "获取当前转速 RPM。",
+      "category": "Emakefun ESP32 编码电机",
+      "kind": "value",
+      "keywords": [
+        "Emakefun ESP32 编码电机",
+        "emakefun_esp32_encoder",
+        "Emakefun",
+        "编码电机",
+        "ESP32",
+        "PID",
+        "电机"
+      ],
+      "semantics": {
+        "purpose": "获取当前转速 RPM。",
+        "behavior": "获取当前转速 RPM。",
+        "concepts": [
+          "Emakefun ESP32 编码电机",
+          "Emakefun"
+        ],
+        "side_effects": []
+      },
+      "fields": [],
+      "inputs": [],
+      "output": {
+        "connection": "value",
+        "types": [
+          "Number"
+        ],
+        "description": "获取当前转速 RPM。"
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunEsp32EncoderAdapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunEsp32EncoderAdapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunEsp32EncoderAdapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "Emakefun Encoder Motor",
+          "version": "1.2.0",
+          "headers": [
+            "encoder_motor.h",
+            "encoder_motor_lib.h",
+            "motor.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/em_esp32_encoder_motor）内置于 libraries/em_esp32_encoder_motor/。"
+        }
+      ],
+      "hardware": {
+        "resources": [],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": []
+        },
+        "boards": [
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun 官方 ESP32 闭环编码电机驱动库（支持 Arduino-ESP32 3.x），提供 PID 调速、PWM 驱动与转速/脉冲读取。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "expression",
+        "deterministic": true,
+        "includes": [
+          "EmakefunEsp32EncoderAdapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunEsp32EncoderAdapter.h",
+            "template": "#include <EmakefunEsp32EncoderAdapter.h>"
+          },
+          {
+            "section": "expression",
+            "description": "获取当前转速 RPM。",
+            "template": "EmakefunEsp32EncoderAdapter::speedRpm()"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun 官方 ESP32 闭环编码电机驱动库（支持 Arduino-ESP32 3.x），提供 PID 调速、PWM 驱动与转速/脉冲读取。",
+          "message": "Emakefun 官方 ESP32 闭环编码电机驱动库（支持 Arduino-ESP32 3.x），提供 PID 调速、PWM 驱动与转速/脉冲读取。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun ESP32 编码电机 随包示例",
+          "description": "获取当前转速 RPM。",
+          "expected_behavior": "演示 Emakefun ESP32 编码电机 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_esp32_encoder_pulses",
+      "display_name": "ESP32 编码电机 脉冲计数",
+      "description": "获取编码器累计脉冲数。",
+      "category": "Emakefun ESP32 编码电机",
+      "kind": "value",
+      "keywords": [
+        "Emakefun ESP32 编码电机",
+        "emakefun_esp32_encoder",
+        "Emakefun",
+        "编码电机",
+        "ESP32",
+        "PID",
+        "电机"
+      ],
+      "semantics": {
+        "purpose": "获取编码器累计脉冲数。",
+        "behavior": "获取编码器累计脉冲数。",
+        "concepts": [
+          "Emakefun ESP32 编码电机",
+          "Emakefun"
+        ],
+        "side_effects": []
+      },
+      "fields": [],
+      "inputs": [],
+      "output": {
+        "connection": "value",
+        "types": [
+          "Number"
+        ],
+        "description": "获取编码器累计脉冲数。"
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunEsp32EncoderAdapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunEsp32EncoderAdapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunEsp32EncoderAdapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "Emakefun Encoder Motor",
+          "version": "1.2.0",
+          "headers": [
+            "encoder_motor.h",
+            "encoder_motor_lib.h",
+            "motor.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/em_esp32_encoder_motor）内置于 libraries/em_esp32_encoder_motor/。"
+        }
+      ],
+      "hardware": {
+        "resources": [],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": []
+        },
+        "boards": [
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun 官方 ESP32 闭环编码电机驱动库（支持 Arduino-ESP32 3.x），提供 PID 调速、PWM 驱动与转速/脉冲读取。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "expression",
+        "deterministic": true,
+        "includes": [
+          "EmakefunEsp32EncoderAdapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunEsp32EncoderAdapter.h",
+            "template": "#include <EmakefunEsp32EncoderAdapter.h>"
+          },
+          {
+            "section": "expression",
+            "description": "获取编码器累计脉冲数。",
+            "template": "EmakefunEsp32EncoderAdapter::pulseCount()"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun 官方 ESP32 闭环编码电机驱动库（支持 Arduino-ESP32 3.x），提供 PID 调速、PWM 驱动与转速/脉冲读取。",
+          "message": "Emakefun 官方 ESP32 闭环编码电机驱动库（支持 Arduino-ESP32 3.x），提供 PID 调速、PWM 驱动与转速/脉冲读取。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun ESP32 编码电机 随包示例",
+          "description": "获取编码器累计脉冲数。",
+          "expected_behavior": "演示 Emakefun ESP32 编码电机 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    }
+  ]
+}

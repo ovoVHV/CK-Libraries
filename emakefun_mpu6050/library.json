@@ -1,0 +1,21 @@
+{
+  "id": "emakefun_mpu6050",
+  "name": "Emakefun MPU6050 六轴陀螺仪",
+  "version": "1.0.0",
+  "description": "Emakefun MPU6050 六轴姿态传感器（I2C 0x68），读取偏航/俯仰/横滚欧拉角与三轴加速度。",
+  "sentence": "Emakefun MPU6050 六轴姿态传感器（I2C 0x68），读取偏航/俯仰/横滚欧拉角与三轴加速度。",
+  "author": "CKYAN",
+  "vendor": "Emakefun",
+  "vendor_logo": "assets/emakefun.png",
+  "icon": "assets/icon.png",
+  "category": "Sensors",
+  "website": "https://docs.emakefun.com/sensors/smart_modules/mpu6050/detail/",
+  "architectures": [
+    "avr",
+    "esp32"
+  ],
+  "license": "Apache-2.0",
+  "includes": [
+    "EmakefunMpu6050Adapter.h"
+  ]
+}

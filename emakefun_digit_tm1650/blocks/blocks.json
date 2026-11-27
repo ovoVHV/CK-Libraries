@@ -1,0 +1,93 @@
+[
+  {
+    "type": "emakefun_digit_tm1650_begin",
+    "message0": "初始化四位数码管 V1 I2C地址 %1",
+    "args0": [
+      {
+        "type": "input_value",
+        "name": "ADDR",
+        "check": "Number"
+      }
+    ],
+    "inputsInline": true,
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": "#B45309",
+    "tooltip": "初始化 Emakefun 四位数码管 V1（默认 0x70 = 112）。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_digit_tm1650_show_num",
+    "message0": "数码管 V1 显示数值 %1 小数位数 %2",
+    "args0": [
+      {
+        "type": "input_value",
+        "name": "VAL",
+        "check": "Number"
+      },
+      {
+        "type": "input_value",
+        "name": "DEC",
+        "check": "Number"
+      }
+    ],
+    "inputsInline": true,
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": "#B45309",
+    "tooltip": "在四位数码管上显示数字。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_digit_tm1650_colon",
+    "message0": "数码管 V1 冒号 %1",
+    "args0": [
+      {
+        "type": "field_dropdown",
+        "name": "ON",
+        "options": [
+          [
+            "点亮",
+            "true"
+          ],
+          [
+            "熄灭",
+            "false"
+          ]
+        ]
+      }
+    ],
+    "inputsInline": true,
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": "#B45309",
+    "tooltip": "设置时钟冒号亮灭。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_digit_tm1650_brightness",
+    "message0": "数码管 V1 亮度 %1 (0-15)",
+    "args0": [
+      {
+        "type": "input_value",
+        "name": "BRI",
+        "check": "Number"
+      }
+    ],
+    "inputsInline": true,
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": "#B45309",
+    "tooltip": "调节亮度等级 0-15。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_digit_tm1650_clear",
+    "message0": "数码管 V1 清屏",
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": "#B45309",
+    "tooltip": "清空数码管显示。",
+    "helpUrl": ""
+  }
+]

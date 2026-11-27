@@ -1,0 +1,27 @@
+[
+  {
+    "type": "emakefun_nl50_temp_begin",
+    "message0": "初始化 NL50 温度传感器 模拟引脚 %1",
+    "args0": [
+      {
+        "type": "input_value",
+        "name": "PIN",
+        "check": "Number"
+      }
+    ],
+    "inputsInline": true,
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": "#EA580C",
+    "tooltip": "初始化 Emakefun NL50 温度传感器（传入模拟输入引脚编号）。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_nl50_temp_read",
+    "message0": "NL50 读取温度 (℃)",
+    "output": "Number",
+    "colour": "#EA580C",
+    "tooltip": "读取当前摄氏温度（浮点值）。",
+    "helpUrl": ""
+  }
+]

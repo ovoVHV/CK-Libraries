@@ -1,0 +1,675 @@
+{
+  "schema_version": 2,
+  "id": "emakefun_gesture",
+  "display_name": "Emakefun 手势识别传感器",
+  "description": "Emakefun I2C 手势识别传感器（默认地址 0x39），支持左/右/前/后滑、上拉、下压、离开、悬停 8 种手势。",
+  "defaultLocale": "zh-CN",
+  "keywords": [
+    "Emakefun 手势识别传感器",
+    "emakefun_gesture",
+    "Emakefun",
+    "手势",
+    "Gesture",
+    "I2C"
+  ],
+  "license": {
+    "spdx_id": "Apache-2.0",
+    "file": "LICENSE.txt"
+  },
+  "compatibility": {
+    "architectures": [
+      "avr",
+      "esp32"
+    ]
+  },
+  "dependencies": [
+    {
+      "kind": "arduino-library",
+      "id": "EmakefunGestureAdapter",
+      "version": "1.0.0",
+      "headers": [
+        "EmakefunGestureAdapter.h"
+      ],
+      "license": "Apache-2.0",
+      "reason": "随包内置于 libraries/EmakefunGestureAdapter/，提供安全封装与跨板卡兼容接口。"
+    },
+    {
+      "kind": "arduino-library",
+      "id": "Emakefun Gesture Recognizer",
+      "version": "1.0.0",
+      "headers": [
+        "gesture_recognizer.h"
+      ],
+      "license": "MIT",
+      "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/emakefun_gesture_recognizer）内置于 libraries/emakefun_gesture_recognizer/。"
+    }
+  ],
+  "entrypoints": {
+    "blocks": "blocks/blocks.json",
+    "generator": "blocks/ck-generator.json",
+    "toolbox": "blocks/toolbox.json"
+  },
+  "blocks": [
+    {
+      "type": "emakefun_gesture_begin",
+      "display_name": "初始化手势识别传感器 I2C地址 %1",
+      "description": "初始化 Emakefun 手势识别传感器（默认 0x39 = 57）。",
+      "category": "Emakefun 手势识别传感器",
+      "kind": "statement",
+      "keywords": [
+        "Emakefun 手势识别传感器",
+        "emakefun_gesture",
+        "Emakefun",
+        "手势",
+        "Gesture",
+        "I2C"
+      ],
+      "semantics": {
+        "purpose": "初始化 Emakefun 手势识别传感器（默认 0x39 = 57）。",
+        "behavior": "初始化 Emakefun 手势识别传感器（默认 0x39 = 57）。",
+        "concepts": [
+          "Emakefun 手势识别传感器",
+          "Emakefun"
+        ],
+        "side_effects": [
+          "初始化 Emakefun 手势识别传感器（默认 0x39 = 57）。"
+        ]
+      },
+      "fields": [],
+      "inputs": [
+        {
+          "name": "ADDR",
+          "kind": "value",
+          "description": "I2C 地址（默认 57）",
+          "check": "Number",
+          "required": true,
+          "default": 57
+        }
+      ],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunGestureAdapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunGestureAdapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunGestureAdapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "Emakefun Gesture Recognizer",
+          "version": "1.0.0",
+          "headers": [
+            "gesture_recognizer.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/emakefun_gesture_recognizer）内置于 libraries/emakefun_gesture_recognizer/。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "i2c",
+            "id": "wire",
+            "source": {
+              "kind": "board-default"
+            },
+            "access": "read-write",
+            "sharing": "shared",
+            "description": "默认 I2C 总线 (Wire)，模块默认地址 0x39。"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "i2c-device",
+              "role": "i2c-device",
+              "resource": {
+                "kind": "fixed",
+                "valueType": "id",
+                "value": "i2c"
+              },
+              "exclusive": false,
+              "discriminator": {
+                "kind": "fixed",
+                "valueType": "integer",
+                "value": 57
+              }
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun I2C 手势识别传感器（默认地址 0x39），支持左/右/前/后滑、上拉、下压、离开、悬停 8 种手势。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "includes": [
+          "EmakefunGestureAdapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunGestureAdapter.h",
+            "template": "#include <EmakefunGestureAdapter.h>"
+          },
+          {
+            "section": "statement",
+            "description": "初始化 Emakefun 手势识别传感器（默认 0x39 = 57）。",
+            "template": "EmakefunGestureAdapter::begin({{value:ADDR}});\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun I2C 手势识别传感器（默认地址 0x39），支持左/右/前/后滑、上拉、下压、离开、悬停 8 种手势。",
+          "message": "Emakefun I2C 手势识别传感器（默认地址 0x39），支持左/右/前/后滑、上拉、下压、离开、悬停 8 种手势。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun 手势识别传感器 随包示例",
+          "description": "初始化 Emakefun 手势识别传感器（默认 0x39 = 57）。",
+          "expected_behavior": "演示 Emakefun 手势识别传感器 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_gesture_poll",
+      "display_name": "手势传感器 刷新识别",
+      "description": "读取一次最新手势并缓存，供判断积木使用。",
+      "category": "Emakefun 手势识别传感器",
+      "kind": "statement",
+      "keywords": [
+        "Emakefun 手势识别传感器",
+        "emakefun_gesture",
+        "Emakefun",
+        "手势",
+        "Gesture",
+        "I2C"
+      ],
+      "semantics": {
+        "purpose": "读取一次最新手势并缓存，供判断积木使用。",
+        "behavior": "读取一次最新手势并缓存，供判断积木使用。",
+        "concepts": [
+          "Emakefun 手势识别传感器",
+          "Emakefun"
+        ],
+        "side_effects": [
+          "读取一次最新手势并缓存，供判断积木使用。"
+        ]
+      },
+      "fields": [],
+      "inputs": [],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunGestureAdapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunGestureAdapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunGestureAdapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "Emakefun Gesture Recognizer",
+          "version": "1.0.0",
+          "headers": [
+            "gesture_recognizer.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/emakefun_gesture_recognizer）内置于 libraries/emakefun_gesture_recognizer/。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "i2c",
+            "id": "wire",
+            "source": {
+              "kind": "board-default"
+            },
+            "access": "read-write",
+            "sharing": "shared",
+            "description": "默认 I2C 总线 (Wire)，模块默认地址 0x39。"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "i2c-device",
+              "role": "i2c-device",
+              "resource": {
+                "kind": "fixed",
+                "valueType": "id",
+                "value": "i2c"
+              },
+              "exclusive": false,
+              "discriminator": {
+                "kind": "fixed",
+                "valueType": "integer",
+                "value": 57
+              }
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun I2C 手势识别传感器（默认地址 0x39），支持左/右/前/后滑、上拉、下压、离开、悬停 8 种手势。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "includes": [
+          "EmakefunGestureAdapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunGestureAdapter.h",
+            "template": "#include <EmakefunGestureAdapter.h>"
+          },
+          {
+            "section": "statement",
+            "description": "读取一次最新手势并缓存，供判断积木使用。",
+            "template": "EmakefunGestureAdapter::read();\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun I2C 手势识别传感器（默认地址 0x39），支持左/右/前/后滑、上拉、下压、离开、悬停 8 种手势。",
+          "message": "Emakefun I2C 手势识别传感器（默认地址 0x39），支持左/右/前/后滑、上拉、下压、离开、悬停 8 种手势。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun 手势识别传感器 随包示例",
+          "description": "读取一次最新手势并缓存，供判断积木使用。",
+          "expected_behavior": "演示 Emakefun 手势识别传感器 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_gesture_code",
+      "display_name": "手势传感器 当前手势编号",
+      "description": "返回当前手势编号（0 无手势，1-8 对应八种手势）。",
+      "category": "Emakefun 手势识别传感器",
+      "kind": "value",
+      "keywords": [
+        "Emakefun 手势识别传感器",
+        "emakefun_gesture",
+        "Emakefun",
+        "手势",
+        "Gesture",
+        "I2C"
+      ],
+      "semantics": {
+        "purpose": "返回当前手势编号（0 无手势，1-8 对应八种手势）。",
+        "behavior": "返回当前手势编号（0 无手势，1-8 对应八种手势）。",
+        "concepts": [
+          "Emakefun 手势识别传感器",
+          "Emakefun"
+        ],
+        "side_effects": []
+      },
+      "fields": [],
+      "inputs": [],
+      "output": {
+        "connection": "value",
+        "types": [
+          "Number"
+        ],
+        "description": "返回当前手势编号（0 无手势，1-8 对应八种手势）。"
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunGestureAdapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunGestureAdapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunGestureAdapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "Emakefun Gesture Recognizer",
+          "version": "1.0.0",
+          "headers": [
+            "gesture_recognizer.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/emakefun_gesture_recognizer）内置于 libraries/emakefun_gesture_recognizer/。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "i2c",
+            "id": "wire",
+            "source": {
+              "kind": "board-default"
+            },
+            "access": "read-write",
+            "sharing": "shared",
+            "description": "默认 I2C 总线 (Wire)，模块默认地址 0x39。"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "i2c-device",
+              "role": "i2c-device",
+              "resource": {
+                "kind": "fixed",
+                "valueType": "id",
+                "value": "i2c"
+              },
+              "exclusive": false,
+              "discriminator": {
+                "kind": "fixed",
+                "valueType": "integer",
+                "value": 57
+              }
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun I2C 手势识别传感器（默认地址 0x39），支持左/右/前/后滑、上拉、下压、离开、悬停 8 种手势。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "expression",
+        "deterministic": true,
+        "includes": [
+          "EmakefunGestureAdapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunGestureAdapter.h",
+            "template": "#include <EmakefunGestureAdapter.h>"
+          },
+          {
+            "section": "expression",
+            "description": "返回当前手势编号（0 无手势，1-8 对应八种手势）。",
+            "template": "EmakefunGestureAdapter::cached()"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun I2C 手势识别传感器（默认地址 0x39），支持左/右/前/后滑、上拉、下压、离开、悬停 8 种手势。",
+          "message": "Emakefun I2C 手势识别传感器（默认地址 0x39），支持左/右/前/后滑、上拉、下压、离开、悬停 8 种手势。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun 手势识别传感器 随包示例",
+          "description": "返回当前手势编号（0 无手势，1-8 对应八种手势）。",
+          "expected_behavior": "演示 Emakefun 手势识别传感器 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_gesture_is",
+      "display_name": "检测到手势为 %1 ?",
+      "description": "判断最近一次刷新到的手势是否为指定动作。",
+      "category": "Emakefun 手势识别传感器",
+      "kind": "value",
+      "keywords": [
+        "Emakefun 手势识别传感器",
+        "emakefun_gesture",
+        "Emakefun",
+        "手势",
+        "Gesture",
+        "I2C"
+      ],
+      "semantics": {
+        "purpose": "判断最近一次刷新到的手势是否为指定动作。",
+        "behavior": "判断最近一次刷新到的手势是否为指定动作。",
+        "concepts": [
+          "Emakefun 手势识别传感器",
+          "Emakefun"
+        ],
+        "side_effects": []
+      },
+      "fields": [
+        {
+          "name": "GESTURE",
+          "kind": "dropdown",
+          "description": "手势类型",
+          "required": true,
+          "default": "1",
+          "options": [
+            {
+              "label": "右滑",
+              "value": "1"
+            },
+            {
+              "label": "左滑",
+              "value": "2"
+            },
+            {
+              "label": "后滑",
+              "value": "3"
+            },
+            {
+              "label": "前滑",
+              "value": "4"
+            },
+            {
+              "label": "上拉",
+              "value": "5"
+            },
+            {
+              "label": "下压",
+              "value": "6"
+            },
+            {
+              "label": "离开感应区",
+              "value": "7"
+            },
+            {
+              "label": "悬停",
+              "value": "8"
+            }
+          ]
+        }
+      ],
+      "inputs": [],
+      "output": {
+        "connection": "value",
+        "types": [
+          "Boolean"
+        ],
+        "description": "判断最近一次刷新到的手势是否为指定动作。"
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunGestureAdapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunGestureAdapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunGestureAdapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "Emakefun Gesture Recognizer",
+          "version": "1.0.0",
+          "headers": [
+            "gesture_recognizer.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/emakefun_gesture_recognizer）内置于 libraries/emakefun_gesture_recognizer/。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "i2c",
+            "id": "wire",
+            "source": {
+              "kind": "board-default"
+            },
+            "access": "read-write",
+            "sharing": "shared",
+            "description": "默认 I2C 总线 (Wire)，模块默认地址 0x39。"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "i2c-device",
+              "role": "i2c-device",
+              "resource": {
+                "kind": "fixed",
+                "valueType": "id",
+                "value": "i2c"
+              },
+              "exclusive": false,
+              "discriminator": {
+                "kind": "fixed",
+                "valueType": "integer",
+                "value": 57
+              }
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun I2C 手势识别传感器（默认地址 0x39），支持左/右/前/后滑、上拉、下压、离开、悬停 8 种手势。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "expression",
+        "deterministic": true,
+        "includes": [
+          "EmakefunGestureAdapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunGestureAdapter.h",
+            "template": "#include <EmakefunGestureAdapter.h>"
+          },
+          {
+            "section": "expression",
+            "description": "判断最近一次刷新到的手势是否为指定动作。",
+            "template": "EmakefunGestureAdapter::isGesture({{field:GESTURE}})"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun I2C 手势识别传感器（默认地址 0x39），支持左/右/前/后滑、上拉、下压、离开、悬停 8 种手势。",
+          "message": "Emakefun I2C 手势识别传感器（默认地址 0x39），支持左/右/前/后滑、上拉、下压、离开、悬停 8 种手势。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun 手势识别传感器 随包示例",
+          "description": "判断最近一次刷新到的手势是否为指定动作。",
+          "expected_behavior": "演示 Emakefun 手势识别传感器 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    }
+  ]
+}

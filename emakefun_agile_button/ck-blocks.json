@@ -1,0 +1,697 @@
+{
+  "schema_version": 2,
+  "id": "emakefun_agile_button",
+  "display_name": "Emakefun 智能按键模块",
+  "description": "Emakefun 智能按键驱动，支持防抖、单击、双击与长按事件检测。",
+  "defaultLocale": "zh-CN",
+  "keywords": [
+    "Emakefun 智能按键模块",
+    "emakefun_agile_button",
+    "Emakefun",
+    "按键",
+    "单击",
+    "双击",
+    "长按",
+    "AgileButton"
+  ],
+  "license": {
+    "spdx_id": "Apache-2.0",
+    "file": "LICENSE.txt"
+  },
+  "compatibility": {
+    "architectures": [
+      "avr",
+      "esp32"
+    ]
+  },
+  "dependencies": [
+    {
+      "kind": "arduino-library",
+      "id": "EmakefunAgileButtonAdapter",
+      "version": "1.0.0",
+      "headers": [
+        "EmakefunAgileButtonAdapter.h"
+      ],
+      "license": "Apache-2.0",
+      "reason": "随包内置于 libraries/EmakefunAgileButtonAdapter/，提供安全封装与跨板卡兼容接口。"
+    },
+    {
+      "kind": "arduino-library",
+      "id": "Emakefun Button",
+      "version": "1.0.0",
+      "headers": [
+        "agile_button.h"
+      ],
+      "license": "MIT",
+      "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/emakefun_agile_button）内置于 libraries/emakefun_agile_button/。"
+    }
+  ],
+  "entrypoints": {
+    "blocks": "blocks/blocks.json",
+    "generator": "blocks/ck-generator.json",
+    "toolbox": "blocks/toolbox.json"
+  },
+  "blocks": [
+    {
+      "type": "emakefun_agile_button_begin",
+      "display_name": "初始化智能按键 引脚 %1 有效电平 %2",
+      "description": "初始化 Emakefun 智能按键（支持单/双/长按检测）。",
+      "category": "Emakefun 智能按键模块",
+      "kind": "statement",
+      "keywords": [
+        "Emakefun 智能按键模块",
+        "emakefun_agile_button",
+        "Emakefun",
+        "按键",
+        "单击",
+        "双击",
+        "长按",
+        "AgileButton"
+      ],
+      "semantics": {
+        "purpose": "初始化 Emakefun 智能按键（支持单/双/长按检测）。",
+        "behavior": "初始化 Emakefun 智能按键（支持单/双/长按检测）。",
+        "concepts": [
+          "Emakefun 智能按键模块",
+          "Emakefun"
+        ],
+        "side_effects": [
+          "初始化 Emakefun 智能按键（支持单/双/长按检测）。"
+        ]
+      },
+      "fields": [
+        {
+          "name": "ACTIVE",
+          "kind": "dropdown",
+          "description": "按下电平",
+          "required": true,
+          "default": "1",
+          "options": [
+            {
+              "label": "低电平有效(默认)",
+              "value": "1"
+            },
+            {
+              "label": "高电平有效",
+              "value": "0"
+            }
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "name": "PIN",
+          "kind": "value",
+          "description": "数字引脚",
+          "check": "Number",
+          "required": true,
+          "default": 2
+        }
+      ],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunAgileButtonAdapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunAgileButtonAdapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunAgileButtonAdapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "Emakefun Button",
+          "version": "1.0.0",
+          "headers": [
+            "agile_button.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/emakefun_agile_button）内置于 libraries/emakefun_agile_button/。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "gpio",
+            "id": "pin",
+            "source": {
+              "kind": "input",
+              "name": "PIN"
+            },
+            "access": "read-write",
+            "sharing": "exclusive",
+            "capabilities": [
+              "digital-input"
+            ],
+            "description": "数字引脚"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "gpio-pin",
+              "role": "digital-input",
+              "resource": {
+                "kind": "input",
+                "name": "PIN",
+                "valueType": "id"
+              },
+              "exclusive": true
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun 智能按键驱动，支持防抖、单击、双击与长按事件检测。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "includes": [
+          "EmakefunAgileButtonAdapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunAgileButtonAdapter.h",
+            "template": "#include <EmakefunAgileButtonAdapter.h>"
+          },
+          {
+            "section": "statement",
+            "description": "初始化 Emakefun 智能按键（支持单/双/长按检测）。",
+            "template": "EmakefunAgileButtonAdapter::begin({{value:PIN}}, {{field:ACTIVE}});\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun 智能按键驱动，支持防抖、单击、双击与长按事件检测。",
+          "message": "Emakefun 智能按键驱动，支持防抖、单击、双击与长按事件检测。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun 智能按键模块 随包示例",
+          "description": "初始化 Emakefun 智能按键（支持单/双/长按检测）。",
+          "expected_behavior": "演示 Emakefun 智能按键模块 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_agile_button_tick",
+      "display_name": "智能按键 刷新检测",
+      "description": "在主循环中调用以更新按键状态机。",
+      "category": "Emakefun 智能按键模块",
+      "kind": "statement",
+      "keywords": [
+        "Emakefun 智能按键模块",
+        "emakefun_agile_button",
+        "Emakefun",
+        "按键",
+        "单击",
+        "双击",
+        "长按",
+        "AgileButton"
+      ],
+      "semantics": {
+        "purpose": "在主循环中调用以更新按键状态机。",
+        "behavior": "在主循环中调用以更新按键状态机。",
+        "concepts": [
+          "Emakefun 智能按键模块",
+          "Emakefun"
+        ],
+        "side_effects": [
+          "在主循环中调用以更新按键状态机。"
+        ]
+      },
+      "fields": [],
+      "inputs": [],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunAgileButtonAdapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunAgileButtonAdapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunAgileButtonAdapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "Emakefun Button",
+          "version": "1.0.0",
+          "headers": [
+            "agile_button.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/emakefun_agile_button）内置于 libraries/emakefun_agile_button/。"
+        }
+      ],
+      "hardware": {
+        "resources": [],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": []
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun 智能按键驱动，支持防抖、单击、双击与长按事件检测。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "includes": [
+          "EmakefunAgileButtonAdapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunAgileButtonAdapter.h",
+            "template": "#include <EmakefunAgileButtonAdapter.h>"
+          },
+          {
+            "section": "statement",
+            "description": "在主循环中调用以更新按键状态机。",
+            "template": "EmakefunAgileButtonAdapter::tick();\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun 智能按键驱动，支持防抖、单击、双击与长按事件检测。",
+          "message": "Emakefun 智能按键驱动，支持防抖、单击、双击与长按事件检测。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun 智能按键模块 随包示例",
+          "description": "在主循环中调用以更新按键状态机。",
+          "expected_behavior": "演示 Emakefun 智能按键模块 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_agile_button_click",
+      "display_name": "智能按键 触发单击?",
+      "description": "检测到一次单击事件时返回真并清除标志。",
+      "category": "Emakefun 智能按键模块",
+      "kind": "value",
+      "keywords": [
+        "Emakefun 智能按键模块",
+        "emakefun_agile_button",
+        "Emakefun",
+        "按键",
+        "单击",
+        "双击",
+        "长按",
+        "AgileButton"
+      ],
+      "semantics": {
+        "purpose": "检测到一次单击事件时返回真并清除标志。",
+        "behavior": "检测到一次单击事件时返回真并清除标志。",
+        "concepts": [
+          "Emakefun 智能按键模块",
+          "Emakefun"
+        ],
+        "side_effects": []
+      },
+      "fields": [],
+      "inputs": [],
+      "output": {
+        "connection": "value",
+        "types": [
+          "Boolean"
+        ],
+        "description": "检测到一次单击事件时返回真并清除标志。"
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunAgileButtonAdapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunAgileButtonAdapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunAgileButtonAdapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "Emakefun Button",
+          "version": "1.0.0",
+          "headers": [
+            "agile_button.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/emakefun_agile_button）内置于 libraries/emakefun_agile_button/。"
+        }
+      ],
+      "hardware": {
+        "resources": [],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": []
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun 智能按键驱动，支持防抖、单击、双击与长按事件检测。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "expression",
+        "deterministic": true,
+        "includes": [
+          "EmakefunAgileButtonAdapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunAgileButtonAdapter.h",
+            "template": "#include <EmakefunAgileButtonAdapter.h>"
+          },
+          {
+            "section": "expression",
+            "description": "检测到一次单击事件时返回真并清除标志。",
+            "template": "EmakefunAgileButtonAdapter::takeClick(1)"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun 智能按键驱动，支持防抖、单击、双击与长按事件检测。",
+          "message": "Emakefun 智能按键驱动，支持防抖、单击、双击与长按事件检测。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun 智能按键模块 随包示例",
+          "description": "检测到一次单击事件时返回真并清除标志。",
+          "expected_behavior": "演示 Emakefun 智能按键模块 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_agile_button_dblclick",
+      "display_name": "智能按键 触发双击?",
+      "description": "检测到一次双击事件时返回真并清除标志。",
+      "category": "Emakefun 智能按键模块",
+      "kind": "value",
+      "keywords": [
+        "Emakefun 智能按键模块",
+        "emakefun_agile_button",
+        "Emakefun",
+        "按键",
+        "单击",
+        "双击",
+        "长按",
+        "AgileButton"
+      ],
+      "semantics": {
+        "purpose": "检测到一次双击事件时返回真并清除标志。",
+        "behavior": "检测到一次双击事件时返回真并清除标志。",
+        "concepts": [
+          "Emakefun 智能按键模块",
+          "Emakefun"
+        ],
+        "side_effects": []
+      },
+      "fields": [],
+      "inputs": [],
+      "output": {
+        "connection": "value",
+        "types": [
+          "Boolean"
+        ],
+        "description": "检测到一次双击事件时返回真并清除标志。"
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunAgileButtonAdapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunAgileButtonAdapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunAgileButtonAdapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "Emakefun Button",
+          "version": "1.0.0",
+          "headers": [
+            "agile_button.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/emakefun_agile_button）内置于 libraries/emakefun_agile_button/。"
+        }
+      ],
+      "hardware": {
+        "resources": [],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": []
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun 智能按键驱动，支持防抖、单击、双击与长按事件检测。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "expression",
+        "deterministic": true,
+        "includes": [
+          "EmakefunAgileButtonAdapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunAgileButtonAdapter.h",
+            "template": "#include <EmakefunAgileButtonAdapter.h>"
+          },
+          {
+            "section": "expression",
+            "description": "检测到一次双击事件时返回真并清除标志。",
+            "template": "EmakefunAgileButtonAdapter::takeClick(2)"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun 智能按键驱动，支持防抖、单击、双击与长按事件检测。",
+          "message": "Emakefun 智能按键驱动，支持防抖、单击、双击与长按事件检测。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun 智能按键模块 随包示例",
+          "description": "检测到一次双击事件时返回真并清除标志。",
+          "expected_behavior": "演示 Emakefun 智能按键模块 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_agile_button_longpress",
+      "display_name": "智能按键 触发长按?",
+      "description": "检测到一次长按事件时返回真并清除标志。",
+      "category": "Emakefun 智能按键模块",
+      "kind": "value",
+      "keywords": [
+        "Emakefun 智能按键模块",
+        "emakefun_agile_button",
+        "Emakefun",
+        "按键",
+        "单击",
+        "双击",
+        "长按",
+        "AgileButton"
+      ],
+      "semantics": {
+        "purpose": "检测到一次长按事件时返回真并清除标志。",
+        "behavior": "检测到一次长按事件时返回真并清除标志。",
+        "concepts": [
+          "Emakefun 智能按键模块",
+          "Emakefun"
+        ],
+        "side_effects": []
+      },
+      "fields": [],
+      "inputs": [],
+      "output": {
+        "connection": "value",
+        "types": [
+          "Boolean"
+        ],
+        "description": "检测到一次长按事件时返回真并清除标志。"
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunAgileButtonAdapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunAgileButtonAdapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunAgileButtonAdapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "Emakefun Button",
+          "version": "1.0.0",
+          "headers": [
+            "agile_button.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/emakefun_agile_button）内置于 libraries/emakefun_agile_button/。"
+        }
+      ],
+      "hardware": {
+        "resources": [],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": []
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun 智能按键驱动，支持防抖、单击、双击与长按事件检测。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "expression",
+        "deterministic": true,
+        "includes": [
+          "EmakefunAgileButtonAdapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunAgileButtonAdapter.h",
+            "template": "#include <EmakefunAgileButtonAdapter.h>"
+          },
+          {
+            "section": "expression",
+            "description": "检测到一次长按事件时返回真并清除标志。",
+            "template": "EmakefunAgileButtonAdapter::takeLongPress()"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun 智能按键驱动，支持防抖、单击、双击与长按事件检测。",
+          "message": "Emakefun 智能按键驱动，支持防抖、单击、双击与长按事件检测。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun 智能按键模块 随包示例",
+          "description": "检测到一次长按事件时返回真并清除标志。",
+          "expected_behavior": "演示 Emakefun 智能按键模块 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    }
+  ]
+}

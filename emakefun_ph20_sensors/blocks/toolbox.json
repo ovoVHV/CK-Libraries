@@ -1,0 +1,49 @@
+{
+  "kind": "category",
+  "name": "Emakefun PH2.0 环境与光声传感器",
+  "colour": "#10B981",
+  "contents": [
+    {
+      "kind": "block",
+      "type": "emakefun_ph20_sensors_analog_sensor",
+      "inputs": {
+        "PIN": {
+          "shadow": {
+            "type": "math_number",
+            "fields": {
+              "NUM": 14
+            }
+          }
+        }
+      }
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_ph20_sensors_digital_high",
+      "inputs": {
+        "PIN": {
+          "shadow": {
+            "type": "math_number",
+            "fields": {
+              "NUM": 4
+            }
+          }
+        }
+      }
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_ph20_sensors_digital_low",
+      "inputs": {
+        "PIN": {
+          "shadow": {
+            "type": "math_number",
+            "fields": {
+              "NUM": 5
+            }
+          }
+        }
+      }
+    }
+  ]
+}

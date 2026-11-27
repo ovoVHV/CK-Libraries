@@ -1,0 +1,61 @@
+{
+  "kind": "category",
+  "name": "Emakefun MD20 四路编码电机",
+  "colour": "#B91C1C",
+  "contents": [
+    {
+      "kind": "block",
+      "type": "emakefun_md20_begin",
+      "inputs": {
+        "ADDR": {
+          "shadow": {
+            "type": "math_number",
+            "fields": {
+              "NUM": 22
+            }
+          }
+        }
+      }
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_md20_init_motor",
+      "inputs": {
+        "PPR": {
+          "shadow": {
+            "type": "math_number",
+            "fields": {
+              "NUM": 12
+            }
+          }
+        },
+        "RATIO": {
+          "shadow": {
+            "type": "math_number",
+            "fields": {
+              "NUM": 90
+            }
+          }
+        }
+      }
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_md20_run_speed",
+      "inputs": {
+        "RPM": {
+          "shadow": {
+            "type": "math_number",
+            "fields": {
+              "NUM": 60
+            }
+          }
+        }
+      }
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_md20_reset"
+    }
+  ]
+}

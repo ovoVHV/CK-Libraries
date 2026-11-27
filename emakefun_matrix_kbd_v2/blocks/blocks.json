@@ -1,0 +1,27 @@
+[
+  {
+    "type": "emakefun_matrix_kbd_v2_begin",
+    "message0": "初始化矩阵键盘 V2 I2C地址 %1",
+    "args0": [
+      {
+        "type": "input_value",
+        "name": "ADDR",
+        "check": "Number"
+      }
+    ],
+    "inputsInline": true,
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": "#1D4ED8",
+    "tooltip": "初始化 Emakefun 矩阵键盘 V2（默认 0x50 = 80）。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_matrix_kbd_v2_read",
+    "message0": "矩阵键盘 V2 读取触摸键值文本",
+    "output": "String",
+    "colour": "#1D4ED8",
+    "tooltip": "返回触摸按键字符（0-9/A-D/*/#，无按键返回空字符串）。",
+    "helpUrl": ""
+  }
+]

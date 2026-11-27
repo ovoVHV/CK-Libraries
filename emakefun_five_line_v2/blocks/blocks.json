@@ -1,0 +1,118 @@
+[
+  {
+    "type": "emakefun_five_line_v2_begin",
+    "message0": "初始化五路循迹 V2 I2C地址 %1",
+    "args0": [
+      {
+        "type": "input_value",
+        "name": "ADDR",
+        "check": "Number"
+      }
+    ],
+    "inputsInline": true,
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": "#115E59",
+    "tooltip": "初始化 Emakefun 五路循迹 V2（默认 0x50 = 80）。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_five_line_v2_sensitivity",
+    "message0": "五路循迹 V2 设置灵敏度 %1",
+    "args0": [
+      {
+        "type": "input_value",
+        "name": "SENS",
+        "check": "Number"
+      }
+    ],
+    "inputsInline": true,
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": "#115E59",
+    "tooltip": "设置黑线检测灵敏度（0-1023）。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_five_line_v2_value",
+    "message0": "五路循迹 V2 通道 %1 模拟值",
+    "args0": [
+      {
+        "type": "field_dropdown",
+        "name": "CH",
+        "options": [
+          [
+            "通道 0",
+            "0"
+          ],
+          [
+            "通道 1",
+            "1"
+          ],
+          [
+            "通道 2",
+            "2"
+          ],
+          [
+            "通道 3",
+            "3"
+          ],
+          [
+            "通道 4",
+            "4"
+          ]
+        ]
+      }
+    ],
+    "inputsInline": true,
+    "output": "Number",
+    "colour": "#115E59",
+    "tooltip": "读取单个通道的模拟值（0-4）。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_five_line_v2_on_black",
+    "message0": "五路循迹 V2 通道 %1 检测到黑线?",
+    "args0": [
+      {
+        "type": "field_dropdown",
+        "name": "CH",
+        "options": [
+          [
+            "通道 0",
+            "0"
+          ],
+          [
+            "通道 1",
+            "1"
+          ],
+          [
+            "通道 2",
+            "2"
+          ],
+          [
+            "通道 3",
+            "3"
+          ],
+          [
+            "通道 4",
+            "4"
+          ]
+        ]
+      }
+    ],
+    "inputsInline": true,
+    "output": "Boolean",
+    "colour": "#115E59",
+    "tooltip": "判断指定通道是否位于黑线上。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_five_line_v2_states",
+    "message0": "五路循迹 V2 五路状态字节",
+    "output": "Number",
+    "colour": "#115E59",
+    "tooltip": "返回五路传感器组合状态字节。",
+    "helpUrl": ""
+  }
+]

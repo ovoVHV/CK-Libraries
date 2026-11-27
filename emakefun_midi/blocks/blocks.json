@@ -1,0 +1,131 @@
+[
+  {
+    "type": "emakefun_midi_begin",
+    "message0": "初始化 MIDI 音乐模块 RX引脚 %1 TX引脚 %2",
+    "args0": [
+      {
+        "type": "input_value",
+        "name": "RX",
+        "check": "Number"
+      },
+      {
+        "type": "input_value",
+        "name": "TX",
+        "check": "Number"
+      }
+    ],
+    "inputsInline": true,
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": "#C026D3",
+    "tooltip": "初始化 Emakefun MIDI 音乐合成器（31250 波特率）。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_midi_timbre",
+    "message0": "MIDI 通道 %1 设音色库 %2 音色 %3",
+    "args0": [
+      {
+        "type": "input_value",
+        "name": "CH",
+        "check": "Number"
+      },
+      {
+        "type": "input_value",
+        "name": "BANK",
+        "check": "Number"
+      },
+      {
+        "type": "input_value",
+        "name": "TIMBRE",
+        "check": "Number"
+      }
+    ],
+    "inputsInline": true,
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": "#C026D3",
+    "tooltip": "设置通道乐器音色（0=大钢琴，0-127）。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_midi_volume",
+    "message0": "MIDI 通道 %1 设音量 %2",
+    "args0": [
+      {
+        "type": "input_value",
+        "name": "CH",
+        "check": "Number"
+      },
+      {
+        "type": "input_value",
+        "name": "VOL",
+        "check": "Number"
+      }
+    ],
+    "inputsInline": true,
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": "#C026D3",
+    "tooltip": "设置指定通道音量（0-127）。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_midi_note_on",
+    "message0": "MIDI 通道 %1 演奏音符 %2 力度 %3",
+    "args0": [
+      {
+        "type": "input_value",
+        "name": "CH",
+        "check": "Number"
+      },
+      {
+        "type": "input_value",
+        "name": "NOTE",
+        "check": "Number"
+      },
+      {
+        "type": "input_value",
+        "name": "VEL",
+        "check": "Number"
+      }
+    ],
+    "inputsInline": true,
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": "#C026D3",
+    "tooltip": "触发 MIDI 音符发声（60=中央C，力度 0-127）。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_midi_note_off",
+    "message0": "MIDI 通道 %1 停止音符 %2",
+    "args0": [
+      {
+        "type": "input_value",
+        "name": "CH",
+        "check": "Number"
+      },
+      {
+        "type": "input_value",
+        "name": "NOTE",
+        "check": "Number"
+      }
+    ],
+    "inputsInline": true,
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": "#C026D3",
+    "tooltip": "关闭指定通道的音符。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_midi_reset",
+    "message0": "MIDI 全部静音并复位",
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": "#C026D3",
+    "tooltip": "复位 MIDI 合成器并关闭所有音符。",
+    "helpUrl": ""
+  }
+]

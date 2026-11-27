@@ -1,0 +1,1250 @@
+{
+  "schema_version": 2,
+  "id": "emakefun_encoder_board",
+  "display_name": "Emakefun 编码电机驱动板",
+  "description": "Emakefun I2C 四路编码电机扩展板（默认地址 0x09），支持速度、PWM、角度定位与实时反馈读取。",
+  "defaultLocale": "zh-CN",
+  "keywords": [
+    "Emakefun 编码电机驱动板",
+    "emakefun_encoder_board",
+    "Emakefun",
+    "编码电机",
+    "电机板",
+    "I2C"
+  ],
+  "license": {
+    "spdx_id": "Apache-2.0",
+    "file": "LICENSE.txt"
+  },
+  "compatibility": {
+    "architectures": [
+      "avr",
+      "esp32"
+    ]
+  },
+  "dependencies": [
+    {
+      "kind": "arduino-library",
+      "id": "EmakefunEncoderBoardAdapter",
+      "version": "1.0.0",
+      "headers": [
+        "EmakefunEncoderBoardAdapter.h"
+      ],
+      "license": "Apache-2.0",
+      "reason": "随包内置于 libraries/EmakefunEncoderBoardAdapter/，提供安全封装与跨板卡兼容接口。"
+    },
+    {
+      "kind": "arduino-library",
+      "id": "Emakefun Encoder Motor Board",
+      "version": "1.0.0",
+      "headers": [
+        "encoder_motor_board.h"
+      ],
+      "license": "MIT",
+      "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/emakefun_encoder_motor_board）内置于 libraries/emakefun_encoder_motor_board/。"
+    }
+  ],
+  "entrypoints": {
+    "blocks": "blocks/blocks.json",
+    "generator": "blocks/ck-generator.json",
+    "toolbox": "blocks/toolbox.json"
+  },
+  "blocks": [
+    {
+      "type": "emakefun_encoder_board_begin",
+      "display_name": "初始化编码电机扩展板 I2C地址 %1",
+      "description": "初始化 Emakefun 编码电机驱动板（默认 0x09 = 9）。",
+      "category": "Emakefun 编码电机驱动板",
+      "kind": "statement",
+      "keywords": [
+        "Emakefun 编码电机驱动板",
+        "emakefun_encoder_board",
+        "Emakefun",
+        "编码电机",
+        "电机板",
+        "I2C"
+      ],
+      "semantics": {
+        "purpose": "初始化 Emakefun 编码电机驱动板（默认 0x09 = 9）。",
+        "behavior": "初始化 Emakefun 编码电机驱动板（默认 0x09 = 9）。",
+        "concepts": [
+          "Emakefun 编码电机驱动板",
+          "Emakefun"
+        ],
+        "side_effects": [
+          "初始化 Emakefun 编码电机驱动板（默认 0x09 = 9）。"
+        ]
+      },
+      "fields": [],
+      "inputs": [
+        {
+          "name": "ADDR",
+          "kind": "value",
+          "description": "I2C 地址（默认 9）",
+          "check": "Number",
+          "required": true,
+          "default": 9
+        }
+      ],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunEncoderBoardAdapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunEncoderBoardAdapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunEncoderBoardAdapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "Emakefun Encoder Motor Board",
+          "version": "1.0.0",
+          "headers": [
+            "encoder_motor_board.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/emakefun_encoder_motor_board）内置于 libraries/emakefun_encoder_motor_board/。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "i2c",
+            "id": "wire",
+            "source": {
+              "kind": "board-default"
+            },
+            "access": "read-write",
+            "sharing": "shared",
+            "description": "默认 I2C 总线 (Wire)，模块默认地址 0x09。"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "i2c-device",
+              "role": "i2c-device",
+              "resource": {
+                "kind": "fixed",
+                "valueType": "id",
+                "value": "i2c"
+              },
+              "exclusive": false,
+              "discriminator": {
+                "kind": "fixed",
+                "valueType": "integer",
+                "value": 9
+              }
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun I2C 四路编码电机扩展板（默认地址 0x09），支持速度、PWM、角度定位与实时反馈读取。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "includes": [
+          "EmakefunEncoderBoardAdapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunEncoderBoardAdapter.h",
+            "template": "#include <EmakefunEncoderBoardAdapter.h>"
+          },
+          {
+            "section": "statement",
+            "description": "初始化 Emakefun 编码电机驱动板（默认 0x09 = 9）。",
+            "template": "EmakefunEncoderBoardAdapter::begin({{value:ADDR}});\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun I2C 四路编码电机扩展板（默认地址 0x09），支持速度、PWM、角度定位与实时反馈读取。",
+          "message": "Emakefun I2C 四路编码电机扩展板（默认地址 0x09），支持速度、PWM、角度定位与实时反馈读取。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun 编码电机驱动板 随包示例",
+          "description": "初始化 Emakefun 编码电机驱动板（默认 0x09 = 9）。",
+          "expected_behavior": "演示 Emakefun 编码电机驱动板 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_encoder_board_run_speed",
+      "display_name": "编码电机板 电机 %1 转速 %2 RPM",
+      "description": "以指定 RPM 旋转。",
+      "category": "Emakefun 编码电机驱动板",
+      "kind": "statement",
+      "keywords": [
+        "Emakefun 编码电机驱动板",
+        "emakefun_encoder_board",
+        "Emakefun",
+        "编码电机",
+        "电机板",
+        "I2C"
+      ],
+      "semantics": {
+        "purpose": "以指定 RPM 旋转。",
+        "behavior": "以指定 RPM 旋转。",
+        "concepts": [
+          "Emakefun 编码电机驱动板",
+          "Emakefun"
+        ],
+        "side_effects": [
+          "以指定 RPM 旋转。"
+        ]
+      },
+      "fields": [
+        {
+          "name": "IDX",
+          "kind": "dropdown",
+          "description": "电机",
+          "required": true,
+          "default": "0",
+          "options": [
+            {
+              "label": "电机 0",
+              "value": "0"
+            },
+            {
+              "label": "电机 1",
+              "value": "1"
+            },
+            {
+              "label": "电机 2",
+              "value": "2"
+            },
+            {
+              "label": "电机 3",
+              "value": "3"
+            }
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "name": "RPM",
+          "kind": "value",
+          "description": "转速 RPM",
+          "check": "Number",
+          "required": true,
+          "default": 60
+        }
+      ],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunEncoderBoardAdapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunEncoderBoardAdapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunEncoderBoardAdapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "Emakefun Encoder Motor Board",
+          "version": "1.0.0",
+          "headers": [
+            "encoder_motor_board.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/emakefun_encoder_motor_board）内置于 libraries/emakefun_encoder_motor_board/。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "i2c",
+            "id": "wire",
+            "source": {
+              "kind": "board-default"
+            },
+            "access": "read-write",
+            "sharing": "shared",
+            "description": "默认 I2C 总线 (Wire)，模块默认地址 0x09。"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "i2c-device",
+              "role": "i2c-device",
+              "resource": {
+                "kind": "fixed",
+                "valueType": "id",
+                "value": "i2c"
+              },
+              "exclusive": false,
+              "discriminator": {
+                "kind": "fixed",
+                "valueType": "integer",
+                "value": 9
+              }
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun I2C 四路编码电机扩展板（默认地址 0x09），支持速度、PWM、角度定位与实时反馈读取。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "includes": [
+          "EmakefunEncoderBoardAdapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunEncoderBoardAdapter.h",
+            "template": "#include <EmakefunEncoderBoardAdapter.h>"
+          },
+          {
+            "section": "statement",
+            "description": "以指定 RPM 旋转。",
+            "template": "EmakefunEncoderBoardAdapter::runSpeed({{field:IDX}}, {{value:RPM}});\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun I2C 四路编码电机扩展板（默认地址 0x09），支持速度、PWM、角度定位与实时反馈读取。",
+          "message": "Emakefun I2C 四路编码电机扩展板（默认地址 0x09），支持速度、PWM、角度定位与实时反馈读取。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun 编码电机驱动板 随包示例",
+          "description": "以指定 RPM 旋转。",
+          "expected_behavior": "演示 Emakefun 编码电机驱动板 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_encoder_board_run_pwm",
+      "display_name": "编码电机板 电机 %1 PWM %2 (-255~255)",
+      "description": "以 PWM 值驱动电机。",
+      "category": "Emakefun 编码电机驱动板",
+      "kind": "statement",
+      "keywords": [
+        "Emakefun 编码电机驱动板",
+        "emakefun_encoder_board",
+        "Emakefun",
+        "编码电机",
+        "电机板",
+        "I2C"
+      ],
+      "semantics": {
+        "purpose": "以 PWM 值驱动电机。",
+        "behavior": "以 PWM 值驱动电机。",
+        "concepts": [
+          "Emakefun 编码电机驱动板",
+          "Emakefun"
+        ],
+        "side_effects": [
+          "以 PWM 值驱动电机。"
+        ]
+      },
+      "fields": [
+        {
+          "name": "IDX",
+          "kind": "dropdown",
+          "description": "电机",
+          "required": true,
+          "default": "0",
+          "options": [
+            {
+              "label": "电机 0",
+              "value": "0"
+            },
+            {
+              "label": "电机 1",
+              "value": "1"
+            },
+            {
+              "label": "电机 2",
+              "value": "2"
+            },
+            {
+              "label": "电机 3",
+              "value": "3"
+            }
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "name": "PWM",
+          "kind": "value",
+          "description": "PWM -255~255",
+          "check": "Number",
+          "required": true,
+          "default": 150
+        }
+      ],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunEncoderBoardAdapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunEncoderBoardAdapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunEncoderBoardAdapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "Emakefun Encoder Motor Board",
+          "version": "1.0.0",
+          "headers": [
+            "encoder_motor_board.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/emakefun_encoder_motor_board）内置于 libraries/emakefun_encoder_motor_board/。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "i2c",
+            "id": "wire",
+            "source": {
+              "kind": "board-default"
+            },
+            "access": "read-write",
+            "sharing": "shared",
+            "description": "默认 I2C 总线 (Wire)，模块默认地址 0x09。"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "i2c-device",
+              "role": "i2c-device",
+              "resource": {
+                "kind": "fixed",
+                "valueType": "id",
+                "value": "i2c"
+              },
+              "exclusive": false,
+              "discriminator": {
+                "kind": "fixed",
+                "valueType": "integer",
+                "value": 9
+              }
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun I2C 四路编码电机扩展板（默认地址 0x09），支持速度、PWM、角度定位与实时反馈读取。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "includes": [
+          "EmakefunEncoderBoardAdapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunEncoderBoardAdapter.h",
+            "template": "#include <EmakefunEncoderBoardAdapter.h>"
+          },
+          {
+            "section": "statement",
+            "description": "以 PWM 值驱动电机。",
+            "template": "EmakefunEncoderBoardAdapter::runPwm({{field:IDX}}, {{value:PWM}});\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun I2C 四路编码电机扩展板（默认地址 0x09），支持速度、PWM、角度定位与实时反馈读取。",
+          "message": "Emakefun I2C 四路编码电机扩展板（默认地址 0x09），支持速度、PWM、角度定位与实时反馈读取。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun 编码电机驱动板 随包示例",
+          "description": "以 PWM 值驱动电机。",
+          "expected_behavior": "演示 Emakefun 编码电机驱动板 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_encoder_board_move",
+      "display_name": "编码电机板 电机 %1 转动 %2 度 速度 %3",
+      "description": "相对当前位置转动指定角度。",
+      "category": "Emakefun 编码电机驱动板",
+      "kind": "statement",
+      "keywords": [
+        "Emakefun 编码电机驱动板",
+        "emakefun_encoder_board",
+        "Emakefun",
+        "编码电机",
+        "电机板",
+        "I2C"
+      ],
+      "semantics": {
+        "purpose": "相对当前位置转动指定角度。",
+        "behavior": "相对当前位置转动指定角度。",
+        "concepts": [
+          "Emakefun 编码电机驱动板",
+          "Emakefun"
+        ],
+        "side_effects": [
+          "相对当前位置转动指定角度。"
+        ]
+      },
+      "fields": [
+        {
+          "name": "IDX",
+          "kind": "dropdown",
+          "description": "电机",
+          "required": true,
+          "default": "0",
+          "options": [
+            {
+              "label": "电机 0",
+              "value": "0"
+            },
+            {
+              "label": "电机 1",
+              "value": "1"
+            },
+            {
+              "label": "电机 2",
+              "value": "2"
+            },
+            {
+              "label": "电机 3",
+              "value": "3"
+            }
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "name": "DEG",
+          "kind": "value",
+          "description": "角度（度）",
+          "check": "Number",
+          "required": true,
+          "default": 360
+        },
+        {
+          "name": "SPD",
+          "kind": "value",
+          "description": "转速 RPM",
+          "check": "Number",
+          "required": true,
+          "default": 60
+        }
+      ],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunEncoderBoardAdapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunEncoderBoardAdapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunEncoderBoardAdapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "Emakefun Encoder Motor Board",
+          "version": "1.0.0",
+          "headers": [
+            "encoder_motor_board.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/emakefun_encoder_motor_board）内置于 libraries/emakefun_encoder_motor_board/。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "i2c",
+            "id": "wire",
+            "source": {
+              "kind": "board-default"
+            },
+            "access": "read-write",
+            "sharing": "shared",
+            "description": "默认 I2C 总线 (Wire)，模块默认地址 0x09。"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "i2c-device",
+              "role": "i2c-device",
+              "resource": {
+                "kind": "fixed",
+                "valueType": "id",
+                "value": "i2c"
+              },
+              "exclusive": false,
+              "discriminator": {
+                "kind": "fixed",
+                "valueType": "integer",
+                "value": 9
+              }
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun I2C 四路编码电机扩展板（默认地址 0x09），支持速度、PWM、角度定位与实时反馈读取。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "includes": [
+          "EmakefunEncoderBoardAdapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunEncoderBoardAdapter.h",
+            "template": "#include <EmakefunEncoderBoardAdapter.h>"
+          },
+          {
+            "section": "statement",
+            "description": "相对当前位置转动指定角度。",
+            "template": "EmakefunEncoderBoardAdapter::movePos({{field:IDX}}, {{value:DEG}}, {{value:SPD}});\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun I2C 四路编码电机扩展板（默认地址 0x09），支持速度、PWM、角度定位与实时反馈读取。",
+          "message": "Emakefun I2C 四路编码电机扩展板（默认地址 0x09），支持速度、PWM、角度定位与实时反馈读取。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun 编码电机驱动板 随包示例",
+          "description": "相对当前位置转动指定角度。",
+          "expected_behavior": "演示 Emakefun 编码电机驱动板 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_encoder_board_stop",
+      "display_name": "编码电机板 停止电机 %1",
+      "description": "停止指定编码电机。",
+      "category": "Emakefun 编码电机驱动板",
+      "kind": "statement",
+      "keywords": [
+        "Emakefun 编码电机驱动板",
+        "emakefun_encoder_board",
+        "Emakefun",
+        "编码电机",
+        "电机板",
+        "I2C"
+      ],
+      "semantics": {
+        "purpose": "停止指定编码电机。",
+        "behavior": "停止指定编码电机。",
+        "concepts": [
+          "Emakefun 编码电机驱动板",
+          "Emakefun"
+        ],
+        "side_effects": [
+          "停止指定编码电机。"
+        ]
+      },
+      "fields": [
+        {
+          "name": "IDX",
+          "kind": "dropdown",
+          "description": "电机",
+          "required": true,
+          "default": "0",
+          "options": [
+            {
+              "label": "电机 0",
+              "value": "0"
+            },
+            {
+              "label": "电机 1",
+              "value": "1"
+            },
+            {
+              "label": "电机 2",
+              "value": "2"
+            },
+            {
+              "label": "电机 3",
+              "value": "3"
+            }
+          ]
+        }
+      ],
+      "inputs": [],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunEncoderBoardAdapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunEncoderBoardAdapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunEncoderBoardAdapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "Emakefun Encoder Motor Board",
+          "version": "1.0.0",
+          "headers": [
+            "encoder_motor_board.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/emakefun_encoder_motor_board）内置于 libraries/emakefun_encoder_motor_board/。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "i2c",
+            "id": "wire",
+            "source": {
+              "kind": "board-default"
+            },
+            "access": "read-write",
+            "sharing": "shared",
+            "description": "默认 I2C 总线 (Wire)，模块默认地址 0x09。"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "i2c-device",
+              "role": "i2c-device",
+              "resource": {
+                "kind": "fixed",
+                "valueType": "id",
+                "value": "i2c"
+              },
+              "exclusive": false,
+              "discriminator": {
+                "kind": "fixed",
+                "valueType": "integer",
+                "value": 9
+              }
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun I2C 四路编码电机扩展板（默认地址 0x09），支持速度、PWM、角度定位与实时反馈读取。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "includes": [
+          "EmakefunEncoderBoardAdapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunEncoderBoardAdapter.h",
+            "template": "#include <EmakefunEncoderBoardAdapter.h>"
+          },
+          {
+            "section": "statement",
+            "description": "停止指定编码电机。",
+            "template": "EmakefunEncoderBoardAdapter::stop({{field:IDX}});\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun I2C 四路编码电机扩展板（默认地址 0x09），支持速度、PWM、角度定位与实时反馈读取。",
+          "message": "Emakefun I2C 四路编码电机扩展板（默认地址 0x09），支持速度、PWM、角度定位与实时反馈读取。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun 编码电机驱动板 随包示例",
+          "description": "停止指定编码电机。",
+          "expected_behavior": "演示 Emakefun 编码电机驱动板 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_encoder_board_speed",
+      "display_name": "编码电机板 电机 %1 当前转速",
+      "description": "读取实时转速 RPM。",
+      "category": "Emakefun 编码电机驱动板",
+      "kind": "value",
+      "keywords": [
+        "Emakefun 编码电机驱动板",
+        "emakefun_encoder_board",
+        "Emakefun",
+        "编码电机",
+        "电机板",
+        "I2C"
+      ],
+      "semantics": {
+        "purpose": "读取实时转速 RPM。",
+        "behavior": "读取实时转速 RPM。",
+        "concepts": [
+          "Emakefun 编码电机驱动板",
+          "Emakefun"
+        ],
+        "side_effects": []
+      },
+      "fields": [
+        {
+          "name": "IDX",
+          "kind": "dropdown",
+          "description": "电机",
+          "required": true,
+          "default": "0",
+          "options": [
+            {
+              "label": "电机 0",
+              "value": "0"
+            },
+            {
+              "label": "电机 1",
+              "value": "1"
+            },
+            {
+              "label": "电机 2",
+              "value": "2"
+            },
+            {
+              "label": "电机 3",
+              "value": "3"
+            }
+          ]
+        }
+      ],
+      "inputs": [],
+      "output": {
+        "connection": "value",
+        "types": [
+          "Number"
+        ],
+        "description": "读取实时转速 RPM。"
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunEncoderBoardAdapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunEncoderBoardAdapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunEncoderBoardAdapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "Emakefun Encoder Motor Board",
+          "version": "1.0.0",
+          "headers": [
+            "encoder_motor_board.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/emakefun_encoder_motor_board）内置于 libraries/emakefun_encoder_motor_board/。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "i2c",
+            "id": "wire",
+            "source": {
+              "kind": "board-default"
+            },
+            "access": "read-write",
+            "sharing": "shared",
+            "description": "默认 I2C 总线 (Wire)，模块默认地址 0x09。"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "i2c-device",
+              "role": "i2c-device",
+              "resource": {
+                "kind": "fixed",
+                "valueType": "id",
+                "value": "i2c"
+              },
+              "exclusive": false,
+              "discriminator": {
+                "kind": "fixed",
+                "valueType": "integer",
+                "value": 9
+              }
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun I2C 四路编码电机扩展板（默认地址 0x09），支持速度、PWM、角度定位与实时反馈读取。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "expression",
+        "deterministic": true,
+        "includes": [
+          "EmakefunEncoderBoardAdapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunEncoderBoardAdapter.h",
+            "template": "#include <EmakefunEncoderBoardAdapter.h>"
+          },
+          {
+            "section": "expression",
+            "description": "读取实时转速 RPM。",
+            "template": "EmakefunEncoderBoardAdapter::speed({{field:IDX}})"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun I2C 四路编码电机扩展板（默认地址 0x09），支持速度、PWM、角度定位与实时反馈读取。",
+          "message": "Emakefun I2C 四路编码电机扩展板（默认地址 0x09），支持速度、PWM、角度定位与实时反馈读取。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun 编码电机驱动板 随包示例",
+          "description": "读取实时转速 RPM。",
+          "expected_behavior": "演示 Emakefun 编码电机驱动板 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_encoder_board_pos",
+      "display_name": "编码电机板 电机 %1 当前角度",
+      "description": "读取当前累计角度位置。",
+      "category": "Emakefun 编码电机驱动板",
+      "kind": "value",
+      "keywords": [
+        "Emakefun 编码电机驱动板",
+        "emakefun_encoder_board",
+        "Emakefun",
+        "编码电机",
+        "电机板",
+        "I2C"
+      ],
+      "semantics": {
+        "purpose": "读取当前累计角度位置。",
+        "behavior": "读取当前累计角度位置。",
+        "concepts": [
+          "Emakefun 编码电机驱动板",
+          "Emakefun"
+        ],
+        "side_effects": []
+      },
+      "fields": [
+        {
+          "name": "IDX",
+          "kind": "dropdown",
+          "description": "电机",
+          "required": true,
+          "default": "0",
+          "options": [
+            {
+              "label": "电机 0",
+              "value": "0"
+            },
+            {
+              "label": "电机 1",
+              "value": "1"
+            },
+            {
+              "label": "电机 2",
+              "value": "2"
+            },
+            {
+              "label": "电机 3",
+              "value": "3"
+            }
+          ]
+        }
+      ],
+      "inputs": [],
+      "output": {
+        "connection": "value",
+        "types": [
+          "Number"
+        ],
+        "description": "读取当前累计角度位置。"
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunEncoderBoardAdapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunEncoderBoardAdapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunEncoderBoardAdapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "Emakefun Encoder Motor Board",
+          "version": "1.0.0",
+          "headers": [
+            "encoder_motor_board.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/emakefun_encoder_motor_board）内置于 libraries/emakefun_encoder_motor_board/。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "i2c",
+            "id": "wire",
+            "source": {
+              "kind": "board-default"
+            },
+            "access": "read-write",
+            "sharing": "shared",
+            "description": "默认 I2C 总线 (Wire)，模块默认地址 0x09。"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "i2c-device",
+              "role": "i2c-device",
+              "resource": {
+                "kind": "fixed",
+                "valueType": "id",
+                "value": "i2c"
+              },
+              "exclusive": false,
+              "discriminator": {
+                "kind": "fixed",
+                "valueType": "integer",
+                "value": 9
+              }
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun I2C 四路编码电机扩展板（默认地址 0x09），支持速度、PWM、角度定位与实时反馈读取。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "expression",
+        "deterministic": true,
+        "includes": [
+          "EmakefunEncoderBoardAdapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunEncoderBoardAdapter.h",
+            "template": "#include <EmakefunEncoderBoardAdapter.h>"
+          },
+          {
+            "section": "expression",
+            "description": "读取当前累计角度位置。",
+            "template": "EmakefunEncoderBoardAdapter::position({{field:IDX}})"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun I2C 四路编码电机扩展板（默认地址 0x09），支持速度、PWM、角度定位与实时反馈读取。",
+          "message": "Emakefun I2C 四路编码电机扩展板（默认地址 0x09），支持速度、PWM、角度定位与实时反馈读取。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun 编码电机驱动板 随包示例",
+          "description": "读取当前累计角度位置。",
+          "expected_behavior": "演示 Emakefun 编码电机驱动板 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    }
+  ]
+}

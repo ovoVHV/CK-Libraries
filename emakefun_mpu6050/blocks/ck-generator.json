@@ -1,0 +1,38 @@
+{
+  "schema": "ck-generator",
+  "version": 1,
+  "rules": [
+    {
+      "type": "emakefun_mpu6050_begin",
+      "kind": "statement",
+      "includes": {
+        "EmakefunMpu6050Adapter.h": "#include <EmakefunMpu6050Adapter.h>"
+      },
+      "template": "EmakefunMpu6050Adapter::begin({{value:ADDR}});\n"
+    },
+    {
+      "type": "emakefun_mpu6050_update",
+      "kind": "statement",
+      "includes": {
+        "EmakefunMpu6050Adapter.h": "#include <EmakefunMpu6050Adapter.h>"
+      },
+      "template": "EmakefunMpu6050Adapter::update();\n"
+    },
+    {
+      "type": "emakefun_mpu6050_euler",
+      "kind": "expression",
+      "includes": {
+        "EmakefunMpu6050Adapter.h": "#include <EmakefunMpu6050Adapter.h>"
+      },
+      "template": "EmakefunMpu6050Adapter::euler({{field:AXIS}})"
+    },
+    {
+      "type": "emakefun_mpu6050_accel",
+      "kind": "expression",
+      "includes": {
+        "EmakefunMpu6050Adapter.h": "#include <EmakefunMpu6050Adapter.h>"
+      },
+      "template": "EmakefunMpu6050Adapter::accel({{field:AXIS}})"
+    }
+  ]
+}

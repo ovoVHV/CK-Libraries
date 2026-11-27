@@ -1,0 +1,61 @@
+{
+  "kind": "category",
+  "name": "Emakefun 五路循迹传感器 V3",
+  "colour": "#0F766E",
+  "contents": [
+    {
+      "kind": "block",
+      "type": "emakefun_five_line_v3_begin",
+      "inputs": {
+        "ADDR": {
+          "shadow": {
+            "type": "math_number",
+            "fields": {
+              "NUM": 80
+            }
+          }
+        }
+      }
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_five_line_v3_set_high",
+      "inputs": {
+        "VAL": {
+          "shadow": {
+            "type": "math_number",
+            "fields": {
+              "NUM": 800
+            }
+          }
+        }
+      }
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_five_line_v3_set_low",
+      "inputs": {
+        "VAL": {
+          "shadow": {
+            "type": "math_number",
+            "fields": {
+              "NUM": 500
+            }
+          }
+        }
+      }
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_five_line_v3_analog"
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_five_line_v3_digital"
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_five_line_v3_mask"
+    }
+  ]
+}

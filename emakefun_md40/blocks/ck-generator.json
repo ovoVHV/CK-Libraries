@@ -1,0 +1,78 @@
+{
+  "schema": "ck-generator",
+  "version": 1,
+  "rules": [
+    {
+      "type": "emakefun_md40_begin",
+      "kind": "statement",
+      "includes": {
+        "EmakefunMd40Adapter.h": "#include <EmakefunMd40Adapter.h>"
+      },
+      "template": "EmakefunMd40Adapter::begin({{value:ADDR}});\n"
+    },
+    {
+      "type": "emakefun_md40_dc_mode",
+      "kind": "statement",
+      "includes": {
+        "EmakefunMd40Adapter.h": "#include <EmakefunMd40Adapter.h>"
+      },
+      "template": "EmakefunMd40Adapter::setDc({{field:IDX}});\n"
+    },
+    {
+      "type": "emakefun_md40_enc_mode",
+      "kind": "statement",
+      "includes": {
+        "EmakefunMd40Adapter.h": "#include <EmakefunMd40Adapter.h>"
+      },
+      "template": "EmakefunMd40Adapter::setEncoder({{field:IDX}}, {{value:PPR}}, {{value:RATIO}}, {{field:PHASE}});\n"
+    },
+    {
+      "type": "emakefun_md40_run_speed",
+      "kind": "statement",
+      "includes": {
+        "EmakefunMd40Adapter.h": "#include <EmakefunMd40Adapter.h>"
+      },
+      "template": "EmakefunMd40Adapter::runSpeed({{field:IDX}}, {{value:RPM}});\n"
+    },
+    {
+      "type": "emakefun_md40_run_pwm",
+      "kind": "statement",
+      "includes": {
+        "EmakefunMd40Adapter.h": "#include <EmakefunMd40Adapter.h>"
+      },
+      "template": "EmakefunMd40Adapter::runPwm({{field:IDX}}, {{value:DUTY}});\n"
+    },
+    {
+      "type": "emakefun_md40_move_rel",
+      "kind": "statement",
+      "includes": {
+        "EmakefunMd40Adapter.h": "#include <EmakefunMd40Adapter.h>"
+      },
+      "template": "EmakefunMd40Adapter::moveRel({{field:IDX}}, {{value:OFF}}, {{value:SPD}});\n"
+    },
+    {
+      "type": "emakefun_md40_stop",
+      "kind": "statement",
+      "includes": {
+        "EmakefunMd40Adapter.h": "#include <EmakefunMd40Adapter.h>"
+      },
+      "template": "EmakefunMd40Adapter::stop({{field:IDX}});\n"
+    },
+    {
+      "type": "emakefun_md40_get_speed",
+      "kind": "expression",
+      "includes": {
+        "EmakefunMd40Adapter.h": "#include <EmakefunMd40Adapter.h>"
+      },
+      "template": "EmakefunMd40Adapter::speed({{field:IDX}})"
+    },
+    {
+      "type": "emakefun_md40_get_pos",
+      "kind": "expression",
+      "includes": {
+        "EmakefunMd40Adapter.h": "#include <EmakefunMd40Adapter.h>"
+      },
+      "template": "EmakefunMd40Adapter::position({{field:IDX}})"
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "schema": "ck-generator",
+  "version": 1,
+  "rules": [
+    {
+      "type": "emakefun_midi_begin",
+      "kind": "statement",
+      "includes": {
+        "EmakefunMidiAdapter.h": "#include <EmakefunMidiAdapter.h>"
+      },
+      "template": "EmakefunMidiAdapter::begin({{value:RX}}, {{value:TX}});\n"
+    },
+    {
+      "type": "emakefun_midi_timbre",
+      "kind": "statement",
+      "includes": {
+        "EmakefunMidiAdapter.h": "#include <EmakefunMidiAdapter.h>"
+      },
+      "template": "EmakefunMidiAdapter::setTimbre({{value:CH}}, {{value:BANK}}, {{value:TIMBRE}});\n"
+    },
+    {
+      "type": "emakefun_midi_volume",
+      "kind": "statement",
+      "includes": {
+        "EmakefunMidiAdapter.h": "#include <EmakefunMidiAdapter.h>"
+      },
+      "template": "EmakefunMidiAdapter::setVolume({{value:CH}}, {{value:VOL}});\n"
+    },
+    {
+      "type": "emakefun_midi_note_on",
+      "kind": "statement",
+      "includes": {
+        "EmakefunMidiAdapter.h": "#include <EmakefunMidiAdapter.h>"
+      },
+      "template": "EmakefunMidiAdapter::noteOn({{value:CH}}, {{value:NOTE}}, {{value:VEL}});\n"
+    },
+    {
+      "type": "emakefun_midi_note_off",
+      "kind": "statement",
+      "includes": {
+        "EmakefunMidiAdapter.h": "#include <EmakefunMidiAdapter.h>"
+      },
+      "template": "EmakefunMidiAdapter::noteOff({{value:CH}}, {{value:NOTE}});\n"
+    },
+    {
+      "type": "emakefun_midi_reset",
+      "kind": "statement",
+      "includes": {
+        "EmakefunMidiAdapter.h": "#include <EmakefunMidiAdapter.h>"
+      },
+      "template": "EmakefunMidiAdapter::reset();\n"
+    }
+  ]
+}

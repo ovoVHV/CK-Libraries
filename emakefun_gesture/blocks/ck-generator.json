@@ -1,0 +1,38 @@
+{
+  "schema": "ck-generator",
+  "version": 1,
+  "rules": [
+    {
+      "type": "emakefun_gesture_begin",
+      "kind": "statement",
+      "includes": {
+        "EmakefunGestureAdapter.h": "#include <EmakefunGestureAdapter.h>"
+      },
+      "template": "EmakefunGestureAdapter::begin({{value:ADDR}});\n"
+    },
+    {
+      "type": "emakefun_gesture_poll",
+      "kind": "statement",
+      "includes": {
+        "EmakefunGestureAdapter.h": "#include <EmakefunGestureAdapter.h>"
+      },
+      "template": "EmakefunGestureAdapter::read();\n"
+    },
+    {
+      "type": "emakefun_gesture_code",
+      "kind": "expression",
+      "includes": {
+        "EmakefunGestureAdapter.h": "#include <EmakefunGestureAdapter.h>"
+      },
+      "template": "EmakefunGestureAdapter::cached()"
+    },
+    {
+      "type": "emakefun_gesture_is",
+      "kind": "expression",
+      "includes": {
+        "EmakefunGestureAdapter.h": "#include <EmakefunGestureAdapter.h>"
+      },
+      "template": "EmakefunGestureAdapter::isGesture({{field:GESTURE}})"
+    }
+  ]
+}

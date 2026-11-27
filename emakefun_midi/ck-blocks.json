@@ -1,0 +1,939 @@
+{
+  "schema_version": 2,
+  "id": "emakefun_midi",
+  "display_name": "Emakefun MIDI 音乐合成器",
+  "description": "Emakefun 串口 MIDI 音乐合成器模块（31250bps），支持 128 种乐器音色、音符演奏、音量与混响控制。",
+  "defaultLocale": "zh-CN",
+  "keywords": [
+    "Emakefun MIDI 音乐合成器",
+    "emakefun_midi",
+    "Emakefun",
+    "MIDI",
+    "音乐",
+    "电子琴",
+    "合成器"
+  ],
+  "license": {
+    "spdx_id": "Apache-2.0",
+    "file": "LICENSE.txt"
+  },
+  "compatibility": {
+    "architectures": [
+      "avr",
+      "esp32"
+    ]
+  },
+  "dependencies": [
+    {
+      "kind": "arduino-library",
+      "id": "EmakefunMidiAdapter",
+      "version": "1.0.0",
+      "headers": [
+        "EmakefunMidiAdapter.h"
+      ],
+      "license": "Apache-2.0",
+      "reason": "随包内置于 libraries/EmakefunMidiAdapter/，提供安全封装与跨板卡兼容接口。"
+    },
+    {
+      "kind": "arduino-library",
+      "id": "EM MIDI",
+      "version": "1.0.0",
+      "headers": [
+        "midi.h",
+        "midi_chorus_reverberation.h",
+        "midi_lib.h",
+        "midi_note.h"
+      ],
+      "license": "MIT",
+      "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/em_midi）内置于 libraries/em_midi/。"
+    }
+  ],
+  "entrypoints": {
+    "blocks": "blocks/blocks.json",
+    "generator": "blocks/ck-generator.json",
+    "toolbox": "blocks/toolbox.json"
+  },
+  "blocks": [
+    {
+      "type": "emakefun_midi_begin",
+      "display_name": "初始化 MIDI 音乐模块 RX引脚 %1 TX引脚 %2",
+      "description": "初始化 Emakefun MIDI 音乐合成器（31250 波特率）。",
+      "category": "Emakefun MIDI 音乐合成器",
+      "kind": "statement",
+      "keywords": [
+        "Emakefun MIDI 音乐合成器",
+        "emakefun_midi",
+        "Emakefun",
+        "MIDI",
+        "音乐",
+        "电子琴",
+        "合成器"
+      ],
+      "semantics": {
+        "purpose": "初始化 Emakefun MIDI 音乐合成器（31250 波特率）。",
+        "behavior": "初始化 Emakefun MIDI 音乐合成器（31250 波特率）。",
+        "concepts": [
+          "Emakefun MIDI 音乐合成器",
+          "Emakefun"
+        ],
+        "side_effects": [
+          "初始化 Emakefun MIDI 音乐合成器（31250 波特率）。"
+        ]
+      },
+      "fields": [],
+      "inputs": [
+        {
+          "name": "RX",
+          "kind": "value",
+          "description": "RX 引脚",
+          "check": "Number",
+          "required": true,
+          "default": 2
+        },
+        {
+          "name": "TX",
+          "kind": "value",
+          "description": "TX 引脚",
+          "check": "Number",
+          "required": true,
+          "default": 3
+        }
+      ],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunMidiAdapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunMidiAdapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunMidiAdapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "EM MIDI",
+          "version": "1.0.0",
+          "headers": [
+            "midi.h",
+            "midi_chorus_reverberation.h",
+            "midi_lib.h",
+            "midi_note.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/em_midi）内置于 libraries/em_midi/。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "uart",
+            "id": "serial",
+            "source": {
+              "kind": "board-default"
+            },
+            "access": "read-write",
+            "sharing": "exclusive",
+            "description": "串口通信通道（SoftwareSerial 或 HardwareSerial）。"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": []
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun 串口 MIDI 音乐合成器模块（31250bps），支持 128 种乐器音色、音符演奏、音量与混响控制。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "includes": [
+          "EmakefunMidiAdapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunMidiAdapter.h",
+            "template": "#include <EmakefunMidiAdapter.h>"
+          },
+          {
+            "section": "statement",
+            "description": "初始化 Emakefun MIDI 音乐合成器（31250 波特率）。",
+            "template": "EmakefunMidiAdapter::begin({{value:RX}}, {{value:TX}});\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun 串口 MIDI 音乐合成器模块（31250bps），支持 128 种乐器音色、音符演奏、音量与混响控制。",
+          "message": "Emakefun 串口 MIDI 音乐合成器模块（31250bps），支持 128 种乐器音色、音符演奏、音量与混响控制。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun MIDI 音乐合成器 随包示例",
+          "description": "初始化 Emakefun MIDI 音乐合成器（31250 波特率）。",
+          "expected_behavior": "演示 Emakefun MIDI 音乐合成器 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_midi_timbre",
+      "display_name": "MIDI 通道 %1 设音色库 %2 音色 %3",
+      "description": "设置通道乐器音色（0=大钢琴，0-127）。",
+      "category": "Emakefun MIDI 音乐合成器",
+      "kind": "statement",
+      "keywords": [
+        "Emakefun MIDI 音乐合成器",
+        "emakefun_midi",
+        "Emakefun",
+        "MIDI",
+        "音乐",
+        "电子琴",
+        "合成器"
+      ],
+      "semantics": {
+        "purpose": "设置通道乐器音色（0=大钢琴，0-127）。",
+        "behavior": "设置通道乐器音色（0=大钢琴，0-127）。",
+        "concepts": [
+          "Emakefun MIDI 音乐合成器",
+          "Emakefun"
+        ],
+        "side_effects": [
+          "设置通道乐器音色（0=大钢琴，0-127）。"
+        ]
+      },
+      "fields": [],
+      "inputs": [
+        {
+          "name": "CH",
+          "kind": "value",
+          "description": "通道 0-15",
+          "check": "Number",
+          "required": true,
+          "default": 0
+        },
+        {
+          "name": "BANK",
+          "kind": "value",
+          "description": "音色库(0标准)",
+          "check": "Number",
+          "required": true,
+          "default": 0
+        },
+        {
+          "name": "TIMBRE",
+          "kind": "value",
+          "description": "音色编号 0-127",
+          "check": "Number",
+          "required": true,
+          "default": 0
+        }
+      ],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunMidiAdapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunMidiAdapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunMidiAdapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "EM MIDI",
+          "version": "1.0.0",
+          "headers": [
+            "midi.h",
+            "midi_chorus_reverberation.h",
+            "midi_lib.h",
+            "midi_note.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/em_midi）内置于 libraries/em_midi/。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "uart",
+            "id": "serial",
+            "source": {
+              "kind": "board-default"
+            },
+            "access": "read-write",
+            "sharing": "exclusive",
+            "description": "串口通信通道（SoftwareSerial 或 HardwareSerial）。"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": []
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun 串口 MIDI 音乐合成器模块（31250bps），支持 128 种乐器音色、音符演奏、音量与混响控制。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "includes": [
+          "EmakefunMidiAdapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunMidiAdapter.h",
+            "template": "#include <EmakefunMidiAdapter.h>"
+          },
+          {
+            "section": "statement",
+            "description": "设置通道乐器音色（0=大钢琴，0-127）。",
+            "template": "EmakefunMidiAdapter::setTimbre({{value:CH}}, {{value:BANK}}, {{value:TIMBRE}});\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun 串口 MIDI 音乐合成器模块（31250bps），支持 128 种乐器音色、音符演奏、音量与混响控制。",
+          "message": "Emakefun 串口 MIDI 音乐合成器模块（31250bps），支持 128 种乐器音色、音符演奏、音量与混响控制。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun MIDI 音乐合成器 随包示例",
+          "description": "设置通道乐器音色（0=大钢琴，0-127）。",
+          "expected_behavior": "演示 Emakefun MIDI 音乐合成器 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_midi_volume",
+      "display_name": "MIDI 通道 %1 设音量 %2",
+      "description": "设置指定通道音量（0-127）。",
+      "category": "Emakefun MIDI 音乐合成器",
+      "kind": "statement",
+      "keywords": [
+        "Emakefun MIDI 音乐合成器",
+        "emakefun_midi",
+        "Emakefun",
+        "MIDI",
+        "音乐",
+        "电子琴",
+        "合成器"
+      ],
+      "semantics": {
+        "purpose": "设置指定通道音量（0-127）。",
+        "behavior": "设置指定通道音量（0-127）。",
+        "concepts": [
+          "Emakefun MIDI 音乐合成器",
+          "Emakefun"
+        ],
+        "side_effects": [
+          "设置指定通道音量（0-127）。"
+        ]
+      },
+      "fields": [],
+      "inputs": [
+        {
+          "name": "CH",
+          "kind": "value",
+          "description": "通道 0-15",
+          "check": "Number",
+          "required": true,
+          "default": 0
+        },
+        {
+          "name": "VOL",
+          "kind": "value",
+          "description": "音量 0-127",
+          "check": "Number",
+          "required": true,
+          "default": 100
+        }
+      ],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunMidiAdapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunMidiAdapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunMidiAdapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "EM MIDI",
+          "version": "1.0.0",
+          "headers": [
+            "midi.h",
+            "midi_chorus_reverberation.h",
+            "midi_lib.h",
+            "midi_note.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/em_midi）内置于 libraries/em_midi/。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "uart",
+            "id": "serial",
+            "source": {
+              "kind": "board-default"
+            },
+            "access": "read-write",
+            "sharing": "exclusive",
+            "description": "串口通信通道（SoftwareSerial 或 HardwareSerial）。"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": []
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun 串口 MIDI 音乐合成器模块（31250bps），支持 128 种乐器音色、音符演奏、音量与混响控制。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "includes": [
+          "EmakefunMidiAdapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunMidiAdapter.h",
+            "template": "#include <EmakefunMidiAdapter.h>"
+          },
+          {
+            "section": "statement",
+            "description": "设置指定通道音量（0-127）。",
+            "template": "EmakefunMidiAdapter::setVolume({{value:CH}}, {{value:VOL}});\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun 串口 MIDI 音乐合成器模块（31250bps），支持 128 种乐器音色、音符演奏、音量与混响控制。",
+          "message": "Emakefun 串口 MIDI 音乐合成器模块（31250bps），支持 128 种乐器音色、音符演奏、音量与混响控制。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun MIDI 音乐合成器 随包示例",
+          "description": "设置指定通道音量（0-127）。",
+          "expected_behavior": "演示 Emakefun MIDI 音乐合成器 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_midi_note_on",
+      "display_name": "MIDI 通道 %1 演奏音符 %2 力度 %3",
+      "description": "触发 MIDI 音符发声（60=中央C，力度 0-127）。",
+      "category": "Emakefun MIDI 音乐合成器",
+      "kind": "statement",
+      "keywords": [
+        "Emakefun MIDI 音乐合成器",
+        "emakefun_midi",
+        "Emakefun",
+        "MIDI",
+        "音乐",
+        "电子琴",
+        "合成器"
+      ],
+      "semantics": {
+        "purpose": "触发 MIDI 音符发声（60=中央C，力度 0-127）。",
+        "behavior": "触发 MIDI 音符发声（60=中央C，力度 0-127）。",
+        "concepts": [
+          "Emakefun MIDI 音乐合成器",
+          "Emakefun"
+        ],
+        "side_effects": [
+          "触发 MIDI 音符发声（60=中央C，力度 0-127）。"
+        ]
+      },
+      "fields": [],
+      "inputs": [
+        {
+          "name": "CH",
+          "kind": "value",
+          "description": "通道 0-15",
+          "check": "Number",
+          "required": true,
+          "default": 0
+        },
+        {
+          "name": "NOTE",
+          "kind": "value",
+          "description": "MIDI 音符 0-127",
+          "check": "Number",
+          "required": true,
+          "default": 60
+        },
+        {
+          "name": "VEL",
+          "kind": "value",
+          "description": "力度 0-127",
+          "check": "Number",
+          "required": true,
+          "default": 100
+        }
+      ],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunMidiAdapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunMidiAdapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunMidiAdapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "EM MIDI",
+          "version": "1.0.0",
+          "headers": [
+            "midi.h",
+            "midi_chorus_reverberation.h",
+            "midi_lib.h",
+            "midi_note.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/em_midi）内置于 libraries/em_midi/。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "uart",
+            "id": "serial",
+            "source": {
+              "kind": "board-default"
+            },
+            "access": "read-write",
+            "sharing": "exclusive",
+            "description": "串口通信通道（SoftwareSerial 或 HardwareSerial）。"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": []
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun 串口 MIDI 音乐合成器模块（31250bps），支持 128 种乐器音色、音符演奏、音量与混响控制。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "includes": [
+          "EmakefunMidiAdapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunMidiAdapter.h",
+            "template": "#include <EmakefunMidiAdapter.h>"
+          },
+          {
+            "section": "statement",
+            "description": "触发 MIDI 音符发声（60=中央C，力度 0-127）。",
+            "template": "EmakefunMidiAdapter::noteOn({{value:CH}}, {{value:NOTE}}, {{value:VEL}});\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun 串口 MIDI 音乐合成器模块（31250bps），支持 128 种乐器音色、音符演奏、音量与混响控制。",
+          "message": "Emakefun 串口 MIDI 音乐合成器模块（31250bps），支持 128 种乐器音色、音符演奏、音量与混响控制。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun MIDI 音乐合成器 随包示例",
+          "description": "触发 MIDI 音符发声（60=中央C，力度 0-127）。",
+          "expected_behavior": "演示 Emakefun MIDI 音乐合成器 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_midi_note_off",
+      "display_name": "MIDI 通道 %1 停止音符 %2",
+      "description": "关闭指定通道的音符。",
+      "category": "Emakefun MIDI 音乐合成器",
+      "kind": "statement",
+      "keywords": [
+        "Emakefun MIDI 音乐合成器",
+        "emakefun_midi",
+        "Emakefun",
+        "MIDI",
+        "音乐",
+        "电子琴",
+        "合成器"
+      ],
+      "semantics": {
+        "purpose": "关闭指定通道的音符。",
+        "behavior": "关闭指定通道的音符。",
+        "concepts": [
+          "Emakefun MIDI 音乐合成器",
+          "Emakefun"
+        ],
+        "side_effects": [
+          "关闭指定通道的音符。"
+        ]
+      },
+      "fields": [],
+      "inputs": [
+        {
+          "name": "CH",
+          "kind": "value",
+          "description": "通道 0-15",
+          "check": "Number",
+          "required": true,
+          "default": 0
+        },
+        {
+          "name": "NOTE",
+          "kind": "value",
+          "description": "MIDI 音符 0-127",
+          "check": "Number",
+          "required": true,
+          "default": 60
+        }
+      ],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunMidiAdapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunMidiAdapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunMidiAdapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "EM MIDI",
+          "version": "1.0.0",
+          "headers": [
+            "midi.h",
+            "midi_chorus_reverberation.h",
+            "midi_lib.h",
+            "midi_note.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/em_midi）内置于 libraries/em_midi/。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "uart",
+            "id": "serial",
+            "source": {
+              "kind": "board-default"
+            },
+            "access": "read-write",
+            "sharing": "exclusive",
+            "description": "串口通信通道（SoftwareSerial 或 HardwareSerial）。"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": []
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun 串口 MIDI 音乐合成器模块（31250bps），支持 128 种乐器音色、音符演奏、音量与混响控制。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "includes": [
+          "EmakefunMidiAdapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunMidiAdapter.h",
+            "template": "#include <EmakefunMidiAdapter.h>"
+          },
+          {
+            "section": "statement",
+            "description": "关闭指定通道的音符。",
+            "template": "EmakefunMidiAdapter::noteOff({{value:CH}}, {{value:NOTE}});\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun 串口 MIDI 音乐合成器模块（31250bps），支持 128 种乐器音色、音符演奏、音量与混响控制。",
+          "message": "Emakefun 串口 MIDI 音乐合成器模块（31250bps），支持 128 种乐器音色、音符演奏、音量与混响控制。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun MIDI 音乐合成器 随包示例",
+          "description": "关闭指定通道的音符。",
+          "expected_behavior": "演示 Emakefun MIDI 音乐合成器 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_midi_reset",
+      "display_name": "MIDI 全部静音并复位",
+      "description": "复位 MIDI 合成器并关闭所有音符。",
+      "category": "Emakefun MIDI 音乐合成器",
+      "kind": "statement",
+      "keywords": [
+        "Emakefun MIDI 音乐合成器",
+        "emakefun_midi",
+        "Emakefun",
+        "MIDI",
+        "音乐",
+        "电子琴",
+        "合成器"
+      ],
+      "semantics": {
+        "purpose": "复位 MIDI 合成器并关闭所有音符。",
+        "behavior": "复位 MIDI 合成器并关闭所有音符。",
+        "concepts": [
+          "Emakefun MIDI 音乐合成器",
+          "Emakefun"
+        ],
+        "side_effects": [
+          "复位 MIDI 合成器并关闭所有音符。"
+        ]
+      },
+      "fields": [],
+      "inputs": [],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunMidiAdapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunMidiAdapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunMidiAdapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "EM MIDI",
+          "version": "1.0.0",
+          "headers": [
+            "midi.h",
+            "midi_chorus_reverberation.h",
+            "midi_lib.h",
+            "midi_note.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/em_midi）内置于 libraries/em_midi/。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "uart",
+            "id": "serial",
+            "source": {
+              "kind": "board-default"
+            },
+            "access": "read-write",
+            "sharing": "exclusive",
+            "description": "串口通信通道（SoftwareSerial 或 HardwareSerial）。"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": []
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun 串口 MIDI 音乐合成器模块（31250bps），支持 128 种乐器音色、音符演奏、音量与混响控制。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "includes": [
+          "EmakefunMidiAdapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunMidiAdapter.h",
+            "template": "#include <EmakefunMidiAdapter.h>"
+          },
+          {
+            "section": "statement",
+            "description": "复位 MIDI 合成器并关闭所有音符。",
+            "template": "EmakefunMidiAdapter::reset();\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun 串口 MIDI 音乐合成器模块（31250bps），支持 128 种乐器音色、音符演奏、音量与混响控制。",
+          "message": "Emakefun 串口 MIDI 音乐合成器模块（31250bps），支持 128 种乐器音色、音符演奏、音量与混响控制。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun MIDI 音乐合成器 随包示例",
+          "description": "复位 MIDI 合成器并关闭所有音符。",
+          "expected_behavior": "演示 Emakefun MIDI 音乐合成器 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    }
+  ]
+}

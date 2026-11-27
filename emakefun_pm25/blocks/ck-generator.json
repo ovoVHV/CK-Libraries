@@ -1,0 +1,22 @@
+{
+  "schema": "ck-generator",
+  "version": 1,
+  "rules": [
+    {
+      "type": "emakefun_pm25_begin",
+      "kind": "statement",
+      "includes": {
+        "EmakefunPm25Adapter.h": "#include <EmakefunPm25Adapter.h>"
+      },
+      "template": "EmakefunPm25Adapter::begin({{value:ILED_PIN}}, {{value:DUST_PIN}});\n"
+    },
+    {
+      "type": "emakefun_pm25_read",
+      "kind": "expression",
+      "includes": {
+        "EmakefunPm25Adapter.h": "#include <EmakefunPm25Adapter.h>"
+      },
+      "template": "EmakefunPm25Adapter::readUgM3()"
+    }
+  ]
+}

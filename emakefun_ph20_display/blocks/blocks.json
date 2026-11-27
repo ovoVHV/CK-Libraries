@@ -1,0 +1,124 @@
+[
+  {
+    "type": "emakefun_ph20_display_led",
+    "message0": "PH2.0 LED 灯 引脚 %1 设为 %2",
+    "args0": [
+      {
+        "type": "input_value",
+        "name": "PIN",
+        "check": "Number"
+      },
+      {
+        "type": "field_dropdown",
+        "name": "ON",
+        "options": [
+          [
+            "点亮",
+            "true"
+          ],
+          [
+            "熄灭",
+            "false"
+          ]
+        ]
+      }
+    ],
+    "inputsInline": true,
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": "#EAB308",
+    "tooltip": "点亮或熄灭 Emakefun LED 模块。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_ph20_display_traffic",
+    "message0": "PH2.0 交通灯 红 %1 黄 %2 绿 %3 亮 %4",
+    "args0": [
+      {
+        "type": "input_value",
+        "name": "R_PIN",
+        "check": "Number"
+      },
+      {
+        "type": "input_value",
+        "name": "Y_PIN",
+        "check": "Number"
+      },
+      {
+        "type": "input_value",
+        "name": "G_PIN",
+        "check": "Number"
+      },
+      {
+        "type": "field_dropdown",
+        "name": "STATE",
+        "options": [
+          [
+            "红灯",
+            "1"
+          ],
+          [
+            "黄灯",
+            "2"
+          ],
+          [
+            "绿灯",
+            "3"
+          ],
+          [
+            "全灭",
+            "0"
+          ]
+        ]
+      }
+    ],
+    "inputsInline": true,
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": "#EAB308",
+    "tooltip": "切换交通灯模块红/黄/绿灯或全灭。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_ph20_display_rgb",
+    "message0": "PH2.0 RGB三色灯 引脚 R %1 G %2 B %3 颜色 (%4, %5, %6)",
+    "args0": [
+      {
+        "type": "input_value",
+        "name": "R_PIN",
+        "check": "Number"
+      },
+      {
+        "type": "input_value",
+        "name": "G_PIN",
+        "check": "Number"
+      },
+      {
+        "type": "input_value",
+        "name": "B_PIN",
+        "check": "Number"
+      },
+      {
+        "type": "input_value",
+        "name": "R",
+        "check": "Number"
+      },
+      {
+        "type": "input_value",
+        "name": "G",
+        "check": "Number"
+      },
+      {
+        "type": "input_value",
+        "name": "B",
+        "check": "Number"
+      }
+    ],
+    "inputsInline": true,
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": "#EAB308",
+    "tooltip": "使用 PWM 设置 RGB 三色灯颜色（0-255）。",
+    "helpUrl": ""
+  }
+]

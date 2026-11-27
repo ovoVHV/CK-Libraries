@@ -1,0 +1,586 @@
+{
+  "schema_version": 2,
+  "id": "emakefun_adc_button",
+  "display_name": "Emakefun ADC 五键模块",
+  "description": "Emakefun 单模拟口五按键（A/B/C/D/E）分压按键模块，内置消抖与按键事件检测。",
+  "defaultLocale": "zh-CN",
+  "keywords": [
+    "Emakefun ADC 五键模块",
+    "emakefun_adc_button",
+    "Emakefun",
+    "按键",
+    "ADC按键",
+    "五键"
+  ],
+  "license": {
+    "spdx_id": "Apache-2.0",
+    "file": "LICENSE.txt"
+  },
+  "compatibility": {
+    "architectures": [
+      "avr",
+      "esp32"
+    ]
+  },
+  "dependencies": [
+    {
+      "kind": "arduino-library",
+      "id": "EmakefunAdcButtonAdapter",
+      "version": "1.0.0",
+      "headers": [
+        "EmakefunAdcButtonAdapter.h"
+      ],
+      "license": "Apache-2.0",
+      "reason": "随包内置于 libraries/EmakefunAdcButtonAdapter/，提供安全封装与跨板卡兼容接口。"
+    },
+    {
+      "kind": "arduino-library",
+      "id": "Adc Button",
+      "version": "1.0.0",
+      "headers": [
+        "adc_button.h",
+        "adc_button_lib.h"
+      ],
+      "license": "MIT",
+      "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/em_adc_button）内置于 libraries/em_adc_button/。"
+    }
+  ],
+  "entrypoints": {
+    "blocks": "blocks/blocks.json",
+    "generator": "blocks/ck-generator.json",
+    "toolbox": "blocks/toolbox.json"
+  },
+  "blocks": [
+    {
+      "type": "emakefun_adc_button_begin",
+      "display_name": "初始化 ADC 五键模块 模拟引脚 %1",
+      "description": "初始化 Emakefun ADC 按键模块。",
+      "category": "Emakefun ADC 五键模块",
+      "kind": "statement",
+      "keywords": [
+        "Emakefun ADC 五键模块",
+        "emakefun_adc_button",
+        "Emakefun",
+        "按键",
+        "ADC按键",
+        "五键"
+      ],
+      "semantics": {
+        "purpose": "初始化 Emakefun ADC 按键模块。",
+        "behavior": "初始化 Emakefun ADC 按键模块。",
+        "concepts": [
+          "Emakefun ADC 五键模块",
+          "Emakefun"
+        ],
+        "side_effects": [
+          "初始化 Emakefun ADC 按键模块。"
+        ]
+      },
+      "fields": [],
+      "inputs": [
+        {
+          "name": "PIN",
+          "kind": "value",
+          "description": "模拟引脚",
+          "check": "Number",
+          "required": true,
+          "default": 14
+        }
+      ],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunAdcButtonAdapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunAdcButtonAdapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunAdcButtonAdapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "Adc Button",
+          "version": "1.0.0",
+          "headers": [
+            "adc_button.h",
+            "adc_button_lib.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/em_adc_button）内置于 libraries/em_adc_button/。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "gpio",
+            "id": "pin",
+            "source": {
+              "kind": "input",
+              "name": "PIN"
+            },
+            "access": "read-write",
+            "sharing": "exclusive",
+            "capabilities": [
+              "digital-input"
+            ],
+            "description": "模拟引脚"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "gpio-pin",
+              "role": "digital-input",
+              "resource": {
+                "kind": "input",
+                "name": "PIN",
+                "valueType": "id"
+              },
+              "exclusive": true
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun 单模拟口五按键（A/B/C/D/E）分压按键模块，内置消抖与按键事件检测。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "includes": [
+          "EmakefunAdcButtonAdapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunAdcButtonAdapter.h",
+            "template": "#include <EmakefunAdcButtonAdapter.h>"
+          },
+          {
+            "section": "statement",
+            "description": "初始化 Emakefun ADC 按键模块。",
+            "template": "EmakefunAdcButtonAdapter::begin({{value:PIN}});\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun 单模拟口五按键（A/B/C/D/E）分压按键模块，内置消抖与按键事件检测。",
+          "message": "Emakefun 单模拟口五按键（A/B/C/D/E）分压按键模块，内置消抖与按键事件检测。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun ADC 五键模块 随包示例",
+          "description": "初始化 Emakefun ADC 按键模块。",
+          "expected_behavior": "演示 Emakefun ADC 五键模块 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_adc_button_tick",
+      "display_name": "ADC 五键模块 刷新状态",
+      "description": "周期调用刷新消抖与按键状态。",
+      "category": "Emakefun ADC 五键模块",
+      "kind": "statement",
+      "keywords": [
+        "Emakefun ADC 五键模块",
+        "emakefun_adc_button",
+        "Emakefun",
+        "按键",
+        "ADC按键",
+        "五键"
+      ],
+      "semantics": {
+        "purpose": "周期调用刷新消抖与按键状态。",
+        "behavior": "周期调用刷新消抖与按键状态。",
+        "concepts": [
+          "Emakefun ADC 五键模块",
+          "Emakefun"
+        ],
+        "side_effects": [
+          "周期调用刷新消抖与按键状态。"
+        ]
+      },
+      "fields": [],
+      "inputs": [],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunAdcButtonAdapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunAdcButtonAdapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunAdcButtonAdapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "Adc Button",
+          "version": "1.0.0",
+          "headers": [
+            "adc_button.h",
+            "adc_button_lib.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/em_adc_button）内置于 libraries/em_adc_button/。"
+        }
+      ],
+      "hardware": {
+        "resources": [],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": []
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun 单模拟口五按键（A/B/C/D/E）分压按键模块，内置消抖与按键事件检测。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "includes": [
+          "EmakefunAdcButtonAdapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunAdcButtonAdapter.h",
+            "template": "#include <EmakefunAdcButtonAdapter.h>"
+          },
+          {
+            "section": "statement",
+            "description": "周期调用刷新消抖与按键状态。",
+            "template": "EmakefunAdcButtonAdapter::tick();\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun 单模拟口五按键（A/B/C/D/E）分压按键模块，内置消抖与按键事件检测。",
+          "message": "Emakefun 单模拟口五按键（A/B/C/D/E）分压按键模块，内置消抖与按键事件检测。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun ADC 五键模块 随包示例",
+          "description": "周期调用刷新消抖与按键状态。",
+          "expected_behavior": "演示 Emakefun ADC 五键模块 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_adc_button_type",
+      "display_name": "ADC 五键模块 当前按键编号 (0-5)",
+      "description": "返回当前按键编号（0 无按键，1-5 对应 A-E）。",
+      "category": "Emakefun ADC 五键模块",
+      "kind": "value",
+      "keywords": [
+        "Emakefun ADC 五键模块",
+        "emakefun_adc_button",
+        "Emakefun",
+        "按键",
+        "ADC按键",
+        "五键"
+      ],
+      "semantics": {
+        "purpose": "返回当前按键编号（0 无按键，1-5 对应 A-E）。",
+        "behavior": "返回当前按键编号（0 无按键，1-5 对应 A-E）。",
+        "concepts": [
+          "Emakefun ADC 五键模块",
+          "Emakefun"
+        ],
+        "side_effects": []
+      },
+      "fields": [],
+      "inputs": [],
+      "output": {
+        "connection": "value",
+        "types": [
+          "Number"
+        ],
+        "description": "返回当前按键编号（0 无按键，1-5 对应 A-E）。"
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunAdcButtonAdapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunAdcButtonAdapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunAdcButtonAdapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "Adc Button",
+          "version": "1.0.0",
+          "headers": [
+            "adc_button.h",
+            "adc_button_lib.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/em_adc_button）内置于 libraries/em_adc_button/。"
+        }
+      ],
+      "hardware": {
+        "resources": [],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": []
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun 单模拟口五按键（A/B/C/D/E）分压按键模块，内置消抖与按键事件检测。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "expression",
+        "deterministic": true,
+        "includes": [
+          "EmakefunAdcButtonAdapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunAdcButtonAdapter.h",
+            "template": "#include <EmakefunAdcButtonAdapter.h>"
+          },
+          {
+            "section": "expression",
+            "description": "返回当前按键编号（0 无按键，1-5 对应 A-E）。",
+            "template": "EmakefunAdcButtonAdapter::keyType()"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun 单模拟口五按键（A/B/C/D/E）分压按键模块，内置消抖与按键事件检测。",
+          "message": "Emakefun 单模拟口五按键（A/B/C/D/E）分压按键模块，内置消抖与按键事件检测。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun ADC 五键模块 随包示例",
+          "description": "返回当前按键编号（0 无按键，1-5 对应 A-E）。",
+          "expected_behavior": "演示 Emakefun ADC 五键模块 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_adc_button_pressed",
+      "display_name": "ADC 五键模块 按键 %1 被按下?",
+      "description": "判断 A/B/C/D/E 指定按键是否按下。",
+      "category": "Emakefun ADC 五键模块",
+      "kind": "value",
+      "keywords": [
+        "Emakefun ADC 五键模块",
+        "emakefun_adc_button",
+        "Emakefun",
+        "按键",
+        "ADC按键",
+        "五键"
+      ],
+      "semantics": {
+        "purpose": "判断 A/B/C/D/E 指定按键是否按下。",
+        "behavior": "判断 A/B/C/D/E 指定按键是否按下。",
+        "concepts": [
+          "Emakefun ADC 五键模块",
+          "Emakefun"
+        ],
+        "side_effects": []
+      },
+      "fields": [
+        {
+          "name": "KEY",
+          "kind": "dropdown",
+          "description": "按键",
+          "required": true,
+          "default": "1",
+          "options": [
+            {
+              "label": "A 键",
+              "value": "1"
+            },
+            {
+              "label": "B 键",
+              "value": "2"
+            },
+            {
+              "label": "C 键",
+              "value": "3"
+            },
+            {
+              "label": "D 键",
+              "value": "4"
+            },
+            {
+              "label": "E 键",
+              "value": "5"
+            }
+          ]
+        }
+      ],
+      "inputs": [],
+      "output": {
+        "connection": "value",
+        "types": [
+          "Boolean"
+        ],
+        "description": "判断 A/B/C/D/E 指定按键是否按下。"
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunAdcButtonAdapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunAdcButtonAdapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunAdcButtonAdapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "Adc Button",
+          "version": "1.0.0",
+          "headers": [
+            "adc_button.h",
+            "adc_button_lib.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/em_adc_button）内置于 libraries/em_adc_button/。"
+        }
+      ],
+      "hardware": {
+        "resources": [],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": []
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun 单模拟口五按键（A/B/C/D/E）分压按键模块，内置消抖与按键事件检测。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "expression",
+        "deterministic": true,
+        "includes": [
+          "EmakefunAdcButtonAdapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunAdcButtonAdapter.h",
+            "template": "#include <EmakefunAdcButtonAdapter.h>"
+          },
+          {
+            "section": "expression",
+            "description": "判断 A/B/C/D/E 指定按键是否按下。",
+            "template": "EmakefunAdcButtonAdapter::isPressed({{field:KEY}})"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun 单模拟口五按键（A/B/C/D/E）分压按键模块，内置消抖与按键事件检测。",
+          "message": "Emakefun 单模拟口五按键（A/B/C/D/E）分压按键模块，内置消抖与按键事件检测。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun ADC 五键模块 随包示例",
+          "description": "判断 A/B/C/D/E 指定按键是否按下。",
+          "expected_behavior": "演示 Emakefun ADC 五键模块 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "id": "emakefun_midi",
+  "name": "Emakefun MIDI 音乐合成器",
+  "version": "1.0.0",
+  "description": "Emakefun 串口 MIDI 音乐合成器模块（31250bps），支持 128 种乐器音色、音符演奏、音量与混响控制。",
+  "sentence": "Emakefun 串口 MIDI 音乐合成器模块（31250bps），支持 128 种乐器音色、音符演奏、音量与混响控制。",
+  "author": "CKYAN",
+  "vendor": "Emakefun",
+  "vendor_logo": "assets/emakefun.png",
+  "icon": "assets/icon.png",
+  "category": "Device Control",
+  "website": "https://github.com/emakefun-arduino-library/em_midi",
+  "architectures": [
+    "avr",
+    "esp32"
+  ],
+  "license": "Apache-2.0",
+  "includes": [
+    "EmakefunMidiAdapter.h"
+  ]
+}

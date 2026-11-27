@@ -1,0 +1,320 @@
+{
+  "schema_version": 2,
+  "id": "emakefun_nl50_temp",
+  "display_name": "Emakefun NL50 温度传感器",
+  "description": "Emakefun NL50 模拟温度传感器模块，单引脚读取高精度摄氏温度。",
+  "defaultLocale": "zh-CN",
+  "keywords": [
+    "Emakefun NL50 温度传感器",
+    "emakefun_nl50_temp",
+    "Emakefun",
+    "温度",
+    "NL50",
+    "Temperature"
+  ],
+  "license": {
+    "spdx_id": "Apache-2.0",
+    "file": "LICENSE.txt"
+  },
+  "compatibility": {
+    "architectures": [
+      "avr",
+      "esp32"
+    ]
+  },
+  "dependencies": [
+    {
+      "kind": "arduino-library",
+      "id": "EmakefunNl50Adapter",
+      "version": "1.0.0",
+      "headers": [
+        "EmakefunNl50Adapter.h"
+      ],
+      "license": "Apache-2.0",
+      "reason": "随包内置于 libraries/EmakefunNl50Adapter/，提供安全封装与跨板卡兼容接口。"
+    },
+    {
+      "kind": "arduino-library",
+      "id": "Emakefun Temperature Sensor NL50",
+      "version": "1.0.0",
+      "headers": [
+        "temperature_sensor_nl50.h"
+      ],
+      "license": "MIT",
+      "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/emakefun_temperature_sensor_nl50）内置于 libraries/emakefun_temperature_sensor_nl50/。"
+    }
+  ],
+  "entrypoints": {
+    "blocks": "blocks/blocks.json",
+    "generator": "blocks/ck-generator.json",
+    "toolbox": "blocks/toolbox.json"
+  },
+  "blocks": [
+    {
+      "type": "emakefun_nl50_temp_begin",
+      "display_name": "初始化 NL50 温度传感器 模拟引脚 %1",
+      "description": "初始化 Emakefun NL50 温度传感器（传入模拟输入引脚编号）。",
+      "category": "Emakefun NL50 温度传感器",
+      "kind": "statement",
+      "keywords": [
+        "Emakefun NL50 温度传感器",
+        "emakefun_nl50_temp",
+        "Emakefun",
+        "温度",
+        "NL50",
+        "Temperature"
+      ],
+      "semantics": {
+        "purpose": "初始化 Emakefun NL50 温度传感器（传入模拟输入引脚编号）。",
+        "behavior": "初始化 Emakefun NL50 温度传感器（传入模拟输入引脚编号）。",
+        "concepts": [
+          "Emakefun NL50 温度传感器",
+          "Emakefun"
+        ],
+        "side_effects": [
+          "初始化 Emakefun NL50 温度传感器（传入模拟输入引脚编号）。"
+        ]
+      },
+      "fields": [],
+      "inputs": [
+        {
+          "name": "PIN",
+          "kind": "value",
+          "description": "模拟输入引脚",
+          "check": "Number",
+          "required": true,
+          "default": 14
+        }
+      ],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunNl50Adapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunNl50Adapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunNl50Adapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "Emakefun Temperature Sensor NL50",
+          "version": "1.0.0",
+          "headers": [
+            "temperature_sensor_nl50.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/emakefun_temperature_sensor_nl50）内置于 libraries/emakefun_temperature_sensor_nl50/。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "gpio",
+            "id": "pin",
+            "source": {
+              "kind": "input",
+              "name": "PIN"
+            },
+            "access": "read-write",
+            "sharing": "exclusive",
+            "capabilities": [
+              "digital-input"
+            ],
+            "description": "模拟输入引脚"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "gpio-pin",
+              "role": "digital-input",
+              "resource": {
+                "kind": "input",
+                "name": "PIN",
+                "valueType": "id"
+              },
+              "exclusive": true
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun NL50 模拟温度传感器模块，单引脚读取高精度摄氏温度。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "includes": [
+          "EmakefunNl50Adapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunNl50Adapter.h",
+            "template": "#include <EmakefunNl50Adapter.h>"
+          },
+          {
+            "section": "statement",
+            "description": "初始化 Emakefun NL50 温度传感器（传入模拟输入引脚编号）。",
+            "template": "EmakefunNl50Adapter::begin({{value:PIN}});\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun NL50 模拟温度传感器模块，单引脚读取高精度摄氏温度。",
+          "message": "Emakefun NL50 模拟温度传感器模块，单引脚读取高精度摄氏温度。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun NL50 温度传感器 随包示例",
+          "description": "初始化 Emakefun NL50 温度传感器（传入模拟输入引脚编号）。",
+          "expected_behavior": "演示 Emakefun NL50 温度传感器 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_nl50_temp_read",
+      "display_name": "NL50 读取温度 (℃)",
+      "description": "读取当前摄氏温度（浮点值）。",
+      "category": "Emakefun NL50 温度传感器",
+      "kind": "value",
+      "keywords": [
+        "Emakefun NL50 温度传感器",
+        "emakefun_nl50_temp",
+        "Emakefun",
+        "温度",
+        "NL50",
+        "Temperature"
+      ],
+      "semantics": {
+        "purpose": "读取当前摄氏温度（浮点值）。",
+        "behavior": "读取当前摄氏温度（浮点值）。",
+        "concepts": [
+          "Emakefun NL50 温度传感器",
+          "Emakefun"
+        ],
+        "side_effects": []
+      },
+      "fields": [],
+      "inputs": [],
+      "output": {
+        "connection": "value",
+        "types": [
+          "Number"
+        ],
+        "description": "读取当前摄氏温度（浮点值）。"
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunNl50Adapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunNl50Adapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunNl50Adapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "Emakefun Temperature Sensor NL50",
+          "version": "1.0.0",
+          "headers": [
+            "temperature_sensor_nl50.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/emakefun_temperature_sensor_nl50）内置于 libraries/emakefun_temperature_sensor_nl50/。"
+        }
+      ],
+      "hardware": {
+        "resources": [],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": []
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun NL50 模拟温度传感器模块，单引脚读取高精度摄氏温度。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "expression",
+        "deterministic": true,
+        "includes": [
+          "EmakefunNl50Adapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunNl50Adapter.h",
+            "template": "#include <EmakefunNl50Adapter.h>"
+          },
+          {
+            "section": "expression",
+            "description": "读取当前摄氏温度（浮点值）。",
+            "template": "EmakefunNl50Adapter::readC()"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun NL50 模拟温度传感器模块，单引脚读取高精度摄氏温度。",
+          "message": "Emakefun NL50 模拟温度传感器模块，单引脚读取高精度摄氏温度。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun NL50 温度传感器 随包示例",
+          "description": "读取当前摄氏温度（浮点值）。",
+          "expected_behavior": "演示 Emakefun NL50 温度传感器 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    }
+  ]
+}

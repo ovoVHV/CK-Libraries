@@ -1,0 +1,21 @@
+{
+  "id": "emakefun_ph20_display",
+  "name": "Emakefun PH2.0 灯光与交通灯模块",
+  "version": "1.0.0",
+  "description": "覆盖 Emakefun PH2.0 LED 模块、交通灯三色模块与 RGB 三色灯 PWM 调色控制。",
+  "sentence": "覆盖 Emakefun PH2.0 LED 模块、交通灯三色模块与 RGB 三色灯 PWM 调色控制。",
+  "author": "CKYAN",
+  "vendor": "Emakefun",
+  "vendor_logo": "assets/emakefun.png",
+  "icon": "assets/icon.png",
+  "category": "Display",
+  "website": "https://docs.emakefun.com/sensors/displayers/trafficLights/",
+  "architectures": [
+    "avr",
+    "esp32"
+  ],
+  "license": "Apache-2.0",
+  "includes": [
+    "EmakefunPh20Display.h"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "id": "emakefun_tts_v2",
+  "name": "Emakefun 语音合成模块 V2",
+  "version": "1.0.0",
+  "description": "Emakefun I2C 语音合成模块 V2（默认地址 0x40），支持 UTF-8/GBK 文本合成播放、缓存播放与启停控制。",
+  "sentence": "Emakefun I2C 语音合成模块 V2（默认地址 0x40），支持 UTF-8/GBK 文本合成播放、缓存播放与启停控制。",
+  "author": "CKYAN",
+  "vendor": "Emakefun",
+  "vendor_logo": "assets/emakefun.png",
+  "icon": "assets/icon.png",
+  "category": "Communication",
+  "website": "https://docs.emakefun.com/sensors/smart_modules/text_to_speech_synthesizer/",
+  "architectures": [
+    "avr",
+    "esp32"
+  ],
+  "license": "Apache-2.0",
+  "includes": [
+    "EmakefunTtsV2Adapter.h"
+  ]
+}

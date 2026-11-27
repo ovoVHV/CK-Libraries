@@ -1,0 +1,21 @@
+{
+  "id": "emakefun_digit_tm1650",
+  "name": "Emakefun 四位数码管 V1",
+  "version": "1.0.0",
+  "description": "Emakefun I2C 四位数码管 V1（默认地址 0x70），支持数字/小数显示、冒号、亮度与清屏。",
+  "sentence": "Emakefun I2C 四位数码管 V1（默认地址 0x70），支持数字/小数显示、冒号、亮度与清屏。",
+  "author": "CKYAN",
+  "vendor": "Emakefun",
+  "vendor_logo": "assets/emakefun.png",
+  "icon": "assets/icon.png",
+  "category": "Display",
+  "website": "https://docs.emakefun.com/sensors/displayers/TM1650/",
+  "architectures": [
+    "avr",
+    "esp32"
+  ],
+  "license": "Apache-2.0",
+  "includes": [
+    "EmakefunDigitV1Adapter.h"
+  ]
+}

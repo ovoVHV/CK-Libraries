@@ -1,0 +1,823 @@
+{
+  "schema_version": 2,
+  "id": "emakefun_digit_tm1650",
+  "display_name": "Emakefun 四位数码管 V1",
+  "description": "Emakefun I2C 四位数码管 V1（默认地址 0x70），支持数字/小数显示、冒号、亮度与清屏。",
+  "defaultLocale": "zh-CN",
+  "keywords": [
+    "Emakefun 四位数码管 V1",
+    "emakefun_digit_tm1650",
+    "Emakefun",
+    "数码管",
+    "四位数码管",
+    "I2C",
+    "TM1650"
+  ],
+  "license": {
+    "spdx_id": "Apache-2.0",
+    "file": "LICENSE.txt"
+  },
+  "compatibility": {
+    "architectures": [
+      "avr",
+      "esp32"
+    ]
+  },
+  "dependencies": [
+    {
+      "kind": "arduino-library",
+      "id": "EmakefunDigitV1Adapter",
+      "version": "1.0.0",
+      "headers": [
+        "EmakefunDigitV1Adapter.h"
+      ],
+      "license": "Apache-2.0",
+      "reason": "随包内置于 libraries/EmakefunDigitV1Adapter/，提供安全封装与跨板卡兼容接口。"
+    },
+    {
+      "kind": "arduino-library",
+      "id": "emakefun digit display",
+      "version": "1.0.0",
+      "headers": [
+        "digit_display.h"
+      ],
+      "license": "MIT",
+      "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/emakefun_digit_display）内置于 libraries/emakefun_digit_display/。"
+    }
+  ],
+  "entrypoints": {
+    "blocks": "blocks/blocks.json",
+    "generator": "blocks/ck-generator.json",
+    "toolbox": "blocks/toolbox.json"
+  },
+  "blocks": [
+    {
+      "type": "emakefun_digit_tm1650_begin",
+      "display_name": "初始化四位数码管 V1 I2C地址 %1",
+      "description": "初始化 Emakefun 四位数码管 V1（默认 0x70 = 112）。",
+      "category": "Emakefun 四位数码管 V1",
+      "kind": "statement",
+      "keywords": [
+        "Emakefun 四位数码管 V1",
+        "emakefun_digit_tm1650",
+        "Emakefun",
+        "数码管",
+        "四位数码管",
+        "I2C",
+        "TM1650"
+      ],
+      "semantics": {
+        "purpose": "初始化 Emakefun 四位数码管 V1（默认 0x70 = 112）。",
+        "behavior": "初始化 Emakefun 四位数码管 V1（默认 0x70 = 112）。",
+        "concepts": [
+          "Emakefun 四位数码管 V1",
+          "Emakefun"
+        ],
+        "side_effects": [
+          "初始化 Emakefun 四位数码管 V1（默认 0x70 = 112）。"
+        ]
+      },
+      "fields": [],
+      "inputs": [
+        {
+          "name": "ADDR",
+          "kind": "value",
+          "description": "I2C 地址（默认 112）",
+          "check": "Number",
+          "required": true,
+          "default": 112
+        }
+      ],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunDigitV1Adapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunDigitV1Adapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunDigitV1Adapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "emakefun digit display",
+          "version": "1.0.0",
+          "headers": [
+            "digit_display.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/emakefun_digit_display）内置于 libraries/emakefun_digit_display/。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "i2c",
+            "id": "wire",
+            "source": {
+              "kind": "board-default"
+            },
+            "access": "read-write",
+            "sharing": "shared",
+            "description": "默认 I2C 总线 (Wire)，模块默认地址 0x70。"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "i2c-device",
+              "role": "i2c-device",
+              "resource": {
+                "kind": "fixed",
+                "valueType": "id",
+                "value": "i2c"
+              },
+              "exclusive": false,
+              "discriminator": {
+                "kind": "fixed",
+                "valueType": "integer",
+                "value": 112
+              }
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun I2C 四位数码管 V1（默认地址 0x70），支持数字/小数显示、冒号、亮度与清屏。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "includes": [
+          "EmakefunDigitV1Adapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunDigitV1Adapter.h",
+            "template": "#include <EmakefunDigitV1Adapter.h>"
+          },
+          {
+            "section": "statement",
+            "description": "初始化 Emakefun 四位数码管 V1（默认 0x70 = 112）。",
+            "template": "EmakefunDigitV1Adapter::begin({{value:ADDR}});\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun I2C 四位数码管 V1（默认地址 0x70），支持数字/小数显示、冒号、亮度与清屏。",
+          "message": "Emakefun I2C 四位数码管 V1（默认地址 0x70），支持数字/小数显示、冒号、亮度与清屏。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun 四位数码管 V1 随包示例",
+          "description": "初始化 Emakefun 四位数码管 V1（默认 0x70 = 112）。",
+          "expected_behavior": "演示 Emakefun 四位数码管 V1 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_digit_tm1650_show_num",
+      "display_name": "数码管 V1 显示数值 %1 小数位数 %2",
+      "description": "在四位数码管上显示数字。",
+      "category": "Emakefun 四位数码管 V1",
+      "kind": "statement",
+      "keywords": [
+        "Emakefun 四位数码管 V1",
+        "emakefun_digit_tm1650",
+        "Emakefun",
+        "数码管",
+        "四位数码管",
+        "I2C",
+        "TM1650"
+      ],
+      "semantics": {
+        "purpose": "在四位数码管上显示数字。",
+        "behavior": "在四位数码管上显示数字。",
+        "concepts": [
+          "Emakefun 四位数码管 V1",
+          "Emakefun"
+        ],
+        "side_effects": [
+          "在四位数码管上显示数字。"
+        ]
+      },
+      "fields": [],
+      "inputs": [
+        {
+          "name": "VAL",
+          "kind": "value",
+          "description": "数值",
+          "check": "Number",
+          "required": true,
+          "default": 2026
+        },
+        {
+          "name": "DEC",
+          "kind": "value",
+          "description": "小数位数 0-3",
+          "check": "Number",
+          "required": true,
+          "default": 0
+        }
+      ],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunDigitV1Adapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunDigitV1Adapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunDigitV1Adapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "emakefun digit display",
+          "version": "1.0.0",
+          "headers": [
+            "digit_display.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/emakefun_digit_display）内置于 libraries/emakefun_digit_display/。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "i2c",
+            "id": "wire",
+            "source": {
+              "kind": "board-default"
+            },
+            "access": "read-write",
+            "sharing": "shared",
+            "description": "默认 I2C 总线 (Wire)，模块默认地址 0x70。"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "i2c-device",
+              "role": "i2c-device",
+              "resource": {
+                "kind": "fixed",
+                "valueType": "id",
+                "value": "i2c"
+              },
+              "exclusive": false,
+              "discriminator": {
+                "kind": "fixed",
+                "valueType": "integer",
+                "value": 112
+              }
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun I2C 四位数码管 V1（默认地址 0x70），支持数字/小数显示、冒号、亮度与清屏。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "includes": [
+          "EmakefunDigitV1Adapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunDigitV1Adapter.h",
+            "template": "#include <EmakefunDigitV1Adapter.h>"
+          },
+          {
+            "section": "statement",
+            "description": "在四位数码管上显示数字。",
+            "template": "EmakefunDigitV1Adapter::showNumber({{value:VAL}}, {{value:DEC}});\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun I2C 四位数码管 V1（默认地址 0x70），支持数字/小数显示、冒号、亮度与清屏。",
+          "message": "Emakefun I2C 四位数码管 V1（默认地址 0x70），支持数字/小数显示、冒号、亮度与清屏。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun 四位数码管 V1 随包示例",
+          "description": "在四位数码管上显示数字。",
+          "expected_behavior": "演示 Emakefun 四位数码管 V1 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_digit_tm1650_colon",
+      "display_name": "数码管 V1 冒号 %1",
+      "description": "设置时钟冒号亮灭。",
+      "category": "Emakefun 四位数码管 V1",
+      "kind": "statement",
+      "keywords": [
+        "Emakefun 四位数码管 V1",
+        "emakefun_digit_tm1650",
+        "Emakefun",
+        "数码管",
+        "四位数码管",
+        "I2C",
+        "TM1650"
+      ],
+      "semantics": {
+        "purpose": "设置时钟冒号亮灭。",
+        "behavior": "设置时钟冒号亮灭。",
+        "concepts": [
+          "Emakefun 四位数码管 V1",
+          "Emakefun"
+        ],
+        "side_effects": [
+          "设置时钟冒号亮灭。"
+        ]
+      },
+      "fields": [
+        {
+          "name": "ON",
+          "kind": "dropdown",
+          "description": "状态",
+          "required": true,
+          "default": "true",
+          "options": [
+            {
+              "label": "点亮",
+              "value": "true"
+            },
+            {
+              "label": "熄灭",
+              "value": "false"
+            }
+          ]
+        }
+      ],
+      "inputs": [],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunDigitV1Adapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunDigitV1Adapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunDigitV1Adapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "emakefun digit display",
+          "version": "1.0.0",
+          "headers": [
+            "digit_display.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/emakefun_digit_display）内置于 libraries/emakefun_digit_display/。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "i2c",
+            "id": "wire",
+            "source": {
+              "kind": "board-default"
+            },
+            "access": "read-write",
+            "sharing": "shared",
+            "description": "默认 I2C 总线 (Wire)，模块默认地址 0x70。"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "i2c-device",
+              "role": "i2c-device",
+              "resource": {
+                "kind": "fixed",
+                "valueType": "id",
+                "value": "i2c"
+              },
+              "exclusive": false,
+              "discriminator": {
+                "kind": "fixed",
+                "valueType": "integer",
+                "value": 112
+              }
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun I2C 四位数码管 V1（默认地址 0x70），支持数字/小数显示、冒号、亮度与清屏。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "includes": [
+          "EmakefunDigitV1Adapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunDigitV1Adapter.h",
+            "template": "#include <EmakefunDigitV1Adapter.h>"
+          },
+          {
+            "section": "statement",
+            "description": "设置时钟冒号亮灭。",
+            "template": "EmakefunDigitV1Adapter::showColon({{field:ON}});\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun I2C 四位数码管 V1（默认地址 0x70），支持数字/小数显示、冒号、亮度与清屏。",
+          "message": "Emakefun I2C 四位数码管 V1（默认地址 0x70），支持数字/小数显示、冒号、亮度与清屏。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun 四位数码管 V1 随包示例",
+          "description": "设置时钟冒号亮灭。",
+          "expected_behavior": "演示 Emakefun 四位数码管 V1 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_digit_tm1650_brightness",
+      "display_name": "数码管 V1 亮度 %1 (0-15)",
+      "description": "调节亮度等级 0-15。",
+      "category": "Emakefun 四位数码管 V1",
+      "kind": "statement",
+      "keywords": [
+        "Emakefun 四位数码管 V1",
+        "emakefun_digit_tm1650",
+        "Emakefun",
+        "数码管",
+        "四位数码管",
+        "I2C",
+        "TM1650"
+      ],
+      "semantics": {
+        "purpose": "调节亮度等级 0-15。",
+        "behavior": "调节亮度等级 0-15。",
+        "concepts": [
+          "Emakefun 四位数码管 V1",
+          "Emakefun"
+        ],
+        "side_effects": [
+          "调节亮度等级 0-15。"
+        ]
+      },
+      "fields": [],
+      "inputs": [
+        {
+          "name": "BRI",
+          "kind": "value",
+          "description": "亮度 0-15",
+          "check": "Number",
+          "required": true,
+          "default": 10
+        }
+      ],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunDigitV1Adapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunDigitV1Adapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunDigitV1Adapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "emakefun digit display",
+          "version": "1.0.0",
+          "headers": [
+            "digit_display.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/emakefun_digit_display）内置于 libraries/emakefun_digit_display/。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "i2c",
+            "id": "wire",
+            "source": {
+              "kind": "board-default"
+            },
+            "access": "read-write",
+            "sharing": "shared",
+            "description": "默认 I2C 总线 (Wire)，模块默认地址 0x70。"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "i2c-device",
+              "role": "i2c-device",
+              "resource": {
+                "kind": "fixed",
+                "valueType": "id",
+                "value": "i2c"
+              },
+              "exclusive": false,
+              "discriminator": {
+                "kind": "fixed",
+                "valueType": "integer",
+                "value": 112
+              }
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun I2C 四位数码管 V1（默认地址 0x70），支持数字/小数显示、冒号、亮度与清屏。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "includes": [
+          "EmakefunDigitV1Adapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunDigitV1Adapter.h",
+            "template": "#include <EmakefunDigitV1Adapter.h>"
+          },
+          {
+            "section": "statement",
+            "description": "调节亮度等级 0-15。",
+            "template": "EmakefunDigitV1Adapter::setBrightness({{value:BRI}});\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun I2C 四位数码管 V1（默认地址 0x70），支持数字/小数显示、冒号、亮度与清屏。",
+          "message": "Emakefun I2C 四位数码管 V1（默认地址 0x70），支持数字/小数显示、冒号、亮度与清屏。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun 四位数码管 V1 随包示例",
+          "description": "调节亮度等级 0-15。",
+          "expected_behavior": "演示 Emakefun 四位数码管 V1 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_digit_tm1650_clear",
+      "display_name": "数码管 V1 清屏",
+      "description": "清空数码管显示。",
+      "category": "Emakefun 四位数码管 V1",
+      "kind": "statement",
+      "keywords": [
+        "Emakefun 四位数码管 V1",
+        "emakefun_digit_tm1650",
+        "Emakefun",
+        "数码管",
+        "四位数码管",
+        "I2C",
+        "TM1650"
+      ],
+      "semantics": {
+        "purpose": "清空数码管显示。",
+        "behavior": "清空数码管显示。",
+        "concepts": [
+          "Emakefun 四位数码管 V1",
+          "Emakefun"
+        ],
+        "side_effects": [
+          "清空数码管显示。"
+        ]
+      },
+      "fields": [],
+      "inputs": [],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunDigitV1Adapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunDigitV1Adapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunDigitV1Adapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "emakefun digit display",
+          "version": "1.0.0",
+          "headers": [
+            "digit_display.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/emakefun_digit_display）内置于 libraries/emakefun_digit_display/。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "i2c",
+            "id": "wire",
+            "source": {
+              "kind": "board-default"
+            },
+            "access": "read-write",
+            "sharing": "shared",
+            "description": "默认 I2C 总线 (Wire)，模块默认地址 0x70。"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "i2c-device",
+              "role": "i2c-device",
+              "resource": {
+                "kind": "fixed",
+                "valueType": "id",
+                "value": "i2c"
+              },
+              "exclusive": false,
+              "discriminator": {
+                "kind": "fixed",
+                "valueType": "integer",
+                "value": 112
+              }
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun I2C 四位数码管 V1（默认地址 0x70），支持数字/小数显示、冒号、亮度与清屏。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "includes": [
+          "EmakefunDigitV1Adapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunDigitV1Adapter.h",
+            "template": "#include <EmakefunDigitV1Adapter.h>"
+          },
+          {
+            "section": "statement",
+            "description": "清空数码管显示。",
+            "template": "EmakefunDigitV1Adapter::clear();\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun I2C 四位数码管 V1（默认地址 0x70），支持数字/小数显示、冒号、亮度与清屏。",
+          "message": "Emakefun I2C 四位数码管 V1（默认地址 0x70），支持数字/小数显示、冒号、亮度与清屏。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun 四位数码管 V1 随包示例",
+          "description": "清空数码管显示。",
+          "expected_behavior": "演示 Emakefun 四位数码管 V1 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    }
+  ]
+}

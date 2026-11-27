@@ -1,0 +1,456 @@
+{
+  "schema_version": 2,
+  "id": "emakefun_rus04",
+  "display_name": "Emakefun RUS-04 RGB 超声波",
+  "description": "Emakefun RUS-04 单总线超声波测距模块（2-400cm），支持单 IO 脚精准测距与内置 6 颗探头 RGB 彩灯控制。",
+  "defaultLocale": "zh-CN",
+  "keywords": [
+    "Emakefun RUS-04 RGB 超声波",
+    "emakefun_rus04",
+    "Emakefun",
+    "超声波",
+    "RUS-04",
+    "测距",
+    "RGB超声波"
+  ],
+  "license": {
+    "spdx_id": "Apache-2.0",
+    "file": "LICENSE.txt"
+  },
+  "compatibility": {
+    "architectures": [
+      "avr",
+      "esp32"
+    ]
+  },
+  "dependencies": [
+    {
+      "kind": "arduino-library",
+      "id": "EmakefunRus04",
+      "version": "1.0.0",
+      "headers": [
+        "EmakefunRus04.h"
+      ],
+      "license": "Apache-2.0",
+      "reason": "随包内置于 libraries/EmakefunRus04/，提供安全封装与跨板卡兼容接口。"
+    }
+  ],
+  "entrypoints": {
+    "blocks": "blocks/blocks.json",
+    "generator": "blocks/ck-generator.json",
+    "toolbox": "blocks/toolbox.json"
+  },
+  "blocks": [
+    {
+      "type": "emakefun_rus04_begin",
+      "display_name": "初始化 RUS-04 RGB超声波 IO引脚 %1 RGB引脚 %2",
+      "description": "初始化 Emakefun RUS-04 单总线 RGB 超声波模块。",
+      "category": "Emakefun RUS-04 RGB 超声波",
+      "kind": "statement",
+      "keywords": [
+        "Emakefun RUS-04 RGB 超声波",
+        "emakefun_rus04",
+        "Emakefun",
+        "超声波",
+        "RUS-04",
+        "测距",
+        "RGB超声波"
+      ],
+      "semantics": {
+        "purpose": "初始化 Emakefun RUS-04 单总线 RGB 超声波模块。",
+        "behavior": "初始化 Emakefun RUS-04 单总线 RGB 超声波模块。",
+        "concepts": [
+          "Emakefun RUS-04 RGB 超声波",
+          "Emakefun"
+        ],
+        "side_effects": [
+          "初始化 Emakefun RUS-04 单总线 RGB 超声波模块。"
+        ]
+      },
+      "fields": [],
+      "inputs": [
+        {
+          "name": "IO",
+          "kind": "value",
+          "description": "单总线测距 IO 引脚",
+          "check": "Number",
+          "required": true,
+          "default": 7
+        },
+        {
+          "name": "RGB",
+          "kind": "value",
+          "description": "探头 RGB 彩灯引脚",
+          "check": "Number",
+          "required": true,
+          "default": 6
+        }
+      ],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunRus04",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunRus04.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunRus04/，提供安全封装与跨板卡兼容接口。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "gpio",
+            "id": "io",
+            "source": {
+              "kind": "input",
+              "name": "IO"
+            },
+            "access": "read-write",
+            "sharing": "exclusive",
+            "capabilities": [
+              "digital-output"
+            ],
+            "description": "单总线测距 IO 引脚"
+          },
+          {
+            "kind": "gpio",
+            "id": "rgb",
+            "source": {
+              "kind": "input",
+              "name": "RGB"
+            },
+            "access": "read-write",
+            "sharing": "exclusive",
+            "capabilities": [
+              "digital-output"
+            ],
+            "description": "探头 RGB 彩灯引脚"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "gpio-io",
+              "role": "digital-output",
+              "resource": {
+                "kind": "input",
+                "name": "IO",
+                "valueType": "id"
+              },
+              "exclusive": true
+            },
+            {
+              "id": "gpio-rgb",
+              "role": "digital-output",
+              "resource": {
+                "kind": "input",
+                "name": "RGB",
+                "valueType": "id"
+              },
+              "exclusive": true
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun RUS-04 单总线超声波测距模块（2-400cm），支持单 IO 脚精准测距与内置 6 颗探头 RGB 彩灯控制。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "includes": [
+          "EmakefunRus04.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunRus04.h",
+            "template": "#include <EmakefunRus04.h>"
+          },
+          {
+            "section": "statement",
+            "description": "初始化 Emakefun RUS-04 单总线 RGB 超声波模块。",
+            "template": "EmakefunRus04::begin({{value:IO}}, {{value:RGB}});\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun RUS-04 单总线超声波测距模块（2-400cm），支持单 IO 脚精准测距与内置 6 颗探头 RGB 彩灯控制。",
+          "message": "Emakefun RUS-04 单总线超声波测距模块（2-400cm），支持单 IO 脚精准测距与内置 6 颗探头 RGB 彩灯控制。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun RUS-04 RGB 超声波 随包示例",
+          "description": "初始化 Emakefun RUS-04 单总线 RGB 超声波模块。",
+          "expected_behavior": "演示 Emakefun RUS-04 RGB 超声波 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_rus04_distance",
+      "display_name": "RUS-04 读取测距 (cm)",
+      "description": "使用单总线 IO 脚测量障碍物距离（2-400 cm）。",
+      "category": "Emakefun RUS-04 RGB 超声波",
+      "kind": "value",
+      "keywords": [
+        "Emakefun RUS-04 RGB 超声波",
+        "emakefun_rus04",
+        "Emakefun",
+        "超声波",
+        "RUS-04",
+        "测距",
+        "RGB超声波"
+      ],
+      "semantics": {
+        "purpose": "使用单总线 IO 脚测量障碍物距离（2-400 cm）。",
+        "behavior": "使用单总线 IO 脚测量障碍物距离（2-400 cm）。",
+        "concepts": [
+          "Emakefun RUS-04 RGB 超声波",
+          "Emakefun"
+        ],
+        "side_effects": []
+      },
+      "fields": [],
+      "inputs": [],
+      "output": {
+        "connection": "value",
+        "types": [
+          "Number"
+        ],
+        "description": "使用单总线 IO 脚测量障碍物距离（2-400 cm）。"
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunRus04",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunRus04.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunRus04/，提供安全封装与跨板卡兼容接口。"
+        }
+      ],
+      "hardware": {
+        "resources": [],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": []
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun RUS-04 单总线超声波测距模块（2-400cm），支持单 IO 脚精准测距与内置 6 颗探头 RGB 彩灯控制。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "expression",
+        "deterministic": true,
+        "includes": [
+          "EmakefunRus04.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunRus04.h",
+            "template": "#include <EmakefunRus04.h>"
+          },
+          {
+            "section": "expression",
+            "description": "使用单总线 IO 脚测量障碍物距离（2-400 cm）。",
+            "template": "EmakefunRus04::readDistance()"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun RUS-04 单总线超声波测距模块（2-400cm），支持单 IO 脚精准测距与内置 6 颗探头 RGB 彩灯控制。",
+          "message": "Emakefun RUS-04 单总线超声波测距模块（2-400cm），支持单 IO 脚精准测距与内置 6 颗探头 RGB 彩灯控制。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun RUS-04 RGB 超声波 随包示例",
+          "description": "使用单总线 IO 脚测量障碍物距离（2-400 cm）。",
+          "expected_behavior": "演示 Emakefun RUS-04 RGB 超声波 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_rus04_rgb",
+      "display_name": "RUS-04 设置探头彩灯 R %1 G %2 B %3",
+      "description": "设置 RUS-04 探头内置 RGB 彩灯颜色（0-255）。",
+      "category": "Emakefun RUS-04 RGB 超声波",
+      "kind": "statement",
+      "keywords": [
+        "Emakefun RUS-04 RGB 超声波",
+        "emakefun_rus04",
+        "Emakefun",
+        "超声波",
+        "RUS-04",
+        "测距",
+        "RGB超声波"
+      ],
+      "semantics": {
+        "purpose": "设置 RUS-04 探头内置 RGB 彩灯颜色（0-255）。",
+        "behavior": "设置 RUS-04 探头内置 RGB 彩灯颜色（0-255）。",
+        "concepts": [
+          "Emakefun RUS-04 RGB 超声波",
+          "Emakefun"
+        ],
+        "side_effects": [
+          "设置 RUS-04 探头内置 RGB 彩灯颜色（0-255）。"
+        ]
+      },
+      "fields": [],
+      "inputs": [
+        {
+          "name": "R",
+          "kind": "value",
+          "description": "红色 0-255",
+          "check": "Number",
+          "required": true,
+          "default": 0
+        },
+        {
+          "name": "G",
+          "kind": "value",
+          "description": "绿色 0-255",
+          "check": "Number",
+          "required": true,
+          "default": 180
+        },
+        {
+          "name": "B",
+          "kind": "value",
+          "description": "蓝色 0-255",
+          "check": "Number",
+          "required": true,
+          "default": 255
+        }
+      ],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunRus04",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunRus04.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunRus04/，提供安全封装与跨板卡兼容接口。"
+        }
+      ],
+      "hardware": {
+        "resources": [],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": []
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun RUS-04 单总线超声波测距模块（2-400cm），支持单 IO 脚精准测距与内置 6 颗探头 RGB 彩灯控制。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "includes": [
+          "EmakefunRus04.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunRus04.h",
+            "template": "#include <EmakefunRus04.h>"
+          },
+          {
+            "section": "statement",
+            "description": "设置 RUS-04 探头内置 RGB 彩灯颜色（0-255）。",
+            "template": "EmakefunRus04::setProbeColor({{value:R}}, {{value:G}}, {{value:B}});\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun RUS-04 单总线超声波测距模块（2-400cm），支持单 IO 脚精准测距与内置 6 颗探头 RGB 彩灯控制。",
+          "message": "Emakefun RUS-04 单总线超声波测距模块（2-400cm），支持单 IO 脚精准测距与内置 6 颗探头 RGB 彩灯控制。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun RUS-04 RGB 超声波 随包示例",
+          "description": "设置 RUS-04 探头内置 RGB 彩灯颜色（0-255）。",
+          "expected_behavior": "演示 Emakefun RUS-04 RGB 超声波 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    }
+  ]
+}

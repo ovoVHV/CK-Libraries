@@ -1,0 +1,38 @@
+{
+  "schema": "ck-generator",
+  "version": 1,
+  "rules": [
+    {
+      "type": "emakefun_md20_begin",
+      "kind": "statement",
+      "includes": {
+        "EmakefunMd20Adapter.h": "#include <EmakefunMd20Adapter.h>"
+      },
+      "template": "EmakefunMd20Adapter::begin({{value:ADDR}});\n"
+    },
+    {
+      "type": "emakefun_md20_init_motor",
+      "kind": "statement",
+      "includes": {
+        "EmakefunMd20Adapter.h": "#include <EmakefunMd20Adapter.h>"
+      },
+      "template": "EmakefunMd20Adapter::initMotor({{field:IDX}}, {{value:PPR}}, {{value:RATIO}}, {{field:PHASE}});\n"
+    },
+    {
+      "type": "emakefun_md20_run_speed",
+      "kind": "statement",
+      "includes": {
+        "EmakefunMd20Adapter.h": "#include <EmakefunMd20Adapter.h>"
+      },
+      "template": "EmakefunMd20Adapter::runSpeed({{field:IDX}}, {{value:RPM}});\n"
+    },
+    {
+      "type": "emakefun_md20_reset",
+      "kind": "statement",
+      "includes": {
+        "EmakefunMd20Adapter.h": "#include <EmakefunMd20Adapter.h>"
+      },
+      "template": "EmakefunMd20Adapter::resetMotor({{field:IDX}});\n"
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "schema": "ck-generator",
+  "version": 1,
+  "rules": [
+    {
+      "type": "emakefun_digit_vk16k33_begin",
+      "kind": "statement",
+      "includes": {
+        "EmakefunDigitXk16k33Adapter.h": "#include <EmakefunDigitXk16k33Adapter.h>"
+      },
+      "template": "EmakefunDigitXk16k33Adapter::begin();\n"
+    },
+    {
+      "type": "emakefun_digit_vk16k33_show_num",
+      "kind": "statement",
+      "includes": {
+        "EmakefunDigitXk16k33Adapter.h": "#include <EmakefunDigitXk16k33Adapter.h>"
+      },
+      "template": "EmakefunDigitXk16k33Adapter::showNumber({{value:VAL}}, {{value:DEC}});\n"
+    },
+    {
+      "type": "emakefun_digit_vk16k33_colon",
+      "kind": "statement",
+      "includes": {
+        "EmakefunDigitXk16k33Adapter.h": "#include <EmakefunDigitXk16k33Adapter.h>"
+      },
+      "template": "EmakefunDigitXk16k33Adapter::showColon({{field:ON}});\n"
+    },
+    {
+      "type": "emakefun_digit_vk16k33_brightness",
+      "kind": "statement",
+      "includes": {
+        "EmakefunDigitXk16k33Adapter.h": "#include <EmakefunDigitXk16k33Adapter.h>"
+      },
+      "template": "EmakefunDigitXk16k33Adapter::setBrightness({{value:BRI}});\n"
+    },
+    {
+      "type": "emakefun_digit_vk16k33_clear",
+      "kind": "statement",
+      "includes": {
+        "EmakefunDigitXk16k33Adapter.h": "#include <EmakefunDigitXk16k33Adapter.h>"
+      },
+      "template": "EmakefunDigitXk16k33Adapter::clear();\n"
+    }
+  ]
+}

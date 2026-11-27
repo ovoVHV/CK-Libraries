@@ -1,0 +1,347 @@
+[
+  {
+    "type": "emakefun_gpio_board_begin",
+    "message0": "初始化 I2C GPIO 扩展板 地址 %1",
+    "args0": [
+      {
+        "type": "input_value",
+        "name": "ADDR",
+        "check": "Number"
+      }
+    ],
+    "inputsInline": true,
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": "#0891B2",
+    "tooltip": "初始化 Emakefun GPIO 扩展板（默认 0x24 = 36）。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_gpio_board_mode",
+    "message0": "GPIO 扩展板 引脚 %1 模式 %2",
+    "args0": [
+      {
+        "type": "field_dropdown",
+        "name": "PIN",
+        "options": [
+          [
+            "E0",
+            "0"
+          ],
+          [
+            "E1",
+            "1"
+          ],
+          [
+            "E2",
+            "2"
+          ],
+          [
+            "E3",
+            "3"
+          ],
+          [
+            "E4",
+            "4"
+          ],
+          [
+            "E5",
+            "5"
+          ],
+          [
+            "E6",
+            "6"
+          ],
+          [
+            "E7",
+            "7"
+          ]
+        ]
+      },
+      {
+        "type": "field_dropdown",
+        "name": "MODE",
+        "options": [
+          [
+            "输出",
+            "8"
+          ],
+          [
+            "上拉输入",
+            "1"
+          ],
+          [
+            "下拉输入",
+            "2"
+          ],
+          [
+            "浮空输入",
+            "4"
+          ],
+          [
+            "ADC 模拟输入",
+            "16"
+          ],
+          [
+            "PWM 输出",
+            "32"
+          ]
+        ]
+      }
+    ],
+    "inputsInline": true,
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": "#0891B2",
+    "tooltip": "设置扩展引脚 E0-E7 的工作模式。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_gpio_board_write",
+    "message0": "GPIO 扩展板 引脚 %1 输出电平 %2",
+    "args0": [
+      {
+        "type": "field_dropdown",
+        "name": "PIN",
+        "options": [
+          [
+            "E0",
+            "0"
+          ],
+          [
+            "E1",
+            "1"
+          ],
+          [
+            "E2",
+            "2"
+          ],
+          [
+            "E3",
+            "3"
+          ],
+          [
+            "E4",
+            "4"
+          ],
+          [
+            "E5",
+            "5"
+          ],
+          [
+            "E6",
+            "6"
+          ],
+          [
+            "E7",
+            "7"
+          ]
+        ]
+      },
+      {
+        "type": "field_dropdown",
+        "name": "LVL",
+        "options": [
+          [
+            "高电平",
+            "1"
+          ],
+          [
+            "低电平",
+            "0"
+          ]
+        ]
+      }
+    ],
+    "inputsInline": true,
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": "#0891B2",
+    "tooltip": "设置数字输出电平。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_gpio_board_read",
+    "message0": "GPIO 扩展板 读取引脚 %1 数字电平",
+    "args0": [
+      {
+        "type": "field_dropdown",
+        "name": "PIN",
+        "options": [
+          [
+            "E0",
+            "0"
+          ],
+          [
+            "E1",
+            "1"
+          ],
+          [
+            "E2",
+            "2"
+          ],
+          [
+            "E3",
+            "3"
+          ],
+          [
+            "E4",
+            "4"
+          ],
+          [
+            "E5",
+            "5"
+          ],
+          [
+            "E6",
+            "6"
+          ],
+          [
+            "E7",
+            "7"
+          ]
+        ]
+      }
+    ],
+    "inputsInline": true,
+    "output": "Number",
+    "colour": "#0891B2",
+    "tooltip": "读取数字引脚电平（0/1）。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_gpio_board_adc",
+    "message0": "GPIO 扩展板 读取引脚 %1 ADC值",
+    "args0": [
+      {
+        "type": "field_dropdown",
+        "name": "PIN",
+        "options": [
+          [
+            "E0",
+            "0"
+          ],
+          [
+            "E1",
+            "1"
+          ],
+          [
+            "E2",
+            "2"
+          ],
+          [
+            "E3",
+            "3"
+          ],
+          [
+            "E4",
+            "4"
+          ],
+          [
+            "E5",
+            "5"
+          ],
+          [
+            "E6",
+            "6"
+          ],
+          [
+            "E7",
+            "7"
+          ]
+        ]
+      }
+    ],
+    "inputsInline": true,
+    "output": "Number",
+    "colour": "#0891B2",
+    "tooltip": "读取扩展板模拟量 ADC 数值。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_gpio_board_pwm_duty",
+    "message0": "GPIO 扩展板 引脚 %1 PWM占空比 %2 (0-4095)",
+    "args0": [
+      {
+        "type": "field_dropdown",
+        "name": "PIN",
+        "options": [
+          [
+            "E0",
+            "0"
+          ],
+          [
+            "E1",
+            "1"
+          ],
+          [
+            "E2",
+            "2"
+          ],
+          [
+            "E3",
+            "3"
+          ],
+          [
+            "E4",
+            "4"
+          ],
+          [
+            "E5",
+            "5"
+          ],
+          [
+            "E6",
+            "6"
+          ],
+          [
+            "E7",
+            "7"
+          ]
+        ]
+      },
+      {
+        "type": "input_value",
+        "name": "DUTY",
+        "check": "Number"
+      }
+    ],
+    "inputsInline": true,
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": "#0891B2",
+    "tooltip": "设置 12 位 PWM 占空比。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_gpio_board_servo",
+    "message0": "GPIO 扩展板 舵机引脚 %1 角度 %2 (0-180)",
+    "args0": [
+      {
+        "type": "field_dropdown",
+        "name": "PIN",
+        "options": [
+          [
+            "E1",
+            "1"
+          ],
+          [
+            "E2",
+            "2"
+          ]
+        ]
+      },
+      {
+        "type": "input_value",
+        "name": "ANG",
+        "check": "Number"
+      }
+    ],
+    "inputsInline": true,
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": "#0891B2",
+    "tooltip": "驱动 E1 或 E2 舵机转到指定角度。",
+    "helpUrl": ""
+  }
+]

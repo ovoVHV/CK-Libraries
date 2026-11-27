@@ -1,0 +1,61 @@
+{
+  "kind": "category",
+  "name": "Emakefun DM11 双路电机驱动",
+  "colour": "#DC2626",
+  "contents": [
+    {
+      "kind": "block",
+      "type": "emakefun_dm11_begin",
+      "inputs": {
+        "FREQ": {
+          "shadow": {
+            "type": "math_number",
+            "fields": {
+              "NUM": 1000
+            }
+          }
+        },
+        "ADDR": {
+          "shadow": {
+            "type": "math_number",
+            "fields": {
+              "NUM": 21
+            }
+          }
+        }
+      }
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_dm11_motor",
+      "inputs": {
+        "SPEED": {
+          "shadow": {
+            "type": "math_number",
+            "fields": {
+              "NUM": 2000
+            }
+          }
+        }
+      }
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_dm11_pwm",
+      "inputs": {
+        "DUTY": {
+          "shadow": {
+            "type": "math_number",
+            "fields": {
+              "NUM": 2048
+            }
+          }
+        }
+      }
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_dm11_stop"
+    }
+  ]
+}

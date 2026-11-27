@@ -1,0 +1,33 @@
+{
+  "kind": "category",
+  "name": "Emakefun PM2.5 粉尘传感器",
+  "colour": "#059669",
+  "contents": [
+    {
+      "kind": "block",
+      "type": "emakefun_pm25_begin",
+      "inputs": {
+        "ILED_PIN": {
+          "shadow": {
+            "type": "math_number",
+            "fields": {
+              "NUM": 7
+            }
+          }
+        },
+        "DUST_PIN": {
+          "shadow": {
+            "type": "math_number",
+            "fields": {
+              "NUM": 14
+            }
+          }
+        }
+      }
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_pm25_read"
+    }
+  ]
+}

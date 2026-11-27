@@ -1,0 +1,953 @@
+{
+  "schema_version": 2,
+  "id": "emakefun_tts20",
+  "display_name": "Emakefun TTS20 语音合成模块",
+  "description": "Emakefun TTS20 I2C 中文语音合成模块（默认地址 0x40），支持中文文本播报、忙状态检测与暂停/恢复/停止。",
+  "defaultLocale": "zh-CN",
+  "keywords": [
+    "Emakefun TTS20 语音合成模块",
+    "emakefun_tts20",
+    "Emakefun",
+    "TTS",
+    "TTS20",
+    "语音合成",
+    "播报",
+    "I2C"
+  ],
+  "license": {
+    "spdx_id": "Apache-2.0",
+    "file": "LICENSE.txt"
+  },
+  "compatibility": {
+    "architectures": [
+      "avr",
+      "esp32"
+    ]
+  },
+  "dependencies": [
+    {
+      "kind": "arduino-library",
+      "id": "EmakefunTts20Adapter",
+      "version": "1.0.0",
+      "headers": [
+        "EmakefunTts20Adapter.h"
+      ],
+      "license": "Apache-2.0",
+      "reason": "随包内置于 libraries/EmakefunTts20Adapter/，提供安全封装与跨板卡兼容接口。"
+    },
+    {
+      "kind": "arduino-library",
+      "id": "EM TTS20",
+      "version": "1.0.1",
+      "headers": [
+        "em_check.h",
+        "tts20.h",
+        "tts20_lib.h"
+      ],
+      "license": "MIT",
+      "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/em_tts20）内置于 libraries/em_tts20/。"
+    }
+  ],
+  "entrypoints": {
+    "blocks": "blocks/blocks.json",
+    "generator": "blocks/ck-generator.json",
+    "toolbox": "blocks/toolbox.json"
+  },
+  "blocks": [
+    {
+      "type": "emakefun_tts20_begin",
+      "display_name": "初始化 TTS20 语音合成 I2C地址 %1",
+      "description": "初始化 Emakefun TTS20 语音合成模块（默认 0x40 = 64）。",
+      "category": "Emakefun TTS20 语音合成模块",
+      "kind": "statement",
+      "keywords": [
+        "Emakefun TTS20 语音合成模块",
+        "emakefun_tts20",
+        "Emakefun",
+        "TTS",
+        "TTS20",
+        "语音合成",
+        "播报",
+        "I2C"
+      ],
+      "semantics": {
+        "purpose": "初始化 Emakefun TTS20 语音合成模块（默认 0x40 = 64）。",
+        "behavior": "初始化 Emakefun TTS20 语音合成模块（默认 0x40 = 64）。",
+        "concepts": [
+          "Emakefun TTS20 语音合成模块",
+          "Emakefun"
+        ],
+        "side_effects": [
+          "初始化 Emakefun TTS20 语音合成模块（默认 0x40 = 64）。"
+        ]
+      },
+      "fields": [],
+      "inputs": [
+        {
+          "name": "ADDR",
+          "kind": "value",
+          "description": "I2C 地址（默认 64）",
+          "check": "Number",
+          "required": true,
+          "default": 64
+        }
+      ],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunTts20Adapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunTts20Adapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunTts20Adapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "EM TTS20",
+          "version": "1.0.1",
+          "headers": [
+            "em_check.h",
+            "tts20.h",
+            "tts20_lib.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/em_tts20）内置于 libraries/em_tts20/。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "i2c",
+            "id": "wire",
+            "source": {
+              "kind": "board-default"
+            },
+            "access": "read-write",
+            "sharing": "shared",
+            "description": "默认 I2C 总线 (Wire)，模块默认地址 0x40。"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "i2c-device",
+              "role": "i2c-device",
+              "resource": {
+                "kind": "fixed",
+                "valueType": "id",
+                "value": "i2c"
+              },
+              "exclusive": false,
+              "discriminator": {
+                "kind": "fixed",
+                "valueType": "integer",
+                "value": 64
+              }
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun TTS20 I2C 中文语音合成模块（默认地址 0x40），支持中文文本播报、忙状态检测与暂停/恢复/停止。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "includes": [
+          "EmakefunTts20Adapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunTts20Adapter.h",
+            "template": "#include <EmakefunTts20Adapter.h>"
+          },
+          {
+            "section": "statement",
+            "description": "初始化 Emakefun TTS20 语音合成模块（默认 0x40 = 64）。",
+            "template": "EmakefunTts20Adapter::begin({{value:ADDR}});\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun TTS20 I2C 中文语音合成模块（默认地址 0x40），支持中文文本播报、忙状态检测与暂停/恢复/停止。",
+          "message": "Emakefun TTS20 I2C 中文语音合成模块（默认地址 0x40），支持中文文本播报、忙状态检测与暂停/恢复/停止。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun TTS20 语音合成模块 随包示例",
+          "description": "初始化 Emakefun TTS20 语音合成模块（默认 0x40 = 64）。",
+          "expected_behavior": "演示 Emakefun TTS20 语音合成模块 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_tts20_play",
+      "display_name": "TTS20 语音播报 %1",
+      "description": "将文本转为语音并播放。",
+      "category": "Emakefun TTS20 语音合成模块",
+      "kind": "statement",
+      "keywords": [
+        "Emakefun TTS20 语音合成模块",
+        "emakefun_tts20",
+        "Emakefun",
+        "TTS",
+        "TTS20",
+        "语音合成",
+        "播报",
+        "I2C"
+      ],
+      "semantics": {
+        "purpose": "将文本转为语音并播放。",
+        "behavior": "将文本转为语音并播放。",
+        "concepts": [
+          "Emakefun TTS20 语音合成模块",
+          "Emakefun"
+        ],
+        "side_effects": [
+          "将文本转为语音并播放。"
+        ]
+      },
+      "fields": [],
+      "inputs": [
+        {
+          "name": "TEXT",
+          "kind": "value",
+          "description": "要播报的文本",
+          "check": "String",
+          "required": true,
+          "default": "你好，欢迎使用 CK LAB"
+        }
+      ],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunTts20Adapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunTts20Adapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunTts20Adapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "EM TTS20",
+          "version": "1.0.1",
+          "headers": [
+            "em_check.h",
+            "tts20.h",
+            "tts20_lib.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/em_tts20）内置于 libraries/em_tts20/。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "i2c",
+            "id": "wire",
+            "source": {
+              "kind": "board-default"
+            },
+            "access": "read-write",
+            "sharing": "shared",
+            "description": "默认 I2C 总线 (Wire)，模块默认地址 0x40。"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "i2c-device",
+              "role": "i2c-device",
+              "resource": {
+                "kind": "fixed",
+                "valueType": "id",
+                "value": "i2c"
+              },
+              "exclusive": false,
+              "discriminator": {
+                "kind": "fixed",
+                "valueType": "integer",
+                "value": 64
+              }
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun TTS20 I2C 中文语音合成模块（默认地址 0x40），支持中文文本播报、忙状态检测与暂停/恢复/停止。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "includes": [
+          "EmakefunTts20Adapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunTts20Adapter.h",
+            "template": "#include <EmakefunTts20Adapter.h>"
+          },
+          {
+            "section": "statement",
+            "description": "将文本转为语音并播放。",
+            "template": "EmakefunTts20Adapter::play(String({{value:TEXT}}));\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun TTS20 I2C 中文语音合成模块（默认地址 0x40），支持中文文本播报、忙状态检测与暂停/恢复/停止。",
+          "message": "Emakefun TTS20 I2C 中文语音合成模块（默认地址 0x40），支持中文文本播报、忙状态检测与暂停/恢复/停止。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun TTS20 语音合成模块 随包示例",
+          "description": "将文本转为语音并播放。",
+          "expected_behavior": "演示 Emakefun TTS20 语音合成模块 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_tts20_busy",
+      "display_name": "TTS20 正在播放中?",
+      "description": "返回模块当前是否处于语音播报忙状态。",
+      "category": "Emakefun TTS20 语音合成模块",
+      "kind": "value",
+      "keywords": [
+        "Emakefun TTS20 语音合成模块",
+        "emakefun_tts20",
+        "Emakefun",
+        "TTS",
+        "TTS20",
+        "语音合成",
+        "播报",
+        "I2C"
+      ],
+      "semantics": {
+        "purpose": "返回模块当前是否处于语音播报忙状态。",
+        "behavior": "返回模块当前是否处于语音播报忙状态。",
+        "concepts": [
+          "Emakefun TTS20 语音合成模块",
+          "Emakefun"
+        ],
+        "side_effects": []
+      },
+      "fields": [],
+      "inputs": [],
+      "output": {
+        "connection": "value",
+        "types": [
+          "Boolean"
+        ],
+        "description": "返回模块当前是否处于语音播报忙状态。"
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunTts20Adapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunTts20Adapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunTts20Adapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "EM TTS20",
+          "version": "1.0.1",
+          "headers": [
+            "em_check.h",
+            "tts20.h",
+            "tts20_lib.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/em_tts20）内置于 libraries/em_tts20/。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "i2c",
+            "id": "wire",
+            "source": {
+              "kind": "board-default"
+            },
+            "access": "read-write",
+            "sharing": "shared",
+            "description": "默认 I2C 总线 (Wire)，模块默认地址 0x40。"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "i2c-device",
+              "role": "i2c-device",
+              "resource": {
+                "kind": "fixed",
+                "valueType": "id",
+                "value": "i2c"
+              },
+              "exclusive": false,
+              "discriminator": {
+                "kind": "fixed",
+                "valueType": "integer",
+                "value": 64
+              }
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun TTS20 I2C 中文语音合成模块（默认地址 0x40），支持中文文本播报、忙状态检测与暂停/恢复/停止。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "expression",
+        "deterministic": true,
+        "includes": [
+          "EmakefunTts20Adapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunTts20Adapter.h",
+            "template": "#include <EmakefunTts20Adapter.h>"
+          },
+          {
+            "section": "expression",
+            "description": "返回模块当前是否处于语音播报忙状态。",
+            "template": "EmakefunTts20Adapter::isBusy()"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun TTS20 I2C 中文语音合成模块（默认地址 0x40），支持中文文本播报、忙状态检测与暂停/恢复/停止。",
+          "message": "Emakefun TTS20 I2C 中文语音合成模块（默认地址 0x40），支持中文文本播报、忙状态检测与暂停/恢复/停止。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun TTS20 语音合成模块 随包示例",
+          "description": "返回模块当前是否处于语音播报忙状态。",
+          "expected_behavior": "演示 Emakefun TTS20 语音合成模块 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_tts20_pause",
+      "display_name": "TTS20 暂停播放",
+      "description": "暂停当前语音播报。",
+      "category": "Emakefun TTS20 语音合成模块",
+      "kind": "statement",
+      "keywords": [
+        "Emakefun TTS20 语音合成模块",
+        "emakefun_tts20",
+        "Emakefun",
+        "TTS",
+        "TTS20",
+        "语音合成",
+        "播报",
+        "I2C"
+      ],
+      "semantics": {
+        "purpose": "暂停当前语音播报。",
+        "behavior": "暂停当前语音播报。",
+        "concepts": [
+          "Emakefun TTS20 语音合成模块",
+          "Emakefun"
+        ],
+        "side_effects": [
+          "暂停当前语音播报。"
+        ]
+      },
+      "fields": [],
+      "inputs": [],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunTts20Adapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunTts20Adapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunTts20Adapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "EM TTS20",
+          "version": "1.0.1",
+          "headers": [
+            "em_check.h",
+            "tts20.h",
+            "tts20_lib.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/em_tts20）内置于 libraries/em_tts20/。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "i2c",
+            "id": "wire",
+            "source": {
+              "kind": "board-default"
+            },
+            "access": "read-write",
+            "sharing": "shared",
+            "description": "默认 I2C 总线 (Wire)，模块默认地址 0x40。"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "i2c-device",
+              "role": "i2c-device",
+              "resource": {
+                "kind": "fixed",
+                "valueType": "id",
+                "value": "i2c"
+              },
+              "exclusive": false,
+              "discriminator": {
+                "kind": "fixed",
+                "valueType": "integer",
+                "value": 64
+              }
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun TTS20 I2C 中文语音合成模块（默认地址 0x40），支持中文文本播报、忙状态检测与暂停/恢复/停止。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "includes": [
+          "EmakefunTts20Adapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunTts20Adapter.h",
+            "template": "#include <EmakefunTts20Adapter.h>"
+          },
+          {
+            "section": "statement",
+            "description": "暂停当前语音播报。",
+            "template": "EmakefunTts20Adapter::pause();\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun TTS20 I2C 中文语音合成模块（默认地址 0x40），支持中文文本播报、忙状态检测与暂停/恢复/停止。",
+          "message": "Emakefun TTS20 I2C 中文语音合成模块（默认地址 0x40），支持中文文本播报、忙状态检测与暂停/恢复/停止。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun TTS20 语音合成模块 随包示例",
+          "description": "暂停当前语音播报。",
+          "expected_behavior": "演示 Emakefun TTS20 语音合成模块 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_tts20_resume",
+      "display_name": "TTS20 恢复播放",
+      "description": "恢复已暂停的语音播报。",
+      "category": "Emakefun TTS20 语音合成模块",
+      "kind": "statement",
+      "keywords": [
+        "Emakefun TTS20 语音合成模块",
+        "emakefun_tts20",
+        "Emakefun",
+        "TTS",
+        "TTS20",
+        "语音合成",
+        "播报",
+        "I2C"
+      ],
+      "semantics": {
+        "purpose": "恢复已暂停的语音播报。",
+        "behavior": "恢复已暂停的语音播报。",
+        "concepts": [
+          "Emakefun TTS20 语音合成模块",
+          "Emakefun"
+        ],
+        "side_effects": [
+          "恢复已暂停的语音播报。"
+        ]
+      },
+      "fields": [],
+      "inputs": [],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunTts20Adapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunTts20Adapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunTts20Adapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "EM TTS20",
+          "version": "1.0.1",
+          "headers": [
+            "em_check.h",
+            "tts20.h",
+            "tts20_lib.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/em_tts20）内置于 libraries/em_tts20/。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "i2c",
+            "id": "wire",
+            "source": {
+              "kind": "board-default"
+            },
+            "access": "read-write",
+            "sharing": "shared",
+            "description": "默认 I2C 总线 (Wire)，模块默认地址 0x40。"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "i2c-device",
+              "role": "i2c-device",
+              "resource": {
+                "kind": "fixed",
+                "valueType": "id",
+                "value": "i2c"
+              },
+              "exclusive": false,
+              "discriminator": {
+                "kind": "fixed",
+                "valueType": "integer",
+                "value": 64
+              }
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun TTS20 I2C 中文语音合成模块（默认地址 0x40），支持中文文本播报、忙状态检测与暂停/恢复/停止。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "includes": [
+          "EmakefunTts20Adapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunTts20Adapter.h",
+            "template": "#include <EmakefunTts20Adapter.h>"
+          },
+          {
+            "section": "statement",
+            "description": "恢复已暂停的语音播报。",
+            "template": "EmakefunTts20Adapter::resume();\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun TTS20 I2C 中文语音合成模块（默认地址 0x40），支持中文文本播报、忙状态检测与暂停/恢复/停止。",
+          "message": "Emakefun TTS20 I2C 中文语音合成模块（默认地址 0x40），支持中文文本播报、忙状态检测与暂停/恢复/停止。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun TTS20 语音合成模块 随包示例",
+          "description": "恢复已暂停的语音播报。",
+          "expected_behavior": "演示 Emakefun TTS20 语音合成模块 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_tts20_stop",
+      "display_name": "TTS20 停止播放",
+      "description": "立即停止当前语音播报。",
+      "category": "Emakefun TTS20 语音合成模块",
+      "kind": "statement",
+      "keywords": [
+        "Emakefun TTS20 语音合成模块",
+        "emakefun_tts20",
+        "Emakefun",
+        "TTS",
+        "TTS20",
+        "语音合成",
+        "播报",
+        "I2C"
+      ],
+      "semantics": {
+        "purpose": "立即停止当前语音播报。",
+        "behavior": "立即停止当前语音播报。",
+        "concepts": [
+          "Emakefun TTS20 语音合成模块",
+          "Emakefun"
+        ],
+        "side_effects": [
+          "立即停止当前语音播报。"
+        ]
+      },
+      "fields": [],
+      "inputs": [],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunTts20Adapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunTts20Adapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunTts20Adapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "EM TTS20",
+          "version": "1.0.1",
+          "headers": [
+            "em_check.h",
+            "tts20.h",
+            "tts20_lib.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/em_tts20）内置于 libraries/em_tts20/。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "i2c",
+            "id": "wire",
+            "source": {
+              "kind": "board-default"
+            },
+            "access": "read-write",
+            "sharing": "shared",
+            "description": "默认 I2C 总线 (Wire)，模块默认地址 0x40。"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "i2c-device",
+              "role": "i2c-device",
+              "resource": {
+                "kind": "fixed",
+                "valueType": "id",
+                "value": "i2c"
+              },
+              "exclusive": false,
+              "discriminator": {
+                "kind": "fixed",
+                "valueType": "integer",
+                "value": 64
+              }
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun TTS20 I2C 中文语音合成模块（默认地址 0x40），支持中文文本播报、忙状态检测与暂停/恢复/停止。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "includes": [
+          "EmakefunTts20Adapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunTts20Adapter.h",
+            "template": "#include <EmakefunTts20Adapter.h>"
+          },
+          {
+            "section": "statement",
+            "description": "立即停止当前语音播报。",
+            "template": "EmakefunTts20Adapter::stop();\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun TTS20 I2C 中文语音合成模块（默认地址 0x40），支持中文文本播报、忙状态检测与暂停/恢复/停止。",
+          "message": "Emakefun TTS20 I2C 中文语音合成模块（默认地址 0x40），支持中文文本播报、忙状态检测与暂停/恢复/停止。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun TTS20 语音合成模块 随包示例",
+          "description": "立即停止当前语音播报。",
+          "expected_behavior": "演示 Emakefun TTS20 语音合成模块 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    }
+  ]
+}

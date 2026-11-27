@@ -1,0 +1,75 @@
+{
+  "kind": "category",
+  "name": "Emakefun 语音合成模块 V2",
+  "colour": "#DB2777",
+  "contents": [
+    {
+      "kind": "block",
+      "type": "emakefun_tts_v2_begin",
+      "inputs": {
+        "ADDR": {
+          "shadow": {
+            "type": "math_number",
+            "fields": {
+              "NUM": 64
+            }
+          }
+        }
+      }
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_tts_v2_play",
+      "inputs": {
+        "TEXT": {
+          "shadow": {
+            "type": "text",
+            "fields": {
+              "TEXT": "你好"
+            }
+          }
+        }
+      }
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_tts_v2_push_cache",
+      "inputs": {
+        "IDX": {
+          "shadow": {
+            "type": "math_number",
+            "fields": {
+              "NUM": 0
+            }
+          }
+        },
+        "TEXT": {
+          "shadow": {
+            "type": "text",
+            "fields": {
+              "TEXT": "欢迎使用"
+            }
+          }
+        }
+      }
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_tts_v2_play_cache",
+      "inputs": {
+        "CNT": {
+          "shadow": {
+            "type": "math_number",
+            "fields": {
+              "NUM": 1
+            }
+          }
+        }
+      }
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_tts_v2_stop"
+    }
+  ]
+}

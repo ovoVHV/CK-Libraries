@@ -1,0 +1,33 @@
+{
+  "kind": "category",
+  "name": "Emakefun 颜色识别传感器 V1",
+  "colour": "#0369A1",
+  "contents": [
+    {
+      "kind": "block",
+      "type": "emakefun_color_v1_begin",
+      "inputs": {
+        "ADDR": {
+          "shadow": {
+            "type": "math_number",
+            "fields": {
+              "NUM": 67
+            }
+          }
+        }
+      }
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_color_v1_r"
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_color_v1_g"
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_color_v1_b"
+    }
+  ]
+}

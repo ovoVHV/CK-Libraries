@@ -1,0 +1,21 @@
+{
+  "id": "emakefun_encoder_board",
+  "name": "Emakefun 编码电机驱动板",
+  "version": "1.0.0",
+  "description": "Emakefun I2C 四路编码电机扩展板（默认地址 0x09），支持速度、PWM、角度定位与实时反馈读取。",
+  "sentence": "Emakefun I2C 四路编码电机扩展板（默认地址 0x09），支持速度、PWM、角度定位与实时反馈读取。",
+  "author": "CKYAN",
+  "vendor": "Emakefun",
+  "vendor_logo": "assets/emakefun.png",
+  "icon": "assets/icon.png",
+  "category": "Device Control",
+  "website": "https://github.com/emakefun-arduino-library/emakefun_encoder_motor_board",
+  "architectures": [
+    "avr",
+    "esp32"
+  ],
+  "license": "Apache-2.0",
+  "includes": [
+    "EmakefunEncoderBoardAdapter.h"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "id": "emakefun_dm11",
+  "name": "Emakefun DM11 双路电机驱动",
+  "version": "1.0.0",
+  "description": "Emakefun DM11 I2C 四路 PWM / 双路直流电机驱动模块（默认地址 0x15，占空比 0-4095）。",
+  "sentence": "Emakefun DM11 I2C 四路 PWM / 双路直流电机驱动模块（默认地址 0x15，占空比 0-4095）。",
+  "author": "CKYAN",
+  "vendor": "Emakefun",
+  "vendor_logo": "assets/emakefun.png",
+  "icon": "assets/icon.png",
+  "category": "Device Control",
+  "website": "https://github.com/emakefun-arduino-library/em_dm11",
+  "architectures": [
+    "avr",
+    "esp32"
+  ],
+  "license": "Apache-2.0",
+  "includes": [
+    "EmakefunDm11Adapter.h"
+  ]
+}

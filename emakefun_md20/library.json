@@ -1,0 +1,21 @@
+{
+  "id": "emakefun_md20",
+  "name": "Emakefun MD20 四路编码电机",
+  "version": "1.0.0",
+  "description": "Emakefun MD20 I2C 四路编码电机驱动模块（默认地址 0x16），支持单路 PPR/减速比配置与闭环 RPM 调速。",
+  "sentence": "Emakefun MD20 I2C 四路编码电机驱动模块（默认地址 0x16），支持单路 PPR/减速比配置与闭环 RPM 调速。",
+  "author": "CKYAN",
+  "vendor": "Emakefun",
+  "vendor_logo": "assets/emakefun.png",
+  "icon": "assets/icon.png",
+  "category": "Device Control",
+  "website": "https://github.com/emakefun-arduino-library/em_md20",
+  "architectures": [
+    "avr",
+    "esp32"
+  ],
+  "license": "Apache-2.0",
+  "includes": [
+    "EmakefunMd20Adapter.h"
+  ]
+}

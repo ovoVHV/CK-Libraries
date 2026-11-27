@@ -1,0 +1,1371 @@
+{
+  "schema_version": 2,
+  "id": "emakefun_gpio_board",
+  "display_name": "Emakefun I2C GPIO 扩展板",
+  "description": "Emakefun 8 路 I2C GPIO 扩展板（E0-E7，地址 0x24），支持数字输入输出、ADC 采集、12位 PWM 与 E1/E2 舵机控制。",
+  "defaultLocale": "zh-CN",
+  "keywords": [
+    "Emakefun I2C GPIO 扩展板",
+    "emakefun_gpio_board",
+    "Emakefun",
+    "GPIO扩展板",
+    "I2C扩展",
+    "PWM",
+    "舵机",
+    "ADC"
+  ],
+  "license": {
+    "spdx_id": "Apache-2.0",
+    "file": "LICENSE.txt"
+  },
+  "compatibility": {
+    "architectures": [
+      "avr",
+      "esp32"
+    ]
+  },
+  "dependencies": [
+    {
+      "kind": "arduino-library",
+      "id": "EmakefunGpioBoardAdapter",
+      "version": "1.0.0",
+      "headers": [
+        "EmakefunGpioBoardAdapter.h"
+      ],
+      "license": "Apache-2.0",
+      "reason": "随包内置于 libraries/EmakefunGpioBoardAdapter/，提供安全封装与跨板卡兼容接口。"
+    },
+    {
+      "kind": "arduino-library",
+      "id": "emakefun line tracker",
+      "version": "2.0.0",
+      "headers": [
+        "gpio_expansion_board.h"
+      ],
+      "license": "MIT",
+      "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/emakefun_gpio_expansion_board）内置于 libraries/emakefun_gpio_expansion_board/。"
+    }
+  ],
+  "entrypoints": {
+    "blocks": "blocks/blocks.json",
+    "generator": "blocks/ck-generator.json",
+    "toolbox": "blocks/toolbox.json"
+  },
+  "blocks": [
+    {
+      "type": "emakefun_gpio_board_begin",
+      "display_name": "初始化 I2C GPIO 扩展板 地址 %1",
+      "description": "初始化 Emakefun GPIO 扩展板（默认 0x24 = 36）。",
+      "category": "Emakefun I2C GPIO 扩展板",
+      "kind": "statement",
+      "keywords": [
+        "Emakefun I2C GPIO 扩展板",
+        "emakefun_gpio_board",
+        "Emakefun",
+        "GPIO扩展板",
+        "I2C扩展",
+        "PWM",
+        "舵机",
+        "ADC"
+      ],
+      "semantics": {
+        "purpose": "初始化 Emakefun GPIO 扩展板（默认 0x24 = 36）。",
+        "behavior": "初始化 Emakefun GPIO 扩展板（默认 0x24 = 36）。",
+        "concepts": [
+          "Emakefun I2C GPIO 扩展板",
+          "Emakefun"
+        ],
+        "side_effects": [
+          "初始化 Emakefun GPIO 扩展板（默认 0x24 = 36）。"
+        ]
+      },
+      "fields": [],
+      "inputs": [
+        {
+          "name": "ADDR",
+          "kind": "value",
+          "description": "I2C 地址（默认 36）",
+          "check": "Number",
+          "required": true,
+          "default": 36
+        }
+      ],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunGpioBoardAdapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunGpioBoardAdapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunGpioBoardAdapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "emakefun line tracker",
+          "version": "2.0.0",
+          "headers": [
+            "gpio_expansion_board.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/emakefun_gpio_expansion_board）内置于 libraries/emakefun_gpio_expansion_board/。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "i2c",
+            "id": "wire",
+            "source": {
+              "kind": "board-default"
+            },
+            "access": "read-write",
+            "sharing": "shared",
+            "description": "默认 I2C 总线 (Wire)，模块默认地址 0x24。"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "i2c-device",
+              "role": "i2c-device",
+              "resource": {
+                "kind": "fixed",
+                "valueType": "id",
+                "value": "i2c"
+              },
+              "exclusive": false,
+              "discriminator": {
+                "kind": "fixed",
+                "valueType": "integer",
+                "value": 36
+              }
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun 8 路 I2C GPIO 扩展板（E0-E7，地址 0x24），支持数字输入输出、ADC 采集、12位 PWM 与 E1/E2 舵机控制。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "includes": [
+          "EmakefunGpioBoardAdapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunGpioBoardAdapter.h",
+            "template": "#include <EmakefunGpioBoardAdapter.h>"
+          },
+          {
+            "section": "statement",
+            "description": "初始化 Emakefun GPIO 扩展板（默认 0x24 = 36）。",
+            "template": "EmakefunGpioBoardAdapter::begin({{value:ADDR}});\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun 8 路 I2C GPIO 扩展板（E0-E7，地址 0x24），支持数字输入输出、ADC 采集、12位 PWM 与 E1/E2 舵机控制。",
+          "message": "Emakefun 8 路 I2C GPIO 扩展板（E0-E7，地址 0x24），支持数字输入输出、ADC 采集、12位 PWM 与 E1/E2 舵机控制。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun I2C GPIO 扩展板 随包示例",
+          "description": "初始化 Emakefun GPIO 扩展板（默认 0x24 = 36）。",
+          "expected_behavior": "演示 Emakefun I2C GPIO 扩展板 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_gpio_board_mode",
+      "display_name": "GPIO 扩展板 引脚 %1 模式 %2",
+      "description": "设置扩展引脚 E0-E7 的工作模式。",
+      "category": "Emakefun I2C GPIO 扩展板",
+      "kind": "statement",
+      "keywords": [
+        "Emakefun I2C GPIO 扩展板",
+        "emakefun_gpio_board",
+        "Emakefun",
+        "GPIO扩展板",
+        "I2C扩展",
+        "PWM",
+        "舵机",
+        "ADC"
+      ],
+      "semantics": {
+        "purpose": "设置扩展引脚 E0-E7 的工作模式。",
+        "behavior": "设置扩展引脚 E0-E7 的工作模式。",
+        "concepts": [
+          "Emakefun I2C GPIO 扩展板",
+          "Emakefun"
+        ],
+        "side_effects": [
+          "设置扩展引脚 E0-E7 的工作模式。"
+        ]
+      },
+      "fields": [
+        {
+          "name": "PIN",
+          "kind": "dropdown",
+          "description": "扩展引脚",
+          "required": true,
+          "default": "0",
+          "options": [
+            {
+              "label": "E0",
+              "value": "0"
+            },
+            {
+              "label": "E1",
+              "value": "1"
+            },
+            {
+              "label": "E2",
+              "value": "2"
+            },
+            {
+              "label": "E3",
+              "value": "3"
+            },
+            {
+              "label": "E4",
+              "value": "4"
+            },
+            {
+              "label": "E5",
+              "value": "5"
+            },
+            {
+              "label": "E6",
+              "value": "6"
+            },
+            {
+              "label": "E7",
+              "value": "7"
+            }
+          ]
+        },
+        {
+          "name": "MODE",
+          "kind": "dropdown",
+          "description": "模式",
+          "required": true,
+          "default": "8",
+          "options": [
+            {
+              "label": "输出",
+              "value": "8"
+            },
+            {
+              "label": "上拉输入",
+              "value": "1"
+            },
+            {
+              "label": "下拉输入",
+              "value": "2"
+            },
+            {
+              "label": "浮空输入",
+              "value": "4"
+            },
+            {
+              "label": "ADC 模拟输入",
+              "value": "16"
+            },
+            {
+              "label": "PWM 输出",
+              "value": "32"
+            }
+          ]
+        }
+      ],
+      "inputs": [],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunGpioBoardAdapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunGpioBoardAdapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunGpioBoardAdapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "emakefun line tracker",
+          "version": "2.0.0",
+          "headers": [
+            "gpio_expansion_board.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/emakefun_gpio_expansion_board）内置于 libraries/emakefun_gpio_expansion_board/。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "i2c",
+            "id": "wire",
+            "source": {
+              "kind": "board-default"
+            },
+            "access": "read-write",
+            "sharing": "shared",
+            "description": "默认 I2C 总线 (Wire)，模块默认地址 0x24。"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "i2c-device",
+              "role": "i2c-device",
+              "resource": {
+                "kind": "fixed",
+                "valueType": "id",
+                "value": "i2c"
+              },
+              "exclusive": false,
+              "discriminator": {
+                "kind": "fixed",
+                "valueType": "integer",
+                "value": 36
+              }
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun 8 路 I2C GPIO 扩展板（E0-E7，地址 0x24），支持数字输入输出、ADC 采集、12位 PWM 与 E1/E2 舵机控制。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "includes": [
+          "EmakefunGpioBoardAdapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunGpioBoardAdapter.h",
+            "template": "#include <EmakefunGpioBoardAdapter.h>"
+          },
+          {
+            "section": "statement",
+            "description": "设置扩展引脚 E0-E7 的工作模式。",
+            "template": "EmakefunGpioBoardAdapter::setMode({{field:PIN}}, {{field:MODE}});\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun 8 路 I2C GPIO 扩展板（E0-E7，地址 0x24），支持数字输入输出、ADC 采集、12位 PWM 与 E1/E2 舵机控制。",
+          "message": "Emakefun 8 路 I2C GPIO 扩展板（E0-E7，地址 0x24），支持数字输入输出、ADC 采集、12位 PWM 与 E1/E2 舵机控制。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun I2C GPIO 扩展板 随包示例",
+          "description": "设置扩展引脚 E0-E7 的工作模式。",
+          "expected_behavior": "演示 Emakefun I2C GPIO 扩展板 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_gpio_board_write",
+      "display_name": "GPIO 扩展板 引脚 %1 输出电平 %2",
+      "description": "设置数字输出电平。",
+      "category": "Emakefun I2C GPIO 扩展板",
+      "kind": "statement",
+      "keywords": [
+        "Emakefun I2C GPIO 扩展板",
+        "emakefun_gpio_board",
+        "Emakefun",
+        "GPIO扩展板",
+        "I2C扩展",
+        "PWM",
+        "舵机",
+        "ADC"
+      ],
+      "semantics": {
+        "purpose": "设置数字输出电平。",
+        "behavior": "设置数字输出电平。",
+        "concepts": [
+          "Emakefun I2C GPIO 扩展板",
+          "Emakefun"
+        ],
+        "side_effects": [
+          "设置数字输出电平。"
+        ]
+      },
+      "fields": [
+        {
+          "name": "PIN",
+          "kind": "dropdown",
+          "description": "扩展引脚",
+          "required": true,
+          "default": "0",
+          "options": [
+            {
+              "label": "E0",
+              "value": "0"
+            },
+            {
+              "label": "E1",
+              "value": "1"
+            },
+            {
+              "label": "E2",
+              "value": "2"
+            },
+            {
+              "label": "E3",
+              "value": "3"
+            },
+            {
+              "label": "E4",
+              "value": "4"
+            },
+            {
+              "label": "E5",
+              "value": "5"
+            },
+            {
+              "label": "E6",
+              "value": "6"
+            },
+            {
+              "label": "E7",
+              "value": "7"
+            }
+          ]
+        },
+        {
+          "name": "LVL",
+          "kind": "dropdown",
+          "description": "电平",
+          "required": true,
+          "default": "1",
+          "options": [
+            {
+              "label": "高电平",
+              "value": "1"
+            },
+            {
+              "label": "低电平",
+              "value": "0"
+            }
+          ]
+        }
+      ],
+      "inputs": [],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunGpioBoardAdapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunGpioBoardAdapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunGpioBoardAdapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "emakefun line tracker",
+          "version": "2.0.0",
+          "headers": [
+            "gpio_expansion_board.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/emakefun_gpio_expansion_board）内置于 libraries/emakefun_gpio_expansion_board/。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "i2c",
+            "id": "wire",
+            "source": {
+              "kind": "board-default"
+            },
+            "access": "read-write",
+            "sharing": "shared",
+            "description": "默认 I2C 总线 (Wire)，模块默认地址 0x24。"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "i2c-device",
+              "role": "i2c-device",
+              "resource": {
+                "kind": "fixed",
+                "valueType": "id",
+                "value": "i2c"
+              },
+              "exclusive": false,
+              "discriminator": {
+                "kind": "fixed",
+                "valueType": "integer",
+                "value": 36
+              }
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun 8 路 I2C GPIO 扩展板（E0-E7，地址 0x24），支持数字输入输出、ADC 采集、12位 PWM 与 E1/E2 舵机控制。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "includes": [
+          "EmakefunGpioBoardAdapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunGpioBoardAdapter.h",
+            "template": "#include <EmakefunGpioBoardAdapter.h>"
+          },
+          {
+            "section": "statement",
+            "description": "设置数字输出电平。",
+            "template": "EmakefunGpioBoardAdapter::writeDigital({{field:PIN}}, {{field:LVL}});\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun 8 路 I2C GPIO 扩展板（E0-E7，地址 0x24），支持数字输入输出、ADC 采集、12位 PWM 与 E1/E2 舵机控制。",
+          "message": "Emakefun 8 路 I2C GPIO 扩展板（E0-E7，地址 0x24），支持数字输入输出、ADC 采集、12位 PWM 与 E1/E2 舵机控制。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun I2C GPIO 扩展板 随包示例",
+          "description": "设置数字输出电平。",
+          "expected_behavior": "演示 Emakefun I2C GPIO 扩展板 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_gpio_board_read",
+      "display_name": "GPIO 扩展板 读取引脚 %1 数字电平",
+      "description": "读取数字引脚电平（0/1）。",
+      "category": "Emakefun I2C GPIO 扩展板",
+      "kind": "value",
+      "keywords": [
+        "Emakefun I2C GPIO 扩展板",
+        "emakefun_gpio_board",
+        "Emakefun",
+        "GPIO扩展板",
+        "I2C扩展",
+        "PWM",
+        "舵机",
+        "ADC"
+      ],
+      "semantics": {
+        "purpose": "读取数字引脚电平（0/1）。",
+        "behavior": "读取数字引脚电平（0/1）。",
+        "concepts": [
+          "Emakefun I2C GPIO 扩展板",
+          "Emakefun"
+        ],
+        "side_effects": []
+      },
+      "fields": [
+        {
+          "name": "PIN",
+          "kind": "dropdown",
+          "description": "扩展引脚",
+          "required": true,
+          "default": "0",
+          "options": [
+            {
+              "label": "E0",
+              "value": "0"
+            },
+            {
+              "label": "E1",
+              "value": "1"
+            },
+            {
+              "label": "E2",
+              "value": "2"
+            },
+            {
+              "label": "E3",
+              "value": "3"
+            },
+            {
+              "label": "E4",
+              "value": "4"
+            },
+            {
+              "label": "E5",
+              "value": "5"
+            },
+            {
+              "label": "E6",
+              "value": "6"
+            },
+            {
+              "label": "E7",
+              "value": "7"
+            }
+          ]
+        }
+      ],
+      "inputs": [],
+      "output": {
+        "connection": "value",
+        "types": [
+          "Number"
+        ],
+        "description": "读取数字引脚电平（0/1）。"
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunGpioBoardAdapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunGpioBoardAdapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunGpioBoardAdapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "emakefun line tracker",
+          "version": "2.0.0",
+          "headers": [
+            "gpio_expansion_board.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/emakefun_gpio_expansion_board）内置于 libraries/emakefun_gpio_expansion_board/。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "i2c",
+            "id": "wire",
+            "source": {
+              "kind": "board-default"
+            },
+            "access": "read-write",
+            "sharing": "shared",
+            "description": "默认 I2C 总线 (Wire)，模块默认地址 0x24。"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "i2c-device",
+              "role": "i2c-device",
+              "resource": {
+                "kind": "fixed",
+                "valueType": "id",
+                "value": "i2c"
+              },
+              "exclusive": false,
+              "discriminator": {
+                "kind": "fixed",
+                "valueType": "integer",
+                "value": 36
+              }
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun 8 路 I2C GPIO 扩展板（E0-E7，地址 0x24），支持数字输入输出、ADC 采集、12位 PWM 与 E1/E2 舵机控制。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "expression",
+        "deterministic": true,
+        "includes": [
+          "EmakefunGpioBoardAdapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunGpioBoardAdapter.h",
+            "template": "#include <EmakefunGpioBoardAdapter.h>"
+          },
+          {
+            "section": "expression",
+            "description": "读取数字引脚电平（0/1）。",
+            "template": "EmakefunGpioBoardAdapter::readDigital({{field:PIN}})"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun 8 路 I2C GPIO 扩展板（E0-E7，地址 0x24），支持数字输入输出、ADC 采集、12位 PWM 与 E1/E2 舵机控制。",
+          "message": "Emakefun 8 路 I2C GPIO 扩展板（E0-E7，地址 0x24），支持数字输入输出、ADC 采集、12位 PWM 与 E1/E2 舵机控制。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun I2C GPIO 扩展板 随包示例",
+          "description": "读取数字引脚电平（0/1）。",
+          "expected_behavior": "演示 Emakefun I2C GPIO 扩展板 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_gpio_board_adc",
+      "display_name": "GPIO 扩展板 读取引脚 %1 ADC值",
+      "description": "读取扩展板模拟量 ADC 数值。",
+      "category": "Emakefun I2C GPIO 扩展板",
+      "kind": "value",
+      "keywords": [
+        "Emakefun I2C GPIO 扩展板",
+        "emakefun_gpio_board",
+        "Emakefun",
+        "GPIO扩展板",
+        "I2C扩展",
+        "PWM",
+        "舵机",
+        "ADC"
+      ],
+      "semantics": {
+        "purpose": "读取扩展板模拟量 ADC 数值。",
+        "behavior": "读取扩展板模拟量 ADC 数值。",
+        "concepts": [
+          "Emakefun I2C GPIO 扩展板",
+          "Emakefun"
+        ],
+        "side_effects": []
+      },
+      "fields": [
+        {
+          "name": "PIN",
+          "kind": "dropdown",
+          "description": "扩展引脚",
+          "required": true,
+          "default": "0",
+          "options": [
+            {
+              "label": "E0",
+              "value": "0"
+            },
+            {
+              "label": "E1",
+              "value": "1"
+            },
+            {
+              "label": "E2",
+              "value": "2"
+            },
+            {
+              "label": "E3",
+              "value": "3"
+            },
+            {
+              "label": "E4",
+              "value": "4"
+            },
+            {
+              "label": "E5",
+              "value": "5"
+            },
+            {
+              "label": "E6",
+              "value": "6"
+            },
+            {
+              "label": "E7",
+              "value": "7"
+            }
+          ]
+        }
+      ],
+      "inputs": [],
+      "output": {
+        "connection": "value",
+        "types": [
+          "Number"
+        ],
+        "description": "读取扩展板模拟量 ADC 数值。"
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunGpioBoardAdapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunGpioBoardAdapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunGpioBoardAdapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "emakefun line tracker",
+          "version": "2.0.0",
+          "headers": [
+            "gpio_expansion_board.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/emakefun_gpio_expansion_board）内置于 libraries/emakefun_gpio_expansion_board/。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "i2c",
+            "id": "wire",
+            "source": {
+              "kind": "board-default"
+            },
+            "access": "read-write",
+            "sharing": "shared",
+            "description": "默认 I2C 总线 (Wire)，模块默认地址 0x24。"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "i2c-device",
+              "role": "i2c-device",
+              "resource": {
+                "kind": "fixed",
+                "valueType": "id",
+                "value": "i2c"
+              },
+              "exclusive": false,
+              "discriminator": {
+                "kind": "fixed",
+                "valueType": "integer",
+                "value": 36
+              }
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun 8 路 I2C GPIO 扩展板（E0-E7，地址 0x24），支持数字输入输出、ADC 采集、12位 PWM 与 E1/E2 舵机控制。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "expression",
+        "deterministic": true,
+        "includes": [
+          "EmakefunGpioBoardAdapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunGpioBoardAdapter.h",
+            "template": "#include <EmakefunGpioBoardAdapter.h>"
+          },
+          {
+            "section": "expression",
+            "description": "读取扩展板模拟量 ADC 数值。",
+            "template": "EmakefunGpioBoardAdapter::readAdc({{field:PIN}})"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun 8 路 I2C GPIO 扩展板（E0-E7，地址 0x24），支持数字输入输出、ADC 采集、12位 PWM 与 E1/E2 舵机控制。",
+          "message": "Emakefun 8 路 I2C GPIO 扩展板（E0-E7，地址 0x24），支持数字输入输出、ADC 采集、12位 PWM 与 E1/E2 舵机控制。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun I2C GPIO 扩展板 随包示例",
+          "description": "读取扩展板模拟量 ADC 数值。",
+          "expected_behavior": "演示 Emakefun I2C GPIO 扩展板 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_gpio_board_pwm_duty",
+      "display_name": "GPIO 扩展板 引脚 %1 PWM占空比 %2 (0-4095)",
+      "description": "设置 12 位 PWM 占空比。",
+      "category": "Emakefun I2C GPIO 扩展板",
+      "kind": "statement",
+      "keywords": [
+        "Emakefun I2C GPIO 扩展板",
+        "emakefun_gpio_board",
+        "Emakefun",
+        "GPIO扩展板",
+        "I2C扩展",
+        "PWM",
+        "舵机",
+        "ADC"
+      ],
+      "semantics": {
+        "purpose": "设置 12 位 PWM 占空比。",
+        "behavior": "设置 12 位 PWM 占空比。",
+        "concepts": [
+          "Emakefun I2C GPIO 扩展板",
+          "Emakefun"
+        ],
+        "side_effects": [
+          "设置 12 位 PWM 占空比。"
+        ]
+      },
+      "fields": [
+        {
+          "name": "PIN",
+          "kind": "dropdown",
+          "description": "扩展引脚",
+          "required": true,
+          "default": "0",
+          "options": [
+            {
+              "label": "E0",
+              "value": "0"
+            },
+            {
+              "label": "E1",
+              "value": "1"
+            },
+            {
+              "label": "E2",
+              "value": "2"
+            },
+            {
+              "label": "E3",
+              "value": "3"
+            },
+            {
+              "label": "E4",
+              "value": "4"
+            },
+            {
+              "label": "E5",
+              "value": "5"
+            },
+            {
+              "label": "E6",
+              "value": "6"
+            },
+            {
+              "label": "E7",
+              "value": "7"
+            }
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "name": "DUTY",
+          "kind": "value",
+          "description": "占空比 0-4095",
+          "check": "Number",
+          "required": true,
+          "default": 2048
+        }
+      ],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunGpioBoardAdapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunGpioBoardAdapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunGpioBoardAdapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "emakefun line tracker",
+          "version": "2.0.0",
+          "headers": [
+            "gpio_expansion_board.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/emakefun_gpio_expansion_board）内置于 libraries/emakefun_gpio_expansion_board/。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "i2c",
+            "id": "wire",
+            "source": {
+              "kind": "board-default"
+            },
+            "access": "read-write",
+            "sharing": "shared",
+            "description": "默认 I2C 总线 (Wire)，模块默认地址 0x24。"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "i2c-device",
+              "role": "i2c-device",
+              "resource": {
+                "kind": "fixed",
+                "valueType": "id",
+                "value": "i2c"
+              },
+              "exclusive": false,
+              "discriminator": {
+                "kind": "fixed",
+                "valueType": "integer",
+                "value": 36
+              }
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun 8 路 I2C GPIO 扩展板（E0-E7，地址 0x24），支持数字输入输出、ADC 采集、12位 PWM 与 E1/E2 舵机控制。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "includes": [
+          "EmakefunGpioBoardAdapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunGpioBoardAdapter.h",
+            "template": "#include <EmakefunGpioBoardAdapter.h>"
+          },
+          {
+            "section": "statement",
+            "description": "设置 12 位 PWM 占空比。",
+            "template": "EmakefunGpioBoardAdapter::setPwmDuty({{field:PIN}}, {{value:DUTY}});\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun 8 路 I2C GPIO 扩展板（E0-E7，地址 0x24），支持数字输入输出、ADC 采集、12位 PWM 与 E1/E2 舵机控制。",
+          "message": "Emakefun 8 路 I2C GPIO 扩展板（E0-E7，地址 0x24），支持数字输入输出、ADC 采集、12位 PWM 与 E1/E2 舵机控制。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun I2C GPIO 扩展板 随包示例",
+          "description": "设置 12 位 PWM 占空比。",
+          "expected_behavior": "演示 Emakefun I2C GPIO 扩展板 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_gpio_board_servo",
+      "display_name": "GPIO 扩展板 舵机引脚 %1 角度 %2 (0-180)",
+      "description": "驱动 E1 或 E2 舵机转到指定角度。",
+      "category": "Emakefun I2C GPIO 扩展板",
+      "kind": "statement",
+      "keywords": [
+        "Emakefun I2C GPIO 扩展板",
+        "emakefun_gpio_board",
+        "Emakefun",
+        "GPIO扩展板",
+        "I2C扩展",
+        "PWM",
+        "舵机",
+        "ADC"
+      ],
+      "semantics": {
+        "purpose": "驱动 E1 或 E2 舵机转到指定角度。",
+        "behavior": "驱动 E1 或 E2 舵机转到指定角度。",
+        "concepts": [
+          "Emakefun I2C GPIO 扩展板",
+          "Emakefun"
+        ],
+        "side_effects": [
+          "驱动 E1 或 E2 舵机转到指定角度。"
+        ]
+      },
+      "fields": [
+        {
+          "name": "PIN",
+          "kind": "dropdown",
+          "description": "舵机引脚",
+          "required": true,
+          "default": "1",
+          "options": [
+            {
+              "label": "E1",
+              "value": "1"
+            },
+            {
+              "label": "E2",
+              "value": "2"
+            }
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "name": "ANG",
+          "kind": "value",
+          "description": "角度 0-180",
+          "check": "Number",
+          "required": true,
+          "default": 90
+        }
+      ],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunGpioBoardAdapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunGpioBoardAdapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunGpioBoardAdapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "emakefun line tracker",
+          "version": "2.0.0",
+          "headers": [
+            "gpio_expansion_board.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/emakefun_gpio_expansion_board）内置于 libraries/emakefun_gpio_expansion_board/。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "i2c",
+            "id": "wire",
+            "source": {
+              "kind": "board-default"
+            },
+            "access": "read-write",
+            "sharing": "shared",
+            "description": "默认 I2C 总线 (Wire)，模块默认地址 0x24。"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "i2c-device",
+              "role": "i2c-device",
+              "resource": {
+                "kind": "fixed",
+                "valueType": "id",
+                "value": "i2c"
+              },
+              "exclusive": false,
+              "discriminator": {
+                "kind": "fixed",
+                "valueType": "integer",
+                "value": 36
+              }
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun 8 路 I2C GPIO 扩展板（E0-E7，地址 0x24），支持数字输入输出、ADC 采集、12位 PWM 与 E1/E2 舵机控制。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "includes": [
+          "EmakefunGpioBoardAdapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunGpioBoardAdapter.h",
+            "template": "#include <EmakefunGpioBoardAdapter.h>"
+          },
+          {
+            "section": "statement",
+            "description": "驱动 E1 或 E2 舵机转到指定角度。",
+            "template": "EmakefunGpioBoardAdapter::setServo({{field:PIN}}, {{value:ANG}});\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun 8 路 I2C GPIO 扩展板（E0-E7，地址 0x24），支持数字输入输出、ADC 采集、12位 PWM 与 E1/E2 舵机控制。",
+          "message": "Emakefun 8 路 I2C GPIO 扩展板（E0-E7，地址 0x24），支持数字输入输出、ADC 采集、12位 PWM 与 E1/E2 舵机控制。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun I2C GPIO 扩展板 随包示例",
+          "description": "驱动 E1 或 E2 舵机转到指定角度。",
+          "expected_behavior": "演示 Emakefun I2C GPIO 扩展板 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    }
+  ]
+}

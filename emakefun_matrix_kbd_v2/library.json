@@ -1,0 +1,21 @@
+{
+  "id": "emakefun_matrix_kbd_v2",
+  "name": "Emakefun 触摸矩阵键盘 V2",
+  "version": "1.0.0",
+  "description": "Emakefun 4×4 I2C 触摸矩阵键盘 V2.0（默认地址 0x50），直接读取 0-9/A-D/*/# 触摸字符。",
+  "sentence": "Emakefun 4×4 I2C 触摸矩阵键盘 V2.0（默认地址 0x50），直接读取 0-9/A-D/*/# 触摸字符。",
+  "author": "CKYAN",
+  "vendor": "Emakefun",
+  "vendor_logo": "assets/emakefun.png",
+  "icon": "assets/icon.png",
+  "category": "Sensors",
+  "website": "https://docs.emakefun.com/sensors/base_modules/matrix_keyboard_module_v2.0/",
+  "architectures": [
+    "avr",
+    "esp32"
+  ],
+  "license": "Apache-2.0",
+  "includes": [
+    "EmakefunMatrixKbdV2Adapter.h"
+  ]
+}

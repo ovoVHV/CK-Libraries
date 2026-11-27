@@ -1,0 +1,21 @@
+{
+  "id": "emakefun_pm25",
+  "name": "Emakefun PM2.5 粉尘传感器",
+  "version": "1.0.0",
+  "description": "Emakefun 光学 PM2.5 灰尘浓度传感器，控制红外 LED 与模拟采样，直接输出 µg/m³ 浓度。",
+  "sentence": "Emakefun 光学 PM2.5 灰尘浓度传感器，控制红外 LED 与模拟采样，直接输出 µg/m³ 浓度。",
+  "author": "CKYAN",
+  "vendor": "Emakefun",
+  "vendor_logo": "assets/emakefun.png",
+  "icon": "assets/icon.png",
+  "category": "Sensors",
+  "website": "https://github.com/emakefun-arduino-library/em_pm25_sensor",
+  "architectures": [
+    "avr",
+    "esp32"
+  ],
+  "license": "Apache-2.0",
+  "includes": [
+    "EmakefunPm25Adapter.h"
+  ]
+}

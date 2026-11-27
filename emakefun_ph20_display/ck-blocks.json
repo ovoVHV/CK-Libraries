@@ -1,0 +1,664 @@
+{
+  "schema_version": 2,
+  "id": "emakefun_ph20_display",
+  "display_name": "Emakefun PH2.0 灯光与交通灯模块",
+  "description": "覆盖 Emakefun PH2.0 LED 模块、交通灯三色模块与 RGB 三色灯 PWM 调色控制。",
+  "defaultLocale": "zh-CN",
+  "keywords": [
+    "Emakefun PH2.0 灯光与交通灯模块",
+    "emakefun_ph20_display",
+    "Emakefun",
+    "PH2.0",
+    "LED",
+    "交通灯",
+    "RGB三色灯"
+  ],
+  "license": {
+    "spdx_id": "Apache-2.0",
+    "file": "LICENSE.txt"
+  },
+  "compatibility": {
+    "architectures": [
+      "avr",
+      "esp32"
+    ]
+  },
+  "dependencies": [
+    {
+      "kind": "arduino-library",
+      "id": "EmakefunPh20Display",
+      "version": "1.0.0",
+      "headers": [
+        "EmakefunPh20Display.h"
+      ],
+      "license": "Apache-2.0",
+      "reason": "随包内置于 libraries/EmakefunPh20Display/，提供安全封装与跨板卡兼容接口。"
+    }
+  ],
+  "entrypoints": {
+    "blocks": "blocks/blocks.json",
+    "generator": "blocks/ck-generator.json",
+    "toolbox": "blocks/toolbox.json"
+  },
+  "blocks": [
+    {
+      "type": "emakefun_ph20_display_led",
+      "display_name": "PH2.0 LED 灯 引脚 %1 设为 %2",
+      "description": "点亮或熄灭 Emakefun LED 模块。",
+      "category": "Emakefun PH2.0 灯光与交通灯模块",
+      "kind": "statement",
+      "keywords": [
+        "Emakefun PH2.0 灯光与交通灯模块",
+        "emakefun_ph20_display",
+        "Emakefun",
+        "PH2.0",
+        "LED",
+        "交通灯",
+        "RGB三色灯"
+      ],
+      "semantics": {
+        "purpose": "点亮或熄灭 Emakefun LED 模块。",
+        "behavior": "点亮或熄灭 Emakefun LED 模块。",
+        "concepts": [
+          "Emakefun PH2.0 灯光与交通灯模块",
+          "Emakefun"
+        ],
+        "side_effects": [
+          "点亮或熄灭 Emakefun LED 模块。"
+        ]
+      },
+      "fields": [
+        {
+          "name": "ON",
+          "kind": "dropdown",
+          "description": "状态",
+          "required": true,
+          "default": "true",
+          "options": [
+            {
+              "label": "点亮",
+              "value": "true"
+            },
+            {
+              "label": "熄灭",
+              "value": "false"
+            }
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "name": "PIN",
+          "kind": "value",
+          "description": "LED 引脚",
+          "check": "Number",
+          "required": true,
+          "default": 13
+        }
+      ],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunPh20Display",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunPh20Display.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunPh20Display/，提供安全封装与跨板卡兼容接口。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "gpio",
+            "id": "pin",
+            "source": {
+              "kind": "input",
+              "name": "PIN"
+            },
+            "access": "read-write",
+            "sharing": "exclusive",
+            "capabilities": [
+              "digital-output"
+            ],
+            "description": "LED 引脚"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "gpio-pin",
+              "role": "digital-output",
+              "resource": {
+                "kind": "input",
+                "name": "PIN",
+                "valueType": "id"
+              },
+              "exclusive": true
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "覆盖 Emakefun PH2.0 LED 模块、交通灯三色模块与 RGB 三色灯 PWM 调色控制。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "includes": [
+          "EmakefunPh20Display.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunPh20Display.h",
+            "template": "#include <EmakefunPh20Display.h>"
+          },
+          {
+            "section": "statement",
+            "description": "点亮或熄灭 Emakefun LED 模块。",
+            "template": "EmakefunPh20Display::setLed({{value:PIN}}, {{field:ON}});\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "覆盖 Emakefun PH2.0 LED 模块、交通灯三色模块与 RGB 三色灯 PWM 调色控制。",
+          "message": "覆盖 Emakefun PH2.0 LED 模块、交通灯三色模块与 RGB 三色灯 PWM 调色控制。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun PH2.0 灯光与交通灯模块 随包示例",
+          "description": "点亮或熄灭 Emakefun LED 模块。",
+          "expected_behavior": "演示 Emakefun PH2.0 灯光与交通灯模块 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_ph20_display_traffic",
+      "display_name": "PH2.0 交通灯 红 %1 黄 %2 绿 %3 亮 %4",
+      "description": "切换交通灯模块红/黄/绿灯或全灭。",
+      "category": "Emakefun PH2.0 灯光与交通灯模块",
+      "kind": "statement",
+      "keywords": [
+        "Emakefun PH2.0 灯光与交通灯模块",
+        "emakefun_ph20_display",
+        "Emakefun",
+        "PH2.0",
+        "LED",
+        "交通灯",
+        "RGB三色灯"
+      ],
+      "semantics": {
+        "purpose": "切换交通灯模块红/黄/绿灯或全灭。",
+        "behavior": "切换交通灯模块红/黄/绿灯或全灭。",
+        "concepts": [
+          "Emakefun PH2.0 灯光与交通灯模块",
+          "Emakefun"
+        ],
+        "side_effects": [
+          "切换交通灯模块红/黄/绿灯或全灭。"
+        ]
+      },
+      "fields": [
+        {
+          "name": "STATE",
+          "kind": "dropdown",
+          "description": "显示灯色",
+          "required": true,
+          "default": "1",
+          "options": [
+            {
+              "label": "红灯",
+              "value": "1"
+            },
+            {
+              "label": "黄灯",
+              "value": "2"
+            },
+            {
+              "label": "绿灯",
+              "value": "3"
+            },
+            {
+              "label": "全灭",
+              "value": "0"
+            }
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "name": "R_PIN",
+          "kind": "value",
+          "description": "红灯引脚",
+          "check": "Number",
+          "required": true,
+          "default": 4
+        },
+        {
+          "name": "Y_PIN",
+          "kind": "value",
+          "description": "黄灯引脚",
+          "check": "Number",
+          "required": true,
+          "default": 5
+        },
+        {
+          "name": "G_PIN",
+          "kind": "value",
+          "description": "绿灯引脚",
+          "check": "Number",
+          "required": true,
+          "default": 6
+        }
+      ],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunPh20Display",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunPh20Display.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunPh20Display/，提供安全封装与跨板卡兼容接口。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "gpio",
+            "id": "r_pin",
+            "source": {
+              "kind": "input",
+              "name": "R_PIN"
+            },
+            "access": "read-write",
+            "sharing": "exclusive",
+            "capabilities": [
+              "digital-output"
+            ],
+            "description": "红灯引脚"
+          },
+          {
+            "kind": "gpio",
+            "id": "y_pin",
+            "source": {
+              "kind": "input",
+              "name": "Y_PIN"
+            },
+            "access": "read-write",
+            "sharing": "exclusive",
+            "capabilities": [
+              "digital-output"
+            ],
+            "description": "黄灯引脚"
+          },
+          {
+            "kind": "gpio",
+            "id": "g_pin",
+            "source": {
+              "kind": "input",
+              "name": "G_PIN"
+            },
+            "access": "read-write",
+            "sharing": "exclusive",
+            "capabilities": [
+              "digital-output"
+            ],
+            "description": "绿灯引脚"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "gpio-r_pin",
+              "role": "digital-output",
+              "resource": {
+                "kind": "input",
+                "name": "R_PIN",
+                "valueType": "id"
+              },
+              "exclusive": true
+            },
+            {
+              "id": "gpio-y_pin",
+              "role": "digital-output",
+              "resource": {
+                "kind": "input",
+                "name": "Y_PIN",
+                "valueType": "id"
+              },
+              "exclusive": true
+            },
+            {
+              "id": "gpio-g_pin",
+              "role": "digital-output",
+              "resource": {
+                "kind": "input",
+                "name": "G_PIN",
+                "valueType": "id"
+              },
+              "exclusive": true
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "覆盖 Emakefun PH2.0 LED 模块、交通灯三色模块与 RGB 三色灯 PWM 调色控制。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "includes": [
+          "EmakefunPh20Display.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunPh20Display.h",
+            "template": "#include <EmakefunPh20Display.h>"
+          },
+          {
+            "section": "statement",
+            "description": "切换交通灯模块红/黄/绿灯或全灭。",
+            "template": "EmakefunPh20Display::setTraffic({{value:R_PIN}}, {{value:Y_PIN}}, {{value:G_PIN}}, {{field:STATE}});\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "覆盖 Emakefun PH2.0 LED 模块、交通灯三色模块与 RGB 三色灯 PWM 调色控制。",
+          "message": "覆盖 Emakefun PH2.0 LED 模块、交通灯三色模块与 RGB 三色灯 PWM 调色控制。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun PH2.0 灯光与交通灯模块 随包示例",
+          "description": "切换交通灯模块红/黄/绿灯或全灭。",
+          "expected_behavior": "演示 Emakefun PH2.0 灯光与交通灯模块 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_ph20_display_rgb",
+      "display_name": "PH2.0 RGB三色灯 引脚 R %1 G %2 B %3 颜色 (%4, %5, %6)",
+      "description": "使用 PWM 设置 RGB 三色灯颜色（0-255）。",
+      "category": "Emakefun PH2.0 灯光与交通灯模块",
+      "kind": "statement",
+      "keywords": [
+        "Emakefun PH2.0 灯光与交通灯模块",
+        "emakefun_ph20_display",
+        "Emakefun",
+        "PH2.0",
+        "LED",
+        "交通灯",
+        "RGB三色灯"
+      ],
+      "semantics": {
+        "purpose": "使用 PWM 设置 RGB 三色灯颜色（0-255）。",
+        "behavior": "使用 PWM 设置 RGB 三色灯颜色（0-255）。",
+        "concepts": [
+          "Emakefun PH2.0 灯光与交通灯模块",
+          "Emakefun"
+        ],
+        "side_effects": [
+          "使用 PWM 设置 RGB 三色灯颜色（0-255）。"
+        ]
+      },
+      "fields": [],
+      "inputs": [
+        {
+          "name": "R_PIN",
+          "kind": "value",
+          "description": "R 引脚",
+          "check": "Number",
+          "required": true,
+          "default": 9
+        },
+        {
+          "name": "G_PIN",
+          "kind": "value",
+          "description": "G 引脚",
+          "check": "Number",
+          "required": true,
+          "default": 10
+        },
+        {
+          "name": "B_PIN",
+          "kind": "value",
+          "description": "B 引脚",
+          "check": "Number",
+          "required": true,
+          "default": 11
+        },
+        {
+          "name": "R",
+          "kind": "value",
+          "description": "红色 0-255",
+          "check": "Number",
+          "required": true,
+          "default": 255
+        },
+        {
+          "name": "G",
+          "kind": "value",
+          "description": "绿色 0-255",
+          "check": "Number",
+          "required": true,
+          "default": 100
+        },
+        {
+          "name": "B",
+          "kind": "value",
+          "description": "蓝色 0-255",
+          "check": "Number",
+          "required": true,
+          "default": 0
+        }
+      ],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunPh20Display",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunPh20Display.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunPh20Display/，提供安全封装与跨板卡兼容接口。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "gpio",
+            "id": "r_pin",
+            "source": {
+              "kind": "input",
+              "name": "R_PIN"
+            },
+            "access": "read-write",
+            "sharing": "exclusive",
+            "capabilities": [
+              "digital-output"
+            ],
+            "description": "R 引脚"
+          },
+          {
+            "kind": "gpio",
+            "id": "g_pin",
+            "source": {
+              "kind": "input",
+              "name": "G_PIN"
+            },
+            "access": "read-write",
+            "sharing": "exclusive",
+            "capabilities": [
+              "digital-output"
+            ],
+            "description": "G 引脚"
+          },
+          {
+            "kind": "gpio",
+            "id": "b_pin",
+            "source": {
+              "kind": "input",
+              "name": "B_PIN"
+            },
+            "access": "read-write",
+            "sharing": "exclusive",
+            "capabilities": [
+              "digital-output"
+            ],
+            "description": "B 引脚"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "gpio-r_pin",
+              "role": "digital-output",
+              "resource": {
+                "kind": "input",
+                "name": "R_PIN",
+                "valueType": "id"
+              },
+              "exclusive": true
+            },
+            {
+              "id": "gpio-g_pin",
+              "role": "digital-output",
+              "resource": {
+                "kind": "input",
+                "name": "G_PIN",
+                "valueType": "id"
+              },
+              "exclusive": true
+            },
+            {
+              "id": "gpio-b_pin",
+              "role": "digital-output",
+              "resource": {
+                "kind": "input",
+                "name": "B_PIN",
+                "valueType": "id"
+              },
+              "exclusive": true
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "覆盖 Emakefun PH2.0 LED 模块、交通灯三色模块与 RGB 三色灯 PWM 调色控制。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "includes": [
+          "EmakefunPh20Display.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunPh20Display.h",
+            "template": "#include <EmakefunPh20Display.h>"
+          },
+          {
+            "section": "statement",
+            "description": "使用 PWM 设置 RGB 三色灯颜色（0-255）。",
+            "template": "EmakefunPh20Display::setRgb({{value:R_PIN}}, {{value:G_PIN}}, {{value:B_PIN}}, {{value:R}}, {{value:G}}, {{value:B}});\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "覆盖 Emakefun PH2.0 LED 模块、交通灯三色模块与 RGB 三色灯 PWM 调色控制。",
+          "message": "覆盖 Emakefun PH2.0 LED 模块、交通灯三色模块与 RGB 三色灯 PWM 调色控制。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun PH2.0 灯光与交通灯模块 随包示例",
+          "description": "使用 PWM 设置 RGB 三色灯颜色（0-255）。",
+          "expected_behavior": "演示 Emakefun PH2.0 灯光与交通灯模块 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    }
+  ]
+}

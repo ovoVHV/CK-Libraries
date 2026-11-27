@@ -1,0 +1,21 @@
+{
+  "id": "emakefun_color_v1",
+  "name": "Emakefun 颜色识别传感器 V1",
+  "version": "1.0.0",
+  "description": "Emakefun I2C 颜色识别传感器 V1，直接读取 0-255 范围的 R/G/B 颜色分量。",
+  "sentence": "Emakefun I2C 颜色识别传感器 V1，直接读取 0-255 范围的 R/G/B 颜色分量。",
+  "author": "CKYAN",
+  "vendor": "Emakefun",
+  "vendor_logo": "assets/emakefun.png",
+  "icon": "assets/icon.png",
+  "category": "Sensors",
+  "website": "https://docs.emakefun.com/sensors/smart_modules/color_recognition/",
+  "architectures": [
+    "avr",
+    "esp32"
+  ],
+  "license": "Apache-2.0",
+  "includes": [
+    "EmakefunColorV1Adapter.h"
+  ]
+}

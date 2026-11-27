@@ -1,0 +1,46 @@
+{
+  "schema": "ck-generator",
+  "version": 1,
+  "rules": [
+    {
+      "type": "emakefun_ph20_actuators_switch",
+      "kind": "statement",
+      "includes": {
+        "EmakefunPh20Actuators.h": "#include <EmakefunPh20Actuators.h>"
+      },
+      "template": "EmakefunPh20Actuators::setSwitch({{value:PIN}}, {{field:ON}});\n"
+    },
+    {
+      "type": "emakefun_ph20_actuators_tone",
+      "kind": "statement",
+      "includes": {
+        "EmakefunPh20Actuators.h": "#include <EmakefunPh20Actuators.h>"
+      },
+      "template": "EmakefunPh20Actuators::buzzerTone({{value:PIN}}, {{value:FREQ}}, {{value:DUR}});\n"
+    },
+    {
+      "type": "emakefun_ph20_actuators_notone",
+      "kind": "statement",
+      "includes": {
+        "EmakefunPh20Actuators.h": "#include <EmakefunPh20Actuators.h>"
+      },
+      "template": "EmakefunPh20Actuators::buzzerStop({{value:PIN}});\n"
+    },
+    {
+      "type": "emakefun_ph20_actuators_fan",
+      "kind": "statement",
+      "includes": {
+        "EmakefunPh20Actuators.h": "#include <EmakefunPh20Actuators.h>"
+      },
+      "template": "EmakefunPh20Actuators::setPwm({{value:PIN}}, {{value:SPD}});\n"
+    },
+    {
+      "type": "emakefun_ph20_actuators_dual_motor",
+      "kind": "statement",
+      "includes": {
+        "EmakefunPh20Actuators.h": "#include <EmakefunPh20Actuators.h>"
+      },
+      "template": "EmakefunPh20Actuators::driveDualPinMotor({{value:IA}}, {{value:IB}}, {{value:SPD}});\n"
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+[
+  {
+    "type": "emakefun_color_v1_begin",
+    "message0": "初始化颜色识别传感器 V1 I2C地址 %1",
+    "args0": [
+      {
+        "type": "input_value",
+        "name": "ADDR",
+        "check": "Number"
+      }
+    ],
+    "inputsInline": true,
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": "#0369A1",
+    "tooltip": "初始化 Emakefun 颜色识别传感器 V1（默认地址 0x43 = 67）。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_color_v1_r",
+    "message0": "颜色传感器 V1 红色 R (0-255)",
+    "output": "Number",
+    "colour": "#0369A1",
+    "tooltip": "读取红色分量 0-255。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_color_v1_g",
+    "message0": "颜色传感器 V1 绿色 G (0-255)",
+    "output": "Number",
+    "colour": "#0369A1",
+    "tooltip": "读取绿色分量 0-255。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_color_v1_b",
+    "message0": "颜色传感器 V1 蓝色 B (0-255)",
+    "output": "Number",
+    "colour": "#0369A1",
+    "tooltip": "读取蓝色分量 0-255。",
+    "helpUrl": ""
+  }
+]

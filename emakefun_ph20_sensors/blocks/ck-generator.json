@@ -1,0 +1,30 @@
+{
+  "schema": "ck-generator",
+  "version": 1,
+  "rules": [
+    {
+      "type": "emakefun_ph20_sensors_analog_sensor",
+      "kind": "expression",
+      "includes": {
+        "EmakefunPh20Sensors.h": "#include <EmakefunPh20Sensors.h>"
+      },
+      "template": "EmakefunPh20Sensors::readAnalog({{value:PIN}})"
+    },
+    {
+      "type": "emakefun_ph20_sensors_digital_high",
+      "kind": "expression",
+      "includes": {
+        "EmakefunPh20Sensors.h": "#include <EmakefunPh20Sensors.h>"
+      },
+      "template": "EmakefunPh20Sensors::readDigital({{value:PIN}}, true)"
+    },
+    {
+      "type": "emakefun_ph20_sensors_digital_low",
+      "kind": "expression",
+      "includes": {
+        "EmakefunPh20Sensors.h": "#include <EmakefunPh20Sensors.h>"
+      },
+      "template": "EmakefunPh20Sensors::readDigital({{value:PIN}}, false)"
+    }
+  ]
+}

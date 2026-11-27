@@ -1,0 +1,716 @@
+{
+  "schema_version": 2,
+  "id": "emakefun_dm11",
+  "display_name": "Emakefun DM11 双路电机驱动",
+  "description": "Emakefun DM11 I2C 四路 PWM / 双路直流电机驱动模块（默认地址 0x15，占空比 0-4095）。",
+  "defaultLocale": "zh-CN",
+  "keywords": [
+    "Emakefun DM11 双路电机驱动",
+    "emakefun_dm11",
+    "Emakefun",
+    "电机",
+    "DM11",
+    "双路电机",
+    "PWM",
+    "I2C"
+  ],
+  "license": {
+    "spdx_id": "Apache-2.0",
+    "file": "LICENSE.txt"
+  },
+  "compatibility": {
+    "architectures": [
+      "avr",
+      "esp32"
+    ]
+  },
+  "dependencies": [
+    {
+      "kind": "arduino-library",
+      "id": "EmakefunDm11Adapter",
+      "version": "1.0.0",
+      "headers": [
+        "EmakefunDm11Adapter.h"
+      ],
+      "license": "Apache-2.0",
+      "reason": "随包内置于 libraries/EmakefunDm11Adapter/，提供安全封装与跨板卡兼容接口。"
+    },
+    {
+      "kind": "arduino-library",
+      "id": "Emakefun DM11",
+      "version": "1.0.4",
+      "headers": [
+        "dm11.h",
+        "dm11_lib.h"
+      ],
+      "license": "MIT",
+      "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/em_dm11）内置于 libraries/em_dm11/。"
+    }
+  ],
+  "entrypoints": {
+    "blocks": "blocks/blocks.json",
+    "generator": "blocks/ck-generator.json",
+    "toolbox": "blocks/toolbox.json"
+  },
+  "blocks": [
+    {
+      "type": "emakefun_dm11_begin",
+      "display_name": "初始化 DM11 电机驱动 频率 %1 Hz I2C地址 %2",
+      "description": "初始化 Emakefun DM11 双路电机驱动（默认 0x15 = 21）。",
+      "category": "Emakefun DM11 双路电机驱动",
+      "kind": "statement",
+      "keywords": [
+        "Emakefun DM11 双路电机驱动",
+        "emakefun_dm11",
+        "Emakefun",
+        "电机",
+        "DM11",
+        "双路电机",
+        "PWM",
+        "I2C"
+      ],
+      "semantics": {
+        "purpose": "初始化 Emakefun DM11 双路电机驱动（默认 0x15 = 21）。",
+        "behavior": "初始化 Emakefun DM11 双路电机驱动（默认 0x15 = 21）。",
+        "concepts": [
+          "Emakefun DM11 双路电机驱动",
+          "Emakefun"
+        ],
+        "side_effects": [
+          "初始化 Emakefun DM11 双路电机驱动（默认 0x15 = 21）。"
+        ]
+      },
+      "fields": [],
+      "inputs": [
+        {
+          "name": "FREQ",
+          "kind": "value",
+          "description": "PWM 频率 1-10000 Hz",
+          "check": "Number",
+          "required": true,
+          "default": 1000
+        },
+        {
+          "name": "ADDR",
+          "kind": "value",
+          "description": "I2C 地址（默认 21）",
+          "check": "Number",
+          "required": true,
+          "default": 21
+        }
+      ],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunDm11Adapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunDm11Adapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunDm11Adapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "Emakefun DM11",
+          "version": "1.0.4",
+          "headers": [
+            "dm11.h",
+            "dm11_lib.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/em_dm11）内置于 libraries/em_dm11/。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "i2c",
+            "id": "wire",
+            "source": {
+              "kind": "board-default"
+            },
+            "access": "read-write",
+            "sharing": "shared",
+            "description": "默认 I2C 总线 (Wire)，模块默认地址 0x15。"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "i2c-device",
+              "role": "i2c-device",
+              "resource": {
+                "kind": "fixed",
+                "valueType": "id",
+                "value": "i2c"
+              },
+              "exclusive": false,
+              "discriminator": {
+                "kind": "fixed",
+                "valueType": "integer",
+                "value": 21
+              }
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun DM11 I2C 四路 PWM / 双路直流电机驱动模块（默认地址 0x15，占空比 0-4095）。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "includes": [
+          "EmakefunDm11Adapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunDm11Adapter.h",
+            "template": "#include <EmakefunDm11Adapter.h>"
+          },
+          {
+            "section": "statement",
+            "description": "初始化 Emakefun DM11 双路电机驱动（默认 0x15 = 21）。",
+            "template": "EmakefunDm11Adapter::begin({{value:FREQ}}, {{value:ADDR}});\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun DM11 I2C 四路 PWM / 双路直流电机驱动模块（默认地址 0x15，占空比 0-4095）。",
+          "message": "Emakefun DM11 I2C 四路 PWM / 双路直流电机驱动模块（默认地址 0x15，占空比 0-4095）。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun DM11 双路电机驱动 随包示例",
+          "description": "初始化 Emakefun DM11 双路电机驱动（默认 0x15 = 21）。",
+          "expected_behavior": "演示 Emakefun DM11 双路电机驱动 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_dm11_motor",
+      "display_name": "DM11 驱动电机 %1 速度 %2 (-4095~4095)",
+      "description": "驱动 M1 或 M2 直流电机正反转与调速。",
+      "category": "Emakefun DM11 双路电机驱动",
+      "kind": "statement",
+      "keywords": [
+        "Emakefun DM11 双路电机驱动",
+        "emakefun_dm11",
+        "Emakefun",
+        "电机",
+        "DM11",
+        "双路电机",
+        "PWM",
+        "I2C"
+      ],
+      "semantics": {
+        "purpose": "驱动 M1 或 M2 直流电机正反转与调速。",
+        "behavior": "驱动 M1 或 M2 直流电机正反转与调速。",
+        "concepts": [
+          "Emakefun DM11 双路电机驱动",
+          "Emakefun"
+        ],
+        "side_effects": [
+          "驱动 M1 或 M2 直流电机正反转与调速。"
+        ]
+      },
+      "fields": [
+        {
+          "name": "M",
+          "kind": "dropdown",
+          "description": "电机编号",
+          "required": true,
+          "default": "0",
+          "options": [
+            {
+              "label": "电机 M1",
+              "value": "0"
+            },
+            {
+              "label": "电机 M2",
+              "value": "1"
+            }
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "name": "SPEED",
+          "kind": "value",
+          "description": "速度 -4095 ~ 4095",
+          "check": "Number",
+          "required": true,
+          "default": 2000
+        }
+      ],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunDm11Adapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunDm11Adapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunDm11Adapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "Emakefun DM11",
+          "version": "1.0.4",
+          "headers": [
+            "dm11.h",
+            "dm11_lib.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/em_dm11）内置于 libraries/em_dm11/。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "i2c",
+            "id": "wire",
+            "source": {
+              "kind": "board-default"
+            },
+            "access": "read-write",
+            "sharing": "shared",
+            "description": "默认 I2C 总线 (Wire)，模块默认地址 0x15。"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "i2c-device",
+              "role": "i2c-device",
+              "resource": {
+                "kind": "fixed",
+                "valueType": "id",
+                "value": "i2c"
+              },
+              "exclusive": false,
+              "discriminator": {
+                "kind": "fixed",
+                "valueType": "integer",
+                "value": 21
+              }
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun DM11 I2C 四路 PWM / 双路直流电机驱动模块（默认地址 0x15，占空比 0-4095）。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "includes": [
+          "EmakefunDm11Adapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunDm11Adapter.h",
+            "template": "#include <EmakefunDm11Adapter.h>"
+          },
+          {
+            "section": "statement",
+            "description": "驱动 M1 或 M2 直流电机正反转与调速。",
+            "template": "EmakefunDm11Adapter::setMotor({{field:M}}, {{value:SPEED}});\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun DM11 I2C 四路 PWM / 双路直流电机驱动模块（默认地址 0x15，占空比 0-4095）。",
+          "message": "Emakefun DM11 I2C 四路 PWM / 双路直流电机驱动模块（默认地址 0x15，占空比 0-4095）。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun DM11 双路电机驱动 随包示例",
+          "description": "驱动 M1 或 M2 直流电机正反转与调速。",
+          "expected_behavior": "演示 Emakefun DM11 双路电机驱动 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_dm11_pwm",
+      "display_name": "DM11 设 PWM 通道 %1 占空比 %2 (0-4095)",
+      "description": "直接设置单个 PWM 输出通道占空比。",
+      "category": "Emakefun DM11 双路电机驱动",
+      "kind": "statement",
+      "keywords": [
+        "Emakefun DM11 双路电机驱动",
+        "emakefun_dm11",
+        "Emakefun",
+        "电机",
+        "DM11",
+        "双路电机",
+        "PWM",
+        "I2C"
+      ],
+      "semantics": {
+        "purpose": "直接设置单个 PWM 输出通道占空比。",
+        "behavior": "直接设置单个 PWM 输出通道占空比。",
+        "concepts": [
+          "Emakefun DM11 双路电机驱动",
+          "Emakefun"
+        ],
+        "side_effects": [
+          "直接设置单个 PWM 输出通道占空比。"
+        ]
+      },
+      "fields": [
+        {
+          "name": "CH",
+          "kind": "dropdown",
+          "description": "PWM 通道",
+          "required": true,
+          "default": "0",
+          "options": [
+            {
+              "label": "PWM0",
+              "value": "0"
+            },
+            {
+              "label": "PWM1",
+              "value": "1"
+            },
+            {
+              "label": "PWM2",
+              "value": "2"
+            },
+            {
+              "label": "PWM3",
+              "value": "3"
+            }
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "name": "DUTY",
+          "kind": "value",
+          "description": "占空比 0-4095",
+          "check": "Number",
+          "required": true,
+          "default": 2048
+        }
+      ],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunDm11Adapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunDm11Adapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunDm11Adapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "Emakefun DM11",
+          "version": "1.0.4",
+          "headers": [
+            "dm11.h",
+            "dm11_lib.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/em_dm11）内置于 libraries/em_dm11/。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "i2c",
+            "id": "wire",
+            "source": {
+              "kind": "board-default"
+            },
+            "access": "read-write",
+            "sharing": "shared",
+            "description": "默认 I2C 总线 (Wire)，模块默认地址 0x15。"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "i2c-device",
+              "role": "i2c-device",
+              "resource": {
+                "kind": "fixed",
+                "valueType": "id",
+                "value": "i2c"
+              },
+              "exclusive": false,
+              "discriminator": {
+                "kind": "fixed",
+                "valueType": "integer",
+                "value": 21
+              }
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun DM11 I2C 四路 PWM / 双路直流电机驱动模块（默认地址 0x15，占空比 0-4095）。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "includes": [
+          "EmakefunDm11Adapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunDm11Adapter.h",
+            "template": "#include <EmakefunDm11Adapter.h>"
+          },
+          {
+            "section": "statement",
+            "description": "直接设置单个 PWM 输出通道占空比。",
+            "template": "EmakefunDm11Adapter::setPwm({{field:CH}}, {{value:DUTY}});\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun DM11 I2C 四路 PWM / 双路直流电机驱动模块（默认地址 0x15，占空比 0-4095）。",
+          "message": "Emakefun DM11 I2C 四路 PWM / 双路直流电机驱动模块（默认地址 0x15，占空比 0-4095）。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun DM11 双路电机驱动 随包示例",
+          "description": "直接设置单个 PWM 输出通道占空比。",
+          "expected_behavior": "演示 Emakefun DM11 双路电机驱动 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_dm11_stop",
+      "display_name": "DM11 全部停止",
+      "description": "关闭所有 PWM 输出停止电机。",
+      "category": "Emakefun DM11 双路电机驱动",
+      "kind": "statement",
+      "keywords": [
+        "Emakefun DM11 双路电机驱动",
+        "emakefun_dm11",
+        "Emakefun",
+        "电机",
+        "DM11",
+        "双路电机",
+        "PWM",
+        "I2C"
+      ],
+      "semantics": {
+        "purpose": "关闭所有 PWM 输出停止电机。",
+        "behavior": "关闭所有 PWM 输出停止电机。",
+        "concepts": [
+          "Emakefun DM11 双路电机驱动",
+          "Emakefun"
+        ],
+        "side_effects": [
+          "关闭所有 PWM 输出停止电机。"
+        ]
+      },
+      "fields": [],
+      "inputs": [],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunDm11Adapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunDm11Adapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunDm11Adapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "Emakefun DM11",
+          "version": "1.0.4",
+          "headers": [
+            "dm11.h",
+            "dm11_lib.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/em_dm11）内置于 libraries/em_dm11/。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "i2c",
+            "id": "wire",
+            "source": {
+              "kind": "board-default"
+            },
+            "access": "read-write",
+            "sharing": "shared",
+            "description": "默认 I2C 总线 (Wire)，模块默认地址 0x15。"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "i2c-device",
+              "role": "i2c-device",
+              "resource": {
+                "kind": "fixed",
+                "valueType": "id",
+                "value": "i2c"
+              },
+              "exclusive": false,
+              "discriminator": {
+                "kind": "fixed",
+                "valueType": "integer",
+                "value": 21
+              }
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun DM11 I2C 四路 PWM / 双路直流电机驱动模块（默认地址 0x15，占空比 0-4095）。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "includes": [
+          "EmakefunDm11Adapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunDm11Adapter.h",
+            "template": "#include <EmakefunDm11Adapter.h>"
+          },
+          {
+            "section": "statement",
+            "description": "关闭所有 PWM 输出停止电机。",
+            "template": "EmakefunDm11Adapter::stopAll();\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun DM11 I2C 四路 PWM / 双路直流电机驱动模块（默认地址 0x15，占空比 0-4095）。",
+          "message": "Emakefun DM11 I2C 四路 PWM / 双路直流电机驱动模块（默认地址 0x15，占空比 0-4095）。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun DM11 双路电机驱动 随包示例",
+          "description": "关闭所有 PWM 输出停止电机。",
+          "expected_behavior": "演示 Emakefun DM11 双路电机驱动 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    }
+  ]
+}

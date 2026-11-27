@@ -1,0 +1,54 @@
+{
+  "schema": "ck-generator",
+  "version": 1,
+  "rules": [
+    {
+      "type": "emakefun_tts20_begin",
+      "kind": "statement",
+      "includes": {
+        "EmakefunTts20Adapter.h": "#include <EmakefunTts20Adapter.h>"
+      },
+      "template": "EmakefunTts20Adapter::begin({{value:ADDR}});\n"
+    },
+    {
+      "type": "emakefun_tts20_play",
+      "kind": "statement",
+      "includes": {
+        "EmakefunTts20Adapter.h": "#include <EmakefunTts20Adapter.h>"
+      },
+      "template": "EmakefunTts20Adapter::play(String({{value:TEXT}}));\n"
+    },
+    {
+      "type": "emakefun_tts20_busy",
+      "kind": "expression",
+      "includes": {
+        "EmakefunTts20Adapter.h": "#include <EmakefunTts20Adapter.h>"
+      },
+      "template": "EmakefunTts20Adapter::isBusy()"
+    },
+    {
+      "type": "emakefun_tts20_pause",
+      "kind": "statement",
+      "includes": {
+        "EmakefunTts20Adapter.h": "#include <EmakefunTts20Adapter.h>"
+      },
+      "template": "EmakefunTts20Adapter::pause();\n"
+    },
+    {
+      "type": "emakefun_tts20_resume",
+      "kind": "statement",
+      "includes": {
+        "EmakefunTts20Adapter.h": "#include <EmakefunTts20Adapter.h>"
+      },
+      "template": "EmakefunTts20Adapter::resume();\n"
+    },
+    {
+      "type": "emakefun_tts20_stop",
+      "kind": "statement",
+      "includes": {
+        "EmakefunTts20Adapter.h": "#include <EmakefunTts20Adapter.h>"
+      },
+      "template": "EmakefunTts20Adapter::stop();\n"
+    }
+  ]
+}

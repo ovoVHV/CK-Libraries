@@ -1,0 +1,30 @@
+{
+  "schema": "ck-generator",
+  "version": 1,
+  "rules": [
+    {
+      "type": "emakefun_esp32_servo_begin",
+      "kind": "statement",
+      "includes": {
+        "EmakefunEsp32ServoAdapter.h": "#include <EmakefunEsp32ServoAdapter.h>"
+      },
+      "template": "EmakefunEsp32ServoAdapter::begin({{field:CH}}, {{value:PIN}});\n"
+    },
+    {
+      "type": "emakefun_esp32_servo_write",
+      "kind": "statement",
+      "includes": {
+        "EmakefunEsp32ServoAdapter.h": "#include <EmakefunEsp32ServoAdapter.h>"
+      },
+      "template": "EmakefunEsp32ServoAdapter::writeAngle({{field:CH}}, {{value:ANG}});\n"
+    },
+    {
+      "type": "emakefun_esp32_servo_write_us",
+      "kind": "statement",
+      "includes": {
+        "EmakefunEsp32ServoAdapter.h": "#include <EmakefunEsp32ServoAdapter.h>"
+      },
+      "template": "EmakefunEsp32ServoAdapter::writeUs({{field:CH}}, {{value:US}});\n"
+    }
+  ]
+}

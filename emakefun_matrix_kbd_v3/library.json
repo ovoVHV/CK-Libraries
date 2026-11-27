@@ -1,0 +1,21 @@
+{
+  "id": "emakefun_matrix_kbd_v3",
+  "name": "Emakefun 触摸矩阵键盘 V3",
+  "version": "1.0.0",
+  "description": "Emakefun 4×4 I2C 触摸矩阵键盘 V3.0（默认地址 0x65），内置软件消抖，支持按下/按住/松开事件与字符读取。",
+  "sentence": "Emakefun 4×4 I2C 触摸矩阵键盘 V3.0（默认地址 0x65），内置软件消抖，支持按下/按住/松开事件与字符读取。",
+  "author": "CKYAN",
+  "vendor": "Emakefun",
+  "vendor_logo": "assets/emakefun.png",
+  "icon": "assets/icon.png",
+  "category": "Sensors",
+  "website": "https://docs.emakefun.com/sensors/base_modules/matrix_keyboard_module_v3.0/README/",
+  "architectures": [
+    "avr",
+    "esp32"
+  ],
+  "license": "Apache-2.0",
+  "includes": [
+    "EmakefunMatrixKbdV3Adapter.h"
+  ]
+}

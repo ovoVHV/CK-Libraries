@@ -1,0 +1,985 @@
+{
+  "schema_version": 2,
+  "id": "emakefun_color_nlcs21",
+  "display_name": "Emakefun NLCS21 颜色传感器",
+  "description": "Emakefun NLCS21 I2C 颜色识别传感器，支持多档增益、积分时间、颜色采样与阈值中断。",
+  "defaultLocale": "zh-CN",
+  "keywords": [
+    "Emakefun NLCS21 颜色传感器",
+    "emakefun_color_nlcs21",
+    "Emakefun",
+    "颜色",
+    "RGB",
+    "NLCS21",
+    "I2C"
+  ],
+  "license": {
+    "spdx_id": "Apache-2.0",
+    "file": "LICENSE.txt"
+  },
+  "compatibility": {
+    "architectures": [
+      "avr",
+      "esp32"
+    ]
+  },
+  "dependencies": [
+    {
+      "kind": "arduino-library",
+      "id": "EmakefunNlcs21Adapter",
+      "version": "1.0.0",
+      "headers": [
+        "EmakefunNlcs21Adapter.h"
+      ],
+      "license": "Apache-2.0",
+      "reason": "随包内置于 libraries/EmakefunNlcs21Adapter/，提供安全封装与跨板卡兼容接口。"
+    },
+    {
+      "kind": "arduino-library",
+      "id": "Emakefun Color Sensor",
+      "version": "2.0.1",
+      "headers": [
+        "color_sensor_nlcs21.h"
+      ],
+      "license": "MIT",
+      "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/emakefun_color_sensor_nlcs21）内置于 libraries/emakefun_color_sensor_nlcs21/。"
+    }
+  ],
+  "entrypoints": {
+    "blocks": "blocks/blocks.json",
+    "generator": "blocks/ck-generator.json",
+    "toolbox": "blocks/toolbox.json"
+  },
+  "blocks": [
+    {
+      "type": "emakefun_color_nlcs21_begin",
+      "display_name": "初始化 NLCS21 颜色传感器 增益 %1 积分时间 %2 I2C地址 %3",
+      "description": "初始化 Emakefun NLCS21 颜色传感器（默认 I2C 地址 0x38 = 56）。",
+      "category": "Emakefun NLCS21 颜色传感器",
+      "kind": "statement",
+      "keywords": [
+        "Emakefun NLCS21 颜色传感器",
+        "emakefun_color_nlcs21",
+        "Emakefun",
+        "颜色",
+        "RGB",
+        "NLCS21",
+        "I2C"
+      ],
+      "semantics": {
+        "purpose": "初始化 Emakefun NLCS21 颜色传感器（默认 I2C 地址 0x38 = 56）。",
+        "behavior": "初始化 Emakefun NLCS21 颜色传感器（默认 I2C 地址 0x38 = 56）。",
+        "concepts": [
+          "Emakefun NLCS21 颜色传感器",
+          "Emakefun"
+        ],
+        "side_effects": [
+          "初始化 Emakefun NLCS21 颜色传感器（默认 I2C 地址 0x38 = 56）。"
+        ]
+      },
+      "fields": [
+        {
+          "name": "GAIN",
+          "kind": "dropdown",
+          "description": "增益倍数",
+          "required": true,
+          "default": "0",
+          "options": [
+            {
+              "label": "1x",
+              "value": "0"
+            },
+            {
+              "label": "4x",
+              "value": "1"
+            },
+            {
+              "label": "8x",
+              "value": "2"
+            },
+            {
+              "label": "32x",
+              "value": "3"
+            },
+            {
+              "label": "96x",
+              "value": "4"
+            },
+            {
+              "label": "192x",
+              "value": "5"
+            }
+          ]
+        },
+        {
+          "name": "ITIME",
+          "kind": "dropdown",
+          "description": "积分时间",
+          "required": true,
+          "default": "3",
+          "options": [
+            {
+              "label": "132ms",
+              "value": "3"
+            },
+            {
+              "label": "33ms",
+              "value": "2"
+            },
+            {
+              "label": "8ms",
+              "value": "1"
+            },
+            {
+              "label": "2ms",
+              "value": "0"
+            }
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "name": "ADDR",
+          "kind": "value",
+          "description": "I2C 地址（默认 56 即 0x38）",
+          "check": "Number",
+          "required": true,
+          "default": 56
+        }
+      ],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunNlcs21Adapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunNlcs21Adapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunNlcs21Adapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "Emakefun Color Sensor",
+          "version": "2.0.1",
+          "headers": [
+            "color_sensor_nlcs21.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/emakefun_color_sensor_nlcs21）内置于 libraries/emakefun_color_sensor_nlcs21/。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "i2c",
+            "id": "wire",
+            "source": {
+              "kind": "board-default"
+            },
+            "access": "read-write",
+            "sharing": "shared",
+            "description": "默认 I2C 总线 (Wire)，模块默认地址 0x38。"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "i2c-device",
+              "role": "i2c-device",
+              "resource": {
+                "kind": "fixed",
+                "valueType": "id",
+                "value": "i2c"
+              },
+              "exclusive": false,
+              "discriminator": {
+                "kind": "fixed",
+                "valueType": "integer",
+                "value": 56
+              }
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun NLCS21 I2C 颜色识别传感器，支持多档增益、积分时间、颜色采样与阈值中断。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "includes": [
+          "EmakefunNlcs21Adapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunNlcs21Adapter.h",
+            "template": "#include <EmakefunNlcs21Adapter.h>"
+          },
+          {
+            "section": "statement",
+            "description": "初始化 Emakefun NLCS21 颜色传感器（默认 I2C 地址 0x38 = 56）。",
+            "template": "EmakefunNlcs21Adapter::begin({{field:GAIN}}, {{field:ITIME}}, {{value:ADDR}});\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun NLCS21 I2C 颜色识别传感器，支持多档增益、积分时间、颜色采样与阈值中断。",
+          "message": "Emakefun NLCS21 I2C 颜色识别传感器，支持多档增益、积分时间、颜色采样与阈值中断。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun NLCS21 颜色传感器 随包示例",
+          "description": "初始化 Emakefun NLCS21 颜色传感器（默认 I2C 地址 0x38 = 56）。",
+          "expected_behavior": "演示 Emakefun NLCS21 颜色传感器 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_color_nlcs21_sample",
+      "display_name": "NLCS21 刷新颜色采样",
+      "description": "读取最新 R/G/B/C 数值。",
+      "category": "Emakefun NLCS21 颜色传感器",
+      "kind": "statement",
+      "keywords": [
+        "Emakefun NLCS21 颜色传感器",
+        "emakefun_color_nlcs21",
+        "Emakefun",
+        "颜色",
+        "RGB",
+        "NLCS21",
+        "I2C"
+      ],
+      "semantics": {
+        "purpose": "读取最新 R/G/B/C 数值。",
+        "behavior": "读取最新 R/G/B/C 数值。",
+        "concepts": [
+          "Emakefun NLCS21 颜色传感器",
+          "Emakefun"
+        ],
+        "side_effects": [
+          "读取最新 R/G/B/C 数值。"
+        ]
+      },
+      "fields": [],
+      "inputs": [],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunNlcs21Adapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunNlcs21Adapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunNlcs21Adapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "Emakefun Color Sensor",
+          "version": "2.0.1",
+          "headers": [
+            "color_sensor_nlcs21.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/emakefun_color_sensor_nlcs21）内置于 libraries/emakefun_color_sensor_nlcs21/。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "i2c",
+            "id": "wire",
+            "source": {
+              "kind": "board-default"
+            },
+            "access": "read-write",
+            "sharing": "shared",
+            "description": "默认 I2C 总线 (Wire)，模块默认地址 0x38。"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "i2c-device",
+              "role": "i2c-device",
+              "resource": {
+                "kind": "fixed",
+                "valueType": "id",
+                "value": "i2c"
+              },
+              "exclusive": false,
+              "discriminator": {
+                "kind": "fixed",
+                "valueType": "integer",
+                "value": 56
+              }
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun NLCS21 I2C 颜色识别传感器，支持多档增益、积分时间、颜色采样与阈值中断。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "includes": [
+          "EmakefunNlcs21Adapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunNlcs21Adapter.h",
+            "template": "#include <EmakefunNlcs21Adapter.h>"
+          },
+          {
+            "section": "statement",
+            "description": "读取最新 R/G/B/C 数值。",
+            "template": "EmakefunNlcs21Adapter::sample();\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun NLCS21 I2C 颜色识别传感器，支持多档增益、积分时间、颜色采样与阈值中断。",
+          "message": "Emakefun NLCS21 I2C 颜色识别传感器，支持多档增益、积分时间、颜色采样与阈值中断。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun NLCS21 颜色传感器 随包示例",
+          "description": "读取最新 R/G/B/C 数值。",
+          "expected_behavior": "演示 Emakefun NLCS21 颜色传感器 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_color_nlcs21_r",
+      "display_name": "NLCS21 红色值 R",
+      "description": "读取红色通道值。",
+      "category": "Emakefun NLCS21 颜色传感器",
+      "kind": "value",
+      "keywords": [
+        "Emakefun NLCS21 颜色传感器",
+        "emakefun_color_nlcs21",
+        "Emakefun",
+        "颜色",
+        "RGB",
+        "NLCS21",
+        "I2C"
+      ],
+      "semantics": {
+        "purpose": "读取红色通道值。",
+        "behavior": "读取红色通道值。",
+        "concepts": [
+          "Emakefun NLCS21 颜色传感器",
+          "Emakefun"
+        ],
+        "side_effects": []
+      },
+      "fields": [],
+      "inputs": [],
+      "output": {
+        "connection": "value",
+        "types": [
+          "Number"
+        ],
+        "description": "读取红色通道值。"
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunNlcs21Adapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunNlcs21Adapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunNlcs21Adapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "Emakefun Color Sensor",
+          "version": "2.0.1",
+          "headers": [
+            "color_sensor_nlcs21.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/emakefun_color_sensor_nlcs21）内置于 libraries/emakefun_color_sensor_nlcs21/。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "i2c",
+            "id": "wire",
+            "source": {
+              "kind": "board-default"
+            },
+            "access": "read-write",
+            "sharing": "shared",
+            "description": "默认 I2C 总线 (Wire)，模块默认地址 0x38。"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "i2c-device",
+              "role": "i2c-device",
+              "resource": {
+                "kind": "fixed",
+                "valueType": "id",
+                "value": "i2c"
+              },
+              "exclusive": false,
+              "discriminator": {
+                "kind": "fixed",
+                "valueType": "integer",
+                "value": 56
+              }
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun NLCS21 I2C 颜色识别传感器，支持多档增益、积分时间、颜色采样与阈值中断。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "expression",
+        "deterministic": true,
+        "includes": [
+          "EmakefunNlcs21Adapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunNlcs21Adapter.h",
+            "template": "#include <EmakefunNlcs21Adapter.h>"
+          },
+          {
+            "section": "expression",
+            "description": "读取红色通道值。",
+            "template": "EmakefunNlcs21Adapter::r()"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun NLCS21 I2C 颜色识别传感器，支持多档增益、积分时间、颜色采样与阈值中断。",
+          "message": "Emakefun NLCS21 I2C 颜色识别传感器，支持多档增益、积分时间、颜色采样与阈值中断。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun NLCS21 颜色传感器 随包示例",
+          "description": "读取红色通道值。",
+          "expected_behavior": "演示 Emakefun NLCS21 颜色传感器 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_color_nlcs21_g",
+      "display_name": "NLCS21 绿色值 G",
+      "description": "读取绿色通道值。",
+      "category": "Emakefun NLCS21 颜色传感器",
+      "kind": "value",
+      "keywords": [
+        "Emakefun NLCS21 颜色传感器",
+        "emakefun_color_nlcs21",
+        "Emakefun",
+        "颜色",
+        "RGB",
+        "NLCS21",
+        "I2C"
+      ],
+      "semantics": {
+        "purpose": "读取绿色通道值。",
+        "behavior": "读取绿色通道值。",
+        "concepts": [
+          "Emakefun NLCS21 颜色传感器",
+          "Emakefun"
+        ],
+        "side_effects": []
+      },
+      "fields": [],
+      "inputs": [],
+      "output": {
+        "connection": "value",
+        "types": [
+          "Number"
+        ],
+        "description": "读取绿色通道值。"
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunNlcs21Adapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunNlcs21Adapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunNlcs21Adapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "Emakefun Color Sensor",
+          "version": "2.0.1",
+          "headers": [
+            "color_sensor_nlcs21.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/emakefun_color_sensor_nlcs21）内置于 libraries/emakefun_color_sensor_nlcs21/。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "i2c",
+            "id": "wire",
+            "source": {
+              "kind": "board-default"
+            },
+            "access": "read-write",
+            "sharing": "shared",
+            "description": "默认 I2C 总线 (Wire)，模块默认地址 0x38。"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "i2c-device",
+              "role": "i2c-device",
+              "resource": {
+                "kind": "fixed",
+                "valueType": "id",
+                "value": "i2c"
+              },
+              "exclusive": false,
+              "discriminator": {
+                "kind": "fixed",
+                "valueType": "integer",
+                "value": 56
+              }
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun NLCS21 I2C 颜色识别传感器，支持多档增益、积分时间、颜色采样与阈值中断。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "expression",
+        "deterministic": true,
+        "includes": [
+          "EmakefunNlcs21Adapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunNlcs21Adapter.h",
+            "template": "#include <EmakefunNlcs21Adapter.h>"
+          },
+          {
+            "section": "expression",
+            "description": "读取绿色通道值。",
+            "template": "EmakefunNlcs21Adapter::g()"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun NLCS21 I2C 颜色识别传感器，支持多档增益、积分时间、颜色采样与阈值中断。",
+          "message": "Emakefun NLCS21 I2C 颜色识别传感器，支持多档增益、积分时间、颜色采样与阈值中断。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun NLCS21 颜色传感器 随包示例",
+          "description": "读取绿色通道值。",
+          "expected_behavior": "演示 Emakefun NLCS21 颜色传感器 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_color_nlcs21_b",
+      "display_name": "NLCS21 蓝色值 B",
+      "description": "读取蓝色通道值。",
+      "category": "Emakefun NLCS21 颜色传感器",
+      "kind": "value",
+      "keywords": [
+        "Emakefun NLCS21 颜色传感器",
+        "emakefun_color_nlcs21",
+        "Emakefun",
+        "颜色",
+        "RGB",
+        "NLCS21",
+        "I2C"
+      ],
+      "semantics": {
+        "purpose": "读取蓝色通道值。",
+        "behavior": "读取蓝色通道值。",
+        "concepts": [
+          "Emakefun NLCS21 颜色传感器",
+          "Emakefun"
+        ],
+        "side_effects": []
+      },
+      "fields": [],
+      "inputs": [],
+      "output": {
+        "connection": "value",
+        "types": [
+          "Number"
+        ],
+        "description": "读取蓝色通道值。"
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunNlcs21Adapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunNlcs21Adapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunNlcs21Adapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "Emakefun Color Sensor",
+          "version": "2.0.1",
+          "headers": [
+            "color_sensor_nlcs21.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/emakefun_color_sensor_nlcs21）内置于 libraries/emakefun_color_sensor_nlcs21/。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "i2c",
+            "id": "wire",
+            "source": {
+              "kind": "board-default"
+            },
+            "access": "read-write",
+            "sharing": "shared",
+            "description": "默认 I2C 总线 (Wire)，模块默认地址 0x38。"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "i2c-device",
+              "role": "i2c-device",
+              "resource": {
+                "kind": "fixed",
+                "valueType": "id",
+                "value": "i2c"
+              },
+              "exclusive": false,
+              "discriminator": {
+                "kind": "fixed",
+                "valueType": "integer",
+                "value": 56
+              }
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun NLCS21 I2C 颜色识别传感器，支持多档增益、积分时间、颜色采样与阈值中断。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "expression",
+        "deterministic": true,
+        "includes": [
+          "EmakefunNlcs21Adapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunNlcs21Adapter.h",
+            "template": "#include <EmakefunNlcs21Adapter.h>"
+          },
+          {
+            "section": "expression",
+            "description": "读取蓝色通道值。",
+            "template": "EmakefunNlcs21Adapter::b()"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun NLCS21 I2C 颜色识别传感器，支持多档增益、积分时间、颜色采样与阈值中断。",
+          "message": "Emakefun NLCS21 I2C 颜色识别传感器，支持多档增益、积分时间、颜色采样与阈值中断。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun NLCS21 颜色传感器 随包示例",
+          "description": "读取蓝色通道值。",
+          "expected_behavior": "演示 Emakefun NLCS21 颜色传感器 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_color_nlcs21_c",
+      "display_name": "NLCS21 透明通道值 C",
+      "description": "读取透明光强通道值。",
+      "category": "Emakefun NLCS21 颜色传感器",
+      "kind": "value",
+      "keywords": [
+        "Emakefun NLCS21 颜色传感器",
+        "emakefun_color_nlcs21",
+        "Emakefun",
+        "颜色",
+        "RGB",
+        "NLCS21",
+        "I2C"
+      ],
+      "semantics": {
+        "purpose": "读取透明光强通道值。",
+        "behavior": "读取透明光强通道值。",
+        "concepts": [
+          "Emakefun NLCS21 颜色传感器",
+          "Emakefun"
+        ],
+        "side_effects": []
+      },
+      "fields": [],
+      "inputs": [],
+      "output": {
+        "connection": "value",
+        "types": [
+          "Number"
+        ],
+        "description": "读取透明光强通道值。"
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunNlcs21Adapter",
+          "version": "1.0.0",
+          "headers": [
+            "EmakefunNlcs21Adapter.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "随包内置于 libraries/EmakefunNlcs21Adapter/，提供安全封装与跨板卡兼容接口。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "Emakefun Color Sensor",
+          "version": "2.0.1",
+          "headers": [
+            "color_sensor_nlcs21.h"
+          ],
+          "license": "MIT",
+          "reason": "官方上游 Emakefun 驱动（emakefun-arduino-library/emakefun_color_sensor_nlcs21）内置于 libraries/emakefun_color_sensor_nlcs21/。"
+        }
+      ],
+      "hardware": {
+        "resources": [
+          {
+            "kind": "i2c",
+            "id": "wire",
+            "source": {
+              "kind": "board-default"
+            },
+            "access": "read-write",
+            "sharing": "shared",
+            "description": "默认 I2C 总线 (Wire)，模块默认地址 0x38。"
+          }
+        ],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": [
+            {
+              "id": "i2c-device",
+              "role": "i2c-device",
+              "resource": {
+                "kind": "fixed",
+                "valueType": "id",
+                "value": "i2c"
+              },
+              "exclusive": false,
+              "discriminator": {
+                "kind": "fixed",
+                "valueType": "integer",
+                "value": 56
+              }
+            }
+          ]
+        },
+        "boards": [
+          "arduino:avr:uno",
+          "esp32:esp32:esp32s3"
+        ],
+        "architectures": [
+          "avr",
+          "esp32"
+        ],
+        "notes": [
+          "Emakefun NLCS21 I2C 颜色识别传感器，支持多档增益、积分时间、颜色采样与阈值中断。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "expression",
+        "deterministic": true,
+        "includes": [
+          "EmakefunNlcs21Adapter.h"
+        ],
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入 EmakefunNlcs21Adapter.h",
+            "template": "#include <EmakefunNlcs21Adapter.h>"
+          },
+          {
+            "section": "expression",
+            "description": "读取透明光强通道值。",
+            "template": "EmakefunNlcs21Adapter::c()"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun NLCS21 I2C 颜色识别传感器，支持多档增益、积分时间、颜色采样与阈值中断。",
+          "message": "Emakefun NLCS21 I2C 颜色识别传感器，支持多档增益、积分时间、颜色采样与阈值中断。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "Emakefun NLCS21 颜色传感器 随包示例",
+          "description": "读取透明光强通道值。",
+          "expected_behavior": "演示 Emakefun NLCS21 颜色传感器 的初始化与基本读写/控制。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno",
+            "esp32:esp32:esp32s3"
+          ]
+        }
+      ],
+      "errors": []
+    }
+  ]
+}
